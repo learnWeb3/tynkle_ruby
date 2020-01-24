@@ -1,0 +1,2 @@
+class LinkSkillToUser < ApplicationRecord
+end
