@@ -50,7 +50,7 @@ class User < ApplicationRecord
     # checking date_of_birth with dynamic custom validation
 
     def not_too_young
-      if date_of_birth > Time.now.strftime("%Y")
+      if date_of_birth > Time.now.strftime("%Y").to_i
         errors.add(:date_of_birth, "can't be greater than the actual year")
       end
     end
