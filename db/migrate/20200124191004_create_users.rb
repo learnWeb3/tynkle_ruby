@@ -11,9 +11,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :address
       t.text :description
       t.integer :date_of_birth
-      
-
       t.timestamps
+      t.boolean :service_provider, default: false
+      
     end
   end
 end

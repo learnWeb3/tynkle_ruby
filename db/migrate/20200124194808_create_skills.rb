@@ -14,7 +14,9 @@ class CreateSkills < ActiveRecord::Migration[5.2]
       t.string :skill_eight
       t.string :skill_nine
       t.string :skill_ten
+
       t.timestamps
+      
     end
   end
 end
