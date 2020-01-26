@@ -19,8 +19,8 @@ class User < ApplicationRecord
 
     # A User can have many appointments and be either an attendee or have attendances depending the attrbuted role
 
-    has_many :attenders, class_name:"Appointment", foreign_key:"problem_solver_id"
-    has_many :attendees, class_name:"Appointment", foreign_key:"problem_seeker_id"
+    has_many :solver_meetings, class_name:"Appointment", foreign_key:"problem_solver_id"
+    has_many :seeker_meetings, class_name:"Appointment", foreign_key:"problem_seeker_id"
 
     # A user could create multiple missions reflecting problems to be solved 
     
