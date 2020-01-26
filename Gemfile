@@ -119,3 +119,7 @@ gem 'chunky_png'
 # Geocoder Gem for rails : fetching geolocation data through maps API
 
 gem 'geocoder'
+
+# Simple Calendar Gem for rails generating template for Agenda layout 
+
+gem "simple_calendar", "~> 2.0"
