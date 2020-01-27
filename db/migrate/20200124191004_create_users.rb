@@ -13,6 +13,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :date_of_birth
       t.timestamps
       t.boolean :service_provider, default: false
+      t.boolean :status_activity, default: true
       
     end
   end

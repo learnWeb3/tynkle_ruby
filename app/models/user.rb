@@ -32,8 +32,6 @@ class User < ApplicationRecord
     validates :first_name, allow_nil: true, format: { with: /\A[-'a -zA-ZÀ-ÖØ-öø-ÿ]+\z/, message: "%{value} n'est pas un Prénom valide" }
     validates :last_name, allow_nil: true, format: { with: /\A[-'a -zA-ZÀ-ÖØ-öø-ÿ]+\z/, message: "%{value} n'est pas un Nom de famille valide" }
     validates :date_of_birth, allow_nil: true, numericality: { greater_than_or_equal_to: 1920, message: "%{value} n'est pas une date de naissance valide" }
-    validates :latitude, presence: true
-    validates :longitude, presence: true
     validates :description, allow_nil: true, length: { maximum: 250 }
     validates :service_provider, presence: true
 
@@ -54,8 +52,10 @@ class User < ApplicationRecord
     # checking date_of_birth with dynamic custom validation
 
     def not_too_young
-      if date_of_birth > Time.now.strftime("%Y").to_i
-        errors.add(:date_of_birth, "can't be greater than the actual year")
+      if date_of_birth.present?
+        if date_of_birth > Time.now.strftime("%Y").to_i
+          errors.add(:date_of_birth, "can't be greater than the actual year")
+        end
       end
     end
 
