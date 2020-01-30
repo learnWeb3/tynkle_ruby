@@ -1,29 +1,52 @@
-<h2>Sign up</h2>
+<div class="container-fluid px-3">
+<div class="row min-vh-100">
+  <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
+    <div class="w-100 py-5 px-md-5 px-xl-6 position-relative">
+      <div class="mb-4"><%=image_tag("logo/brand.png", size: "100x100", alt:"Tynkle Logo", class:"img-fluid mb-4")%>
+      <%=link_to "Accueil", root_path, class:"col-md-3 offset-md-3"%>
+        <h2>Inscription</h2>
+      </div>
+      <form class="form-validate">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="form-group">
+          <%= f.label :email, class:"form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"name@address.com", autocomplete:"off", class:"form-control" %>
+        </div>
+        <div class="form-group mb-4">
+            <%= f.label :Choisir_un_mot_de_passe, class:"form-label" %>
+            <%= f.password_field :password, autocomplete: "password", placeholder:"Entrer un mot de passse", class:"form-control" %>
+        </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="form-group mb-4">
+        <div class="row">
+          <div class="col">
+          <%= f.label :Confirmer_le_mot_de_passe, class:"form-label" %>
+          </div>
+        </div>
+        <%= f.password_field :password_confirmation, placeholder:"Retaper le mot de passe", class:"form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+        <!-- Submit-->
+        <%= f.submit "S'inscrire", class:"btn btn-lg btn-block btn-primary"%>
+        <div class="my-2"> <%= render "devise/shared/links" %> </div>
+        <% end %>
+
+        <hr data-content="OU" class="my-3 hr-text letter-spacing-2">
+        <button class="btn btn btn-outline-primary btn-block btn-social mb-3"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>
+        <button class="btn btn btn-outline-muted btn-block btn-social mb-3"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Google</span></button>
+        <hr class="my-4">
+        <p class="text-center"><small class="text-muted text-center">Don't have an account yet? <a href="signup.html">Sign Up                </a></small></p>
+      </form><a href="index.html" class="close-absolute mr-md-5 mr-xl-6 pt-5"> 
+        <svg class="svg-icon w-3rem h-3rem">
+          <use xlink:href="#close-1"> </use>
+        </svg></a>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
+    <!-- Image-->
+    <div class="bg-log-in h-100 mr-n3"></div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+</div>

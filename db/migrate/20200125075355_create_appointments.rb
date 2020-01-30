@@ -6,7 +6,13 @@ class CreateAppointments < ActiveRecord::Migration[5.2]
       t.datetime :start_date
       t.datetime :end_date
       t.integer :duration
-      t.string :location
+      t.string :address
+      t.float :latitude
+      t.float :longitude
+      t.boolean :paid, default: false
+      t.boolean :confirmed, default: false
+      t.boolean :validated, default: false
+
       
       # ACtive Records relationship
 

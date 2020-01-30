@@ -1,0 +1,13 @@
+/* your styles go here */
+
+.bg-repair {
+    background-image: url(photos/login/login-image.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-log-in {
+    background-image: url(photos/login/laptop-people.jpg);
+    background-position: center;
+    background-size: cover;
+}

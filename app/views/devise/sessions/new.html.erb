@@ -1,26 +1,54 @@
-<h2>Log in</h2>
+<div class="container-fluid px-3">
+<div class="row min-vh-100">
+  <div class="col-md-8 col-lg-6 col-xl-5 d-flex align-items-center">
+    <div class="w-100 py-5 px-md-5 px-xl-6 position-relative">
+      <div class="mb-5"><%=image_tag("logo/brand.png", size: "100x100", alt:"Tynkle Logo", class:"img-fluid mb-4")%>
+      <%=link_to "Accueil", root_path, class:"col-md-3 offset-md-3"%>
+        <h2>Connexion</h2>
+      </div>
+      <form class="form-validate">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.label :email, class:"form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"name@address.com", autocomplete:"off", class:"form-control" %>
+        </div>
+        <div class="form-group mb-4">
+          <div class="row">
+            <div class="col">
+            <%= f.label :password, class:"form-label" %>
+            </div>
+            <div class="col-auto"><a href="#" class="form-text small">Forgot password?</a></div>
+          </div>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder:"Password", class:"form-control" %>
+        </div>
+        <div class="form-group mb-4">
+          <% if devise_mapping.rememberable? %>
+          <div class="custom-control custom-checkbox">
+            <%= f.check_box :remember_me, class:"custom-control-input"%>
+            <%= f.label :remember_me, class:"custom-control-label text-muted" %>
+          </div>
+        <% end %>
+        </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <!-- Submit-->
+        <%= f.submit "Se connecter", class:"btn btn-lg btn-block btn-primary"%>
+        <div class="my-2"> <%= render "devise/shared/links" %> </div>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <hr data-content="OR" class="my-3 hr-text letter-spacing-2">
+        <button class="btn btn btn-outline-primary btn-block btn-social mb-3"><i class="fa-2x fa-facebook-f fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Facebook</span></button>
+        <button class="btn btn btn-outline-muted btn-block btn-social mb-3"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Google</span></button>
+        <hr class="my-4">
+        <p class="text-center"><small class="text-muted text-center">Don't have an account yet? <a href="signup.html">Sign Up                </a></small></p>
+      </form><a href="index.html" class="close-absolute mr-md-5 mr-xl-6 pt-5"> 
+        <svg class="svg-icon w-3rem h-3rem">
+          <use xlink:href="#close-1"> </use>
+        </svg></a>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <div class="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">
+    <!-- Image-->
+    <div class="bg-log-in h-100 mr-n3"></div>
+  </div>
+</div>
+</div>

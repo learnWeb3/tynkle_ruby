@@ -15,7 +15,12 @@ class Appointment < ApplicationRecord
    validates :duration_format
    validates :duration, presence:true, numericality: {greater_than:0}
 
-   validates :location, presence: true
+   validates :address, presence: true
+
+   # Goocoding object using either lat/long or address in order to display map later on
+   geocoded_by :address
+   reverse_geocoded_by :latitude, :longitude
+   after_validation :geocode, :reverse_geocode 
 
 
 

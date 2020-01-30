@@ -12,6 +12,7 @@ class Mission < ApplicationRecord
     validates :title, presence: true, length: { maximum: 100 }
     validates :description, presence: true, length: { maximum: 1000 }
     validates :price, presence: true, numericality: {greater_than: 0}
+    validates :rate, numericality: {minimum:0, maximum: 5}
 
     # Custom validations
     validate :price_format
