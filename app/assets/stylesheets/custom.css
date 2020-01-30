@@ -1,13 +1,41 @@
-/* your styles go here */
-
-.bg-repair {
-    background-image: url(photos/login/login-image.jpg);
-    background-position: center;
-    background-size: cover;
-}
-
-.bg-log-in {
-    background-image: url(photos/login/laptop-people.jpg);
-    background-position: center;
-    background-size: cover;
-}
+    /* your styles go here */
+    
+    .bg-material {
+        background-image: url(background/abstract-material-design-01.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .bg-repair {
+        background-image: url(photos/login/login-image.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+    
+    .bg-log-in {
+        background-image: url(photos/login/laptop-people.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+    
+    .hero-value-prop {
+        padding-top: 8rem;
+    }
+    
+    ol.steps-problem-description-home li {
+        list-style-type: none;
+    }
+    
+    .pt-10 {
+        padding-top: 12rem;
+    }
+    
+    .blur-layer {
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: 3000;
+    }
+    
+    .text-dark-force {
+        color: #000;
+    }
