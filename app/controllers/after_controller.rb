@@ -32,9 +32,9 @@ class AfterController < ApplicationController
 
         when :fill_up_skills
 
-            params[:skill].each do |designed_skill|
-            link_skill_to_users.create(user:current_user, skill: designed_skill, level:)
-            end
+            #params[:skill].each do |designed_skill|
+            #link_skill_to_users.create(user:current_user, skill: designed_skill, level:)
+           
             
         when :status_choice
 
