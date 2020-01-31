@@ -5,10 +5,8 @@ class AfterController < ApplicationController
 
    
     steps :how_do_we_call_you, :location_data, :fill_up_skills, :status_choice
-    #else
-        #steps :how_do_we_call_you, :location_data, :status_choice
-    #end
-
+    
+    
     def show
         @user = current_user
         case step
@@ -28,9 +26,22 @@ class AfterController < ApplicationController
           @user.first_name = params[:'user']["first_name"]
           @user.last_name = params[:'user']["last_name"]
           @user.save
-          
+
+        when :location_data
+            @user.address = params[:'user']["address"]
+
+        when :fill_up_skills
+
+            params[:skill].each do |designed_skill|
+            link_skill_to_users.create(user:current_user, skill: designed_skill, level:)
+            end
+            
+        when :status_choice
+
         end
         sign_in(@user, bypass: true) # needed for devise
         render_wizard @user
       end
+
+     
 end
