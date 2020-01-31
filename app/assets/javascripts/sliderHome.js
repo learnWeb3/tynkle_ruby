@@ -12,7 +12,7 @@ images[5] = 'https://images.pexels.com/photos/313690/pexels-photo-313690.jpeg?au
 
 
 setInterval(function() {
-    document.querySelectorAll('.img-fluid')[0].src = images[i]
+    document.querySelectorAll('#image-value-proposition')[0].src = images[i]
 
     if (i < images.length - 1) {
         i = i + 1

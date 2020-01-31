@@ -6,14 +6,14 @@
         background-size: cover;
     }
     
-    .bg-repair {
-        background-image: url(photos/login/login-image.jpg);
+    .bg-sign-up {
+        background-image: url(https://images.pexels.com/photos/1456955/pexels-photo-1456955.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
         background-position: center;
         background-size: cover;
     }
     
     .bg-log-in {
-        background-image: url(photos/login/laptop-people.jpg);
+        background-image: url(photos/login/devices-man-login.jpg);
         background-position: center;
         background-size: cover;
     }
@@ -70,4 +70,16 @@
     
     .bg-light-brown {
         background-color: #474747;
+    }
+    
+    .hover-underline:hover {
+        cursor: pointer;
+    }
+    
+    .hover-underline:hover .hover-weigth-underline {
+        border-bottom: 0.30rem solid #2946F7
+    }
+    
+    .red-shadow {
+        text-shadow: -5px 4px 2px rgba(206, 89, 55, 0.92);
     }
