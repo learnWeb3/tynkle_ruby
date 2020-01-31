@@ -19,7 +19,11 @@
     }
     
     .hero-value-prop {
-        padding-top: 8rem;
+        margin-top: 8rem;
+        background-image: url(photos/landing-page/hero-welcome.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
     }
     
     ol.steps-problem-description-home li {
@@ -30,11 +34,25 @@
         padding-top: 12rem;
     }
     
-    .blur-layer {
-        background-color: rgba(0, 0, 0, 0.2);
-        z-index: 3000;
-    }
-    
     .text-dark-force {
         color: #000;
+    }
+    
+    .py-8 {
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+    }
+    
+    .py-10 {
+        padding-top: 12rem;
+        padding-bottom: 12rem;
+    }
+    
+    .py-12 {
+        padding-top: 14rem;
+        padding-bottom: 14rem;
+    }
+    
+    .pt-8 {
+        padding-top: 10rem;
     }
