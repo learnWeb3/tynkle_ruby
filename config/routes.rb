@@ -4,5 +4,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  resources :after, only: [:show, :update]
+
+
   
 end

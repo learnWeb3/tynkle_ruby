@@ -6,11 +6,10 @@
       <%=link_to "Accueil", root_path, class:"col-md-3 offset-md-3"%>
         <h2>Connexion</h2>
       </div>
-      <form class="form-validate">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
           <%= f.label :email, class:"form-label" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"name@address.com", autocomplete:"off", class:"form-control" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"name@address.com", class:"form-control" %>
         </div>
         <div class="form-group mb-4">
           <div class="row">
@@ -40,7 +39,7 @@
         <button class="btn btn btn-outline-muted btn-block btn-social mb-3"><i class="fa-2x fa-google fab btn-social-icon"> </i>Connect <span class="d-none d-sm-inline">with Google</span></button>
         <hr class="my-4">
         <p class="text-center"><small class="text-muted text-center">Don't have an account yet? <a href="signup.html">Sign Up                </a></small></p>
-      </form><a href="index.html" class="close-absolute mr-md-5 mr-xl-6 pt-5"> 
+      <a href="index.html" class="close-absolute mr-md-5 mr-xl-6 pt-5"> 
         <svg class="svg-icon w-3rem h-3rem">
           <use xlink:href="#close-1"> </use>
         </svg></a>
