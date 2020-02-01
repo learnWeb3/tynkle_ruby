@@ -23,7 +23,7 @@
         background-image: url(photos/landing-page/hero-welcome.png);
         background-position: center;
         background-repeat: no-repeat;
-        background-size: contain;
+        background-size: cover;
     }
     
     ol.steps-problem-description-home li {
@@ -60,12 +60,6 @@
     .py-hero-welcome {
         padding-top: 11rem;
         padding-bottom: 14rem;
-    }
-    
-    #call-2-action-tynkle-hero-welcome {
-        position: absolute;
-        top: 17rem;
-        right: 20rem;
     }
     
     .bg-light-brown {
