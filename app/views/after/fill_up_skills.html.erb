@@ -2,14 +2,9 @@
 
 <section class="container">
 
-<div class="row justify-content-center">
-    <%= image_tag("photos/after-sign-up/skills.png", class:"w-25 img-fluid") %>
-</div>
-
-<div class="row justify-content-center my-4">
+<div class="row justify-content-center my-5">
 
     <h2 class="shadow-title"> Comment peut tu aider la communauté ?</h2>
-
 
 </div>
 
@@ -25,6 +20,9 @@
     <a class="nav-link" id="pills-hardware-tab" data-toggle="pill" href="#pills-hardware" role="tab" aria-controls="pills-hardware" aria-selected="false">Matériel</a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" id="pills-network-tab" data-toggle="pill" href="#pills-network" role="tab" aria-controls="pills-network" aria-selected="false">Réseau & Internet</a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" id="pills-learning-tab" data-toggle="pill" href="#pills-learning" role="tab" aria-controls="pills-learning" aria-selected="false">Tutorat/Cours</a>
   </li>
 </ul>
@@ -32,42 +30,189 @@
 <%= form_for wizard_path, method: :put do |f| %>
 
 <div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-os" role="tabpanel" aria-labelledby="pills-os-tab">
 
-  <div class="row justify-content-center my-4">
 
- 
-      <div class="form-group">
-          <%= f.label :selectionne_les_services_que_tu_souhaite_proposer %>
-          <%= f.check_box :skill_one, class:"form-control"%>
-          <%= f.check_box :skill_two, class:"form-control"%>
-          <%= f.check_box :skill_three, class:"form-control"%>
-          <%= f.check_box :skill_four, class:"form-control"%>
-          <%= f.check_box :skill_five, class:"form-control"%>
-          <%= f.check_box :skill_six, class:"form-control"%>
+<!-- skills os -->
+
+
+  <div class="tab-pane fade" id="pills-os" role="tabpanel" aria-labelledby="pills-os-tab">
+
+    <div class="row justify-content-center">
+
+    <%= f.label :selectionne_les_services_que_tu_souhaite_proposer, class:"form-label my-4" %>
+
+      <div class="col-9 justify-content-center text-center">
+
+          <div class="form-group">
+          
+
+              <%= f.check_box :skill_one_os, class:"form-control"%>
+              <%= f.check_box :skill_two_os, class:"form-control"%>
+              <%= f.check_box :skill_three_os, class:"form-control"%>
+              <%= f.check_box :skill_four_os, class:"form-control"%>
+              <%= f.check_box :skill_five_os, class:"form-control"%>
+              <%= f.check_box :skill_six_os, class:"form-control"%>
+          </div>
+
       </div>
-  
-  </div>
+
+      <div class="col-3 justify-content-center text-center">
+
+        <%= image_tag("icons/os.png", class:"w-50 img-fluid") %>
+
+      </div>
+
+    </div>
+
 
   </div>
+
+
+
+<!-- skills software -->
+
+
   <div class="tab-pane fade" id="pills-software" role="tabpanel" aria-labelledby="pills-software-tab">
 
+      <div class="row justify-content-center">
+
+      <%= f.label :selectionne_les_services_que_tu_souhaite_proposer, class:"form-label my-4" %>
+
+        <div class="col-9 justify-content-center text-center">
+
+            <div class="form-group">
+
+                <%= f.check_box :skill_one_software, class:"form-control"%>
+                <%= f.check_box :skill_two_software, class:"form-control"%>
+                <%= f.check_box :skill_three_software, class:"form-control"%>
+                <%= f.check_box :skill_four_software, class:"form-control"%>
+                <%= f.check_box :skill_five_software, class:"form-control"%>
+                <%= f.check_box :skill_six_software, class:"form-control"%>
+            </div>
+
+        </div>
+
+        <div class="col-3 justify-content-center text-center">
+
+          <%= image_tag("icons/sofware.png", class:"w-50 img-fluid") %>
+
+        </div>
+
+      </div>
+
+
   </div>
+
+<!-- skills hardware -->
+
   <div class="tab-pane fade" id="pills-hardware" role="tabpanel" aria-labelledby="pills-hardware-tab">
 
-  </div>
-  <div class="tab-pane fade" id="pills-learning" role="tabpanel" aria-labelledby="pills-learning-tab">
+        <div class="row justify-content-center">
+
+        <%= f.label :selectionne_les_services_que_tu_souhaite_proposer, class:"form-label my-4" %>
+
+          <div class="col-9 justify-content-center text-center">
+
+              <div class="form-group">
+
+                  <%= f.check_box :skill_one_hardware, class:"form-control"%>
+                  <%= f.check_box :skill_two_hardware, class:"form-control"%>
+                  <%= f.check_box :skill_three_hardware, class:"form-control"%>
+                  <%= f.check_box :skill_four_hardware, class:"form-control"%>
+                  <%= f.check_box :skill_five_hardware, class:"form-control"%>
+                  <%= f.check_box :skill_six_hardware, class:"form-control"%>
+              </div>
+
+          </div>
+
+          <div class="col-3 justify-content-center text-center">
+
+            <%= image_tag("icons/hardware.png", class:"w-50 img-fluid") %>
+
+          </div>
+
+        </div>
+
+
+    </div>
+
+<!-- skills network -->
+
+  <div class="tab-pane fade" id="pills-network" role="tabpanel" aria-labelledby="pills-network-tab">
+
+      <div class="row justify-content-center">
+
+        <%= f.label :selectionne_les_services_que_tu_souhaite_proposer, class:"form-label my-4" %>
+
+          <div class="col-9 justify-content-center text-center">
+
+              <div class="form-group">
+
+                  <%= f.check_box :skill_one_network, class:"form-control"%>
+                  <%= f.check_box :skill_two_network, class:"form-control"%>
+                  <%= f.check_box :skill_three_network, class:"form-control"%>
+                  <%= f.check_box :skill_four_network, class:"form-control"%>
+                  <%= f.check_box :skill_five_network, class:"form-control"%>
+                  <%= f.check_box :skill_six_network, class:"form-control"%>
+              </div>
+
+          </div>
+
+          <div class="col-3 justify-content-center text-center">
+
+            <%= image_tag("icons/network.png", class:"w-50 img-fluid") %>
+
+          </div>
+
+        </div>
+
 
   </div>
+
+<!-- skills learning -->
+
+
+  <div class="tab-pane fade" id="pills-learning" role="tabpanel" aria-labelledby="pills-learning-tab">
+
+    <div class="row justify-content-center">
+
+      <%= f.label :selectionne_les_services_que_tu_souhaite_proposer, class:"form-label my-4" %>
+
+      <div class="col-9 justify-content-center text-center">
+
+          <div class="form-group">
+
+              <%= f.check_box :skill_one_learning, class:"form-control"%>
+              <%= f.check_box :skill_two_learning, class:"form-control"%>
+              <%= f.check_box :skill_three_learning, class:"form-control"%>
+              <%= f.check_box :skill_four_learning, class:"form-control"%>
+              <%= f.check_box :skill_five_learning, class:"form-control"%>
+              <%= f.check_box :skill_six_learning, class:"form-control"%>
+          </div>
+
+      </div>
+
+      <div class="col-3 justify-content-center text-center">
+
+        <%= image_tag("icons/learning.png", class:"w-50 img-fluid") %>
+
+      </div>
+
+    </div>
+
+
+   </div>
+
 </div>
+
 
 
 <hr class="my-4">
 
 
 <div class="row col-8 justify-content-end my-4 mx-auto">
-<%= f.submit "Suivant", class:"btn btn-primary" %>
-<% end %>
+    <%= f.submit "Suivant", class:"btn btn-primary" %>
+    <% end %>
 </div> 
 
 </section>

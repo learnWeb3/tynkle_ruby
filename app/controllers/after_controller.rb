@@ -4,15 +4,19 @@ class AfterController < ApplicationController
     
 
    
-    steps :how_do_we_call_you, :location_data, :fill_up_skills, :status_choice
+    steps :service_provider, :how_do_we_call_you, :location_data, :fill_up_skills, :status_choice
     
     
     def show
         @user = current_user
         case step
+            when :service_provider
             when :how_do_we_call_you
             when :location_data
             when :fill_up_skills
+                if @user.service_provider?
+                    skip_step
+                end
             when :status_choice
         end
         render_wizard
