@@ -1,0 +1,76 @@
+
+
+<section class="container">
+
+<div class="row justify-content-center">
+    <%= image_tag("photos/after-sign-up/skills.png", class:"w-25 img-fluid") %>
+</div>
+
+<div class="row justify-content-center my-4">
+
+    <h2 class="shadow-title"> Comment peut tu aider la communauté ?</h2>
+
+
+</div>
+
+
+<ul class="nav nav-pills mb-3 col-12 text-center justify-content-center" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-os-tab" data-toggle="pill" href="#pills-os" role="tab" aria-controls="pills-os" aria-selected="true">Systèmes d'exploitation</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-software-tab" data-toggle="pill" href="#pills-software" role="tab" aria-controls="pills-software" aria-selected="false">Logiciel</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-hardware-tab" data-toggle="pill" href="#pills-hardware" role="tab" aria-controls="pills-hardware" aria-selected="false">Matériel</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-learning-tab" data-toggle="pill" href="#pills-learning" role="tab" aria-controls="pills-learning" aria-selected="false">Tutorat/Cours</a>
+  </li>
+</ul>
+
+<%= form_for wizard_path, method: :put do |f| %>
+
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-os" role="tabpanel" aria-labelledby="pills-os-tab">
+
+  <div class="row justify-content-center my-4">
+
+ 
+      <div class="form-group">
+          <%= f.label :selectionne_les_services_que_tu_souhaite_proposer %>
+          <%= f.check_box :skill_one, class:"form-control"%>
+          <%= f.check_box :skill_two, class:"form-control"%>
+          <%= f.check_box :skill_three, class:"form-control"%>
+          <%= f.check_box :skill_four, class:"form-control"%>
+          <%= f.check_box :skill_five, class:"form-control"%>
+          <%= f.check_box :skill_six, class:"form-control"%>
+      </div>
+  
+  </div>
+
+  </div>
+  <div class="tab-pane fade" id="pills-software" role="tabpanel" aria-labelledby="pills-software-tab">
+
+  </div>
+  <div class="tab-pane fade" id="pills-hardware" role="tabpanel" aria-labelledby="pills-hardware-tab">
+
+  </div>
+  <div class="tab-pane fade" id="pills-learning" role="tabpanel" aria-labelledby="pills-learning-tab">
+
+  </div>
+</div>
+
+
+<hr class="my-4">
+
+
+<div class="row col-8 justify-content-end my-4 mx-auto">
+<%= f.submit "Suivant", class:"btn btn-primary" %>
+<% end %>
+</div> 
+
+</section>
+
+
+
