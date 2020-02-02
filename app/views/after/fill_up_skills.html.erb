@@ -56,11 +56,8 @@
             <div class="col-3">
               <div class="form-check form-check-inline">
 
-                  <%= f.radio_button 'skill_one_os', 'true', class:"form-check-input mx-2"%>
-                  <%= f.label :oui, class:"form-check-label mx-2"%>
-
-                  <%= f.radio_button 'skill_one_os', 'false', class:"form-check-input mx-2"%>
-                  <%= f.label :non, class:"form-check-label mx-2"%>
+                  <%= f.check_box :skill_one_os, class:"form-check-input mx-2"%>
+                  <%= f.label :oui, class:"form-check-label mx-2"%>    
 
               </div>
             </div>
@@ -72,11 +69,8 @@
             <div class="col-3">
                <div class="form-check form-check-inline">
 
-                  <%= f.radio_button 'skill_two_os', 'true', class:"form-check-input mx-2"%>
+                  <%=  f.check_box :skill_two_os, class:"form-check-input mx-2"%>
                   <%= f.label :oui, class:"form-check-label mx-2"%>
-
-                  <%= f.radio_button 'skill_two_os', 'false', class:"form-check-input mx-2"%>
-                  <%= f.label :non, class:"form-check-label mx-2"%>
                   
               </div>
             </div>
@@ -88,11 +82,8 @@
             <div class="col-3">
               <div class="form-check form-check-inline">
 
-                <%= f.radio_button 'skill_three_os', 'true', class:"form-check-input mx-2"%>
+                <%= f.check_box :skill_three_os, class:"form-check-input mx-2"%>
                 <%= f.label :oui, class:"form-check-label mx-2"%>
-
-                <%= f.radio_button 'skill_three_os', 'false', class:"form-check-input mx-2"%>
-                <%= f.label :non, class:"form-check-label mx-2"%>
               
               </div>
             </div>
@@ -104,12 +95,9 @@
             <div class="col-3">
               <div class="form-check form-check-inline">
 
-                <%= f.radio_button 'skill_four_os', 'true', class:"form-check-input mx-2"%>
+                <%=  f.check_box :skill_four_os, class:"form-check-input mx-2"%>
                 <%= f.label :oui, class:"form-check-label mx-2"%>
 
-                <%= f.radio_button 'skill_four_os', 'false', class:"form-check-input mx-2"%>
-                <%= f.label :non, class:"form-check-label mx-2"%>
-              
               </div>
             </div>
             </div>
@@ -120,12 +108,9 @@
                 <div class="col-3">
                   <div class="form-check form-check-inline">
 
-                    <%= f.radio_button 'skill_five_os', 'true', class:"form-check-input mx-2"%>
+                    <%=  f.check_box :skill_five_os, class:"form-check-input mx-2"%>
                     <%= f.label :oui, class:"form-check-label mx-2"%>
 
-                    <%= f.radio_button 'skill_five_os', 'false', class:"form-check-input mx-2"%>
-                    <%= f.label :non, class:"form-check-label mx-2"%>
-                  
                   </div>
                 </div>
               </div>
@@ -137,11 +122,8 @@
             <div class="col-3">
               <div class="form-check form-check-inline">
 
-                <%= f.radio_button 'skill_six_os', 'true', class:"form-check-input mx-2"%>
+                <%=  f.check_box :skill_six_os, class:"form-check-input mx-2"%>
                 <%= f.label :oui, class:"form-check-label mx-2"%>
-
-                <%= f.radio_button 'skill_six_os', 'false', class:"form-check-input mx-2"%>
-                <%= f.label :non, class:"form-check-label mx-2"%>
               
               </div>
             </div>
@@ -187,11 +169,8 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-                <%= f.radio_button 'skill_one_software', 'true', class:"form-check-input mx-2"%>
+                <%=  f.check_box :skill_one_software, class:"form-check-input mx-2"%>
                 <%= f.label :oui, class:"form-check-label mx-2"%>
-
-                <%= f.radio_button 'skill_one_software', 'false', class:"form-check-input mx-2"%>
-                <%= f.label :non, class:"form-check-label mx-2"%>
 
             </div>
           </div>
@@ -203,11 +182,8 @@
           <div class="col-3">
              <div class="form-check form-check-inline">
 
-                <%= f.radio_button 'skill_two_software', 'true', class:"form-check-input mx-2"%>
+                <%=  f.check_box :skill_two_software, class:"form-check-input mx-2"%>
                 <%= f.label :oui, class:"form-check-label mx-2"%>
-
-                <%= f.radio_button 'skill_two_software', 'false', class:"form-check-input mx-2"%>
-                <%= f.label :non, class:"form-check-label mx-2"%>
                 
             </div>
           </div>
@@ -219,12 +195,9 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-              <%= f.radio_button 'skill_three_software', 'true', class:"form-check-input mx-2"%>
+              <%=  f.check_box :skill_three_software, class:"form-check-input mx-2"%>
               <%= f.label :oui, class:"form-check-label mx-2"%>
 
-              <%= f.radio_button 'skill_three_software', 'false', class:"form-check-input mx-2"%>
-              <%= f.label :non, class:"form-check-label mx-2"%>
-            
             </div>
           </div>
           </div>
@@ -235,12 +208,9 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-              <%= f.radio_button 'skill_four_software', 'true', class:"form-check-input mx-2"%>
+              <%=  f.check_box :skill_four_software, class:"form-check-input mx-2"%>
               <%= f.label :oui, class:"form-check-label mx-2"%>
 
-              <%= f.radio_button 'skill_four_software', 'false', class:"form-check-input mx-2"%>
-              <%= f.label :non, class:"form-check-label mx-2"%>
-            
             </div>
           </div>
           </div>
@@ -251,12 +221,9 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-              <%= f.radio_button 'skill_five_software', 'true', class:"form-check-input mx-2"%>
+              <%=  f.check_box :skill_five_software, class:"form-check-input mx-2"%>
               <%= f.label :oui, class:"form-check-label mx-2"%>
 
-              <%= f.radio_button 'skill_five_software', 'false', class:"form-check-input mx-2"%>
-              <%= f.label :non, class:"form-check-label mx-2"%>
-            
             </div>
           </div>
           </div>
@@ -297,11 +264,8 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-                <%= f.radio_button 'skill_one_hardware', 'true', class:"form-check-input mx-2"%>
+                <%=  f.check_box :skill_one_hardware, class:"form-check-input mx-2"%>
                 <%= f.label :oui, class:"form-check-label mx-2"%>
-
-                <%= f.radio_button 'skill_one_hardware', 'false', class:"form-check-input mx-2"%>
-                <%= f.label :non, class:"form-check-label mx-2"%>
 
             </div>
           </div>
@@ -313,12 +277,9 @@
           <div class="col-3">
              <div class="form-check form-check-inline">
 
-                <%= f.radio_button 'skill_two_hardware', 'true', class:"form-check-input mx-2"%>
+                <%=  f.check_box :skill_two_hardware, class:"form-check-input mx-2"%>
                 <%= f.label :oui, class:"form-check-label mx-2"%>
 
-                <%= f.radio_button 'skill_two_hardware', 'false', class:"form-check-input mx-2"%>
-                <%= f.label :non, class:"form-check-label mx-2"%>
-                
             </div>
           </div>
           </div>
@@ -329,12 +290,9 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-              <%= f.radio_button 'skill_three_hardware', 'true', class:"form-check-input mx-2"%>
+              <%=  f.check_box :skill_three_hardware, class:"form-check-input mx-2"%>
               <%= f.label :oui, class:"form-check-label mx-2"%>
 
-              <%= f.radio_button 'skill_three_hardware', 'false', class:"form-check-input mx-2"%>
-              <%= f.label :non, class:"form-check-label mx-2"%>
-            
             </div>
           </div>
           </div>
@@ -345,12 +303,9 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-              <%= f.radio_button 'skill_four_hardware', 'true', class:"form-check-input mx-2"%>
+              <%=  f.check_box :skill_four_hardware, class:"form-check-input mx-2"%>
               <%= f.label :oui, class:"form-check-label mx-2"%>
 
-              <%= f.radio_button 'skill_four_hardware', 'false', class:"form-check-input mx-2"%>
-              <%= f.label :non, class:"form-check-label mx-2"%>
-            
             </div>
           </div>
           </div>
@@ -390,11 +345,8 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-                <%= f.radio_button 'skill_one_network', 'true', class:"form-check-input mx-2"%>
+                <%=  f.check_box :skill_one_network, class:"form-check-input mx-2"%>
                 <%= f.label :oui, class:"form-check-label mx-2"%>
-
-                <%= f.radio_button 'skill_one_network', 'false', class:"form-check-input mx-2"%>
-                <%= f.label :non, class:"form-check-label mx-2"%>
 
             </div>
           </div>
@@ -406,12 +358,9 @@
           <div class="col-3">
              <div class="form-check form-check-inline">
 
-                <%= f.radio_button 'skill_two_network', 'true', class:"form-check-input mx-2"%>
+                <%=  f.check_box :skill_two_network, class:"form-check-input mx-2"%>
                 <%= f.label :oui, class:"form-check-label mx-2"%>
 
-                <%= f.radio_button 'skill_two_network', 'false', class:"form-check-input mx-2"%>
-                <%= f.label :non, class:"form-check-label mx-2"%>
-                
             </div>
           </div>
           </div>
@@ -422,12 +371,9 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-              <%= f.radio_button 'skill_three_network', 'true', class:"form-check-input mx-2"%>
+              <%=  f.check_box :skill_three_network, class:"form-check-input mx-2"%>
               <%= f.label :oui, class:"form-check-label mx-2"%>
 
-              <%= f.radio_button 'skill_three_network', 'false', class:"form-check-input mx-2"%>
-              <%= f.label :non, class:"form-check-label mx-2"%>
-            
             </div>
           </div>
           </div>
@@ -438,12 +384,9 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-              <%= f.radio_button 'skill_four_network', 'true', class:"form-check-input mx-2"%>
+              <%=  f.check_box :skill_four_network, class:"form-check-input mx-2"%>
               <%= f.label :oui, class:"form-check-label mx-2"%>
 
-              <%= f.radio_button 'skill_four_network', 'false', class:"form-check-input mx-2"%>
-              <%= f.label :non, class:"form-check-label mx-2"%>
-            
             </div>
           </div>
           </div>
@@ -454,12 +397,9 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-              <%= f.radio_button 'skill_five_network', 'true', class:"form-check-input mx-2"%>
+              <%=  f.check_box :skill_five_network, class:"form-check-input mx-2"%>
               <%= f.label :oui, class:"form-check-label mx-2"%>
 
-              <%= f.radio_button 'skill_five_network', 'false', class:"form-check-input mx-2"%>
-              <%= f.label :non, class:"form-check-label mx-2"%>
-            
             </div>
           </div>
           </div>
@@ -501,11 +441,8 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-                <%= f.radio_button 'skill_one_learning', 'true', class:"form-check-input mx-2"%>
+                <%=  f.check_box :skill_one_learning, class:"form-check-input mx-2"%>
                 <%= f.label :oui, class:"form-check-label mx-2"%>
-
-                <%= f.radio_button 'skill_one_learning', 'false', class:"form-check-input mx-2"%>
-                <%= f.label :non, class:"form-check-label mx-2"%>
 
             </div>
           </div>
@@ -517,12 +454,9 @@
           <div class="col-3">
              <div class="form-check form-check-inline">
 
-                <%= f.radio_button 'skill_two_learning', 'true', class:"form-check-input mx-2"%>
+                <%=  f.check_box :skill_two_learning, class:"form-check-input mx-2"%>
                 <%= f.label :oui, class:"form-check-label mx-2"%>
 
-                <%= f.radio_button 'skill_two_learning', 'false', class:"form-check-input mx-2"%>
-                <%= f.label :non, class:"form-check-label mx-2"%>
-                
             </div>
           </div>
           </div>
@@ -533,12 +467,9 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-              <%= f.radio_button 'skill_three_learning', 'true', class:"form-check-input mx-2"%>
+              <%=  f.check_box :skill_three_learning, class:"form-check-input mx-2"%>
               <%= f.label :oui, class:"form-check-label mx-2"%>
 
-              <%= f.radio_button 'skill_three_learning', 'false', class:"form-check-input mx-2"%>
-              <%= f.label :non, class:"form-check-label mx-2"%>
-            
             </div>
           </div>
           </div>
@@ -549,12 +480,9 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-              <%= f.radio_button 'skill_four_learning', 'true', class:"form-check-input mx-2"%>
+              <%=  f.check_box :skill_four_learning, class:"form-check-input mx-2"%>
               <%= f.label :oui, class:"form-check-label mx-2"%>
 
-              <%= f.radio_button 'skill_four_learning', 'false', class:"form-check-input mx-2"%>
-              <%= f.label :non, class:"form-check-label mx-2"%>
-            
             </div>
           </div>
           </div>
@@ -565,12 +493,9 @@
           <div class="col-3">
             <div class="form-check form-check-inline">
 
-              <%= f.radio_button 'skill_five_learning', 'true', class:"form-check-input mx-2"%>
+              <%=  f.check_box :skill_five_learning, class:"form-check-input mx-2"%>
               <%= f.label :oui, class:"form-check-label mx-2"%>
 
-              <%= f.radio_button 'skill_five_learning', 'false', class:"form-check-input mx-2"%>
-              <%= f.label :non, class:"form-check-label mx-2"%>
-            
             </div>
           </div>
           </div>
