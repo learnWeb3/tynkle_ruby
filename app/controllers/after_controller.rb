@@ -14,9 +14,10 @@ class AfterController < ApplicationController
             when :how_do_we_call_you
             when :location_data
             when :fill_up_skills
-                if @user.service_provider?
+                if @user.service_provider? == false
                     skip_step
                 end
+                
             when :status_choice
         end
         render_wizard
@@ -25,6 +26,13 @@ class AfterController < ApplicationController
     def update
         @user = current_user
         case step
+        when :service_provider
+
+            if  params[:"user"]["service_provider"].to_i == 1
+                @user.service_provider = true
+                @user.save
+            end
+
         when :how_do_we_call_you
 
           @user.first_name = params[:'user']["first_name"]
