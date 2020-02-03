@@ -1,5 +1,3 @@
-
-
 <section class="container">
 
 <div class="row justify-content-center my-5">
@@ -7,7 +5,6 @@
     <h2 class="shadow-title"> Comment peut tu aider la communauté ?</h2>
 
 </div>
-
 
 <ul class="nav nav-pills mb-3 col-12 text-center justify-content-center" id="pills-tab" role="tablist">
   <li class="nav-item">
@@ -177,7 +174,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Configuration_logiciel_bureautique, class:"form-control border-0"%>
+              <%= f.label :Configuration_logiciel_bureautique, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(2).skills[1].description%>
           </div>
           <div class="col-3">
              <div class="form-check form-check-inline">
@@ -190,7 +187,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Installation_logiciel_professionnel, class:"form-control border-0"%>
+              <%= f.label :Installation_logiciel_professionnel, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(2).skills[2].description%>
           </div>
           <div class="col-3">
             <div class="form-check form-check-inline">
@@ -203,7 +200,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Configuration_logiciel_professionnel, class:"form-control border-0"%>
+              <%= f.label :Configuration_logiciel_professionnel, class:"form-control border-0",'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(2).skills[3].description%>
           </div>
           <div class="col-3">
             <div class="form-check form-check-inline">
@@ -216,7 +213,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Sauvegarde_ou_Récupération_de_données, class:"form-control border-0"%>
+              <%= f.label :Sauvegarde_ou_Récupération_de_données, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(2).skills[4].description%>
           </div>
           <div class="col-3">
             <div class="form-check form-check-inline">
@@ -258,7 +255,7 @@
 
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Changer_ou_installer_un_périphérique, class:"form-control border-0"%>
+              <%= f.label :Changer_ou_installer_un_périphérique, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(3).skills[0].description%>
           </div>
 
           <div class="col-3">
@@ -272,7 +269,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Changer_ou_installer_un_composant_interne, class:"form-control border-0"%>
+              <%= f.label :Changer_ou_installer_un_composant_interne, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(3).skills[1].description%>
           </div>
           <div class="col-3">
              <div class="form-check form-check-inline">
@@ -285,7 +282,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Monter_un_système_complet_classique, class:"form-control border-0"%>
+              <%= f.label :Monter_un_système_complet_classique, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(3).skills[2].description%>
           </div>
           <div class="col-3">
             <div class="form-check form-check-inline">
@@ -298,7 +295,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Monter_un_système_complet_gaming, class:"form-control border-0"%>
+              <%= f.label :Monter_un_système_complet_gaming, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(3).skills[3].description%>
           </div>
           <div class="col-3">
             <div class="form-check form-check-inline">
@@ -339,7 +336,7 @@
 
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Changer_ou_installer_un_périphérique, class:"form-control border-0"%>
+              <%= f.label :Changer_ou_installer_un_périphérique, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(4).skills[0].description%>
           </div>
 
           <div class="col-3">
@@ -353,7 +350,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Configurer_un_réseau_basique, class:"form-control border-0"%>
+              <%= f.label :Configurer_un_réseau_basique, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(4).skills[1].description%>
           </div>
           <div class="col-3">
              <div class="form-check form-check-inline">
@@ -366,7 +363,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Configurer_un_réseau_avancé, class:"form-control border-0"%>
+              <%= f.label :Configurer_un_réseau_avancé, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(4).skills[2].description%>
           </div>
           <div class="col-3">
             <div class="form-check form-check-inline">
@@ -379,7 +376,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Configurer_ou_installer_un_VPN, class:"form-control border-0"%>
+              <%= f.label :Configurer_ou_installer_un_VPN, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(4).skills[3].description%>
           </div>
           <div class="col-3">
             <div class="form-check form-check-inline">
@@ -392,7 +389,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Configurer_ou_installer_un_antivirus, class:"form-control border-0"%>
+              <%= f.label :Configurer_ou_installer_un_antivirus, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(4).skills[4].description%>
           </div>
           <div class="col-3">
             <div class="form-check form-check-inline">
@@ -435,7 +432,7 @@
 
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Mentoring_ou_cours_ponctuels, class:"form-control border-0"%>
+              <%= f.label :Mentoring_ou_cours_ponctuels, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(5).skills[0].description%>
           </div>
 
           <div class="col-3">
@@ -449,7 +446,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Mentoring_ou_cours_réguliers, class:"form-control border-0"%>
+              <%= f.label :Mentoring_ou_cours_réguliers, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(5).skills[1].description%>
           </div>
           <div class="col-3">
              <div class="form-check form-check-inline">
@@ -462,7 +459,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Mentoring_ou_cours_individuel, class:"form-control border-0"%>
+              <%= f.label :Mentoring_ou_cours_individuel, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(5).skills[2].description%>
           </div>
           <div class="col-3">
             <div class="form-check form-check-inline">
@@ -475,7 +472,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Mentoring_ou_cours_collectif, class:"form-control border-0"%>
+              <%= f.label :Mentoring_ou_cours_collectif, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(5).skills[3].description%>
           </div>
           <div class="col-3">
             <div class="form-check form-check-inline">
@@ -488,7 +485,7 @@
           </div>
           <div class="form-inline">
           <div class="col">
-              <%= f.label :Missions_longues_durées, class:"form-control border-0"%>
+              <%= f.label :Missions_longues_durées, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top'%>
           </div>
           <div class="col-3">
             <div class="form-check form-check-inline">
