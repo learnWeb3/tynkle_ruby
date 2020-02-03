@@ -7,21 +7,15 @@
 </div>
 
 <ul class="nav nav-pills mb-3 col-12 text-center justify-content-center" id="pills-tab" role="tablist">
+
+  <% Categorytag.all.each do |tag| %>
+
   <li class="nav-item">
-    <a class="nav-link active" id="pills-os-tab" data-toggle="pill" href="#pills-os" role="tab" aria-controls="pills-os" aria-selected="true">Systèmes d'exploitation</a>
+    <%= link_to tag.name, "#pills-#{tag.name}", class:"nav-link", id:"pills-#{tag.name}-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"pills-#{tag.name}", 'aria-selected':"false"%>  
   </li>
-  <li class="nav-item">
-    <a class="nav-link" id="pills-software-tab" data-toggle="pill" href="#pills-software" role="tab" aria-controls="pills-software" aria-selected="false">Logiciel</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="pills-hardware-tab" data-toggle="pill" href="#pills-hardware" role="tab" aria-controls="pills-hardware" aria-selected="false">Matériel</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="pills-network-tab" data-toggle="pill" href="#pills-network" role="tab" aria-controls="pills-network" aria-selected="false">Réseau & Internet</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="pills-learning-tab" data-toggle="pill" href="#pills-learning" role="tab" aria-controls="pills-learning" aria-selected="false">Tutorat/Cours</a>
-  </li>
+
+  <% end %>
+ 
 </ul>
 
 <%= form_for wizard_path, method: :put do |f| %>
@@ -29,103 +23,45 @@
 <div class="tab-content" id="pills-tabContent">
 
 
-<!-- skills os -->
+<!-- skills -->
 
+<% Categorytag.all.each do |category| %>
 
-  <div class="tab-pane fade" id="pills-os" role="tabpanel" aria-labelledby="pills-os-tab justify-content-center">
+  <div class="tab-pane fade" id="pills-<%=category.name%>" role="tabpanel" aria-labelledby="pills-<%=category.name%>-tab justify-content-center">
 
-  <hr class="mt-4 mb-2">
+    <hr class="mt-4 mb-2">
 
     <div class="row justify-content-center">
 
       <div class="col-9">
 
 
-      <%= f.label :selectionne_les_services_que_tu_souhaite_proposer, class:"form-control border-0 font-weight-bolder" %>
+        <%= f.label :selectionne_les_services_que_tu_souhaite_proposer, class:"form-control border-0 font-weight-bolder" %>
 
           <div class="form-group">
 
+
+          <% category.skills.each do |skill|%>
+
             <div class="form-inline">
-            <div class="col">
-                <%= f.label :Dépannage_plateforme_Windows, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title: "Je suis capable d'intervenir sur des appareils équipés du système d'exploitation WINDOWS"%>
-            </div>
 
-            <div class="col-3">
-              <div class="form-check form-check-inline">
-
-                  <%= f.check_box :skill_one_os, class:"form-check-input mx-2"%>
-                  <%= f.label :oui, class:"form-check-label mx-2"%>    
-
+              <div class="col">
+                  <%= f.label :"#{skill.name}", class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title: skill.description %>
               </div>
-            </div>
-            </div>
-            <div class="form-inline">
-            <div class="col">
-                <%= f.label :Dépannage_plateforme_Apple, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title: "Je suis capable d'intervenir sur des appareils équipés du système d'exploitation MAC OS"%>
-            </div>
-            <div class="col-3">
-               <div class="form-check form-check-inline">
 
-                  <%=  f.check_box :skill_two_os, class:"form-check-input mx-2"%>
-                  <%= f.label :oui, class:"form-check-label mx-2"%>
-                  
-              </div>
-            </div>
-            </div>
-            <div class="form-inline">
-            <div class="col">
-                <%= f.label :Dépannage_plateforme_Linux, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title: "Je suis capable d'intervenir sur des appareils équipés du système d'exploitation LINUX"%>
-            </div>
-            <div class="col-3">
-              <div class="form-check form-check-inline">
+              <div class="col-3">
+                <div class="form-check form-check-inline">
 
-                <%= f.check_box :skill_three_os, class:"form-check-input mx-2"%>
-                <%= f.label :oui, class:"form-check-label mx-2"%>
-              
-              </div>
-            </div>
-            </div>
-            <div class="form-inline">
-            <div class="col">
-                <%= f.label :Dépannage_plateforme_IOS, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title: "Je suis capable d'intervenir sur des appareils équipés du système d'exploitation mobile IOS"%>
-            </div>
-            <div class="col-3">
-              <div class="form-check form-check-inline">
+                    <%= f.check_box :"#{skill.name}", class:"form-check-input mx-2"%>
+                    <%= f.label :oui, class:"form-check-label mx-2"%>    
 
-                <%=  f.check_box :skill_four_os, class:"form-check-input mx-2"%>
-                <%= f.label :oui, class:"form-check-label mx-2"%>
-
-              </div>
-            </div>
-            </div>
-            <div class="form-inline">
-                <div class="col">
-                    <%= f.label :Dépannage_plateforme_Android, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title: "Je suis capable d'intervenir sur des appareils équipés du système d'exploitation mobile ANDROID"%>
-                </div>
-                <div class="col-3">
-                  <div class="form-check form-check-inline">
-
-                    <%=  f.check_box :skill_five_os, class:"form-check-input mx-2"%>
-                    <%= f.label :oui, class:"form-check-label mx-2"%>
-
-                  </div>
                 </div>
               </div>
 
-              <div class="form-inline">
-            <div class="col">
-                <%= f.label :Jailbreak_débridage_dévérouillage_de_systèmes, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title: "Je suis capable de d'enlever un vérouillage usine, de débloquer un appareil vérouillé par google smartlock ou de redonner accès à l'utilisateur ayant perdu ou oublié son mot de passe administrateur"%>
             </div>
-            <div class="col-3">
-              <div class="form-check form-check-inline">
 
-                <%=  f.check_box :skill_six_os, class:"form-check-input mx-2"%>
-                <%= f.label :oui, class:"form-check-label mx-2"%>
-              
-              </div>
-            </div>
-          </div>
-
+            <% end %>
+            
 
           </div>
 
@@ -133,7 +69,7 @@
 
       <div class="col-3 justify-content-center text-center">
 
-        <%= image_tag("icons/os.png", class:"w-50 img-fluid") %>
+        <%= image_tag("icons/#{category.name}.png", class:"w-50 img-fluid") %>
 
       </div>
 
@@ -142,377 +78,7 @@
 
   </div>
 
-
-
-<!-- skills software -->
-
-
-  <div class="tab-pane fade" id="pills-software" role="tabpanel" aria-labelledby="pills-software-tab">
-  <hr class="mt-4 mb-2">
-
-  <div class="row justify-content-center">
-
-  <%= f.label :selectionne_les_services_que_tu_souhaite_proposer, class:"form-control border-0 font-weight-bolder" %>
-
-    <div class="col-9">
-
-        <div class="form-group">
-
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Installation_logiciels_bureautique, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title: "Installation de suite bureautiques, permettant le traitement du language et de l'image, ex: Office, OpenOffice, Photoshop, Adobe PDF, etc..."%>
-          </div>
-
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-                <%=  f.check_box :skill_one_software, class:"form-check-input mx-2"%>
-                <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Configuration_logiciel_bureautique, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(2).skills[1].description%>
-          </div>
-          <div class="col-3">
-             <div class="form-check form-check-inline">
-
-                <%=  f.check_box :skill_two_software, class:"form-check-input mx-2"%>
-                <%= f.label :oui, class:"form-check-label mx-2"%>
-                
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Installation_logiciel_professionnel, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(2).skills[2].description%>
-          </div>
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-              <%=  f.check_box :skill_three_software, class:"form-check-input mx-2"%>
-              <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Configuration_logiciel_professionnel, class:"form-control border-0",'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(2).skills[3].description%>
-          </div>
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-              <%=  f.check_box :skill_four_software, class:"form-check-input mx-2"%>
-              <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Sauvegarde_ou_Récupération_de_données, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(2).skills[4].description%>
-          </div>
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-              <%=  f.check_box :skill_five_software, class:"form-check-input mx-2"%>
-              <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-3 justify-content-center text-center">
-
-      <%= image_tag("icons/software.png", class:"w-50 img-fluid") %>
-
-    </div>
-
-  </div>
-
-
-  </div>
-
-<!-- skills hardware -->
-
-  <div class="tab-pane fade" id="pills-hardware" role="tabpanel" aria-labelledby="pills-hardware-tab">
-  <hr class="mt-4 mb-2">
-
-  <div class="row justify-content-center">
-
-  <%= f.label :selectionne_les_services_que_tu_souhaite_proposer, class:"form-control border-0 font-weight-bolder" %>
-
-    <div class="col-9">
-
-        <div class="form-group">
-
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Changer_ou_installer_un_périphérique, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(3).skills[0].description%>
-          </div>
-
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-                <%=  f.check_box :skill_one_hardware, class:"form-check-input mx-2"%>
-                <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Changer_ou_installer_un_composant_interne, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(3).skills[1].description%>
-          </div>
-          <div class="col-3">
-             <div class="form-check form-check-inline">
-
-                <%=  f.check_box :skill_two_hardware, class:"form-check-input mx-2"%>
-                <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Monter_un_système_complet_classique, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(3).skills[2].description%>
-          </div>
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-              <%=  f.check_box :skill_three_hardware, class:"form-check-input mx-2"%>
-              <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Monter_un_système_complet_gaming, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(3).skills[3].description%>
-          </div>
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-              <%=  f.check_box :skill_four_hardware, class:"form-check-input mx-2"%>
-              <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-3 justify-content-center text-center">
-
-      <%= image_tag("icons/hardware.png", class:"w-50 img-fluid") %>
-
-    </div>
-
-  </div>
-
-    </div>
-
-<!-- skills network -->
-
-  <div class="tab-pane fade" id="pills-network" role="tabpanel" aria-labelledby="pills-network-tab">
-  <hr class="mt-4 mb-2">
-
-  <div class="row justify-content-center">
-
-  <%= f.label :selectionne_les_services_que_tu_souhaite_proposer, class:"form-control border-0 font-weight-bolder" %>
-
-    <div class="col-9">
-
-        <div class="form-group">
-
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Changer_ou_installer_un_périphérique, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(4).skills[0].description%>
-          </div>
-
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-                <%=  f.check_box :skill_one_network, class:"form-check-input mx-2"%>
-                <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Configurer_un_réseau_basique, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(4).skills[1].description%>
-          </div>
-          <div class="col-3">
-             <div class="form-check form-check-inline">
-
-                <%=  f.check_box :skill_two_network, class:"form-check-input mx-2"%>
-                <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Configurer_un_réseau_avancé, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(4).skills[2].description%>
-          </div>
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-              <%=  f.check_box :skill_three_network, class:"form-check-input mx-2"%>
-              <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Configurer_ou_installer_un_VPN, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(4).skills[3].description%>
-          </div>
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-              <%=  f.check_box :skill_four_network, class:"form-check-input mx-2"%>
-              <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Configurer_ou_installer_un_antivirus, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(4).skills[4].description%>
-          </div>
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-              <%=  f.check_box :skill_five_network, class:"form-check-input mx-2"%>
-              <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-3 justify-content-center text-center">
-
-      <%= image_tag("icons/network.png", class:"w-50 img-fluid") %>
-
-    </div>
-
-  </div>
-
-
-  </div>
-
-<!-- skills learning -->
-
-
-  <div class="tab-pane fade" id="pills-learning" role="tabpanel" aria-labelledby="pills-learning-tab">
-  <hr class="mt-4 mb-2">
-
-  <div class="row justify-content-center">
-
-  <%= f.label :selectionne_les_services_que_tu_souhaite_proposer, class:"form-control border-0 font-weight-bolder" %>
-
-    <div class="col-9">
-
-        <div class="form-group">
-
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Mentoring_ou_cours_ponctuels, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(5).skills[0].description%>
-          </div>
-
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-                <%=  f.check_box :skill_one_learning, class:"form-check-input mx-2"%>
-                <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Mentoring_ou_cours_réguliers, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(5).skills[1].description%>
-          </div>
-          <div class="col-3">
-             <div class="form-check form-check-inline">
-
-                <%=  f.check_box :skill_two_learning, class:"form-check-input mx-2"%>
-                <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Mentoring_ou_cours_individuel, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(5).skills[2].description%>
-          </div>
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-              <%=  f.check_box :skill_three_learning, class:"form-check-input mx-2"%>
-              <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Mentoring_ou_cours_collectif, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title:Categorytag.find(5).skills[3].description%>
-          </div>
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-              <%=  f.check_box :skill_four_learning, class:"form-check-input mx-2"%>
-              <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-          <div class="form-inline">
-          <div class="col">
-              <%= f.label :Missions_longues_durées, class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top'%>
-          </div>
-          <div class="col-3">
-            <div class="form-check form-check-inline">
-
-              <%=  f.check_box :skill_five_learning, class:"form-check-input mx-2"%>
-              <%= f.label :oui, class:"form-check-label mx-2"%>
-
-            </div>
-          </div>
-          </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-3 justify-content-center text-center">
-
-      <%= image_tag("icons/learning.png", class:"w-50 img-fluid") %>
-
-    </div>
-
-  </div>
-
-
-
-</div>
-
+  <% end %>
 
 
 <hr class="my-4">
