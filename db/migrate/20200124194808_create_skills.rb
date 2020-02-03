@@ -8,6 +8,9 @@ class CreateSkills < ActiveRecord::Migration[5.2]
       t.text :description
 
       t.timestamps
+
+      #Active Record Association
+      t.belongs_to :categorytag
       
     end
   end

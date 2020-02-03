@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_26_155759) do
+ActiveRecord::Schema.define(version: 2020_02_03_134946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 2020_01_26_155759) do
     t.index ["mission_id"], name: "index_appointments_on_mission_id"
     t.index ["problem_seeker_id"], name: "index_appointments_on_problem_seeker_id"
     t.index ["problem_solver_id"], name: "index_appointments_on_problem_solver_id"
+  end
+
+  create_table "categorytags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "device_categories", force: :cascade do |t|
@@ -78,6 +84,8 @@ ActiveRecord::Schema.define(version: 2020_01_26_155759) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "categorytag_id"
+    t.index ["categorytag_id"], name: "index_skills_on_categorytag_id"
   end
 
   create_table "users", force: :cascade do |t|

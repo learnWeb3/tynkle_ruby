@@ -123,3 +123,7 @@ gem 'geocoder'
 # Simple Calendar Gem for rails generating template for Agenda layout 
 
 gem "simple_calendar", "~> 2.0"
+
+# faker gem to fake database entries for test-purpose in developpement environnement
+
+gem 'faker'
