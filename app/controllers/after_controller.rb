@@ -9,6 +9,7 @@ class AfterController < ApplicationController
     
     def show
         @user = current_user
+        @user_skills = LinkSkillToUser.where(user:current_user, acquired:true)
         case step
             when :service_provider
             when :how_do_we_call_you

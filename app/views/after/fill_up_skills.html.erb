@@ -8,6 +8,10 @@
 
 <ul class="nav nav-pills mb-3 col-12 text-center justify-content-center" id="pills-tab" role="tablist">
 
+  <li class="nav-item">
+    <%= link_to 'Compétences Sélectionnées', "#pills-skills-selected", class:"nav-link", id:"pills-skills-selected-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"pills-skills-selected", 'aria-selected':"false"%>  
+  </li>
+
   <% Categorytag.all.each do |tag| %>
 
   <li class="nav-item">
@@ -23,6 +27,25 @@
 
 <div class="tab-content" id="pills-tabContent">
 
+
+  <div class="tab-pane fade" id="pills-skills-selected" role="tabpanel" aria-labelledby="pills-skills-selected-tab justify-content-center">
+
+    <div class="card-columns">
+
+    <% @user_skills.each do |link| %>
+    
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%=link.skill.name%></h5>
+          <p class="card-text"><%=link.skill.description%></p>
+        </div>
+      </div>
+
+    <% end %>
+
+    </div>
+
+  </div>
 
 <!-- skills -->
 
@@ -84,10 +107,14 @@
 
 <hr class="my-4">
 
-
 <div class="row col-8 justify-content-end my-4 mx-auto">
     <%= f.submit "Suivant", class:"btn btn-primary" %>
     <% end %>
 </div> 
 
+
+
+
 </section>
+
+
