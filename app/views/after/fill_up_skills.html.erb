@@ -30,20 +30,18 @@
 
   <div class="tab-pane fade" id="pills-skills-selected" role="tabpanel" aria-labelledby="pills-skills-selected-tab justify-content-center">
 
-    <div class="card-columns">
+    <hr class="mt-4 mb-2">
 
-    <% @user_skills.each do |link| %>
-    
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%=link.skill.name%></h5>
-          <p class="card-text"><%=link.skill.description%></p>
-        </div>
-      </div>
+        <div class="form-control border-0 font-weight-bolder">Retrouve ici les services sélectionnés:</div>
 
-    <% end %>
 
-    </div>
+          <% @user_skills.each do |link| %>
+          
+            <span class="badge badge-success"><%=link.skill.name%></span>
+              
+
+          <% end %>
+
 
   </div>
 
