@@ -25,7 +25,6 @@ class AfterController < ApplicationController
 
     def update
         @user = current_user
-        @query_state_of_skill_acquisition = LinkSkillToUser.find_by(user:current_user, skill:Skill.where(name:skill.name)).acquired
         case step
         when :service_provider
 
@@ -45,7 +44,16 @@ class AfterController < ApplicationController
 
         when :fill_up_skills
 
-            puts "hahahahhahahahaahha #{params} hahahhahahha"
+            params["/after/fill_up_skills"].each do |k,v|
+                link_skill_to_user = LinkSkillToUser.find_by(user:current_user, skill:Skill.where(name:k))
+                if k == LinkSkillToUser.find_by(user:current_user, skill:Skill.where(name:k)).skill.name &&  v.to_i == 1 && link_skill_to_user.acquired == false
+                    link_skill_to_user.acquired = true
+                    link_skill_to_user.save
+                elsif k == LinkSkillToUser.find_by(user:current_user, skill:Skill.where(name:k)).skill.name &&  v.to_i == 0 && link_skill_to_user.acquired == true
+                    link_skill_to_user.acquired = false
+                    link_skill_to_user.save
+                end
+            end
 
                     
         when :status_choice
