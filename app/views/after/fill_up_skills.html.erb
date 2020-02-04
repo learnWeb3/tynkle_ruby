@@ -18,6 +18,7 @@
  
 </ul>
 
+
 <%= form_for wizard_path, method: :put do |f| %>
 
 <div class="tab-content" id="pills-tabContent">
@@ -52,7 +53,7 @@
               <div class="col-3">
                 <div class="form-check form-check-inline">
 
-                    <%= f.check_box :"#{skill.name}", class:"form-check-input mx-2"%>
+                    <%= f.check_box :"#{skill.name}", class:"form-check-input mx-2", checked:LinkSkillToUser.find_by(user:current_user, skill:Skill.where(name:skill.name)).acquired%>
                     <%= f.label :oui, class:"form-check-label mx-2"%>    
 
                 </div>

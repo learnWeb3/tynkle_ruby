@@ -25,6 +25,7 @@ class AfterController < ApplicationController
 
     def update
         @user = current_user
+        @query_state_of_skill_acquisition = LinkSkillToUser.find_by(user:current_user, skill:Skill.where(name:skill.name)).acquired
         case step
         when :service_provider
 
@@ -53,7 +54,5 @@ class AfterController < ApplicationController
         sign_in(@user, bypass: true) # needed for devise
         render_wizard @user
     end
-
-   
      
 end

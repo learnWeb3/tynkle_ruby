@@ -45,6 +45,22 @@ class User < ApplicationRecord
     reverse_geocoded_by :latitude, :longitude
     after_validation :geocode, :reverse_geocode 
 
+    # Creation of intsances of linkskilltouser at creation of a User instances 
+    
+    after_create :set_link_skil_skills_to_user
+
+
+    # Nested form attribute access
+
+    accepts_nested_attributes_for :link_skill_to_users
+
+
+    def set_link_skil_skills_to_user
+
+        Skill.all.each {|element|LinkSkillToUser.create(skill:element, user:self)}
+
+    end
+  
     private
 
 
@@ -67,6 +83,7 @@ class User < ApplicationRecord
         return false
       end
     end
+
 
  
 end

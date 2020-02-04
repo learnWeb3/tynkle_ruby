@@ -3,11 +3,13 @@ class CreateLinkSkillToUsers < ActiveRecord::Migration[5.2]
     create_table :link_skill_to_users do |t|
 
       t.integer :level, default: 0
+      t.boolean :acquired, default:false
 
 
       # ACtive Records relationship
       t.belongs_to :user
       t.belongs_to :skill 
+  
 
       t.timestamps
     end

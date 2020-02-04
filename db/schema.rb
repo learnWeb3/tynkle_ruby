@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_02_03_134946) do
 
   create_table "link_skill_to_users", force: :cascade do |t|
     t.integer "level", default: 0
+    t.boolean "acquired", default: false
     t.bigint "user_id"
     t.bigint "skill_id"
     t.datetime "created_at", null: false
