@@ -20,7 +20,7 @@
     <% DeviceCategory.all.each_with_index do |device_category,index| %>
 
             <div class="card col-5 my-2 mx-1">
-                <%=image_tag "photos/service_survey/#{device_category.title}.png", class:"w-25 py-2", alt:index%>
+                <%=image_tag "icons/#{device_category.title}.png", class:"w-25 py-2", alt:index%>
                 <div class="card-body">
                     <h5 class="card-title"><%=device_category.title%></h5>
                     <p class="card-text"><%=device_category.description%></p>
