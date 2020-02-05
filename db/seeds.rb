@@ -81,8 +81,8 @@ end
 
 # DEVICE CATEGORIES 
 
-device_categories = ['ordinateurs de bureau', 'ordinateurs portables', 'téléphones mobiles', 'multimédia', 'consoles']
-device_categories_description= ["Ordinateur constitué d'une tour et d'un écran", "Ordinateur dont le poids et la taille permet un transport facile", "téléphones portable tactiles ou non", "Télévision, Hi-Fi, Lecteur-DVD, Lecteur-Blue-Ray...", "Consoles de jeux: Playstation, Xbox, Nintendo etc.."]
+device_categories = ['ordinateurs de bureau', 'ordinateurs portables', 'téléphones mobiles', 'multimédia', 'consoles', 'réseau et objects connectés']
+device_categories_description= ["Ordinateur constitué d'une tour et d'un écran", "Ordinateur dont le poids et la taille permet un transport facile", "téléphones portable tactiles ou non", "Télévision, Hi-Fi, Lecteur-DVD, Lecteur-Blue-Ray...", "Consoles de jeux: Playstation, Xbox, Nintendo etc..", 'Routeurs, modems, serveurs, périphériques réseau']
 
 device_categories.each_with_index do |dev_cat, index|
     DeviceCategory.create(title:dev_cat, description: device_categories_description[index])
