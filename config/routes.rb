@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :after, only: [:show, :update]
 
+  resources :servicesurvey, only: [:show, :update, :create]
+
 
   
 end

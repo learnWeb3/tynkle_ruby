@@ -13,12 +13,14 @@ require 'faker'
 User.destroy_all
 Categorytag.destroy_all
 Skill.destroy_all
+DeviceCategory.destroy_all
 
 # reset autoincrement for tables to start by id=1
 
 User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 Categorytag.connection.execute('ALTER SEQUENCE categorytags_id_seq RESTART WITH 1')
 Skill.connection.execute('ALTER SEQUENCE skills_id_seq RESTART WITH 1')
+DeviceCategory.connection.execute('ALTER SEQUENCE device_categories_id_seq RESTART WITH 1')
 
 # Generating SkillGroup known in database as Categorytag Class
 category_tag_names = ["os", "software", "hardware", "network", "learning"]
@@ -74,4 +76,14 @@ end
 
 category_name_learning.each_with_index do |name_learning, index|
     Skill.create(name:name_learning, description:category_description_learning[index], categorytag:Categorytag.find(5))
+end
+
+
+# DEVICE CATEGORIES 
+
+device_categories = ['ordinateurs de bureau', 'ordinateurs portables', 'téléphones mobiles', 'multimédia', 'consoles']
+device_categories_description= ["Ordinateur constitué d'une tour et d'un écran", "Ordinateur dont le poids et la taille permet un transport facile", "téléphones portable tactiles ou non", "Télévision, Hi-Fi, Lecteur-DVD, Lecteur-Blue-Ray...", "Consoles de jeux: Playstation, Xbox, Nintendo etc.."]
+
+device_categories.each_with_index do |dev_cat, index|
+    DeviceCategory.create(title:dev_cat, description: device_categories_description[index])
 end

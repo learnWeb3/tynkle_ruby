@@ -1,0 +1,50 @@
+class ServicesurveyController < ApplicationController
+    include Wicked::Wizard
+    steps :device_type, :problem_type, :fill_up_mission_details, :review_mission, :select_helper, :send_message
+
+    def show
+        @user = current_user
+        case step
+            when :device_type
+            when :problem_type
+            when :fill_up_mission_details
+            when :review_mission  
+            when :select_helper
+            when :send_message
+
+        end
+        render_wizard
+    end
+
+
+    def update
+        @user = current_user
+       
+        case step
+            when :device_type
+            when :problem_type
+            when :fill_up_mission_details
+            when :review_mission  
+            when :select_helper
+            when :send_message
+
+        end
+        render_wizard
+    end
+
+    def create
+        @user = current_user
+       
+        case step
+            when :device_type
+            when :problem_type
+            when :fill_up_mission_details
+            when :review_mission  
+            when :select_helper
+            when :send_message
+
+        end
+        render_wizard
+    end
+
+end

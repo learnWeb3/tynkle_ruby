@@ -5,6 +5,7 @@ class CreateDeviceCategories < ActiveRecord::Migration[5.2]
       # Active record Associations 
 
       t.string :title 
+      t.text :description
       t.timestamps
 
     end
