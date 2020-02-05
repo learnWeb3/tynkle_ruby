@@ -7,8 +7,15 @@ class ServicesurveyController < ApplicationController
         case step
             when :device_type
             when :problem_type
+                if params[:"device_cat"].present?
+                    session[:device_category] = params[:"device_cat"].to_i
+                end
             when :fill_up_mission_details
-            when :review_mission  
+                if params[:"problem_type"].present?
+                    session[:problem_type] = params[:"problem_type"].to_i
+                end
+            when :review_mission
+                  
             when :select_helper
             when :send_message
 
