@@ -14,6 +14,8 @@ class ServicesurveyController < ApplicationController
                 if params[:"problem_type"].present?
                     session[:problem_type] = params[:"problem_type"].to_i
                 end
+                @device_category = DeviceCategory.find(session[:device_category])
+                @problem_type = Categorytag.find(session[:problem_type])
             when :review_mission
 
             when :select_helper

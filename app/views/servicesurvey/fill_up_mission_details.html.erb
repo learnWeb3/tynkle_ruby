@@ -34,13 +34,13 @@
 
             <div class="form-group col-12">
                 <%=  f.label :"Type d'Appareil :" %>
-                <%=  f.text_field :title, class:"form-control mb-4"  %>
+                <%=  f.text_field :title, class:"form-control mb-4", value:@device_category.title, disabled:true  %>
             </div>
 
 
             <div class="form-group col-12">
                 <%=  f.label :"Catégorie :" %>
-                <%=  f.text_field :title, class:"form-control mb-4"  %>
+                <%=  f.text_field :title, class:"form-control mb-4", value:@problem_type.name, disabled:true  %>
             </div>
 
 
