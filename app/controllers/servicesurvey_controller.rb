@@ -15,7 +15,7 @@ class ServicesurveyController < ApplicationController
                     session[:problem_type] = params[:"problem_type"].to_i
                 end
             when :review_mission
-                  
+
             when :select_helper
             when :send_message
 
