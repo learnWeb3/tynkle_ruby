@@ -60,7 +60,7 @@ class User < ApplicationRecord
         Skill.all.each {|element|LinkSkillToUser.create(skill:element, user:self)}
 
     end
-  
+
     private
 
 
@@ -84,6 +84,9 @@ class User < ApplicationRecord
       end
     end
 
+
+  
+  
 
  
 end

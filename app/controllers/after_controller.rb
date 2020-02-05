@@ -10,6 +10,7 @@ class AfterController < ApplicationController
     def show
         @user = current_user
         @user_skills = LinkSkillToUser.where(user:current_user, acquired:true)
+        @checkbox_status_label = checkbox_status_label(@user)
         case step
             when :service_provider
             when :how_do_we_call_you
@@ -20,6 +21,7 @@ class AfterController < ApplicationController
                 end
                 
             when :status_choice
+
         end
         render_wizard
     end
@@ -29,8 +31,11 @@ class AfterController < ApplicationController
         case step
         when :service_provider
 
-            if  params[:"user"]["service_provider"].to_i == 1
+            if  params[:"user"]["service_provider"].to_i == 1 && @user.service_provider? == false
                 @user.service_provider = true
+                @user.save
+            elsif params[:"user"]["service_provider"].to_i == 0 && @user.service_provider? == true
+                @user.service_provider = false
                 @user.save
             end
 
@@ -59,9 +64,25 @@ class AfterController < ApplicationController
                     
         when :status_choice
 
+         if params[:"user"][:"status_activity"].to_i == 0 && @user.status_activity == true
+            @user.status_activity = false 
+            @user.save
+         elsif 
+            params[:"user"][:"status_activity"].to_i == 1 && @user.status_activity == false
+            @user.status_activity = true
+            @user.save
+         end
+
         end
         sign_in(@user, bypass: true) # needed for devise
         render_wizard @user
+    end
+
+    def checkbox_status_label(user)
+        if user.status_activity 
+            return "oui"
+        else return "non"
+        end
     end
      
 end
