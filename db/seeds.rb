@@ -87,3 +87,8 @@ device_categories_description= ["Ordinateur constitué d'une tour et d'un écran
 device_categories.each_with_index do |dev_cat, index|
     DeviceCategory.create(title:dev_cat, description: device_categories_description[index])
 end
+
+
+# PROBLEM TYPES
+
+

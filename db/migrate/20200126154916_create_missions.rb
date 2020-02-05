@@ -11,6 +11,7 @@ class CreateMissions < ActiveRecord::Migration[5.2]
 
       t.belongs_to :device_category
       t.belongs_to :user
+      t.belongs_to :problem_type
 
       t.timestamps
     end

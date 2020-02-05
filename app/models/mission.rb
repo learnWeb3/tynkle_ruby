@@ -5,6 +5,7 @@ class Mission < ApplicationRecord
     # A mission is created by a user which needs help on his matter
     belongs_to :user
     belongs_to :device_category
+    belongs_to :problem_type
     
 
     # Active Record validations
