@@ -23,7 +23,7 @@ Skill.connection.execute('ALTER SEQUENCE skills_id_seq RESTART WITH 1')
 DeviceCategory.connection.execute('ALTER SEQUENCE device_categories_id_seq RESTART WITH 1')
 
 # Generating SkillGroup known in database as Categorytag Class
-category_tag_names = ["Système d'exploitation", "Logiciel", "Matériel", "Réseau", "Cours-Tutorat"]
+category_tag_names = ["Système", "Logiciel", "Matériel", "Réseau", "Cours-Tutorat"]
 category_tag_problem_description = ["Erreur Système, impossibilité de démarrer, mises à jour", "Installation ou configuration de logiciels", "Installation/remplacement, confirguration, réparation de matériel ou composant", "Intallation/configuration  ou dignostic réseau et Internet", "Formation, tutorat, cours"]
 category_tag_names.each_with_index do |tag_name,index|
     Categorytag.create(name:tag_name, problem_description:category_tag_problem_description[index])
