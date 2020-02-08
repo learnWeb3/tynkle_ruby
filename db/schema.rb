@@ -97,11 +97,11 @@ ActiveRecord::Schema.define(version: 2020_02_08_103831) do
     t.integer "rate"
     t.bigint "device_category_id"
     t.bigint "user_id"
-    t.bigint "problem_type_id"
+    t.bigint "categorytag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["categorytag_id"], name: "index_missions_on_categorytag_id"
     t.index ["device_category_id"], name: "index_missions_on_device_category_id"
-    t.index ["problem_type_id"], name: "index_missions_on_problem_type_id"
     t.index ["user_id"], name: "index_missions_on_user_id"
   end
 

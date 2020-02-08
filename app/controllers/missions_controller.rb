@@ -2,8 +2,19 @@ class MissionsController < ApplicationController
     
     def create
 
-        puts params
-        
+        mission_device_category = DeviceCategory.find(session[:device_category])
+        mission_category_tag = Categorytag.find(session[:problem_type])
+        mission_title = params["mission"]["title"].downcase!
+        mission_description = params["mission"]["description"].downcase!
+        mission_price = params["mission"]["price"].to_i
+        mission_image_one = params["mission"]["image_one"]
+        mission_image_two = params["mission"]["image_two"]
+        mission_image_three = params["mission"]["image_three"]
+
+       new_mission = Mission.new(user:current_user,title:mission_title, description:mission_description,price:mission_price, device_category:mission_device_category,categorytag:mission_category_tag)
+       if new_mission.save
+         redirect_to "/servicesurvey/select_helper?#{new_mission.id}"
+       end
     end
 
 end
