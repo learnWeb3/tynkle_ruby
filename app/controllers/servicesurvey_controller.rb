@@ -4,6 +4,7 @@ class ServicesurveyController < ApplicationController
 
     def show
         @user = current_user
+        @mission = Mission.new
         case step
             when :device_type
             when :problem_type
@@ -28,7 +29,7 @@ class ServicesurveyController < ApplicationController
 
     def update
         @user = current_user
-       
+        
         case step
             when :device_type
             when :problem_type
@@ -41,19 +42,5 @@ class ServicesurveyController < ApplicationController
         render_wizard
     end
 
-    def create
-        @user = current_user
-       
-        case step
-            when :device_type
-            when :problem_type
-            when :fill_up_mission_details
-            when :review_mission  
-            when :select_helper
-            when :send_message
-
-        end
-        render_wizard
-    end
 
 end

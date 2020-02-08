@@ -6,6 +6,10 @@ class Mission < ApplicationRecord
     belongs_to :user
     belongs_to :device_category
     belongs_to :problem_type
+
+    # Active Record association with Active Storage
+
+    has_many_attached :images
     
 
     # Active Record validations
@@ -14,6 +18,8 @@ class Mission < ApplicationRecord
     validates :description, presence: true, length: { maximum: 1000 }
     validates :price, presence: true, numericality: {greater_than: 0}
     validates :rate, numericality: {minimum:0, maximum: 5}
+
+
 
     # Custom validations
     validate :price_format
