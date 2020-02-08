@@ -20,16 +20,27 @@ class Mission < ApplicationRecord
     validates :description, presence: true, length: { maximum: 1000 }
     validates :price, presence: true, numericality: {greater_than: 0}
     validates :rate, allow_nil:true, numericality: {minimum:0, maximum: 5}
+    validates :address, presence: true
 
+    # custom validation to check wether address exists
+    validate :address_is_real
+    
 
+     # Geocoding or reverse geocoding mission location
 
-    # Custom validations
-    validate :price_format
+     geocoded_by :address
+     after_validation :geocode
+ 
+    private
 
-    def price_format
-        if price % 2 != 0 
-            errors.add(:duration,"format not five multiple")
-        end   
+    def address_is_real
+
+        if Geocoder.search(address).length == 0
+            errors.add(:address, "address does not exist")
+        end
+
     end
+
+
 
 end

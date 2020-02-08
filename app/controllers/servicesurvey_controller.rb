@@ -34,6 +34,7 @@ class ServicesurveyController < ApplicationController
             when :device_type
             when :problem_type
             when :fill_up_mission_details
+            when :add_screenshots
             when :review_mission  
             when :select_helper
             when :send_message

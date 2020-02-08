@@ -6,6 +6,9 @@ class CreateMissions < ActiveRecord::Migration[5.2]
       t.text :description
       t.integer :price
       t.integer :rate
+      t.float :latitude
+      t.float :longitude
+      t.string :address
 
       # Active record Associations 
 
