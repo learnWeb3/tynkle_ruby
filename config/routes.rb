@@ -7,9 +7,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+
   resources :after, only: [:show, :update]
 
-  resources :servicesurvey, only: [:show, :update]
+  resources :servicesurvey, only: [:show, :update, :create]
 
   resources :missions, only: [:create, :update]
 

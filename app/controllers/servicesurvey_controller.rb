@@ -22,10 +22,11 @@ class ServicesurveyController < ApplicationController
             when :select_helper
 
                 if targeted_link_skills_method.empty?
-                    @helper = User.all 
+                    @helper = User.where(status_activity:true,service_provider:true) 
                 else
                     @helper = targeted_link_skills_method.uniq!
                 end
+
         
             when :send_message
 
@@ -43,11 +44,15 @@ class ServicesurveyController < ApplicationController
             when :fill_up_mission_details
             when :add_screenshots
             when :select_helper
+                selected_helper = []
+                params["/servicesurvey/select_helper"].each {|k,v| selected_helper.push(k)}
+                
             when :send_message
 
         end
         render_wizard
     end
+
 
 
     private 
