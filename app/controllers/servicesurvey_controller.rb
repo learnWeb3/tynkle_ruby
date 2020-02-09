@@ -46,7 +46,6 @@ class ServicesurveyController < ApplicationController
             when :select_helper
                 selected_helper = []
                 params["/servicesurvey/select_helper"].each {|k,v| selected_helper.push(k)}
-                
             when :send_message
 
         end
@@ -69,4 +68,5 @@ class ServicesurveyController < ApplicationController
     end
 
 
+   
 end
