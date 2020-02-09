@@ -4,13 +4,11 @@
         
 
         <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 17%;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"><%=link_to "Type d'appareil", wizard_path(:device_type), class:"text-white"%></div>
-            <div class="progress-bar bg-light" role="progressbar" style="width: 17%;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"><%=link_to "De quoi s'agit-il", wizard_path(:problem_type), class:"text-dark"%></div>
-            <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 17%;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"><%=link_to "Rediger ma demande", wizard_path(:problem_type), class:"text-dark"%></div>
-            <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 17%;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"><%=link_to "De quoi s'agit-il", wizard_path(:problem_type), class:"text-dark"%></div>
-            <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 17%;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"><%=link_to "De quoi s'agit-il", wizard_path(:problem_type), class:"text-dark"%></div>
-            <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 17%;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"><%=link_to "De quoi s'agit-il", wizard_path(:problem_type), class:"text-dark"%></div>
-            <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 17%;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"><%=link_to "De quoi s'agit-il", wizard_path(:problem_type), class:"text-dark"%></div>
+            <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=link_to "Type d'appareil", wizard_path(:device_type), class:"text-white"%></div>
+            <div class="progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=link_to "De quoi s'agit-il", wizard_path(:problem_type), class:"text-dark"%></div>
+            <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=link_to "Rediger ma demande", wizard_path(:fill_up_mission_details), class:"text-dark"%></div>
+            <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=link_to "Contacter des Helpers", wizard_path(:select_helper), class:"text-dark"%></div>
+            <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=link_to "De quoi s'agit-il", wizard_path(:send_message), class:"text-dark"%></div>
         </div>
       
 
@@ -18,14 +16,12 @@
     <div class="row justify-content-center my-4">
    
 
-    <% DeviceCategory.all.each_with_index do |device_category,index| %>
+    <% @helper.each_with_index do |helper,index| %>
 
             <div class="card col-5 my-2 mx-1">
-                <%=image_tag "icons/#{device_category.title}.png", class:"w-25 py-2", alt:index%>
                 <div class="card-body">
-                    <h5 class="card-title"><%=device_category.title%></h5>
+                    <h5 class="card-title"><%=helper.first_name%></h5>
                     <p class="card-text"><%=device_category.description%></p>
-                    <%= link_to "Suivant", next_wizard_path(device_cat:device_category.id), class:"stretched-link"%>
                 </div>
                 
             </div>

@@ -1,10 +1,14 @@
 class ServicesurveyController < ApplicationController
     include Wicked::Wizard
-    steps :device_type, :problem_type, :fill_up_mission_details, :review_mission, :select_helper, :send_message
+    steps :device_type, :problem_type, :fill_up_mission_details, :select_helper, :send_message
 
     def show
         @user = current_user
         @mission = Mission.new
+
+        helper = User.where(status_activity:true, service_provider:true)
+        @helper = helper.select{|helper| helper.skills.where(acquired:true, categorytag:Categorytag.find(session[:problem_type])) }
+        
         case step
             when :device_type
             when :problem_type
@@ -17,7 +21,6 @@ class ServicesurveyController < ApplicationController
                 end
                 @device_category = DeviceCategory.find(session[:device_category])
                 @problem_type = Categorytag.find(session[:problem_type])
-            when :review_mission
 
             when :select_helper
             when :send_message
@@ -35,7 +38,6 @@ class ServicesurveyController < ApplicationController
             when :problem_type
             when :fill_up_mission_details
             when :add_screenshots
-            when :review_mission  
             when :select_helper
             when :send_message
 
