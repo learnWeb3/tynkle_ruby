@@ -5,10 +5,7 @@ class ServicesurveyController < ApplicationController
     def show
         @user = current_user
         @mission = Mission.new
-
-        helper = User.where(status_activity:true, service_provider:true)
-        @helper = helper.select{|helper| helper.link_skill_to_users.where(acquired:true, skill:Skill.where(categorytag:Categorytag.find(session[:problem_type]))) }
-
+       
         case step
             when :device_type
             when :problem_type
@@ -23,6 +20,13 @@ class ServicesurveyController < ApplicationController
                 @problem_type = Categorytag.find(session[:problem_type])
 
             when :select_helper
+
+                if targeted_link_skills_method.empty?
+                    @helper = User.all 
+                else
+                    @helper = targeted_link_skills_method.uniq!
+                end
+        
             when :send_message
 
         end
@@ -43,6 +47,20 @@ class ServicesurveyController < ApplicationController
 
         end
         render_wizard
+    end
+
+
+    private 
+
+    def targeted_link_skills_method
+        targeted_linked_skills = LinkSkillToUser.where(acquired:true, skill:Skill.where(categorytag:Categorytag.find(session[:problem_type])), user:User.where(status_activity:true,service_provider:true))
+        result = []
+                
+        targeted_linked_skills.each do |e|
+            result.push(e.user)
+        end
+
+        return result
     end
 
 

@@ -16,17 +16,15 @@
     <div class="row justify-content-center my-4">
    
 
-    <% DeviceCategory.all.each_with_index do |device_category,index| %>
+    <% @helper.each_with_index do |helper,index| %>
 
-            <div class="card col-5 my-2 mx-1">
-                <%=image_tag "icons/#{device_category.title}.png", class:"w-25 py-2", alt:index%>
-                <div class="card-body">
-                    <h5 class="card-title"><%=device_category.title%></h5>
-                    <p class="card-text"><%=device_category.description%></p>
-                    <%= link_to "Suivant", next_wizard_path(device_cat:device_category.id), class:"stretched-link"%>
-                </div>
-                
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><%=helper.first_name%></h5>
+                <p class="card-text">some text</p>
             </div>
+            
+        </div>
 
     <% end %>
     

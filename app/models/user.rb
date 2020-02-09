@@ -77,7 +77,7 @@ class User < ApplicationRecord
     # defining helper method to check wether user is a service provider or not 
 
     def self.service_provider?
-      if self.service_provider
+      if self.service_provider?
         return true
       else 
         return false
