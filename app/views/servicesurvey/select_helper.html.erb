@@ -1,13 +1,13 @@
 <section class="container mt-4">
 
-        <h2 class="text-center"> Contact des Helpers</h2>
+        <h2 class="text-center"> Sélectionne tes Helpers</h2>
         
 
         <div class="progress">
             <div class="progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=link_to "Type d'appareil", wizard_path(:device_type), class:"text-white"%></div>
             <div class="progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=link_to "De quoi s'agit-il", wizard_path(:problem_type), class:"text-white"%></div>
             <div class="progress-bar progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=link_to "Rediger ma demande", wizard_path(:fill_up_mission_details), class:"text-white"%></div>
-            <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=link_to "Contacter des Helpers", wizard_path(:select_helper), class:"text-white"%></div>
+            <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=link_to "Selectionner mes Helpers", wizard_path(:select_helper), class:"text-white"%></div>
             <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=link_to "De quoi s'agit-il", wizard_path(:send_message), class:"text-dark"%></div>
         </div>
       
@@ -28,12 +28,12 @@
                 </div>
                 <% if helper.solved_mission_number < 1 %>
                     <div class="col d-flex align-items-center mb-3">
-                        <h6 class="font-weight-bold">C'est ma première mission !</h6>
+                        <h6 class="font-weight-bold"><i class="fas fa-user-clock mx-2"></i>C'est ma première mission !</h6>
                     </div>
                 <% elsif  helper.solved_mission_number == 1 %>
                     <div class="col text-center">
                         <h6 class="label-heading">Evaluation</h6>
-                        <p class="text-sm font-weight-bold"><i class="far fa-star px-2"></i><%=helper.global_review_mark%></p>
+                        <p class="text-sm font-weight-bold"><i class="far fa-star mx-2"></i><%=helper.global_review_mark%></p>
                     </div>
                     <div class="col text-center">
                         <h6 class="label-heading">Missions</h6>
@@ -42,7 +42,7 @@
                 <% else %>
                     <div class="col text-center">
                         <h6 class="label-heading">Evaluation</h6>
-                        <p class="text-sm font-weight-bold"><i class="far fa-star px-2"></i><%=helper.global_review_mark%></p>
+                        <p class="text-sm font-weight-bold"><i class="far fa-star mx-2"></i><%=helper.global_review_mark%></p>
                     </div>
                     <div class="col text-center">
                         <h6 class="label-heading">Missions</h6>
@@ -51,9 +51,8 @@
                 <%end%>
                 <div class="col text-center">
                     <h6 class="label-heading">Contact</h6>
-                    <p class="text-sm font-weight-bold"></p>
+                    <%=check_box_tag :"#{helper.id}", class:"form-control"%>
                 </div>
-        
             </div>
         </div>
 
