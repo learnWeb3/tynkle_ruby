@@ -7,8 +7,8 @@ class ServicesurveyController < ApplicationController
         @mission = Mission.new
 
         helper = User.where(status_activity:true, service_provider:true)
-        @helper = helper.select{|helper| helper.skills.where(acquired:true, categorytag:Categorytag.find(session[:problem_type])) }
-        
+        @helper = helper.select{|helper| helper.link_skill_to_users.where(acquired:true, skill:Skill.where(categorytag:Categorytag.find(session[:problem_type]))) }
+
         case step
             when :device_type
             when :problem_type
