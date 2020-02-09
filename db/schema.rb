@@ -136,6 +136,8 @@ ActiveRecord::Schema.define(version: 2020_02_08_103831) do
     t.datetime "updated_at", null: false
     t.boolean "service_provider", default: false
     t.boolean "status_activity", default: true
+    t.integer "solved_mission_number", default: 0
+    t.float "global_review_mark", default: 0.0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

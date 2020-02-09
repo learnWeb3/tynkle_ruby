@@ -18,12 +18,43 @@
 
     <% @helper.each_with_index do |helper,index| %>
 
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title"><%=helper.first_name%></h5>
-                <p class="card-text">some text</p>
+        <div class="list-group col-12 shadow mb-5 p-4">
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex align-items-center mb-3">
+                        <h2 class="h5 mb-0"><%=helper.first_name%></h2><img src="img/avatar/avatar-0.jpg" alt="" class="avatar avatar-sm avatar-border-white ml-3">
+                    </div>
+                    <span class="badge badge-pill p-2 badge-primary-light"><%=helper.created_at.strftime("Inscrit en %B %Y")%></span>
+                </div>
+                <% if helper.solved_mission_number < 1 %>
+                    <div class="col d-flex align-items-center mb-3">
+                        <h6 class="font-weight-bold">C'est ma première mission !</h6>
+                    </div>
+                <% elsif  helper.solved_mission_number == 1 %>
+                    <div class="col text-center">
+                        <h6 class="label-heading">Evaluation</h6>
+                        <p class="text-sm font-weight-bold"><i class="far fa-star px-2"></i><%=helper.global_review_mark%></p>
+                    </div>
+                    <div class="col text-center">
+                        <h6 class="label-heading">Missions</h6>
+                        <p class="text-sm font-weight-bold"><%=helper.solved_mission_number%>   mission effectuée</p>
+                    </div>
+                <% else %>
+                    <div class="col text-center">
+                        <h6 class="label-heading">Evaluation</h6>
+                        <p class="text-sm font-weight-bold"><i class="far fa-star px-2"></i><%=helper.global_review_mark%></p>
+                    </div>
+                    <div class="col text-center">
+                        <h6 class="label-heading">Missions</h6>
+                        <p class="text-sm font-weight-bold"><%=helper.solved_mission_number%>   missions effectuées</p>
+                    </div>
+                <%end%>
+                <div class="col text-center">
+                    <h6 class="label-heading">Contact</h6>
+                    <p class="text-sm font-weight-bold"></p>
+                </div>
+        
             </div>
-            
         </div>
 
     <% end %>
