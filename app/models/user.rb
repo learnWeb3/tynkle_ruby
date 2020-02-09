@@ -26,6 +26,10 @@ class User < ApplicationRecord
     
     has_many :missions
 
+    ## Active Record Associations for Active storage usage
+
+    has_one_attached :avatar
+
     # ACtive Record Validations
 
     validates :email, presence: true, uniqueness: true

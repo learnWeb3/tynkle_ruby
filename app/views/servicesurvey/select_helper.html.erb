@@ -31,8 +31,13 @@
             <div class="row">
                 <div class="col">
                     <div class="d-flex align-items-center mb-3">
-                        <h2 class="h5 mb-0"><%=helper.first_name%></h2><img src="img/avatar/avatar-0.jpg" alt="" class="avatar avatar-sm avatar-border-white ml-3">
+                    <% if helper.avatar.attached? %>
+                        <%=image_tag "/", alt:"", class:"avatar avatar-sm avatar-border-white ml-3"%><h2 class="h5 mb-0 ml-2"><%=helper.first_name%></h2>
+                    <%else%>
+                        <%=image_tag "icons/user.png", alt:"", class:"avatar avatar-md avatar-border-white ml-3"%><h2 class="h5 mb-0 ml-2"><%=helper.first_name%></h2>
+                    <%end%>
                     </div>
+                    
                     <span class="badge badge-pill p-2 badge-primary-light"><%=helper.created_at.strftime("Inscrit en %B %Y")%></span>
                 </div>
                 <% if helper.solved_mission_number < 1 %>
