@@ -2,11 +2,11 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item hover-underline">
-              <%= link_to "L'équipe", root_path, class:"nav-link font-weight-bold hover-weigth-underline-white"%>
+              <%= link_to "L'équipe", root_path, class:"nav-link font-weight-bold hover-weigth-underline-white", id:"navbar-link-1"%>
             </li>
 
             <li class="nav-item hover-underline">
-                <%= link_to "Le Concept", root_path, class:"nav-link font-weight-bold hover-weigth-underline-white"%>
+                <%= link_to "Le Concept", root_path, class:"nav-link font-weight-bold hover-weigth-underline-white", id:"navbar-link-2"%>
             </li>
 
         </ul>
@@ -23,21 +23,21 @@
             <% if user_signed_in? %>
 
             <li class="nav-item hover-underline">
-                <%= link_to "Profil", edit_user_registration_path, class:"nav-link font-weight-bold hover-weigth-underline-white"%>
+                <%= link_to "Profil", edit_user_registration_path, class:"nav-link font-weight-bold hover-weigth-underline-white", id:"navbar-link-3"%>
             </li>
 
             <li class="nav-item hover-underline">
-                <%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class:"nav-link font-weight-bold hover-weigth-underline-white"%>
+                <%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class:"nav-link font-weight-bold hover-weigth-underline-white", id:"navbar-link-4"%>
             </li>
 
             <% else %>
 
             <li class="nav-item hover-underline">
-                <%= link_to "Inscription", new_user_registration_path, class:"nav-link font-weight-bold hover-weigth-underline-white"%>
+                <%= link_to "Inscription", new_user_registration_path, class:"nav-link font-weight-bold hover-weigth-underline-white", id:"navbar-link-5"%>
             </li>
 
             <li class="nav-item hover-underline">
-                <%= link_to 'Connexion', new_user_session_path, class:"nav-link font-weight-bold hover-weigth-underline-white"%>
+                <%= link_to 'Connexion', new_user_session_path, class:"nav-link font-weight-bold hover-weigth-underline-white", id:"navbar-link-6"%>
             </li>
 
           
