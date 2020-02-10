@@ -1,4 +1,4 @@
-<% if session[:selected_helper] != nil %>
+
 
 <section class="container mt-4">
 
@@ -10,16 +10,16 @@
             
             <% if session[:device_category].nil? && session[:problem_type].nil? %>
             <div class="progress-bar progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "Rediger ma demande", wizard_path(:fill_up_mission_details), class:"text-white bg-transparent border-0", method: :get%></div>
-            <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "Selectionner mes Helpers", wizard_path(:select_helper), class:"text-white bg-transparent border-0", method: :get%></div>
+            <div class="progress-bar progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "Selectionner mes Helpers", wizard_path(:select_helper), class:"text-white bg-transparent border-0", method: :get%></div>
             <% else %>
             <div class="progress-bar progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "Rediger ma demande", wizard_path(:fill_up_mission_details), class:"text-white bg-transparent border-0", method: :get%></div>
-            <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "Selectionner mes Helpers", wizard_path(:select_helper), class:"text-white bg-transparent border-0", method: :get%></div>
+            <div class="progress-bar progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "Selectionner mes Helpers", wizard_path(:select_helper), class:"text-white bg-transparent border-0", method: :get%></div>
             <% end %>
 
             <% if session[:selected_helper].nil? %>
-                <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "De quoi s'agit-il", wizard_path(:finish), class:"text-dark bg-transparent border-0", method: :get, disabled: true%></div>
+                <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "De quoi s'agit-il", wizard_path(:finish), class:"text-white bg-transparent border-0", method: :get, disabled: true%></div>
             <% else %>
-                <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "De quoi s'agit-il", wizard_path(:finish), class:"text-dark bg-transparent border-0", method: :get%></div>
+                <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "De quoi s'agit-il", wizard_path(:finish), class:"text-white bg-transparent border-0", method: :get%></div>
             <% end %>
         </div>
       
@@ -29,16 +29,16 @@
             
             <% if session[:device_category].nil? && session[:problem_type].nil? %>
             <div class="progress-bar progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "3", wizard_path(:fill_up_mission_details), class:"text-white bg-transparent border-0", method: :get%></div>
-            <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "4", wizard_path(:select_helper), class:"text-white bg-transparent border-0", method: :get%></div>
+            <div class="progress-bar progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "4", wizard_path(:select_helper), class:"text-white bg-transparent border-0", method: :get%></div>
             <% else %>
             <div class="progress-bar progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "3", wizard_path(:fill_up_mission_details), class:"text-white bg-transparent border-0", method: :get%></div>
-            <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "4", wizard_path(:select_helper), class:"text-white bg-transparent border-0", method: :get%></div>
+            <div class="progress-bar progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "4", wizard_path(:select_helper), class:"text-white bg-transparent border-0", method: :get%></div>
             <% end %>
 
             <% if session[:selected_helper].nil? %>
-                <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "5", wizard_path(:finish), class:"text-dark bg-transparent border-0", method: :get, disabled: true%></div>
+                <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "5", wizard_path(:finish), class:"text-white bg-transparent border-0", method: :get, disabled: true%></div>
             <% else %>
-                <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "5", wizard_path(:finish), class:"text-dark bg-transparent border-0", method: :get%></div>
+                <div class="progress-bar progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "5", wizard_path(:finish), class:"text-white bg-transparent border-0", method: :get%></div>
             <% end %>
         </div>
 
@@ -55,4 +55,4 @@
 
 </section>
 
-<% end %>
+
