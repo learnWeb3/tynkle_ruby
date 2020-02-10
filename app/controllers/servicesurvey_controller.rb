@@ -16,15 +16,21 @@ class ServicesurveyController < ApplicationController
                 if params[:"problem_type"].present?
                     session[:problem_type] = params[:"problem_type"].to_i
                 end
-                @device_category = DeviceCategory.find(session[:device_category])
-                @problem_type = Categorytag.find(session[:problem_type])
+                if session[:device_category] != nil && session[:problem_type] != nil
+
+                    @device_category = DeviceCategory.find(session[:device_category])
+                    @problem_type = Categorytag.find(session[:problem_type])
+                
+                end
 
             when :select_helper
 
-                if targeted_link_skills_method.empty?
-                    @helper = User.where(status_activity:true,service_provider:true) 
-                else
-                    @helper = targeted_link_skills_method.uniq!
+                if targeted_link_skills_method.nil? == false
+                    if targeted_link_skills_method.empty?
+                        @helper = User.where(status_activity:true,service_provider:true) 
+                    else
+                        @helper = targeted_link_skills_method.uniq!
+                    end
                 end
 
         
@@ -44,13 +50,20 @@ class ServicesurveyController < ApplicationController
             when :fill_up_mission_details
             when :add_screenshots
             when :select_helper
+
                 selected_helper = []
                 params["/servicesurvey/select_helper"].each {|k,v| selected_helper.push(k)}
-                message_object_mission_title = Mission.find(session[:mission].to_i).title
-                message_content_mission_description = Mission.find(session[:mission].to_i).description
-                
+
+                mission_id = session[:mission].to_i
+                mission = Mission.find(mission_id)
+                message_object_mission_title = mission.title
+                message_content_mission_description = mission.description
+
+                website_url = "localhost:3000"
+                shared_mission_url = website_url+"/missions/#{mission_id}"
+
                 selected_helper.each do |helper|
-                    Message.create(sender:current_user, recipient:helper, object:message_object_mission_title, content:message_content_mission_description)
+                    Message.create(sender:current_user, recipient:helper, object:message_object_mission_title, content:message_content_mission_description, mission_url:shared_mission_url)
                 end
 
             when :send_message
@@ -64,14 +77,16 @@ class ServicesurveyController < ApplicationController
     private 
 
     def targeted_link_skills_method
-        targeted_linked_skills = LinkSkillToUser.where(acquired:true, skill:Skill.where(categorytag:Categorytag.find(session[:problem_type])), user:User.where(status_activity:true,service_provider:true))
-        result = []
-                
-        targeted_linked_skills.each do |e|
-            result.push(e.user)
-        end
+        if session[:device_category] != nil && session[:problem_type] != nil?
+            targeted_linked_skills = LinkSkillToUser.where(acquired:true, skill:Skill.where(categorytag:Categorytag.find(session[:problem_type])), user:User.where(status_activity:true,service_provider:true))
+            result = []
+                    
+            targeted_linked_skills.each do |e|
+                result.push(e.user)
+            end
 
-        return result
+            return result
+        end
     end
 
 

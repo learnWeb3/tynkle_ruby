@@ -8,7 +8,8 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.references :sender, index: true, dependent: :destroy
       t.text :content
       t.string :object
-      
+      t.string :mission_url
+  
       t.timestamps
     end
   end
