@@ -31,6 +31,11 @@ class ServicesurveyController < ApplicationController
                         @helper = targeted_link_skills_method.uniq!
                     end
                 end
+
+            when :finish
+                
+                @mission_id = session[:mission]
+                
         end
         render_wizard
     end
