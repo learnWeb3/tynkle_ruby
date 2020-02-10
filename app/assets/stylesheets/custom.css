@@ -19,11 +19,10 @@
     }
     
     .hero-value-prop {
-        margin-top: 8rem;
-        background-image: url(photos/landing-page/hero-welcome.png);
-        background-position: center;
+        background-image: url(photos/landing-page/hero-welcome-5.png);
+        background-position: right;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 70%;
     }
     
     ol.steps-problem-description-home li {
@@ -111,4 +110,10 @@
     
     .circle {
         clip-path: circle();
+    }
+
+    .message{
+        clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 80% 100%, 50% 75%, 0% 75%);
+        background-color: #FFF;
+        height: 20rem;
     }

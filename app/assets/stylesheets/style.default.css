@@ -7086,6 +7086,7 @@ button.bg-info:focus {
     background-color: #ffc107 !important;
 }
 
+
 a.bg-warning:hover,
 a.bg-warning:focus,
 button.bg-warning:hover,
@@ -15297,4 +15298,8 @@ STYLE SWITCHER FOR DEMO
 
 #style-switch h4 {
     color: #495057;
+}
+
+.bg-dark-blue {
+    background-color: #5D7BEF;
 }
