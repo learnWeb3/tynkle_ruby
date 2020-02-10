@@ -1,18 +1,18 @@
 <nav class="navbar navbar-expand-md bg-transparent navbar-dark fixed-top" id="navbar">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <%= link_to "L'équipe", root_path, class:"nav-link"%>
+            <li class="nav-item hover-underline">
+              <%= link_to "L'équipe", root_path, class:"nav-link font-weight-bold hover-weigth-underline-white"%>
             </li>
 
-            <li class="nav-item">
-                <%= link_to "Le Concept", root_path, class:"nav-link"%>
+            <li class="nav-item hover-underline">
+                <%= link_to "Le Concept", root_path, class:"nav-link font-weight-bold hover-weigth-underline-white"%>
             </li>
 
         </ul>
     </div>
     <div class="mx-auto order-0">
-    <%=link_to image_tag("logo/brand.png", size:"80x50", alt:"Tynkle logo"), root_path,class:"navbar-brand mx-auto"%>
+    <%=link_to image_tag("logo/brand-light.png", size:"80x50", alt:"Tynkle logo", id:"logo-brand"), root_path,class:"navbar-brand mx-auto"%>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,29 +22,29 @@
 
             <% if user_signed_in? %>
 
-            <li class="nav-item">
-                <%= link_to "Profil", edit_user_registration_path, class:"nav-link"%>
+            <li class="nav-item hover-underline">
+                <%= link_to "Profil", edit_user_registration_path, class:"nav-link font-weight-bold hover-weigth-underline-white"%>
             </li>
 
-            <li class="nav-item">
-                <%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class:"nav-link"%>
+            <li class="nav-item hover-underline">
+                <%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class:"nav-link font-weight-bold hover-weigth-underline-white"%>
             </li>
 
             <% else %>
 
-            <li class="nav-item">
-                <%= link_to "Inscription", new_user_registration_path, class:"nav-link"%>
+            <li class="nav-item hover-underline">
+                <%= link_to "Inscription", new_user_registration_path, class:"nav-link font-weight-bold hover-weigth-underline-white"%>
             </li>
 
-            <li class="nav-item">
-                <%= link_to 'Connexion', new_user_session_path, class:"nav-link"%>
+            <li class="nav-item hover-underline">
+                <%= link_to 'Connexion', new_user_session_path, class:"nav-link font-weight-bold hover-weigth-underline-white"%>
             </li>
 
           
             <% end %>
 
-            <li class="nav-item">
-              <%= link_to "J'ai besoin d'aide", root_path, class:"nav-link", id:"problem-button"%>
+            <li class="nav-item hover-underline">
+              <%= link_to "J'ai besoin d'aide", root_path, class:"nav-link font-weight-bold hover-weigth-underline-white", id:"problem-button"%>
             </li>
       
 

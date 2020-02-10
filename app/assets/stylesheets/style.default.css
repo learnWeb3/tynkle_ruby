@@ -4970,7 +4970,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 1);
 }
 
 .navbar-dark .navbar-nav .nav-link:hover,
@@ -5547,7 +5547,6 @@ a.badge-dark.focus {
 .jumbotron {
     padding: 2rem 1rem;
     margin-bottom: 2rem;
-    background-color: #e9ecef;
     border-radius: 0.6rem;
 }
 
@@ -15300,6 +15299,3 @@ STYLE SWITCHER FOR DEMO
     color: #495057;
 }
 
-.bg-dark-blue {
-    background-color: #5D7BEF;
-}

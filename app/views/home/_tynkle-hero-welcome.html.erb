@@ -1,30 +1,65 @@
-<div class="jumbotron jumbotron-fluid hero-value-prop bg-dark-blue">
+<div class="jumbotron jumbotron-fluid hero-value-prop bg-light-blue">
 
-<div class="container pt-6">
+<div class="container pt-7">
 
 
 
 <div class="row">
 <div class="col message">
-<h1 class="display-4">Tynkle,</h1>
-<h2>Plateforme de dépannage Informatique entre particuliers </h2>
+
+ 
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+
+      <%=link_to "#home", id:"home-tab", class:"nav-link text-dark", 'data-toggle':"tab", 'role':"tab", 'aria-controls':"home", 'aria-selected':"true" do %>
+       <div class="justify-content-centers text-center"> 
+        <i class="fas fa-hands-helping"></i>
+        <p> Devenir Helper </p>
+       </div>  
+      <% end %>
+
+    </li>
+    <li class="nav-item">
+      <%=link_to "#profile", id:"profile-tab", class:"nav-link text-dark", 'data-toggle':"tab", 'role':"tab", 'aria-controls':"profile", 'aria-selected':"false" do %>
+      <div class="justify-content-centers text-center"> 
+      <i class="far fa-thumbs-up"></i>
+       <p> Devenir Helper </p>
+      </div>  
+     <% end %>
+    </li>
+    <li class="nav-item">
+
+    <%=link_to "#contact", id:"contact-tab", class:"nav-link text-dark", 'data-toggle':"tab", 'role':"tab", 'aria-controls':"contact", 'aria-selected':"false" do %>
+    <div class="justify-content-centers text-center"> 
+    <i class="fas fa-users"></i>
+     <p> Devenir Helper </p>
+    </div>  
+   <% end %>
+    
+    </li>
+    </ul>
+
+  <div class="tab-content my-2" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <h1>Bienvenue sur Tynkle,</h1>
+      <hr class="my-2 d-none">
+      <h2>Plateforme de dépannage Informatique entre particuliers </h2>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+  </div>
+
+
+
 </div>
 <div class="col">
 </div>
 </div>
 
-<div class="row">
-<div class="col">
-</div>
-<div class="col">
-</div>
-<div class="col">
+<div class="row justify-content-center">
+
 <a href="#" class="btn btn-lg btn-success text-capitalize">Chercher un helper</a>
-</div>
-<div class="col">
-</div>
-<div class="col">
-</div>
+
 </div>
 
 
