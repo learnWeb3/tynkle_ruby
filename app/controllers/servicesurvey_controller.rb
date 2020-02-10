@@ -46,6 +46,8 @@ class ServicesurveyController < ApplicationController
             when :select_helper
                 selected_helper = []
                 params["/servicesurvey/select_helper"].each {|k,v| selected_helper.push(k)}
+                selected_helper.each do |helper|
+                Message.create(sender:current_user, recipient:helper)
             when :send_message
 
         end

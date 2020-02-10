@@ -8,4 +8,9 @@ class Message < ApplicationRecord
     belongs_to :sender, class_name: "User"
     belongs_to :recipient, class_name: "User"
 
+    # Active REcord Validations
+
+    validates :object, presence: true, length: {maximum: 100}
+    validates :content,presence: true, length: {maximum:500}
+
 end

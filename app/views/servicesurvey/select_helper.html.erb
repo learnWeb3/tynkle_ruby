@@ -64,10 +64,12 @@
                         <p class="text-sm font-weight-bold"><%=helper.solved_mission_number%></p>
                     </div>
                 <%end%>
+                <% if helper.address.nil? == false %>
                 <div class="col text-center my-auto">
                     <i class="fas fa-map-signs"></i> 
                     <p class="text-sm font-weight-bold"><%=Geocoder.search(helper.address).first.postal_code%>, <%=Geocoder.search(helper.address).first.city%></p>  
                 </div>
+                <% end %>
                 <div class="col text-center my-auto">
                     <div class="form-check form-check-inline">
                     <%= f.label :"contacter", class:"form-check-label"%>
