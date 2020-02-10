@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 2020_02_08_103831) do
   create_table "messages", force: :cascade do |t|
     t.bigint "recipient_id"
     t.bigint "sender_id"
+    t.text "content"
+    t.string "object"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipient_id"], name: "index_messages_on_recipient_id"

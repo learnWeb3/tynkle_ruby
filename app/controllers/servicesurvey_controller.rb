@@ -46,8 +46,13 @@ class ServicesurveyController < ApplicationController
             when :select_helper
                 selected_helper = []
                 params["/servicesurvey/select_helper"].each {|k,v| selected_helper.push(k)}
+                message_object_mission_title = Mission.find(session[:mission].to_i).title
+                message_content_mission_description = Mission.find(session[:mission].to_i).description
+                
                 selected_helper.each do |helper|
-                Message.create(sender:current_user, recipient:helper)
+                    Message.create(sender:current_user, recipient:helper, object:message_object_mission_title, content:message_content_mission_description)
+                end
+
             when :send_message
 
         end
