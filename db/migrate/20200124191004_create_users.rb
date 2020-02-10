@@ -16,7 +16,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :status_activity, default: true
       t.integer :solved_mission_number, default:0
       t.float :global_review_mark, default:0
-      t.integer :service_survey_usage_count, default:0
       
     end
   end

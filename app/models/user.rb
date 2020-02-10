@@ -9,13 +9,13 @@ class User < ApplicationRecord
 
     # N-N relationship with skills table
 
-    has_many :link_skill_to_users
+    has_many :link_skill_to_users, dependent: :destroy
     has_many :skills, :through => :link_skill_to_users
 
     # A User can either send a message or reiceive one from an other User
 
-    has_many :sent_messages, foreign_key: 'sender_id', class_name: "Message"
-    has_many :received_messages, foreign_key: 'recipient_id', class_name: "Message"
+    has_many :sent_messages, foreign_key: 'sender_id', class_name: "Message", dependent: :destroy
+    has_many :received_messages, foreign_key: 'recipient_id', class_name: "Message", dependent: :destroy
 
     # A User can have many appointments and be either an attendee or have attendances depending the attrbuted role
 
@@ -24,11 +24,11 @@ class User < ApplicationRecord
 
     # A user could create multiple missions reflecting problems to be solved 
     
-    has_many :missions
+    has_many :missions, dependent: :destroy
 
     ## Active Record Associations for Active storage usage
 
-    has_one_attached :avatar
+    has_one_attached :avatar, dependent: :destroy
 
     # ACtive Record Validations
 

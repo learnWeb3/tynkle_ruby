@@ -14,6 +14,7 @@ User.destroy_all
 Categorytag.destroy_all
 Skill.destroy_all
 DeviceCategory.destroy_all
+Message.destroy_all
 
 # reset autoincrement for tables to start by id=1
 
@@ -21,6 +22,7 @@ User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 Categorytag.connection.execute('ALTER SEQUENCE categorytags_id_seq RESTART WITH 1')
 Skill.connection.execute('ALTER SEQUENCE skills_id_seq RESTART WITH 1')
 DeviceCategory.connection.execute('ALTER SEQUENCE device_categories_id_seq RESTART WITH 1')
+Message.connection.execute('ALTER SEQUENCE messages_id_seq RESTART WITH 1')
 
 # Generating SkillGroup known in database as Categorytag Class
 category_tag_names = ["Système", "Logiciel", "Matériel", "Réseau", "Cours-Tutorat"]
