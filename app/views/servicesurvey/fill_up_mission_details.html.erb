@@ -16,7 +16,11 @@
                 <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "Selectionner mes Helpers", wizard_path(:select_helper), class:"text-dark bg-transparent border-0", method: :get%></div>
             <% end %>
 
-            <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "De quoi s'agit-il", wizard_path(:send_message), class:"text-dark bg-transparent border-0", method: :get%></div>
+            <% if session[:selected_helper].nil? %>
+                <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "De quoi s'agit-il", wizard_path(:finish), class:"text-dark bg-transparent border-0", method: :get, disabled: true%></div>
+            <% else %>
+                <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "De quoi s'agit-il", wizard_path(:finish), class:"text-dark bg-transparent border-0", method: :get%></div>
+            <% end %>
         </div>
       
         <div class="progress d-none d-md-flex d-sm-flex d-md-none d-lg-none">
@@ -31,7 +35,11 @@
                 <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "4", wizard_path(:select_helper), class:"text-dark bg-transparent border-0", method: :get%></div>
             <% end %>
            
-            <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "5", wizard_path(:send_message), class:"text-dark bg-transparent border-0", method: :get%></div>
+            <% if session[:selected_helper].nil? %>
+                <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "5", wizard_path(:finish), class:"text-dark bg-transparent border-0", method: :get, disabled: true%></div>
+            <% else %>
+                <div class="progress-bar progress-bar bg-light" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"><%=button_to "5", wizard_path(:finish), class:"text-dark bg-transparent border-0", method: :get%></div>
+            <% end %>
         </div>
       
 

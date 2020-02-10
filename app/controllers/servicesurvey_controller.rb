@@ -1,6 +1,6 @@
 class ServicesurveyController < ApplicationController
     include Wicked::Wizard
-    steps :device_type, :problem_type, :fill_up_mission_details, :select_helper
+    steps :device_type, :problem_type, :fill_up_mission_details, :select_helper, :finish
 
     def show
         @user = current_user
@@ -43,6 +43,7 @@ class ServicesurveyController < ApplicationController
             when :select_helper
 
                 selected_helper_ids = []
+                session[:selected_helper] = selected_helper_ids.dup
                 params["/servicesurvey/select_helper"].each {|k,v| selected_helper_ids.push(k)}
 
                 mission_id = session[:mission].to_i
@@ -57,7 +58,7 @@ class ServicesurveyController < ApplicationController
                     Message.create(sender:current_user, recipient:User.find(helper_id), object:message_object_mission_title, content:message_content_mission_description, mission_url:shared_mission_url)
                 end
 
-                redirect_to root_path
+                redirect_to wizard_path(:finish)
 
         end
     end
