@@ -118,12 +118,6 @@
         clip-path: circle();
     }
 
-    .message{
-        clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 65% 85%, 80% 100%, 50% 85%, 0% 85%);
-        background-color: #FFF;
-        height: 22rem;
-    }
-
 
     .bg-light-blue{
         background-color: #87BACF;

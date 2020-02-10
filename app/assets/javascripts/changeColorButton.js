@@ -2,7 +2,7 @@ $(window).scroll(function() {
     var scroll = $(window).scrollTop();
     var docHeigth = $(document).height()
 
-    if (scroll >= (docHeigth / 9)) {
+    if (scroll != (0)) {
         $("#problem-button").addClass("btn-success");
         $("#navbar").removeClass("bg-transparent navbar-dark");
         $("#navbar").addClass("bg-white navbar-white");
@@ -20,7 +20,7 @@ $(window).scroll(function() {
          
      
 
-    } else if (scroll < docHeigth / 9) {
+    } else if (scroll == 0) {
         $("#problem-button").removeClass("btn-success");
         $("#navbar").addClass("bg-transparent");
         $("#navbar").removeClass("bg-white navbar-white");
