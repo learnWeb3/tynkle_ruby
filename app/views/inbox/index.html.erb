@@ -2,7 +2,7 @@
 
 <input class="form-control form-control-lg col-8 mx-auto my-3" type="text" placeholder="Rechercher dans les messages">
 
-    <div class="row">
+    <div class="row justify-content-around">
 
         <div class="col-5 py-2" id="talkHistory">
 
@@ -44,19 +44,35 @@
                     
                     <% if @message != nil %>
               
+                    <div class="m-2 bg-light-grey p-3" id="messageShow">
 
-                    <h1><%= @message.object%> </h1>
+                        <div class="row p-2">
+                            <div class="col text-left">
+                            <h5 class="font-weight-bold"><%= @message.object.capitalize%> </h5>
+                            </div>
+                            <div class="col text-right">
+                            <h6 class="font-italic"><%= @message.created_at.strftime("Reçu le %e %b %Y à %H:%M")%> </h6>
+                            </div>
+                        </div>
+                        <div class="row p-2">
 
+                            <div class="col">
 
-                    <h1><%= @message.content%> </h1>
+                                <p><%= @message.content.capitalize%> </p>
+                            </div>
+                        </div>
 
-
+                            <%= form_for  messages_path, method: :post do |f| %>
+                            <div class="form-group col-12">
+                                <%=  f.label :"Répondre :"%>
+                                <%=  f.text_area :description, class:"form-control mb-4", rows:"2"  %>
+                            </div>
+                            <%= f.submit "Envoyer", class:"btn btn-success"%>
+                            <%end %>
+                    </div>
                     <% end %>
-
+            
                 
-
-                
-
         </div>
 
     </div>
