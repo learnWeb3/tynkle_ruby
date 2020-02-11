@@ -5,7 +5,7 @@
 
 
 <div class="row py-5">
-<div class="col-md-6 col-sm-auto bg-white ml-4">
+<div class="col-md-6 col-sm-auto bg-white ml-4 shadow-lg-white rounded-corner" id="tabs-value-proposition">
 
  
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -14,25 +14,25 @@
       <%=link_to "#home", id:"home-tab", class:"nav-link text-dark", 'data-toggle':"tab", 'role':"tab", 'aria-controls':"home", 'aria-selected':"true" do %>
        <div class="justify-content-centers text-center"> 
         <i class="fas fa-hands-helping"></i>
-        <p> Devenir Helper </p>
+        <p> Bienvenue ! </p>
        </div>  
       <% end %>
 
     </li>
     <li class="nav-item">
-      <%=link_to "#profile", id:"profile-tab", class:"nav-link text-dark", 'data-toggle':"tab", 'role':"tab", 'aria-controls':"profile", 'aria-selected':"false" do %>
+      <%=link_to "#helper", id:"helper-tab", class:"nav-link text-dark", 'data-toggle':"tab", 'role':"tab", 'aria-controls':"helper", 'aria-selected':"false" do %>
       <div class="justify-content-centers text-center"> 
-      <i class="far fa-thumbs-up"></i>
+      <i class="fas fa-coins"></i>
        <p> Devenir Helper </p>
       </div>  
      <% end %>
     </li>
     <li class="nav-item">
 
-    <%=link_to "#contact", id:"contact-tab", class:"nav-link text-dark", 'data-toggle':"tab", 'role':"tab", 'aria-controls':"contact", 'aria-selected':"false" do %>
+    <%=link_to "#community", id:"community-tab", class:"nav-link text-dark", 'data-toggle':"tab", 'role':"tab", 'aria-controls':"community", 'aria-selected':"false" do %>
     <div class="justify-content-centers text-center"> 
     <i class="fas fa-users"></i>
-     <p> Devenir Helper </p>
+     <p> La Communauté </p>
     </div>  
    <% end %>
     
@@ -40,16 +40,58 @@
     </ul>
 
   <div class="tab-content" id="myTabContent">
+
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <h1 class="my-4">Bienvenue sur Tynkle,</h1>
-      <h2>Plateforme de dépannage Informatique entre particuliers </h2>
+
     
+
+      <div class="row">
+        <div class="col-10">
+          <h1 class="my-4">Bienvenue sur Tynkle,</h1>
+        </div>
+        <div class="col-2">
+          <%= image_tag "icons/welcome.png", class:"img-fluid w-75 mt-4" %>
+        </div>
+      </div>
+
+      <h2>Plateforme de dépannage Informatique entre particuliers </h2>
+      
       <%= link_to "Inscription", new_user_registration_path, class:"btn btn-info"%>
       <%= link_to 'Connexion', new_user_session_path, class:"btn btn-primary my-4 mx-4"%>
     
     </div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+
+    <div class="tab-pane fade" id="helper" role="tabpanel" aria-labelledby="helper-tab">
+
+      <div class="row">
+        <div class="col-10">
+          <h2 class="my-4">Deviens un Helper !</h2>
+          <h3>Mets en valeur tes compétences et génére un complément de revenu</h3>
+          <%= link_to "Gagner de l'argent", new_user_registration_path, class:"btn btn-info my-4"%>
+        </div>
+        <div class="col-2">
+          <%= image_tag "icons/earn-money.png", class:"img-fluid w-75 mt-4" %>
+        </div>
+      </div>
+
+    
+    </div>
+
+    <div class="tab-pane fade" id="community" role="tabpanel" aria-labelledby="community-tab">
+
+
+    <div class="row">
+      <div class="col-10">
+        <h2 class="my-4">Faire appel à des spécialistes</h2>
+       <h3>Une communauté de savoir-faire  pour répondre à toutes tes demandes</h3>
+        <%= link_to "Trouver un pro", new_user_registration_path, class:"btn btn-info mt-2"%>
+      </div>
+      <div class="col-2">
+        <%= image_tag "icons/community.png", class:"img-fluid w-75 mt-4" %>
+      </div>
+    </div>
+    
+    </div>
   </div>
 
 
