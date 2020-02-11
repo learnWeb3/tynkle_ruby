@@ -23,18 +23,10 @@
                         <p class="mt-2"><%=message.sender.first_name%> <%=message.sender.last_name%></p>
                     </div>
                     <div class="col">
-                    <div class="badge badge-pill badge-primary-light m-2"><%=message.created_at.strftime("Reçu le %e %b %Y à %H:%M")%></div> 
+                        <div class="badge badge-pill badge-primary-light m-2"><%=message.created_at.strftime("Reçu le %e %b %Y à %H:%M")%></div> 
+                        <%= link_to image_tag('icons/read-message.png', size:"25x25", class:"img-fluid"), message_path(id:message.id),  class:"stretched-link"%>  
                     </div>
                 </div>
-
-                
-                   
-                   
-                            
-                    
-                    
-                     
-                            <%= link_to image_tag('icons/read-message.png', size:"25x25", class:"img-fluid"), message_path(id:message.id),  class:"stretched-link"%>  
 
 
                 </div>
