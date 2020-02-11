@@ -22,6 +22,8 @@ class InboxController < ApplicationController
     end
     
     def destroy
-        puts "hahahhahahahah #{params} hahahhahahha"
+        targeted_message = Message.find(params["id"].to_i)
+        targeted_message.destroy
+        redirect_to inbox_index_path
     end
 end

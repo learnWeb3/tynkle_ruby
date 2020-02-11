@@ -4,33 +4,38 @@
 
     <div class="row justify-content-around">
 
-        <div class="col-5 py-2" id="talkHistory">
+        <div class="col-5" id="talkHistory">
 
             <% @inbox.each do |message| %>
 
-                <div class="list-group shadow justify-content-center text-center">
 
-                <div class="row">
-                    <div class="col">
+                <div class="card">
+
+                    <div class="card-header">
+                        <%=message.created_at.strftime("Reçu le %e %b %Y à %H:%M")%>-<%= message.object.capitalize%>
+                    </div>
+
+                    <div class="card-body">
+                    
                         <% if message.sender.avatar.attached? %>
-                                <%=image_tag "/", alt:"", class:"img-fluid rounded-circle border border-dark float-left m-2"%>
+                        <%=image_tag "/", alt:"", class:"img-fluid rounded-circle border border-dark float-left m-2"%><%=message.sender.first_name%> <%=message.sender.last_name%>
                         <%else%>
-                                <%=image_tag "icons/user.png", alt:"", class:"img-fluid rounded-circle border border-dark float-left m-2"%>
+                        <%=image_tag "icons/user.png", alt:"", class:"img-fluid rounded-circle border border-dark float-left m-2"%> <%=message.sender.first_name%> <%=message.sender.last_name%>
                         <%end%>
+
                     </div>
 
-                    <div class="col-5">
-                        <p class="mt-2"><%=message.sender.first_name%> <%=message.sender.last_name%></p>
-                    </div>
-                    <div class="col">
-                        <div class="badge badge-pill badge-primary-light m-2"><%=message.created_at.strftime("Reçu le %e %b %Y à %H:%M")%></div> 
-                        <%= link_to image_tag('icons/read-message.png', size:"25x25", class:"img-fluid"), message_path(id:message.id),  class:"stretched-link"%>  
-                    </div>
-                </div>
+                    <div class="card-footer">
 
+                        <%= link_to 'Voir le message', message_path(id:message.id),  class:"stretched-link"%>  
+                   
+                    </div>
 
                 </div>
-            
+                        
+                   
+                       
+                
 
             <% end %>
 
@@ -39,45 +44,21 @@
 
 
       
-        <div class="col-7">
+        <div class="col-7" id="messageShow">
 
                     
                     <% if @message != nil %>
 
 
-                    <div class="row p-2">
+                    
+                    <%= button_to inbox_path(id:@message.id), class:"bg-transparent", method: :delete  do %>
+                        <%= image_tag('icons/delete.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message") %>
+                     <% end %>
+                        
 
-                        <% if @message.mission_url? %>
+            
 
-                        <div class="col d-flex">
-
-                                <%= button_to @message.mission_url, class:"bg-transparent", method: :get do %>
-                                    <%= image_tag('icons/see-mission.png', size:"32x32", class:"img-fluid", alt:"See mission details", title:"Voir la mission")%>
-                                <% end %>
-
-                                <%= button_to inbox_path(id:@message.id), class:"bg-transparent", method: :delete  do %>
-                                   <%= image_tag('icons/delete.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message") %>
-                                <% end %>
-
-                        <% else %>
-
-                        <%= button_to inbox_path(id:@message.id), class:"bg-transparent", method: :delete  do %>
-                            <%= image_tag('icons/delete.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message") %>
-                         <% end %>
-
-                           
-                        <% end %>                      
-
-                                
-                        </div>     
-                    </div>
-
-
-              
-                    <div class="m-2 bg-light-grey p-3" id="messageShow">
-                   
-
-                        <div class="row p-2">
+                        <div class="row p-2 ">
                             <div class="col text-left">
                             <h5 class="font-weight-bold"><%= @message.object.capitalize%> </h5>
                             </div>
@@ -94,10 +75,6 @@
                         </div>
 
                        
-
-
-                            
-
                             <%= form_for @new_message, url: messages_path do |f| %>
                             <div class="form-group col-12">
                                 <h5 class="form-label"> Répondre </h5>
@@ -106,11 +83,12 @@
                                 <%=  f.text_field :object, class:"form-control mb-4"  %>
                                 <%=  f.label :"Message :"%>
                                 <%=  f.text_area :content, class:"form-control mb-4", rows:"2"  %>
+                                <%= f.hidden_field :sender, value: @message.sender.id %>
                             
                             <%= f.submit "Envoyer", class:"btn btn-success"%>
                             <%end %>
                             </div>
-                    </div>
+                   
                     <% end %>
             
                 
