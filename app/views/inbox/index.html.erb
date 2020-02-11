@@ -34,11 +34,28 @@
 
             <% end %>
 
+        </div>
+
 
 
       
         <div class="col-7">
 
+                    
+                    <% if @message != nil %>
+              
+
+                    <h1><%= @message.object%> </h1>
+
+
+                    <h1><%= @message.content%> </h1>
+
+
+                    <% end %>
+
+                
+
+                
 
         </div>
 
