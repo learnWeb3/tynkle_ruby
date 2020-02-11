@@ -43,8 +43,30 @@
 
                     
                     <% if @message != nil %>
+
+
+                    <div class="row p-2">
+
+                        <% if @message.mission_url? %>
+
+                        <div class="col">
+                                <%= link_to image_tag('icons/see-mission.png', size:"32x32", class:"img-fluid", alt:"See mission details", title:"Voir la mission"), @message.mission_url%>
+                                <%= link_to image_tag('icons/delete.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message"), @message.mission_url%>
+
+                        <% else %>
+
+                                <%= link_to image_tag('icons/delete.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message"), @message.mission_url%>
+                           
+                        <% end %>                      
+
+                                
+                        </div>     
+                    </div>
+
+
               
                     <div class="m-2 bg-light-grey p-3" id="messageShow">
+                   
 
                         <div class="row p-2">
                             <div class="col text-left">
@@ -62,6 +84,8 @@
                             </div>
                         </div>
 
+                       
+
 
                             
 
@@ -73,9 +97,10 @@
                                 <%=  f.text_field :object, class:"form-control mb-4"  %>
                                 <%=  f.label :"Message :"%>
                                 <%=  f.text_area :content, class:"form-control mb-4", rows:"2"  %>
-                            </div>
+                            
                             <%= f.submit "Envoyer", class:"btn btn-success"%>
                             <%end %>
+                            </div>
                     </div>
                     <% end %>
             

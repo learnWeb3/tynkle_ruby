@@ -131,11 +131,15 @@
         box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) !important;
     }
 
-    #talkHistory,#messageShow{
+    #talkHistory{
         overflow: auto;
         height: 80vh;
     }
 
+    #messageShow{
+        overflow: auto;
+        height: 70vh;
+    }
 
 
    
