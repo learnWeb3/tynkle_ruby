@@ -8,11 +8,16 @@ Rails.application.routes.draw do
   root 'home#index'
 
 
+
+  resources :inbox, only: [:index, :update]
+
   resources :after, only: [:show, :update]
 
   resources :servicesurvey, only: [:show, :update, :create]
 
   resources :missions, only: [:create, :update, :show, :index]
+
+  resources :messages, only: [:create, :update, :show, :index]
 
 
 end
