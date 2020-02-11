@@ -19,7 +19,6 @@ class Mission < ApplicationRecord
     validates :title, presence: true, length: { maximum: 100 }
     validates :description, presence: true, length: { maximum: 1000 }
     validates :price, presence: true, numericality: {greater_than: 0}
-    validates :rate, allow_nil:true, numericality: {minimum:0, maximum: 5}
     validates :address, presence: true
 
     # custom validation to check wether address exists
@@ -40,6 +39,7 @@ class Mission < ApplicationRecord
         end
 
     end
+
 
 
 

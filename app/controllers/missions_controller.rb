@@ -5,8 +5,8 @@ class MissionsController < ApplicationController
         mission_device_category = DeviceCategory.find(session[:device_category])
         mission_category_tag = Categorytag.find(session[:problem_type])
         mission_address = params["mission"]["address"]
-        mission_title = params["mission"]["title"].downcase!
-        mission_description = params["mission"]["description"].downcase!
+        mission_title = params["mission"]["title"].downcase
+        mission_description = params["mission"]["description"].downcase
         mission_price = params["mission"]["price"].to_i
         mission_image_one = params["mission"]["image_one"]
         mission_image_two = params["mission"]["image_two"]
