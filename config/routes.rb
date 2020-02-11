@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :inbox, only: [:index, :update, :create]
+  resources :inbox, only: [:index, :update, :destroy]
 
   resources :after, only: [:show, :update]
 

@@ -21,4 +21,7 @@ class InboxController < ApplicationController
 
     end
     
+    def destroy
+        puts "hahahhahahahah #{params} hahahhahahha"
+    end
 end

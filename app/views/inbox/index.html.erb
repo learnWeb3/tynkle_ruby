@@ -49,13 +49,22 @@
 
                         <% if @message.mission_url? %>
 
-                        <div class="col">
-                                <%= link_to image_tag('icons/see-mission.png', size:"32x32", class:"img-fluid", alt:"See mission details", title:"Voir la mission"), @message.mission_url%>
-                                <%= link_to image_tag('icons/delete.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message"), @message.mission_url%>
+                        <div class="col d-flex">
+
+                                <%= button_to @message.mission_url, class:"bg-transparent", method: :get do %>
+                                    <%= image_tag('icons/see-mission.png', size:"32x32", class:"img-fluid", alt:"See mission details", title:"Voir la mission")%>
+                                <% end %>
+
+                                <%= button_to inbox_path(id:@message.id), class:"bg-transparent", method: :delete  do %>
+                                   <%= image_tag('icons/delete.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message") %>
+                                <% end %>
 
                         <% else %>
 
-                                <%= link_to image_tag('icons/delete.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message"), @message.mission_url%>
+                        <%= button_to inbox_path(id:@message.id), class:"bg-transparent", method: :delete  do %>
+                            <%= image_tag('icons/delete.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message") %>
+                         <% end %>
+
                            
                         <% end %>                      
 
