@@ -9,10 +9,16 @@ class InboxController < ApplicationController
 
             message = params["id"].to_i
             @message = Message.find(message)
+            @new_message = Message.new
 
         end
         
 
     end 
+
+
+    def create
+
+    end
     
 end

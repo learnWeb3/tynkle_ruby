@@ -62,10 +62,17 @@
                             </div>
                         </div>
 
-                            <%= form_for  messages_path, method: :post do |f| %>
+
+                            
+
+                            <%= form_for @new_message, url: messages_path do |f| %>
                             <div class="form-group col-12">
-                                <%=  f.label :"Répondre :"%>
-                                <%=  f.text_area :description, class:"form-control mb-4", rows:"2"  %>
+                                <h5 class="form-label"> Répondre </h5>
+                                <hr class="my-2">
+                                <%=  f.label :"Objet :"%>
+                                <%=  f.text_field :object, class:"form-control mb-4"  %>
+                                <%=  f.label :"Message :"%>
+                                <%=  f.text_area :content, class:"form-control mb-4", rows:"2"  %>
                             </div>
                             <%= f.submit "Envoyer", class:"btn btn-success"%>
                             <%end %>
