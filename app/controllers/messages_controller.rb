@@ -3,8 +3,9 @@ class MessagesController < ApplicationController
     def show
 
         message_id = params["id"]
+        message_type = params["message_type"]
 
-        redirect_to inbox_index_path(id:message_id)
+        redirect_to inbox_index_path(id:message_id, message_type:message_type)
     
     end
 

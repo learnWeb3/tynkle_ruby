@@ -4,6 +4,10 @@ class InboxController < ApplicationController
 
         @inbox = current_user.received_messages
 
+        @sent = current_user.sent_messages
+
+        @message_type = params["message_type"]
+
 
         if params["id"].to_i > 0
 
@@ -26,4 +30,6 @@ class InboxController < ApplicationController
         targeted_message.destroy
         redirect_to inbox_index_path
     end
+
+ 
 end

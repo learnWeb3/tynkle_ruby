@@ -1,0 +1,117 @@
+<div class="row justify-content-around">
+
+        <div class="col-5" id="talkHistory">
+
+            <% @inbox.each do |message| %>
+
+
+                <div class="card my-3 shadow-lg">
+
+                    <div class="card-header font-italic">
+                        <%=message.created_at.strftime("Reçu le %e %b %Y à %H:%M")%> 
+                    </div>
+
+
+
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-md-2 align-items-center">
+
+                                <% if message.sender.avatar.attached? %>
+                                <%=image_tag "/", alt:"", class:"img-fluid rounded-circle border border-dark float-left m-2"%>
+                                <%else%>
+                                <%=image_tag "icons/user.png", size:"50x50", alt:"", class:"img-fluid rounded-circle border border-dark float-left m-2"%>
+                                <% end %> 
+
+                            </div>
+                            <div class="col-md-5 d-flex align-items-center">
+
+                                <%=message.sender.first_name%> <%=message.sender.last_name%>
+
+                            </div>
+                            <div class="col-md-5 d-flex align-items-center">
+
+                                <p><%= message.object.capitalize %></p>
+                                
+                            </div>
+            
+                        </div>
+                    </div>
+
+
+                    <div class="card-footer text-center">
+
+                        <%= link_to 'Voir le message', message_path(id:message.id, message_type:"received"),  class:"stretched-link"%>  
+                   
+                    </div>
+
+                </div>
+                        
+                   
+                       
+                
+
+            <% end %>
+
+        </div>
+
+
+
+      
+        <div class="col-7" id="messageShow">
+
+                    
+                    <% if @message != nil %>
+
+
+                    <div class="row">
+                        <div class="col d-flex">
+                        <%= button_to inbox_path(id:@message.id), class:"bg-transparent border-0", method: :delete  do %>
+                            <%= image_tag('icons/quit.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message") %>
+                        <% end %>
+                        <% if @message.mission_url? %>
+                        <%= link_to image_tag('icons/url_mission.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message"), mission_path(id:@message.id) %>
+                        <% end %>
+                        </div>
+                    </div>
+                        
+
+            
+
+                        <div class="row p-2 ">
+                            <div class="col text-left">
+                            <h5 class="font-weight-bold"><%= @message.object.capitalize%> </h5>
+                            </div>
+                            <div class="col text-right">
+                            <h6 class="font-italic"><%= @message.created_at.strftime("Reçu le %e %b %Y à %H:%M")%> </h6>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+
+                            <div class="col">
+
+                                <p><%= @message.content.capitalize%> </p>
+                            </div>
+                        </div>
+
+                       
+                            <%= form_for @new_message, url: messages_path do |f| %>
+                            <div class="form-group col-12">
+                                <h5 class="form-label"> Répondre </h5>
+                                <hr class="my-2">
+                                <%=  f.label :"Objet :"%>
+                                <%=  f.text_field :object, class:"form-control mb-4"  %>
+                                <%=  f.label :"Message :"%>
+                                <%=  f.text_area :content, class:"form-control mb-4", rows:"2"  %>
+                                <%= f.hidden_field :sender, value: @message.sender.id %>
+                            
+                            <%= f.submit "Envoyer", class:"btn btn-success"%>
+                            <%end %>
+                            </div>
+                   
+                    <% end %>
+            
+                
+        </div>
+
+    </div>
