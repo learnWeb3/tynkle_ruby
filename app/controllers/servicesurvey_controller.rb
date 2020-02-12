@@ -3,7 +3,13 @@ class ServicesurveyController < ApplicationController
     steps :device_type, :problem_type, :fill_up_mission_details, :select_helper, :finish
 
     def show
+        
+        if user_signed_in?
         @user = current_user
+        else 
+        @user = User.new
+        end
+
         @mission = Mission.new
        
         case step
@@ -46,6 +52,14 @@ class ServicesurveyController < ApplicationController
         
         case step
             when :select_helper
+
+            unless user_signed_in?
+
+                if session[:user_id].to_i > 0
+                    current_user = User.find(session[:user_id].to_i)
+                end
+
+            end
 
                 selected_helper_ids = []
                 session[:selected_helper] = selected_helper_ids.dup

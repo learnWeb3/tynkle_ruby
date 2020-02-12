@@ -2,6 +2,24 @@ class MissionsController < ApplicationController
     
     def create
 
+      unless user_signed_in?
+
+        user_email = params["mission"]["@user"]["email"]
+
+        user_password = params["mission"]["@user"]["password"]
+
+        user_password_confirmation = params["mission"]["@user"]["password_confirmation"]
+
+        new_user = User.new(email:user_email, password:user_password, password_confirmation:user_password_confirmation)
+
+
+        if new_user.save
+          current_user = new_user
+          session[:user_id] = new_user.id
+        end
+
+      end
+
         mission_device_category = DeviceCategory.find(session[:device_category])
         mission_category_tag = Categorytag.find(session[:problem_type])
         mission_address = params["mission"]["address"]
