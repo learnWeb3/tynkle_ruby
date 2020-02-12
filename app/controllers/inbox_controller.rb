@@ -8,6 +8,9 @@ class InboxController < ApplicationController
 
         @message_type = params["message_type"]
 
+        @number_messages_received =  @inbox.length
+        @number_messages_sent = @sent.length
+
 
         if params["id"].to_i > 0
 

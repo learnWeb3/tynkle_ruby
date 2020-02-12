@@ -142,5 +142,30 @@
 
     }
 
+    .h-10rem{
+       height: 10rem;
+    }
+
+    .h-30rem{
+
+        height: 30rem;
+
+    }
+
+    .h-20rem{
+
+        height: 25rem;
+
+    }
+
+    .bg-new{
+        background-color: rgb(228, 228, 228);
+    }
+
+
+
+
+
+
 
    
