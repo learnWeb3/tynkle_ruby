@@ -70,7 +70,7 @@
                             <%= image_tag('icons/quit.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message") %>
                         <% end %>
                         <% if @message.mission_url? %>
-                        <%= link_to image_tag('icons/url_mission.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message"), mission_path(id:@message.id) %>
+                        <%= link_to image_tag('icons/url_mission.png', size:"32x32", class:"img-fluid", alt:"access mission details", title:"Voir la mission"), mission_path(id:@message.id) %>
                         <% end %>
                         </div>
                     </div>
