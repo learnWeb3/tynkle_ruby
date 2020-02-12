@@ -87,6 +87,9 @@ ActiveRecord::Schema.define(version: 2020_02_08_103831) do
     t.text "content"
     t.string "object"
     t.string "mission_url"
+    t.boolean "already_read", default: false
+    t.boolean "sender_deleted", default: false
+    t.boolean "recipient_deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipient_id"], name: "index_messages_on_recipient_id"
@@ -141,7 +144,6 @@ ActiveRecord::Schema.define(version: 2020_02_08_103831) do
     t.boolean "status_activity", default: true
     t.integer "solved_mission_number", default: 0
     t.float "global_review_mark", default: 0.0
-    t.integer "service_survey_usage_count", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

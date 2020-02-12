@@ -66,7 +66,7 @@
 
                     <div class="row">
                         <div class="col d-flex">
-                        <%= button_to inbox_path(id:@message.id), class:"bg-transparent border-0", method: :delete  do %>
+                        <%= button_to inbox_path(id:@message.id, message_type:@message_type), class:"bg-transparent border-0", method: :delete  do %>
                             <%= image_tag('icons/quit.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message") %>
                         <% end %>
                         <% if @message.mission_url? %>
