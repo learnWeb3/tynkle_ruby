@@ -55,8 +55,12 @@ class ServicesurveyController < ApplicationController
 
             unless user_signed_in?
 
-                if session[:user_id].to_i > 0
-                    current_user = User.find(session[:user_id].to_i)
+
+                if session[:user_account_id]["id"].present?
+
+                    targeted_user = session[:user_account_id]["id"].to_i
+
+                    current_user = User.find(targeted_user)
                 end
 
             end

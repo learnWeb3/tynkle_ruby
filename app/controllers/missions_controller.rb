@@ -3,6 +3,7 @@ class MissionsController < ApplicationController
     def create
 
       unless user_signed_in?
+        
 
         user_email = params["mission"]["@user"]["email"]
 
@@ -10,13 +11,30 @@ class MissionsController < ApplicationController
 
         user_password_confirmation = params["mission"]["@user"]["password_confirmation"]
 
-        new_user = User.new(email:user_email, password:user_password, password_confirmation:user_password_confirmation)
+        user = User.where(email:user_email).first
+
+        if user.nil?
+
+          new_user = User.new(email:user_email, password:user_password, password_confirmation:user_password_confirmation)
 
 
-        if new_user.save
-          current_user = new_user
-          session[:user_id] = new_user.id
+          if new_user.save
+            current_user = new_user
+            session[:user_account_id] = new_user.id
+          end
+
+        else 
+          
+          if user.valid_password?(user_password)
+
+            current_user = user
+
+            session[:user_account_id] = user
+
+          end
+
         end
+
 
       end
 
