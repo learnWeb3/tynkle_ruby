@@ -158,22 +158,43 @@
 
     }
 
-    .w-20rem{
+    .w-18rem{
 
-        width: 25rem;
+        width: 18rem;
 
     }
-    .h-20rem{
+    .h-18rem{
+
+        height: 18rem;
+
+    }
+
+    .h-25rem{
 
         height: 25rem;
 
     }
 
+
     .bg-new{
         background-color: rgb(228, 228, 228);
+       
+    }
+
+    .border-primary-lg {
+        border: 0.5rem solid #4E66F8 !important;
+        
+    }
+
+    .border-success-lg {
+        border: 0.5rem solid #28a745 !important;
     }
 
 
+
+    #sent-inbox,#received-inbox{
+        cursor: pointer;
+    }
 
 
 

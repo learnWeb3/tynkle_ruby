@@ -2,7 +2,7 @@
 
 <div class="row justify-content-center bg-light-blue h-10rem m-0 p-0">
 
-    <div class="row justify-content-center bg-white m-5 p-5 h-20rem w-20rem shadow-lg">
+    <div class="row justify-content-center bg-white m-6 p-6 h-18rem w-18rem shadow-lg rounded-circle">
      
 
             <%= image_tag('icons/mailbox.png', class:"img-fluid mx-auto") %>
@@ -13,11 +13,11 @@
 
 </div> 
 
-<div class="row bg-new h-20rem m-0 p-0">
+<div class="row bg-new h-25rem m-0 p-0">
 
     <div class="col d-flex align-items-center justify-content-center">
 
-        <div class="card" style="width: 18rem;">
+        <div class="card shadow-lg border-primary-lg" style="width: 15rem;" id="sent-inbox">
             <div class="card-body">
            
             <h2 class="card-text text-center"><%= @number_messages_sent %><small> envoyés </small></h2>
@@ -30,7 +30,7 @@
 
     <div class="col d-flex align-items-center justify-content-center">
 
-        <div class="card" style="width: 18rem;">
+        <div class="card shadow-lg border-success-lg" style="width: 15rem;" id="received-inbox">
             <div class="card-body">
         
             <h2 class="card-text text-center"><%= @number_messages_received %> <small> reçus </small></h2>

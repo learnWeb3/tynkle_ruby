@@ -3,7 +3,7 @@
 <%= hidden_field_tag :"message_type", @message_type %>
 
 
-<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+<ul class="nav nav-pills my-3" id="pills-tab" role="tablist">
   <li class="nav-item">
     <%=link_to 'Bienvenue sur ta messagerie', '#v-pills-inbox-home', class:"nav-link active", id:"v-pills-inbox-home-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"v-pills-inbox-home", 'aria-selected':'true'%>
   </li>
@@ -14,28 +14,30 @@
     <%=link_to 'Messages envoyés', '#v-pills-sent-messages', class:"nav-link", id:"v-pills-sent-messages-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"v-pills-sent-messages", 'aria-selected':'false'%>
   </li>
 </ul>
+
 <div class="tab-content" id="pills-tabContent">
 
-<div class="tab-pane fade show active" id="v-pills-inbox-home" role="tabpanel" aria-labelledby="v-pills-inbox-home-tab">
+  <div class="tab-pane fade show active" id="v-pills-inbox-home" role="tabpanel" aria-labelledby="v-pills-inbox-home-tab">
 
 
-  <%= render 'inbox_welcome' %>
+    <%= render 'inbox_welcome' %>
 
-</div>
+  </div>
 
-<div class=" tab-pane fade" id="v-pills-received-messages" role="tabpanel" aria-labelledby="v-pills-received-messages-tab">
+  <div class=" tab-pane fade" id="v-pills-received-messages" role="tabpanel" aria-labelledby="v-pills-received-messages-tab">
 
-  <%= render 'search_messages_input' %>
-  <%= render 'received_messages' %>
+    <%= render 'search_messages_input' %>
+    <%= render 'received_messages' %>
 
-</div>
+  </div>
 
-<div class="tab-pane fade" id="v-pills-sent-messages" role="tabpanel" aria-labelledby="v-pills-sent-messages-tab">
+  <div class="tab-pane fade" id="v-pills-sent-messages" role="tabpanel" aria-labelledby="v-pills-sent-messages-tab">
 
-  <%= render 'search_messages_input' %>
-  <%= render 'sent_messages' %>
+    <%= render 'search_messages_input' %>
+    <%= render 'sent_messages' %>
 
-</div>
+  </div>
+
 </div>
 
 
