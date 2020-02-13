@@ -2,24 +2,24 @@ class InboxController < ApplicationController
 
     def index
 
+    
+
         @inbox = current_user.received_messages.where(recipient_deleted:false)
 
         @sent = current_user.sent_messages.where(sender_deleted:false)
-
-        @message_type = params["message_type"]
 
         @number_messages_received =  @inbox.length
         @number_messages_sent = @sent.length
 
 
-        if params["id"].to_i > 0
+        @new_message = Message.new
 
-            message = params["id"].to_i
-            @message = Message.find(message)
-            @new_message = Message.new
+        @message_received_show = @inbox.where(id:params["id"])
 
-        end
-        
+        @message_sent_show = @sent.where(id:params["id"])
+
+
+       
 
     end 
 
@@ -30,7 +30,7 @@ class InboxController < ApplicationController
     
     def destroy
         targeted_message = Message.find(params["id"].to_i)
-        message_type = params["message_type"]
+        message_type = params["content"]
         if message_type == "sent"
             targeted_message.sender_deleted = true 
             targeted_message.save
@@ -38,8 +38,11 @@ class InboxController < ApplicationController
             targeted_message.recipient_deleted = true
             targeted_message.save
         end
-        redirect_to inbox_index_path(message_type:message_type)
+        params["id"] = nil
+        redirect_to inbox_index_path(content:message_type)
     end
+
+  
 
  
 end

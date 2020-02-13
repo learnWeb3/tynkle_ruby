@@ -5,13 +5,13 @@
 
 <ul class="nav nav-pills my-3" id="pills-tab" role="tablist">
   <li class="nav-item">
-    <%=link_to 'Bienvenue sur ta messagerie', '#v-pills-inbox-home', class:"nav-link active", id:"v-pills-inbox-home-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"v-pills-inbox-home", 'aria-selected':'true'%>
+    <%=link_to 'Bienvenue sur ta messagerie', inbox_index_path(content:"home"), class:"nav-link"%>
   </li>
   <li class="nav-item">
-    <%=link_to 'Messages reçus', '#v-pills-received-messages', class:"nav-link", id:"v-pills-received-messages-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"v-pills-received-messages" ,'aria-selected':"false"%>
+    <%=link_to 'Messages reçus', inbox_index_path(content:"received"), class:"nav-link"%>
   </li>
   <li class="nav-item">
-    <%=link_to 'Messages envoyés', '#v-pills-sent-messages', class:"nav-link", id:"v-pills-sent-messages-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"v-pills-sent-messages", 'aria-selected':'false'%>
+    <%=link_to 'Messages envoyés', inbox_index_path(content:"sent"), class:"nav-link"%>
   </li>
   <li class="nav-item ml-auto mx-2">
     <%=link_to 'Accueil', root_path, class:"nav-link btn btn-outline-primary" %>
@@ -24,26 +24,30 @@
 
 <div class="tab-content" id="pills-tabContent">
 
-  <div class="tab-pane fade show active" id="v-pills-inbox-home" role="tabpanel" aria-labelledby="v-pills-inbox-home-tab">
+
+<%= render 'search_messages_input' %>
 
 
+<%if params["content"].present?%>
+
+
+  <%if params["content"] == "home"%>
     <%= render 'inbox_welcome' %>
-
-  </div>
-
-  <div class=" tab-pane fade" id="v-pills-received-messages" role="tabpanel" aria-labelledby="v-pills-received-messages-tab">
-
-    <%= render 'search_messages_input' %>
+  <%elsif params["content"] == "received"%>
     <%= render 'received_messages' %>
-
-  </div>
-
-  <div class="tab-pane fade" id="v-pills-sent-messages" role="tabpanel" aria-labelledby="v-pills-sent-messages-tab">
-
-    <%= render 'search_messages_input' %>
+  <%elsif params["content"] == "sent"%>
     <%= render 'sent_messages' %>
+  <%end%>
 
-  </div>
+
+
+<%end%>
+
+
+
+
+
+
 
 </div>
 

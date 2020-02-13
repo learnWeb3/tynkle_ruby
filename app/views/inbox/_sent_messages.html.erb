@@ -41,7 +41,7 @@
 
                     <div class="card-footer text-center">
 
-                        <%= link_to 'Voir le message', message_path(id:message.id, message_type:"sent"),  class:"stretched-link"%>  
+                        <%= link_to 'Voir le message', message_path(id:message.id, content:"sent"),  class:"stretched-link"%>  
                    
                     </div>
 
@@ -61,16 +61,18 @@
         <div class="col-7" id="messageShow">
 
                     
-                    <% if @message != nil %>
+                    <% if @message_sent_show != nil %>
+
+                    <% @message_sent_show.each do |message| %>
 
 
                     <div class="row">
                         <div class="col d-flex">
-                        <%= button_to inbox_path(id:@message.id, message_type:@message_type), class:"bg-transparent border-0", method: :delete  do %>
+                        <%= button_to inbox_path(id:message.id, content:"sent"), class:"bg-transparent border-0", method: :delete  do %>
                             <%= image_tag('icons/quit.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message") %>
                         <% end %>
-                        <% if @message.mission_url? %>
-                        <%= link_to image_tag('icons/url_mission.png', size:"32x32", class:"img-fluid", alt:"access mission details", title:"Voir la mission"), mission_path(id:@message.id) %>
+                        <% if message.mission_url? %>
+                        <%= link_to image_tag('icons/url_mission.png', size:"32x32", class:"img-fluid", alt:"access mission details", title:"Voir la mission"), mission_path(id:message.id) %>
                         <% end %>
                         </div>
                     </div>
@@ -80,20 +82,21 @@
 
                         <div class="row p-2 ">
                             <div class="col text-left">
-                            <h5 class="font-weight-bold"><%= @message.object.capitalize%> </h5>
+                            <h5 class="font-weight-bold"><%= message.object.capitalize%> </h5>
                             </div>
                             <div class="col text-right">
-                            <h6 class="font-italic"><%= @message.created_at.strftime("Reçu le %e %b %Y à %H:%M")%> </h6>
+                            <h6 class="font-italic"><%= message.created_at.strftime("Reçu le %e %b %Y à %H:%M")%> </h6>
                             </div>
                         </div>
                         <div class="row p-2">
 
                             <div class="col">
 
-                                <p><%= @message.content.capitalize%> </p>
+                                <p><%= message.content.capitalize%> </p>
                             </div>
                         </div>
                    
+                    <% end %>
                     <% end %>
             
                 
