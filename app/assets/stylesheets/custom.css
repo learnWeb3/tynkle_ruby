@@ -206,5 +206,9 @@
 
 
 
+    .border-black {
+        border: 0.15rem solid #000 !important;
 
+    }
+    
    
