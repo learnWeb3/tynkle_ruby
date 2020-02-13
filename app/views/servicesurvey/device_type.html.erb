@@ -50,7 +50,7 @@
 
     <% DeviceCategory.all.each_with_index do |device_category,index| %>
 
-        <div class="card col-5 shadow m-2">
+        <div class="card col-5 shadow m-3 hover-scale">
             <%=image_tag "icons/#{device_category.title}.png", class:"w-25 py-2", alt:index%>
             <div class="card-body">
                 <h5 class="card-title"><%=device_category.title%></h5>
