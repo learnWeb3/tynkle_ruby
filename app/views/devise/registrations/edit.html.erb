@@ -3,12 +3,18 @@
 <section class="py-5 py-lg-7 bg-edit-user">
 <div class="container position-relative text-center">
  
-  <ol class="breadcrumb pl-0  justify-content-center">
+  <ol class="breadcrumb my-4 justify-content-center">
     <li class="breadcrumb-item"><%= link_to 'Accueil', root_path %></li>
     <li class="breadcrumb-item active"> Mon profil </li>
   </ol>
-  
-  <h1 class="hero-heading">Mon profil</h1>
+
+  <h1 class="hero-heading">
+  <% if current_user.first_name? %>
+  <%=current_user.first_name%>
+  <% else %>
+  Mon profil
+  <% end %>
+  </h1>
 
   <% if current_user.avatar.attached? %>
     <%=image_tag "/", alt:"", class:"img-fluid rounded-circle border-black mx-auto"%>
