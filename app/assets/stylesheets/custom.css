@@ -197,6 +197,13 @@
     }
 
 
+    .bg-edit-user {
+        background-image: url(photos/edit_user/edit_profile.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
 
 
 

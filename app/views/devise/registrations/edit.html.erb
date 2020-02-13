@@ -1,3 +1,82 @@
+<%= render 'layouts/navbar' %>
+
+<section class="py-5 py-lg-7 bg-edit-user">
+<div class="container position-relative text-center">
+  <!-- Breadcrumbs -->
+  <ol class="breadcrumb pl-0  justify-content-center">
+    <li class="breadcrumb-item"><%= link_to 'Accueil', root_path %></li>
+    <li class="breadcrumb-item active"> Mon profil </li>
+  </ol>
+  <h1 class="hero-heading mb-5">Mon profil</h1>
+</div>
+</section>
+
+<!-- FAQ-->
+<section class="py-6">
+<div class="container">
+  <div class="py-4">
+    <h2 class="mb-5 text-primary">Identité</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <h5>What shipping method does Sell use?</h5>
+        <p class="text-muted mb-4">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. &quot;What's happened to me?&quot; he thought. It wasn't a dream.</p>
+        <h5>What countries do you to?</h5>
+        <p class="text-muted mb-4">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.</p>
+      </div>
+      <div class="col-md-6">
+        <h5>One of my items is missing</h5>
+        <p class="text-muted mb-4">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+        <h5>Remote areas - delivery</h5>
+        <p class="text-muted mb-4">He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="py-4">
+    <h2 class="mb-5 text-primary">Localisation</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Can I pay COD - cash on delivery?</h5>
+        <p class="text-muted mb-4">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</p>
+        <h5>Payment methods accepted</h5>
+        <p class="text-muted mb-4">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</p>
+      </div>
+      <div class="col-md-6">
+        <h5>What is Paypal?</h5>
+        <p class="text-muted mb-4">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. &quot;What's happened to me?&quot; he thought. It wasn't a dream.</p>
+        <h5>How do the conversion rates work</h5>
+        <p class="text-muted mb-4">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <% if current_user.service_provider? %>
+
+  <div class="py-4">
+    <h2 class="mb-5 text-primary"> Mettre à jour Mes Compétences</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <h5>My product has a problem what should I do?</h5>
+        <p class="text-muted mb-4">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+        <h5>What if the product is broken?</h5>
+        <p class="text-muted mb-4">He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.</p>
+      </div>
+      <div class="col-md-6">
+        <h5>Why should I buy insurance at the checkout?</h5>
+        <p class="text-muted mb-4">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<% end %>
+
+
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
