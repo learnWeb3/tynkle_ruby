@@ -19,8 +19,12 @@
 
         <div class="card shadow-lg border-primary-lg" style="width: 15rem;" id="sent-inbox">
             <div class="card-body">
+
+            <%= link_to inbox_index_path(content:"sent") do %>
            
             <h2 class="card-text text-center"><%= @number_messages_sent %><small> envoyés </small></h2>
+
+            <% end %>
          
         </div>
 
@@ -32,8 +36,12 @@
 
         <div class="card shadow-lg border-success-lg" style="width: 15rem;" id="received-inbox">
             <div class="card-body">
+
+            <%= link_to inbox_index_path(content:"received") do %>
         
             <h2 class="card-text text-center"><%= @number_messages_received %> <small> reçus </small></h2>
+
+            <% end %>
             
         </div>
     </div>
