@@ -8,6 +8,7 @@ class UseroutsidedeviseController < ApplicationController
         set_last_name = params["user"]["last_name"]
         set_date_of_birth = params["user"]["date_of_birth"]
         set_helper = params["user"]["service_provider"]
+        set_address = params["user"]["address"]
 
 
 
@@ -47,6 +48,9 @@ def check_updated_attributes(user,set_date_of_birth,set_first_name,set_last_name
     end
     if set_helper != nil && set_helper != user.service_provider
         user.service_provider= set_helper
+    end
+    if set_address != nil && set_address != user.address
+        user.address = set_address
     end
 
 end
