@@ -15,7 +15,7 @@ class UseroutsidedeviseController < ApplicationController
         set_helper_params_to_user_model_attribute(set_helper)
 
 
-        check_updated_attributes(user, set_date_of_birth, set_first_name, set_last_name, set_helper)
+        check_updated_attributes(user, set_date_of_birth, set_first_name, set_last_name, set_helper, set_address)
 
        
 
@@ -32,7 +32,7 @@ end
 
 private 
 
-def check_updated_attributes(user,set_date_of_birth,set_first_name,set_last_name,set_helper)
+def check_updated_attributes(user,set_date_of_birth,set_first_name,set_last_name,set_helper, set_address)
 
     if set_date_of_birth != nil 
         set_date_of_birth = set_date_of_birth.to_i
