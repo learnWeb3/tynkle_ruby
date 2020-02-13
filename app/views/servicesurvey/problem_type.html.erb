@@ -47,7 +47,7 @@
 
     <% Categorytag.all.each_with_index do |problem,index| %>
 
-            <div class="card col-5 my-2 mx-1">
+            <div class="card col-5 shadow m-2">
                 <%=image_tag "icons/#{problem.name}.png", class:"w-25 py-2", alt:index%>
                 <div class="card-body">
                     <h5 class="card-title"><%=problem.name%></h5>
