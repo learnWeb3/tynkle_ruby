@@ -2,61 +2,144 @@
 
 <section class="py-5 py-lg-7 bg-edit-user">
 <div class="container position-relative text-center">
-  <!-- Breadcrumbs -->
+ 
   <ol class="breadcrumb pl-0  justify-content-center">
     <li class="breadcrumb-item"><%= link_to 'Accueil', root_path %></li>
     <li class="breadcrumb-item active"> Mon profil </li>
   </ol>
   <h1 class="hero-heading mb-5">Mon profil</h1>
 </div>
+
 </section>
 
-<!-- FAQ-->
-<section class="py-6">
-<div class="container">
-  <div class="py-4">
+  
+
+<div class="py-4 px-5">
     <h2 class="mb-5 text-primary">Identité</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <h5>What shipping method does Sell use?</h5>
-        <p class="text-muted mb-4">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. &quot;What's happened to me?&quot; he thought. It wasn't a dream.</p>
-        <h5>What countries do you to?</h5>
-        <p class="text-muted mb-4">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.</p>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="field">
+            <%= f.label :Prénom %><br />
+            <%= f.text_field :first_name, autocomplete: "first_name" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :Nom %><br />
+            <%= f.text_field :last_name, autocomplete: "last_name" %>
+          </div>
+
+          
+        </div>
+
+        <div class="col-md-6">
+
+          <div class="field">
+            <%= f.label :"Date de Naissance" %><br />
+            <%= f.select :date_of_birth, (1900..2019) %>
+          </div>
+
+          <div class="field">
+            <%= f.label :"Souhaites tu aider la communauté" %><br />
+            <%= f.check_box :service_provider %>
+          </div>
+        
+
+        </div>
+
+        <div class="actions">
+            <%= f.submit "Update" %>
+        </div>
+
+
       </div>
-      <div class="col-md-6">
-        <h5>One of my items is missing</h5>
-        <p class="text-muted mb-4">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
-        <h5>Remote areas - delivery</h5>
-        <p class="text-muted mb-4">He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.</p>
-      </div>
-    </div>
-  </div>
+
+    <% end %>
+</div>
 
   <hr>
 
-  <div class="py-4">
+  <div class="py-4 px-5">
     <h2 class="mb-5 text-primary">Localisation</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
     <div class="row">
-      <div class="col-md-6">
-        <h5>Can I pay COD - cash on delivery?</h5>
-        <p class="text-muted mb-4">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</p>
-        <h5>Payment methods accepted</h5>
-        <p class="text-muted mb-4">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</p>
-      </div>
-      <div class="col-md-6">
-        <h5>What is Paypal?</h5>
-        <p class="text-muted mb-4">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. &quot;What's happened to me?&quot; he thought. It wasn't a dream.</p>
-        <h5>How do the conversion rates work</h5>
-        <p class="text-muted mb-4">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.</p>
+      <div class="col">
+
+
+          <div class="field">
+            <%= f.label :"Renseigne ton addresse" %><br />
+            <%= f.text_field :address, autocomplete: "location" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Update" %>
+          </div>
+
+
+      <% end %>
+    
+      
       </div>
     </div>
   </div>
 
   <hr>
+
+  
+  <div class="py-4 px-5">
+    <h2 class="mb-5 text-primary">Information de connexion</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+    <div class="row">
+      <div class="col">
+
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+          
+    
+            <div class="field">
+              <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+              <%= f.password_field :password, autocomplete: "new-password" %>
+              <% if @minimum_password_length %>
+                <br />
+                <em><%= @minimum_password_length %> characters minimum</em>
+              <% end %>
+            </div>
+    
+            <div class="field">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
+    
+            <div class="field">
+              <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+              <%= f.password_field :current_password, autocomplete: "current-password" %>
+            </div>
+
+
+            <div class="actions">
+              <%= f.submit "Update" %>
+            </div>
+          <% end %>
+      
+      </div>
+    </div>
+  </div>
+
 
   <% if current_user.service_provider? %>
 
-  <div class="py-4">
+  <hr>
+
+  <div class="py-4 px-5">
     <h2 class="mb-5 text-primary"> Mettre à jour Mes Compétences</h2>
     <div class="row">
       <div class="col-md-6">
@@ -77,43 +160,9 @@
 <% end %>
 
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
 
 <h3>Cancel my account</h3>
 
