@@ -17,7 +17,7 @@
 <div class="py-4 px-5">
     <h2 class="mb-5 text-primary">Identité</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= form_for @user_outside_devise, url: useroutsidedevise_path(id:current_user.id) do |f| %>
 
       <div class="row">
         <div class="col-md-6">
@@ -39,7 +39,7 @@
 
           <div class="form-group">
             <%= f.label :"Date de Naissance", class:"form-label" %>
-            <%= f.select :date_of_birth, options_for_select(1940...2019), {}, {required: 'true', class: 'custom-select'}%>
+            <%= f.select :date_of_birth, options_for_select(1940...2019), {}, { class: 'custom-select'}%>
           </div>
 
           <div class="form-group mt-5">
@@ -64,7 +64,7 @@
       <div class="col">
 
 
-        <%= f.submit "Update", class:"btn btn-outline-primary  my-4" %>
+        <%= f.submit "Update", class:"btn btn-outline-primary  my-4", :confirm=>'Are you sure?' %>
 
       </div>
     </div>
