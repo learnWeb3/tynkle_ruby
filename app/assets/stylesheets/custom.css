@@ -228,9 +228,22 @@
         line-height: 3rem;
     }
    
-
-#map-user-geolocation{
-   height: 20rem;
-    width: 100%;
-    z-index: 0;
+#relative{
+    position: relative;
 }
+
+#map-user-geolocation {
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    top: 0rem;
+    left: 0rem;
+    z-index: 0; /* Set z-index to 0 as it will be on a layer below the contact form */
+  }
+  
+  #contactform {
+    position: relative;
+    z-index: 1; /* The z-index should be higher than Google Maps */
+    width: 100%;
+    height: auto;
+  }

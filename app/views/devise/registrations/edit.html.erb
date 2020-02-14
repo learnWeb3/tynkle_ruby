@@ -111,34 +111,42 @@
 
   <hr>
 
+
+<div id="relative">
   <div id="map-user-geolocation">
   </div>
 
-
+  <div id="contactform">
   <div class="py-4 text-center justify-content-center">
 
-    <h2 class="mb-5 text-primary mx-auto">Localisation</h2>
+  <h2 class="mb-5 text-primary mx-auto bg-white w-25 py-2 rounded-corner">Localisation</h2>
 
-    <%= form_for @user_outside_devise, url: useroutsidedevise_path(id:current_user.id) do |f| %>
-
-
-    <div class="row bg-transparent mx-auto justify-content-center">
-      <div class="col-md-8">
+  <%= form_for @user_outside_devise, url: useroutsidedevise_path(id:current_user.id) do |f| %>
 
 
-          <div class="form-group">
-            <%= f.label :"Renseigne ton addresse", class:"form-label" %>
-            <%= f.text_field :address, autocomplete: "location", class:"form-control" %>
-          </div>
+  <div class="row bg-transparent mx-auto py-5 justify-content-center">
+    <div class="col-md-8 bg-white py-3 rounded-corner">
 
-          <%= f.submit "valider", class:"btn btn-outline-primary" %>
 
-      <% end %>
+        <div class="form-group">
+          <%= f.label :"Renseigne ton addresse", class:"form-label" %>
+          <%= f.text_field :address, autocomplete: "location", class:"form-control" %>
+        </div>
+
+        <%= f.submit "valider", class:"btn btn-outline-primary" %>
+
+    <% end %>
+  
     
-      
-      </div>
     </div>
   </div>
+</div>
+  </div>
+
+</div>
+
+
+
  
 
   <hr>
