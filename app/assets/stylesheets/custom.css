@@ -228,3 +228,9 @@
         line-height: 3rem;
     }
    
+
+#map-user-geolocation{
+   height: 20rem;
+    width: 100%;
+    z-index: 0;
+}
