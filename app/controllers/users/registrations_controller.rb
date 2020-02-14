@@ -18,6 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def edit
 
     @user_outside_devise = current_user
+    @user_skills = LinkSkillToUser.where(user:current_user, acquired:true)
     super
    
   end
