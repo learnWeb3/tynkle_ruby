@@ -18,7 +18,7 @@
                             <div class="col-md-2 align-items-center">
 
                                 <% if message.sender.avatar.attached? %>
-                                <%=image_tag "/", alt:"", class:"img-fluid rounded-circle border border-dark float-left m-2"%>
+                                <%=image_tag message.sender.avatar, size:"50x50", alt:"", class:"img-fluid rounded-circle border border-dark float-left m-2"%>
                                 <%else%>
                                 <%=image_tag "icons/man_avatar.png", size:"50x50", alt:"", class:"img-fluid rounded-circle border border-dark float-left m-2"%>
                                 <% end %> 
@@ -67,35 +67,42 @@
                     <% @message_received_show.each do |message| %>
 
 
-                    <div class="row">
+                    <div class="row py-2">
                         <div class="col d-flex">
                         <%= button_to inbox_path(id:message.id, content:"received"), class:"bg-transparent border-0", method: :delete  do %>
                             <%= image_tag('icons/quit.png', size:"32x32", class:"img-fluid", alt:"delete message", title:"Supprimer le message") %>
                         <% end %>
                         <% if message.mission_url? %>
-                        <%= link_to image_tag('icons/url_mission.png', size:"32x32", class:"img-fluid", alt:"access mission details", title:"Voir la mission"), mission_path(id:@message.id) %>
+                        <%= link_to image_tag('icons/url_mission.png', size:"32x32", class:"img-fluid", alt:"access mission details", title:"Voir la mission"), mission_path(id:message.id) %>
                         <% end %>
                         </div>
                     </div>
                         
 
-            
+                    <div class="p-3 m-2">
 
-                        <div class="row p-2 ">
+                        <h6 class="text-right text-muted"><%= message.created_at.strftime("%H:%M %p | %e %b %Y")%> </h6>
+
+                        <div class="row p-2 bg-light-grey-2">
                             <div class="col text-left">
                             <h5 class="font-weight-bold"><%= message.object.capitalize%> </h5>
                             </div>
                             <div class="col text-right">
-                            <h6 class="font-italic"><%= message.created_at.strftime("Reçu le %e %b %Y à %H:%M")%> </h6>
+                           
                             </div>
                         </div>
-                        <div class="row p-2">
+                        <div class="row p-2 bg-light-grey-2">
 
                             <div class="col">
 
                                 <p><%= message.content.capitalize%> </p>
                             </div>
                         </div>
+
+
+                    </div>
+
+                    
 
                        
                             <%= form_for @new_message, url: messages_path do |f| %>
