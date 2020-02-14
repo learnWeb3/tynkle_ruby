@@ -119,13 +119,13 @@
   <div id="contactform">
   <div class="py-4 text-center justify-content-center">
 
-  <h2 class="mb-5 text-primary mx-auto bg-white w-25 py-2 rounded-corner">Localisation</h2>
+  <h2 class="mb-5 text-primary mx-auto bg-white w-25 py-2 rounded-corner shadow">Localisation</h2>
 
   <%= form_for @user_outside_devise, url: useroutsidedevise_path(id:current_user.id) do |f| %>
 
 
   <div class="row bg-transparent mx-auto py-5 justify-content-center">
-    <div class="col-md-8 bg-white py-3 rounded-corner">
+    <div class="col-md-8 bg-white py-3 rounded-corner shadow-lg">
 
 
         <div class="form-group">
@@ -343,7 +343,7 @@
     <div class="row">
       <div class="col-md-6">
 
-      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-sm btn-outline-danger" %></p>
+      <%= button_to "supprimer", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-sm btn-outline-danger" %></p>
     
       </div>
     </div>

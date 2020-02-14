@@ -2,7 +2,7 @@
 function initMap(latitude,longitude, targetedDiv) {
   map = new google.maps.Map(targetedDiv, {
   center: {lat: latitude, lng: longitude},
-  zoom: 8
+  zoom: 14
 });
 
 };
