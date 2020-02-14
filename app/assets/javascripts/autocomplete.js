@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+
     function initializeAutocomplete(id) {
         var element = document.getElementById(id);
         if (element) {
@@ -22,7 +22,4 @@ $(document).on('turbolinks:load', function() {
             }
         }
     }
-    google.maps.event.addDomListener(window, 'load', function() {
-        initializeAutocomplete('autocomplete_address');
-    });
-});
+   

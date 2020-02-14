@@ -192,3 +192,7 @@
 <% end %>
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
+
+<%= javascript_tag (" google.maps.event.addDomListener(window, 'load', function() {
+    initializeAutocomplete('autocomplete_address');
+});") %>
