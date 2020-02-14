@@ -37,12 +37,70 @@
 
     </div>
 
+    </div>
+</section>
 
-   
 
+
+
+
+
+
+<section class="py-2">
+    <div class="container">
+
+
+        <ul class="nav nav-pills mb-3 col-12 text-center justify-content-center" id="pills-tab" role="tablist">
+
+            <% Categorytag.all.each do |tag| %>
+
+            <li class="nav-item">
+                <%= link_to "#pills-#{tag.name}", class:"nav-link d-flex", id:"pills-#{tag.name}-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"pills-#{tag.name}", 'aria-selected':"false"  do %> 
+                <%= content_tag :div, tag.name %>
+                <%end%>
+            </li>
+
+            <% end %>
+        
+        </ul>
+
+
+        <div class="tab-content" id="pills-tabContent">
+
+            <% Categorytag.all.each do |category| %>
+
+                <div class="tab-pane fade" id="pills-<%=category.name%>" role="tabpanel" aria-labelledby="pills-<%=category.name%>-tab justify-content-center">
+                <section class="py-2">
+                    <div class="container">
+                        <div class="row">
+                            <table class="table table-responsive-lg text-gray-700 table-striped table-hover">
+                                <tr class="no-hover no-stripe">
+                                    <th class="border-top-0">Compétences</th>
+                                    <td class="border-top-0"><strong>OUI</strong></td>
+                                    <td class="border-top-0"><strong>NON</strong></td>
+                                </tr>
+                            <% Skill.where(categorytag:category).each do |skill|%>
+                                <tr class="no-hover no-stripe">
+                                    <th style="min-width: 200px"><%=skill.name%></th>
+                                    <td style="min-width: 200px"><strong class="text-sm">OUI</strong></td>
+                                    <td style="min-width: 200px"><strong class="text-sm">NON</strong></td>
+                                </tr>
+                            <% end %>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            <%end%>
+        </div>
 
     </div>
 </section>
+
+
+
+
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
 
