@@ -48,19 +48,24 @@ class ServicesurveyController < ApplicationController
 
 
     def update
+
         @user = current_user
         
         case step
             when :select_helper
 
-            unless user_signed_in?
+            if user_signed_in?
+
+                message_sender = current_user
+
+            else
 
 
                 if session[:user_account_id]["id"].present?
 
                     targeted_user = session[:user_account_id]["id"].to_i
 
-                    current_user = User.find(targeted_user)
+                    message_sender = User.find(targeted_user)
                 end
 
             end
@@ -78,7 +83,7 @@ class ServicesurveyController < ApplicationController
                 shared_mission_url = website_url+"/missions/#{mission_id}"
 
                 selected_helper_ids.each do |helper_id|
-                    Message.create(sender:current_user, recipient:User.find(helper_id), object:message_object_mission_title, content:message_content_mission_description, mission_url:shared_mission_url)
+                    Message.create(sender:message_sender, recipient:User.find(helper_id), object:message_object_mission_title, content:message_content_mission_description, mission_url:shared_mission_url)
                 end
 
                 redirect_to wizard_path(:finish)
