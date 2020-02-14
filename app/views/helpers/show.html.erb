@@ -55,7 +55,7 @@
             <% Categorytag.all.each do |tag| %>
 
             <li class="nav-item">
-                <%= link_to "#pills-#{tag.name}", class:"nav-link d-flex", id:"pills-#{tag.name}-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"pills-#{tag.name}", 'aria-selected':"false"  do %> 
+                <%= link_to "#pills-#{tag.name}", class:"nav-link d-flex mx-2", id:"pills-#{tag.name}-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"pills-#{tag.name}", 'aria-selected':"false"  do %> 
                 <%= content_tag :div, tag.name %>
                 <%end%>
             </li>
@@ -73,17 +73,16 @@
                 <section class="py-2">
                     <div class="container">
                         <div class="row">
-                            <table class="table table-responsive-lg text-gray-700 table-striped table-hover">
+                            <table class="table table-responsive-lg text-gray-700 table-striped table-hover text-center d-flex align-items-center justify-content-center">
                                 <tr class="no-hover no-stripe">
                                     <th class="border-top-0">Compétences</th>
-                                    <td class="border-top-0"><strong>OUI</strong></td>
-                                    <td class="border-top-0"><strong>NON</strong></td>
+                                    <td class="border-top-0"><strong>Service proposé</strong></td>
+                                   
                                 </tr>
                             <% Skill.where(categorytag:category).each do |skill|%>
                                 <tr class="no-hover no-stripe">
                                     <th style="min-width: 200px"><%=skill.name%></th>
-                                    <td style="min-width: 200px"><strong class="text-sm">OUI</strong></td>
-                                    <td style="min-width: 200px"><strong class="text-sm">NON</strong></td>
+                                    <td style="min-width: 200px"><%if LinkSkillToUser.where(user:@user, skill:skill).first.acquired == true%><%=image_tag "icons/yes-skill.png", class:"w-25 img-fluid mx-auto d-block"%><%else%><%=image_tag "icons/no-skill.png", class:"w-25 img-fluid mx-auto d-block"%><%end%></td>
                                 </tr>
                             <% end %>
                             </table>
