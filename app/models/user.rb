@@ -65,6 +65,15 @@ class User < ApplicationRecord
 
     end
 
+    def age?
+      if self.date_of_birth?
+        age = Time.now.strftime("%Y").to_i - self.date_of_birth
+        return age
+      end
+    end
+      
+
+
     private
 
 
@@ -78,15 +87,7 @@ class User < ApplicationRecord
       end
     end
 
-    # defining helper method to check wether user is a service provider or not 
 
-    def self.service_provider?
-      if self.service_provider?
-        return true
-      else 
-        return false
-      end
-    end
 
 
   

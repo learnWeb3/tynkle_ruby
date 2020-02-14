@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
 
-
+  resources :helpers, only: [:index, :show]
+  
   resources :inbox, only: [:index, :update, :destroy]
 
   resources :after, only: [:show, :update]

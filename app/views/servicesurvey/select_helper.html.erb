@@ -55,9 +55,9 @@
                 <div class="col">
                     <div class="d-flex align-items-center mb-3">
                     <% if helper.avatar.attached? %>
-                        <%=image_tag helper.avatar, alt:"", class:"avatar avatar-sm avatar-border-white ml-3"%><h2 class="h5 mb-0 ml-2"><%=helper.first_name%></h2>
+                        <%=link_to (image_tag helper.avatar, alt:"", class:"avatar avatar-md avatar-border-white ml-3"), helper_path(id:helper.id)%><h2 class="h5 mb-0 ml-2"><%=helper.first_name%></h2>
                     <%else%>
-                        <%=image_tag "icons/user.png", alt:"", class:"avatar avatar-md avatar-border-white ml-3"%><h2 class="h5 mb-0 ml-2"><%=helper.first_name%></h2>
+                        <%=link_to (image_tag "icons/man_avatar.png", alt:"", class:"avatar avatar-md avatar-border-white ml-3"), helper_path(id:helper.id)%><h2 class="h5 mb-0 ml-2"><%=helper.first_name%></h2>
                     <%end%>
                     </div>
                     
@@ -90,8 +90,7 @@
                 <% if helper.address? %>
                 <div class="col text-center my-auto">
                     <i class="fas fa-map-signs"></i> 
-                    <p class="text-sm font-weight-bold"><%=Geocoder.search([helper.latitude, helper.longitude]).first.postal_code%></p>  
-                    <p class="text-sm font-weight-bold"><%=Geocoder.search([helper.latitude, helper.longitude]).first.city%></p>
+                    <p class="text-sm font-weight-bold"><%=Geocoder.search([helper.latitude, helper.longitude]).first.postal_code%> <%=Geocoder.search([helper.latitude, helper.longitude]).first.city%></p>  
                 </div>
                 <% end %>
                 <div class="col text-center my-auto">

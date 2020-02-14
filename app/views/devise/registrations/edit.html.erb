@@ -18,10 +18,10 @@
 
   <% if current_user.avatar.attached? %>
 
-    <%= image_tag @user.avatar, size:"200x200", class:"avatar-2"%>
+    <%= image_tag @user.avatar, size:"200x200", class:"avatar avatar-xl avatar-border-white"%>
 
   <%else%>
-    <%=image_tag "icons/man_avatar.png", size:"200x200", alt:"", class:"img-fluid rounded-circle border-black mx-auto"%>
+    <%=image_tag "icons/man_avatar.png", size:"200x200", alt:"", class:"avatar avatar-xl avatar-border-white"%>
   <% end %> 
 
 
