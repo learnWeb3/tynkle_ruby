@@ -106,3 +106,5 @@
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
 
 <%= javascript_tag ("initMap(#{@user.latitude}, #{@user.longitude}, document.getElementById('map-helper-geolocation'))")%>
+
+<%= javascript_tag ("reloadPage()") %>
