@@ -8,7 +8,7 @@
     <li class="breadcrumb-item active"> Mon profil </li>
   </ol>
 
-  <h1 class="hero-heading text-primary">
+  <h1 class="hero-heading ">
   <% if current_user.first_name? %>
   Bonjour, <%=current_user.first_name%>
   <% else %>
@@ -50,7 +50,7 @@
   
 
 <div class="py-4 px-5">
-    <h2 class="mb-5 text-primary">Identité</h2>
+    <h2 class="mb-5 ">Identité</h2>
 
     <%= form_for @user_outside_devise, url: useroutsidedevise_path(id:current_user.id) do |f| %>
 
@@ -118,7 +118,7 @@
   <div id="contactform">
   <div class="py-4 text-center justify-content-center">
 
-  <h2 class="mb-5 text-primary mx-auto bg-white w-25 py-2 rounded-corner shadow">Localisation</h2>
+  <h2 class="mb-5  mx-auto bg-white w-25 py-2 rounded-corner shadow">Localisation</h2>
 
   <%= form_for @user_outside_devise, url: useroutsidedevise_path(id:current_user.id) do |f| %>
 
@@ -147,7 +147,7 @@
 
   
   <div class="py-4 px-5">
-    <h2 class="mb-5 text-primary">Information de connexion</h2>
+    <h2 class="mb-5 ">Information de connexion</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
@@ -206,7 +206,7 @@
 
 
   <div class="py-4 px-5">
-    <h2 class="mb-5 text-primary text-center"> Mettre à jour Mes Compétences</h2>
+    <h2 class="mb-5  text-center"> Mettre à jour Mes Compétences</h2>
     <div class="row justify-content-center">
       <div class="col">
 
