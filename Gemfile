@@ -86,6 +86,10 @@ gem "table_print"
 
 gem 'devise'
 
+# Omniauth strategy for google 
+
+gem 'omniauth-google-oauth2', '~> 0.2.2'
+
 
 # Jquery Gem for rails
 
