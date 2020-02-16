@@ -90,6 +90,10 @@ gem 'devise'
 
 gem 'omniauth-google-oauth2'
 
+# Omniauth strategy for facebook
+
+gem 'omniauth-facebook'
+
 
 # Jquery Gem for rails
 

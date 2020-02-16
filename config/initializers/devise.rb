@@ -300,4 +300,9 @@ Devise.setup do |config|
   # configuring devise authentication strategy to work with omniauth and google api credentials
 
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {}
+
+  # configuring devise authentication strategy to work with omniauth and facebook api credentials
+
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
+
 end
