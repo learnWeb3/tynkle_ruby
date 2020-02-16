@@ -17,14 +17,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :solved_mission_number, default:0
       t.float :global_review_mark, default:0
       
-      
-
-      t.string :provider 
-      t.string :uid
-      t.string :token
-      t.integer :expires_at
-      t.boolean :expires
-      t.string :refresh_token
+    
     end
   end
 end
