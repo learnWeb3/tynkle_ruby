@@ -60,12 +60,17 @@ class ServicesurveyController < ApplicationController
 
             else
 
+                if session[:user_account_id].present?
+                    if session[:user_account_id]["id"].present?
 
-                if session[:user_account_id]["id"].present?
+                        targeted_user = session[:user_account_id]["id"].to_i
 
-                    targeted_user = session[:user_account_id]["id"].to_i
+                        message_sender = User.find(targeted_user)
+                    else 
+                        # flash[:error]
+                        redirect_to wizard_path
 
-                    message_sender = User.find(targeted_user)
+                    end
                 end
 
             end
@@ -74,6 +79,7 @@ class ServicesurveyController < ApplicationController
                 session[:selected_helper] = selected_helper_ids.dup
                 params["/servicesurvey/select_helper"].each {|k,v| selected_helper_ids.push(k)}
 
+            if session[:mission].present?
                 mission_id = session[:mission].to_i
                 mission = Mission.find(mission_id)
                 message_object_mission_title = mission.title
@@ -87,6 +93,12 @@ class ServicesurveyController < ApplicationController
                 end
 
                 redirect_to wizard_path(:finish)
+            else 
+
+                # flash[:error]
+                
+                redirect_to wizard_path
+            end
 
         end
     end
