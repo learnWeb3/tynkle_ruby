@@ -80,15 +80,15 @@ class MissionsController < ApplicationController
 
         case mission_type
           when mission_type_collection_array[0]
-            @missions = Mission.where("title LIKE ?", "%" + params[:"search"] + "%")
+            @missions = Mission.where("title LIKE ?", "%" + user_input + "%")
           when mission_type_collection_array[1]
-            @missions = Mission.where("description LIKE ?", "%" + params[:"search"] + "%")
+            @missions = Mission.where("description LIKE ?", "%" + user_input + "%")
           when mission_type_collection_array[2]
-            @missions = Mission.where("device_category LIKE ?", "%" + params[:"search"] + "%")
+            @missions = Mission.where("device_category LIKE ?", "%" + user_input + "%")
           when mission_type_collection_array[3]
-            @missions = Mission.where("categorytag LIKE ?", "%" + params[:"search"] + "%")
+            @missions = Mission.where("categorytag LIKE ?", "%" + user_input + "%")
           when mission_type_collection_array[4]
-            @missions = Mission.where("address LIKE ?", "%" + params[:"search"] + "%")
+            @missions = Mission.where("address LIKE ?", "%" + user_input + "%")
         end
 
       else @missions = Mission.all
