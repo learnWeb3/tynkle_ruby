@@ -69,10 +69,12 @@ class User < ApplicationRecord
 
       reviews = Review.where(assessed:self)
       reviews_rates = []
-      if reviews.length > 1
+     
         reviews.each do |review|
           reviews_rates.push(review.rate)
         end
+
+      if reviews.length > 1
       
       return reviews_rates.sum / reviews_rates.length
 

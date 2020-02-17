@@ -12,8 +12,22 @@ class Review < ApplicationRecord
 
     validates :rate, presence:true, numericality: {greater_than_or_equal_to:0, less_than_or_equal_to:5}
 
+    after_create :check_and_update_user_review_mark
 
 
+    def check_and_update_user_review_mark
+
+        user = self.assessed
+
+        new_mark = user.update_global_review_mark
+
+        user.global_review_mark = new_mark
+
+        user.save!
+
+
+
+    end
 
 
 
