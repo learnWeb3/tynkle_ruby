@@ -21,24 +21,31 @@
 
 <% @missions.each do |mission| %>
 
-        <div class="list-group col-9 shadow mb-5 p-4 bg-white">
+        <div class="list-group col-9 shadow mb-5 p-4 bg-white position-relative">
             <div class="row">
-                <div class="col my-auto d-flex align-items-center">
+                <div class="col-md-3 my-auto d-flex align-items-center">
                    
                     <% if mission.image_one.attached? %>
-                            <%=link_to (image_tag mission.image_one, alt:"", class:""), mission_path(id:mission.id)%><h2 class="h5 mb-0 ml-2"><%=mission.title%></h2>
+                            <%=image_tag mission.image_one, size:"100x100", alt:""%><h2 class="h5 mb-0 ml-2"><%=mission.title%></h2>
                     <%else%>
                     
-                            <%=link_to (image_tag mission.categorytag.image_url, alt:"", class:""), mission_path(id:mission.id)%><h2 class="h5 mb-0 ml-2"><%=mission.title%></h2>
+                            <%=image_tag "icons/#{mission.categorytag.name}.png", size:"100x100", alt:"", class:"stretched-link"%><h2 class="h5 mb-0 ml-2"><%=mission.title%></h2>
                     <%end%>
                   
                 </div>
            
-                <div class="col-md-6 text-center my-auto d-flex align-items-center">
+                <div class="col-md-3 text-center my-auto d-block align-items-center">
 
                     <p class="mb-0 mx-auto"><%= mission.categorytag.name %></p>
-                    <p class="mb-0 mx-auto"><%= mission.device_category.title %></p>
+                    <p class="mb-0 mx-auto mt-2"><%= mission.device_category.title %></p>
+                 
 
+                </div>
+
+                <div class="col d-flex align-items-center">
+
+                    <p class="mb-0 mx-auto">Budget :</p>
+                    <p class="mb-0 mx-auto"><%= mission.price %> €</p>
 
                 </div>
 
@@ -48,11 +55,19 @@
 
                 </div>
 
-                <div class="col text-center my-auto d-flex align-items-center">
+                <div class="col text-center my-auto d-block align-items-center">
 
                     <p class="mb-0 badge badge-pill p-2 badge-primary-light"><%=mission.created_at.strftime("le %d %b %Y")%></p>
+                    <%= link_to 'Voir', mission_path(id:mission.id), class:"btn btn-outline-primary mt-2" %>
+                   
+                    
                 </div>
             </div>
+
+         
+         
+
+           
         </div>
 
 
