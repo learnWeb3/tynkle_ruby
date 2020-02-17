@@ -19,7 +19,7 @@ class Mission < ApplicationRecord
     validates :title, presence: true, length: { maximum: 100 }
     validates :description, presence: true, length: { maximum: 1000 }
     validates :price, presence: true, numericality: {greater_than: 0}
-    validates :address, presence: true
+    # validates :address
 
     # custom validation to check wether address exists
     validate :address_is_real
@@ -28,14 +28,18 @@ class Mission < ApplicationRecord
      # Geocoding or reverse geocoding mission location
 
      geocoded_by :address
-     after_validation :geocode
+     reverse_geocoded_by :latitude, :longitude
+     after_validation :geocode, :reverse_geocode 
  
     private
 
     def address_is_real
 
-        if Geocoder.search(address).length == 0
-            errors.add(:address, "address does not exist")
+        if address.present?
+
+            if Geocoder.search(address).length == 0
+                errors.add(:address, "address does not exist")
+            end
         end
 
     end

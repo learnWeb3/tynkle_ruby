@@ -93,3 +93,9 @@ device_categories.each_with_index do |dev_cat, index|
     DeviceCategory.create(title:dev_cat, description: device_categories_description[index])
 end
 
+
+
+50.times do 
+    Mission.create(title:Faker::Books::CultureSeries.book, description:Faker::Marketing.buzzwords , price:rand(1...1500), latitude:Faker::Address.latitude, longitude: Faker::Address.longitude ,device_category:DeviceCategory.all.sample, categorytag:Categorytag.all.sample, user:User.all.sample)
+end
+

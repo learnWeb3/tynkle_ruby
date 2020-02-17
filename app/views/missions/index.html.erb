@@ -26,25 +26,25 @@
                 <div class="col my-auto d-flex align-items-center">
                    
                     <% if mission.image_one.attached? %>
-                            <%=link_to (image_tag review.assessor.avatar, alt:"", class:"avatar avatar-md avatar-border-white ml-3"), helper_path(id:review.assessor.id)%><h2 class="h5 mb-0 ml-2"><%=mission.title%></h2>
+                            <%=link_to (image_tag mission.image_one, alt:"", class:""), mission_path(id:mission.id)%><h2 class="h5 mb-0 ml-2"><%=mission.title%></h2>
                     <%else%>
                     
-                            <%=link_to (image_tag "icons/man_avatar.png", alt:"", class:"avatar avatar-md avatar-border-white ml-3"), useroutsidedevise_path(id:review.assessor.id)%><h2 class="h5 mb-0 ml-2"><%=mission.title%></h2>
+                            <%=link_to (image_tag mission.categorytag.image_url, alt:"", class:""), mission_path(id:mission.id)%><h2 class="h5 mb-0 ml-2"><%=mission.title%></h2>
                     <%end%>
                   
                 </div>
            
                 <div class="col-md-6 text-center my-auto d-flex align-items-center">
 
-                    <p class="mb-0 mx-auto"><%= mission.categorytag %></p>
-                    <p class="mb-0 mx-auto"><%= mission.device_category %></p>
+                    <p class="mb-0 mx-auto"><%= mission.categorytag.name %></p>
+                    <p class="mb-0 mx-auto"><%= mission.device_category.title %></p>
 
 
                 </div>
 
                 <div class="col text-center my-auto d-flex align-items-center">
 
-                    <p class="font-weight-bold mb-0">Postée par : <%= mission.user %></p>
+                    <p class="font-weight-bold mb-0">Postée par : <%= mission.user.first_name %></p>
 
                 </div>
 
