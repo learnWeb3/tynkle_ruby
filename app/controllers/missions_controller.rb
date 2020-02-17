@@ -71,10 +71,37 @@ class MissionsController < ApplicationController
 
     def index
 
+      mission_type_collection_array = ["Titre", "Contenu", "Type d'appareil", "Type d'intervention", "Localisation"]
+
+      if params["/missions"].present?
+
+        user_input = params["/missions"]["user_input"]
+        mission_type = params["/missions"]["search_mission_type"]
+
+        case mission_type
+          when mission_type_collection_array[0]
+            @missions = Mission.where("title LIKE ?", "%" + params[:"search"] + "%")
+          when mission_type_collection_array[1]
+            @missions = Mission.where("description LIKE ?", "%" + params[:"search"] + "%")
+          when mission_type_collection_array[2]
+            @missions = Mission.where("device_category LIKE ?", "%" + params[:"search"] + "%")
+          when mission_type_collection_array[3]
+            @missions = Mission.where("categorytag LIKE ?", "%" + params[:"search"] + "%")
+          when mission_type_collection_array[4]
+            @missions = Mission.where("address LIKE ?", "%" + params[:"search"] + "%")
+        end
+
+      else @missions = Mission.all
+
+    
+      end
+
       
     end
 
     def show 
+
+      
 
     end
 
