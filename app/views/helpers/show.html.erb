@@ -40,19 +40,45 @@
     </div>
 </section>
 
-<section>
+<section class="py-2" id="reviews">
 
     <div class="container text-center justify-content-center">
 
-        <h4> Avis </h4>
-        <div class="col d-flex align-items-center justify-content-center">
-            <%=image_tag 'icons/star.png', size:'30x30', class:'img-fluid' %>
-        </div>
+        <h4 class="my-4"> Les Avis </h4>
 
-        <div class="col d-flex align-items-center justify-content-center">
+        <%=image_tag 'icons/star.png', size:'30x30', class:'img-fluid' %>
+        <h6 class="my-2"> <%=@user.global_review_mark%> - <%=@user_reviews.length%> avis </h6>
+      
+
+        <table class="table table-responsive text-gray-700 table-striped table-hover d-flex align-items-center justify-content-center my-4">
+
+            <tr class="no-hover no-stripe">
+                
+                <th style="min-width: 200px"><%= link_to 'Parfait', helper_path(id:@user.id, review_type:"perfect", anchor: "reviews")  %></th>
+                <td style="min-width: 200px"><%=@user_reviews_perfect.length%></td>
+                
+            </tr>
+            <tr class="no-hover no-stripe">
+                <th style="min-width: 200px"><%= link_to 'Très Bon', helper_path(id:@user.id, review_type:"really-good", anchor: "reviews")  %></th>
+                <td style="min-width: 200px"><%=@user_reviews_really_good.length%></td>
+            </tr>
+            <tr class="no-hover no-stripe">
+                <th style="min-width: 200px"><%= link_to 'Correct', helper_path(id:@user.id, review_type:"good", anchor: "reviews")  %></th>
+                <td style="min-width: 200px"> <%=@user_reviews_good.length%></td>
+            </tr>
+            <tr class="no-hover no-stripe">
+                <th style="min-width: 200px"><%= link_to 'Insuffisant', helper_path(id:@user.id, review_type:"not-enough", anchor: "reviews")  %></th>
+                <td style="min-width: 200px"><%=@user_reviews_disapointing.length%></td>
+            </tr>
+            <tr class="no-hover no-stripe">
+                <th style="min-width: 200px"><%= link_to 'A éviter', helper_path(id:@user.id, review_type:"to-avoid", anchor: "reviews")  %></th>
+                <td style="min-width: 200px"> <%=@user_reviews_to_avoid.length%></td>
+            </tr>
+
+        </table>
+          
         
-            <h6><%=@user.global_review_mark%></h6>
-        </div>
+         
     </div>
 
 

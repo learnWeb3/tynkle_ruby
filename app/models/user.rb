@@ -19,6 +19,10 @@ class User < ApplicationRecord
     has_many :sent_messages, foreign_key: 'sender_id', class_name: "Message", dependent: :destroy
     has_many :received_messages, foreign_key: 'recipient_id', class_name: "Message", dependent: :destroy
 
+    # A user can write and have many reviews
+
+    has_many :reviews
+
     # A User can have many appointments and be either an attendee or have attendances depending the attrbuted role
 
     has_many :solver_meetings, class_name:"Appointment", foreign_key:"problem_solver_id"
