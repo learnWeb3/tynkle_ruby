@@ -1,0 +1,16 @@
+
+<section class="justify-content-center text-center">
+
+<%= form_for missions_path, method: :get do |f| %>
+
+    <div class="form-inline justify-content-center my-4">
+
+    <%= f.text_field :user_input, class:"form-control form-control-lg col-6", placeholder:"Rechercher une mission" %>
+    <%= f.select :search_mission_type, options_for_select(["Titre", "Contenu", "Type d'appareil", "Type d'intervention", "Localisation"]), {}, { class: 'custom-select-lg'}%>
+    <%= f.submit :rechercher, class:"btn btn-lg btn-outline-success mx-2" %>
+
+    <% end %>
+
+    </div>
+
+</section>
