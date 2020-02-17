@@ -15,6 +15,9 @@ class Review < ApplicationRecord
 
 
 
+
+
+
     def rate_to_comment
 
         rate = self.rate
@@ -34,6 +37,9 @@ class Review < ApplicationRecord
         end
 
     end
+
+
+    
 
     
 end

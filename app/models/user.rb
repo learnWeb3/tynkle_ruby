@@ -65,6 +65,26 @@ class User < ApplicationRecord
     accepts_nested_attributes_for :link_skill_to_users
 
 
+    def update_global_review_mark
+
+      reviews = Review.where(assessed:self)
+      reviews_rates = []
+      if reviews.length > 1
+        reviews.each do |review|
+          reviews_rates.push(review.rate)
+        end
+      
+      return reviews_rates.sum / reviews_rates.length
+
+      elsif reviews.length == 1
+         return reviews_rates.sum
+      else 
+         "No reviews yet for this user"
+      end
+
+    end
+
+
     def set_link_skil_skills_to_user
 
         Skill.all.each {|element|LinkSkillToUser.create(skill:element, user:self)}
