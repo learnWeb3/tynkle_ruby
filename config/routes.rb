@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create, :update, :show, :index]
 
-  resources :useroutsidedevise, only: [:update]
+  resources :useroutsidedevise, only: [:update, :show]
 
   
 

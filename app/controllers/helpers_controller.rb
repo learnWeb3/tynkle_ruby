@@ -13,6 +13,26 @@ class HelpersController < ApplicationController
         @user_reviews_good = Review.where(assessed:@user, rate:3)
         @user_reviews_disapointing = Review.where(assessed:@user, rate:2)
         @user_reviews_to_avoid = Review.where(assessed:@user, rate: 1) + Review.where(assessed:@user, rate: 0)
+
+        if params["review_type"].present?
+
+            review_type = params["review_type"]
+
+            case review_type
+                when "perfect"
+                    @review = Review.where(assessed:@user, rate:5)
+                when "really-good"
+                    @review = Review.where(assessed:@user, rate:4)
+                when "good"
+                    @review = Review.where(assessed:@user, rate:3)
+                when "not-enough"
+                    @review = Review.where(assessed:@user, rate:2)
+                when "to-avoid"
+                    @review = Review.where(assessed:@user, rate:1) + Review.where(assessed:@user, rate:0)
+            end
+
+
+        end 
     end
 
 end

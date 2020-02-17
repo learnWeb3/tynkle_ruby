@@ -40,7 +40,7 @@
     </div>
 </section>
 
-<section class="py-2" id="reviews">
+<section class="py-2 bg-light-grey" id="reviews">
 
     <div class="container text-center justify-content-center">
 
@@ -49,6 +49,9 @@
         <%=image_tag 'icons/star.png', size:'30x30', class:'img-fluid' %>
         <h6 class="my-2"> <%=@user.global_review_mark%> - <%=@user_reviews.length%> avis </h6>
       
+
+       <% if params["review_type"].nil? %>
+
 
         <table class="table table-responsive text-gray-700 table-striped table-hover d-flex align-items-center justify-content-center my-4">
 
@@ -76,6 +79,70 @@
             </tr>
 
         </table>
+
+        <% else %>
+
+<div class="text-left col-9 mx-auto">
+
+
+    <%= link_to 'Retour', helper_path(id:@user.id, anchor: "reviews"), class:"btn btn-outline-primary my-2"  %>
+
+</div>
+
+<div class="row justify-content-center my-4">
+
+
+
+<% @review.each do |review| %>
+
+        <div class="list-group col-9 shadow mb-5 p-4 bg-white">
+            <div class="row">
+                <div class="col my-auto d-flex align-items-center">
+                   
+                    <% if review.assessor.avatar.attached? %>
+                        <% if review.assessor.service_provider? %>
+                            <%=link_to (image_tag review.assessor.avatar, alt:"", class:"avatar avatar-md avatar-border-white ml-3"), helper_path(id:review.assessor.id)%><h2 class="h5 mb-0 ml-2"><%=review.assessor.first_name%></h2>
+                        <% else %>
+                            <%=link_to (image_tag review.assessor.avatar, alt:"", class:"avatar avatar-md avatar-border-white ml-3"),  useroutsidedevise_path(id:review.assessor.id)%><h2 class="h5 mb-0 ml-2"><%=review.assessor.first_name%></h2>
+                        <% end %>
+                    <%else%>
+                        <% if review.assessor.service_provider? %>
+                            <%=link_to (image_tag "icons/man_avatar.png", alt:"", class:"avatar avatar-md avatar-border-white ml-3"), helper_path(id:review.assessor.id)%><h2 class="h5 mb-0 ml-2"><%=review.assessor.first_name%></h2>
+                        <% else %>
+                            <%=link_to (image_tag "icons/man_avatar.png", alt:"", class:"avatar avatar-md avatar-border-white ml-3"), useroutsidedevise_path(id:review.assessor.id)%><h2 class="h5 mb-0 ml-2"><%=review.assessor.first_name%></h2>
+                        <% end %>   
+                    <%end%>
+                  
+                </div>
+           
+                <div class="col-md-6 text-center my-auto d-flex align-items-center">
+
+                    <p class="mb-0 mx-auto"><%= review.content %></p>
+
+
+                </div>
+
+                <div class="col text-center my-auto d-flex align-items-center">
+
+                    <p class="font-weight-bold mb-0"><%= review.rate_to_comment %></p>
+
+                </div>
+
+                <div class="col text-center my-auto d-flex align-items-center">
+
+                    <p class="mb-0 badge badge-pill p-2 badge-primary-light"><%=review.created_at.strftime("%b %Y")%></p>
+                </div>
+            </div>
+        </div>
+
+
+<% end %>
+
+</div>
+    
+
+   
+        <% end %>
           
         
          
