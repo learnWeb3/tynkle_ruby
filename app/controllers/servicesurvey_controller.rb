@@ -1,6 +1,6 @@
 class ServicesurveyController < ApplicationController
     include Wicked::Wizard
-    steps :device_type, :problem_type, :fill_up_mission_details, :select_helper, :finish
+    steps :device_type, :problem_type, :problem_details ,:fill_up_mission_details, :select_helper, :finish
 
     def show
         
@@ -17,9 +17,14 @@ class ServicesurveyController < ApplicationController
                 if params[:"device_cat"].present?
                     session[:device_category] = params[:"device_cat"].to_i
                 end
-            when :fill_up_mission_details
+            when :problem_details
                 if params[:"problem_type"].present?
                     session[:problem_type] = params[:"problem_type"].to_i
+                end
+                @skills = Skill.where(categorytag:session[:problem_type])
+            when :fill_up_mission_details 
+                if params["skill"].present?
+                    session[:needed_skill] = params["skill"].to_i # registering needed skill in order to filter helper later on 
                 end
                 if session[:device_category] != nil && session[:problem_type] != nil
 
