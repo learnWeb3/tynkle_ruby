@@ -9,6 +9,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.float :latitude
       t.float :longitude
       t.string :address
+      t.string :postal_code
+      t.string :country
+      t.string :city
       t.text :description
       t.integer :date_of_birth
       t.timestamps

@@ -58,6 +58,8 @@ class User < ApplicationRecord
     # Creation of intsances of linkskilltouser at creation of a User instances 
     
     after_create :set_link_skil_skills_to_user
+    after_save :update_address_attributes
+    
 
 
     # Nested form attribute access
@@ -132,6 +134,19 @@ class User < ApplicationRecord
           errors.add(:date_of_birth, "can't be greater than the actual year")
         end
       end
+    end
+
+    def update_address_attributes
+
+      if self.address?
+
+        address = self.address
+        geocoder_object =  Geocoder.search(address).first
+        
+        self.update_columns(city:geocoder_object.city, postal_code:geocoder_object.postal_code, country:geocoder_object.country)
+
+      end
+
     end
 
 

@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(version: 2020_02_17_065956) do
     t.float "longitude"
     t.string "address"
     t.string "postal_code"
+    t.string "country"
+    t.string "city"
     t.bigint "device_category_id"
     t.bigint "user_id"
     t.bigint "categorytag_id"
@@ -149,6 +151,9 @@ ActiveRecord::Schema.define(version: 2020_02_17_065956) do
     t.float "latitude"
     t.float "longitude"
     t.string "address"
+    t.string "postal_code"
+    t.string "country"
+    t.string "city"
     t.text "description"
     t.integer "date_of_birth"
     t.datetime "created_at", null: false

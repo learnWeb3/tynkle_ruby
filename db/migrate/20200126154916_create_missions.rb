@@ -10,6 +10,8 @@ class CreateMissions < ActiveRecord::Migration[5.2]
       t.float :longitude
       t.string :address
       t.string :postal_code
+      t.string :country
+      t.string :city
 
       # Active record Associations 
 
