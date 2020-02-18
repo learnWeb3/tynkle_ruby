@@ -103,7 +103,37 @@ class User < ApplicationRecord
     end
       
 
-    def self.from_omniauth(access_token) 
+
+
+
+    private
+
+
+    # checking date_of_birth with dynamic custom validation
+
+    def not_too_young?
+      if date_of_birth.present?
+        if date_of_birth > Time.now.strftime("%Y").to_i
+          errors.add(:date_of_birth, "can't be greater than the actual year")
+        end
+      end
+    end
+
+    def update_address_attributes
+
+      if self.address?
+
+        address = self.address
+        geocoder_object =  Geocoder.search(address).first
+        
+        self.update_columns(city:geocoder_object.city, postal_code:geocoder_object.postal_code, country:geocoder_object.country)
+
+      end
+
+    end
+
+
+    def self.from_omniauth_google(access_token) 
 
       data = access_token.info
       user = User.where(email: data['email']).first
@@ -148,34 +178,6 @@ class User < ApplicationRecord
   end
 
 
-
-
-
-    private
-
-
-    # checking date_of_birth with dynamic custom validation
-
-    def not_too_young?
-      if date_of_birth.present?
-        if date_of_birth > Time.now.strftime("%Y").to_i
-          errors.add(:date_of_birth, "can't be greater than the actual year")
-        end
-      end
-    end
-
-    def update_address_attributes
-
-      if self.address?
-
-        address = self.address
-        geocoder_object =  Geocoder.search(address).first
-        
-        self.update_columns(city:geocoder_object.city, postal_code:geocoder_object.postal_code, country:geocoder_object.country)
-
-      end
-
-    end
 
 
 
