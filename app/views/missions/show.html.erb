@@ -1,0 +1,114 @@
+<div class="container-fluid">               
+<div class="row my-3">
+  <div class="col-lg-7 col-xl-5 px-4 pb-4 pl-xl-5 pr-xl-5">
+
+    <ol class="list-unstyled d-flex flex-wrap ">
+        <li><%= link_to "#{@mission.device_category.title.capitalize}", root_path, class:"badge badge-primary my-2"%></li>
+        <li><%= link_to "#{@mission.categorytag.name.capitalize}", root_path, class:"badge badge-primary mx-2 my-2" %></li>
+        <li><%= link_to "#{@mission.categorytag.problem_description.capitalize}", root_path, class:"badge badge-primary my-2" %></li>
+    </ol>
+
+    <div class="text-block">
+      <p class="subtitle">Posté <%=@mission.created_at.strftime("le %d %b %Y à %H:%M")%></p>
+      <h1 class="hero-heading my-3"><%=@mission.title.capitalize%></h1>
+    </div>
+    <div class="text-block">
+      <div class="row">
+        <div class="col-sm">
+          <h6>Addresse</h6>
+          <p class="text-muted"><%=@mission.address.capitalize%></p>
+        </div>
+      </div>
+    </div>
+    <div class="text-block">
+      <div class="row">
+        <div class="col">
+          <h6>Budget :</h6>
+          <p class="text-muted"><%= @mission.price %> €</p>
+        </div>
+        <div class="col align-self-center">
+          <%= button_to "Contacter #{@mission.user.first_name.capitalize}",messages_path, class:"btn btn-outline-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="text-block">
+      <h6 class="mb-4">Description de la mission</h6>
+      <p> <%= @mission.description %> </p>
+
+      <hr>
+
+      <ul class="list-unstyled">
+        <li class="mb-2"> 
+          <div class="media align-items-center mb-3">
+            <div class="mr-2"><i class="fa fas fa-child text-secondary fa-fw text-left"></i></div>
+            <div class="media-body"><span class="text-sm">Not suitable for children and infants - The entrance staircase doesn't have handrails</span></div>
+          </div>
+        </li>
+        <li class="mb-2"> 
+          <div class="media align-items-center mb-3">
+            <div class="mr-2"><i class="fa fas fa-glass-cheers text-secondary fa-fw text-left"></i></div>
+            <div class="media-body"><span class="text-sm">No parties or events</span></div>
+          </div>
+        </li>
+        <li class="mb-2"> 
+          <div class="media align-items-center mb-3">
+            <div class="mr-2"><i class="fa fa-smoking-ban text-secondary fa-fw text-left"></i></div>
+            <div class="media-body"><span class="text-sm">No smoking</span></div>
+          </div>
+        </li>
+        <li class="mb-2"> 
+          <div class="media align-items-center mb-3">
+            <div class="mr-2"><i class="fa fa-cat text-secondary fa-fw text-left"></i></div>
+            <div class="media-body"><span class="text-sm">No pets</span></div>
+          </div>
+        </li>
+      </ul>
+     
+
+      <hr>
+
+      <div id="carouselImageMission" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselImageMission" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselImageMission" data-slide-to="1"></li>
+          <li data-target="#carouselImageMission" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="https://cdn.pixabay.com/photo/2014/08/14/14/21/shish-kebab-417994_960_720.jpg" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100 " src="https://cdn.pixabay.com/photo/2017/08/03/21/48/drinks-2578446_960_720.jpg" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100 " src="https://cdn.pixabay.com/photo/2015/10/12/15/05/girls-984154_960_720.jpg">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselImageMission" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselImageMission" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+  
+      <hr>
+  
+
+    </div>
+    
+  <div class="col-lg-5 col-xl-7 map-side-lg px-lg-0 p">
+    <div id="map-mission-geolocation" class="map-full shadow-left"></div>
+  </div>
+</div>
+</div>
+
+
+
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
+
+<%= javascript_tag ("document.addEventListener('turbolinks:load', function() { userName = '#{@mission.user.first_name}' ; initMap(#{@mission.user.latitude}, #{@mission.user.longitude}, document.getElementById('map-mission-geolocation'), userName)    });")%>
+
+<%= javascript_tag ("reloadPage()") %>

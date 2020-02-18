@@ -101,6 +101,9 @@ class MissionsController < ApplicationController
 
     def show 
 
+      mission_id = params[:id].to_i
+      @mission = Mission.find(mission_id)
+
       
 
     end

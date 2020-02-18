@@ -12377,11 +12377,11 @@ a.text-dark:focus {
 @media (min-width: 992px) {
     .map-side-lg {
         position: fixed;
-        top: 72px;
+        top: 0px;
         right: 0;
     }
     .map-side-lg .map-full {
-        height: calc(100vh - 72px);
+        height: calc(100vh);
     }
 }
 
