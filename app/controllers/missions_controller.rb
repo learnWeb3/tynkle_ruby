@@ -104,6 +104,9 @@ class MissionsController < ApplicationController
       mission_id = params[:id].to_i
       @mission = Mission.find(mission_id)
 
+      @user = @mission.user
+      @reviews = Review.where(assessed:@user)
+
       
 
     end

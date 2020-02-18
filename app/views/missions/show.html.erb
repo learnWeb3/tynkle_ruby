@@ -10,7 +10,33 @@
 
     <div class="text-block">
       <p class="subtitle">Posté <%=@mission.created_at.strftime("le %d %b %Y à %H:%M")%></p>
-      <h1 class="hero-heading my-3"><%=@mission.title.capitalize%></h1>
+     <div class="row">
+        <div class="col d-flex align-items-center p-4">
+            <h1 class="hero-heading my-3"><%=@mission.title.capitalize%></h1>
+        </div>
+        <div class="col d-flex align-items-center p-4">
+
+        <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar, size:"50x50", class:"avatar avatar-md avatar-border-white"%>
+        <%else%>
+            
+            <%=image_tag "icons/man_avatar.png", size:"50x50", alt:"", class:"avatar avatar-md avatar-border-white"%>
+        <% end %> 
+        
+            <div class="d-block align-items-center ml-2">
+            <% if @user.service_provider %>
+                <%= link_to @user.first_name.capitalize , helper_path(id:@user.id), class:"my-auto"  %> 
+            <% else %>
+                <%= link_to @user.first_name.capitalize , useroutsidedevise_path(id:@user.id), class:"my-auto"  %> 
+            <% end %>
+                <p class="my-auto"><%= @user.global_review_mark %> / <%=@reviews.length%> avis </p>
+            </div>
+        
+
+       
+    
+        </div>
+     </div>
     </div>
     <div class="text-block">
       <div class="row">
@@ -27,7 +53,7 @@
           <p class="text-muted"><%= @mission.price %> €</p>
         </div>
         <div class="col align-self-center">
-          <%= button_to "Contacter #{@mission.user.first_name.capitalize}",messages_path, class:"btn btn-outline-primary" %>
+          <%= button_to "Contacter #{@user.first_name.capitalize}",messages_path, class:"btn btn-outline-primary" %>
         </div>
       </div>
     </div>
@@ -107,8 +133,9 @@
 
 
 
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
+<!--<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
 
-<%= javascript_tag ("document.addEventListener('turbolinks:load', function() { userName = '#{@mission.user.first_name}' ; initMap(#{@mission.user.latitude}, #{@mission.user.longitude}, document.getElementById('map-mission-geolocation'), userName)    });")%>
+<%= javascript_tag ("document.addEventListener('turbolinks:load', function() { userName = '#{@user.first_name}' ; initMap(#{@user.latitude}, #{@user.longitude}, document.getElementById('map-mission-geolocation'), userName)    });")%>
 
-<%= javascript_tag ("reloadPage()") %>
+<%= javascript_tag ("reloadPage()") %> --!>
+
