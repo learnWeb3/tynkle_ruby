@@ -15,15 +15,15 @@
 
 
 
-    <div class="row justify-content-center my-4">
+    <div class="row justify-content-center my-2">
 
 
 
 <% @missions.each do |mission| %>
 
-        <div class="list-group col-9 shadow mb-5 p-4 bg-white position-relative">
+        <div class="list-group col-9 shadow mb-5 p-5 bg-white position-relative">
             <div class="row">
-                <div class="col-md-4 my-auto d-flex align-items-center justify-content-start">
+                <div class="col-md-3 my-auto d-flex align-items-center justify-content-start">
                    
                     <% if mission.image_one.attached? %>
                             <%=image_tag mission.image_one, size:"75x75", alt:""%><h2 class="h5 mb-0 ml-2"><%=mission.title%></h2>
@@ -34,33 +34,47 @@
                   
                 </div>
            
-                <div class="col-md-2 text-left my-auto d-block align-items-center">
+                <div class="col-md-2 text-center my-auto d-block align-items-center">
 
-                    <p class="mb-0 mx-auto"><%= mission.categorytag.name.capitalize %></p>
-                    <p class="mb-0 mx-auto mt-2"><%= mission.device_category.title.capitalize %></p>
-                 
+                    <p class="mb-0 mx-auto mb-0"><%= mission.categorytag.name.capitalize %></p>
+                    <p class="mb-0 mx-auto mb-0"><%= mission.device_category.title.capitalize %></p>
 
+                
                 </div>
 
-                <div class="col d-flex align-items-center text-left">
+                <div class="col-md-1 text-center my-auto d-block align-items-center">
+                
+                    <p class="font-weight-bold mx-auto mb-0"><i class="fas fa-map-marker-alt mx-2"></i>
+                    <% if mission.postal_code.present? %>
+                    <%= mission.postal_code%>
+                    <% else %>
+                    absent
+                    <% end %>
+
+                    </p>
+                </div>
+
+                <div class="col-md-2 text-center my-auto d-block align-items-center">
 
                     <p class="mb-0 mx-auto">Budget :</p>
                     <p class="mb-0 mx-auto"><%= mission.price %> €</p>
 
                 </div>
 
-                <div class="col text-center my-auto d-flex align-items-center">
+                <div class="col-md-2 text-center my-auto d-block align-items-center">
                     <% if mission.user.service_provider?%>
-                    <p class="font-weight-bold mb-0">Postée par : <%= link_to mission.user.first_name, helper_path(id:mission.user.id) %></p>
+                    <p class="font-weight-bold mb-0">Postée par:</p>
+                    <p class="font-weight-bold mb-0"><%= link_to mission.user.first_name, helper_path(id:mission.user.id) %></p>
                     <% else %>
-                    <p class="font-weight-bold mb-0">Postée par : <%= link_to mission.user.first_name, useroutsidedevise_path(id:mission.user.id) %></p>
+                    <p class="font-weight-bold mb-0">Postée par :</p>
+                    <p class="font-weight-bold mb-0"><%= link_to mission.user.first_name, useroutsidedevise_path(id:mission.user.id) %></p>
                     <% end %>
                 </div>
 
-                <div class="col text-center my-auto d-block align-items-center">
+                <div class="col-md-1 text-left my-auto d-block align-items-center justify-content-end">
 
-                    <p class="mb-0 badge badge-pill p-2 badge-primary-light"><%=mission.created_at.strftime("le %d %b %Y")%></p>
-                    <%= link_to 'Voir', mission_path(id:mission.id), class:"btn btn-outline-primary mt-2" %>
+                    <p class="m-0 badge badge-pill p-0 badge-primary-light"><%=mission.created_at.strftime("le %d %b %Y")%></p>
+                    <%= link_to 'Voir', mission_path(id:mission.id), class:"btn btn-outline-primary my-2 mx-auto mb-0" %>
                    
                     
                 </div>

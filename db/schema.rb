@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_065956) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "problem_description"
+    t.string "image_url"
   end
 
   create_table "device_categories", force: :cascade do |t|
@@ -104,6 +105,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_065956) do
     t.float "latitude"
     t.float "longitude"
     t.string "address"
+    t.string "postal_code"
     t.bigint "device_category_id"
     t.bigint "user_id"
     t.bigint "categorytag_id"

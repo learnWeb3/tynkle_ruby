@@ -30,7 +30,11 @@ class Mission < ApplicationRecord
      geocoded_by :address
      reverse_geocoded_by :latitude, :longitude
      after_validation :geocode, :reverse_geocode 
- 
+
+     after_create :fill_mission_postal_code
+
+
+     
     private
 
     def address_is_real
@@ -44,6 +48,23 @@ class Mission < ApplicationRecord
 
     end
 
+    def fill_mission_postal_code
+
+        if self.address?
+
+            address = self.address
+            post_code = Geocoder.search(address).first.postal_code 
+            
+            if post_code.present?
+
+                self.update_attributes(postal_code:post_code)
+
+            end
+            
+
+        end
+     end
+ 
 
 
 
