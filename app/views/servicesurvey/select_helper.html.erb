@@ -105,7 +105,7 @@
                 <% if helper.address? %>
                 <div class="col text-center my-auto">
                     <i class="fas fa-map-signs"></i> 
-                    <p class="text-sm font-weight-bold"><%=Geocoder.search([helper.latitude, helper.longitude]).first.postal_code%> <%=Geocoder.search([helper.latitude, helper.longitude]).first.city%></p>  
+                    <p class="text-sm font-weight-bold"><%=helper.postal_code%> <%=helper.city%></p>  
                 </div>
                 <% end %>
                 <div class="col text-center my-auto">
