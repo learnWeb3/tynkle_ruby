@@ -103,10 +103,11 @@ class User < ApplicationRecord
     end
       
 
-    def self.from_omniauth(access_token)
+    def self.from_omniauth(access_token) 
 
       data = access_token.info
       user = User.where(email: data['email']).first
+
   
       unless user
           pass = Devise.friendly_token[0,20]
@@ -120,6 +121,33 @@ class User < ApplicationRecord
        end
       user
   end
+
+
+  def self.from_omniauth_facebook(access_token) 
+
+    data = access_token.info
+    uid = access_token.uid
+
+    
+    user = User.where(facebook_uid: uid).first
+
+
+    unless user
+        pass = Devise.friendly_token[0,20]
+        user = User.new(
+            first_name: data["name"],
+            facebook_uid: uid,
+            last_name: data["name"],
+            password: pass,
+            password_confirmation: pass
+         )
+         user.save(:validate => false)
+     end
+    user
+
+  end
+
+
 
 
 

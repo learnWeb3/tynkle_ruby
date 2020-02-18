@@ -12,6 +12,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :postal_code
       t.string :country
       t.string :city
+      t.string :facebook_uid
+
       t.text :description
       t.integer :date_of_birth
       t.timestamps
