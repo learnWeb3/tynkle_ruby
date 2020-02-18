@@ -1,8 +1,8 @@
-<%= render 'helper_intro_section_with_map' %>
+<%= render 'helpers/helper_intro_section_with_map' %>
 
-<%= render 'helper_reviews_section' %>
+<%= render 'helpers/helper_reviews_section' %>
 
-<%= render 'helper_skills_section' %>
+
 
 
 
@@ -18,4 +18,3 @@
 <%= javascript_tag ("document.addEventListener('turbolinks:load', function() { userName = '#{@user.first_name}' ; initMap(#{@user.latitude}, #{@user.longitude}, document.getElementById('map-helper-geolocation'), userName)    });")%>
 
 <%= javascript_tag ("reloadPage()") %>
-

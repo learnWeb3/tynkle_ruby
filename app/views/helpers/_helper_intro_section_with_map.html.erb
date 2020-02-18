@@ -1,0 +1,41 @@
+<section class="">
+    <div class="container position-relative text-center ">
+    
+    <ol class="breadcrumb my-4 justify-content-center">
+        <li class="breadcrumb-item"><%= link_to 'Accueil', root_path %></li>
+        <li class="breadcrumb-item active">Profil</li>
+    </ol>
+
+    <h1 class="hero-heading">
+    <% if @user.first_name? %>
+    <%=@user.first_name%>
+    <% else %>
+    Mon profil
+    <% end %>
+    </h1>
+
+    <% if @user.avatar.attached? %>
+
+        <%= image_tag @user.avatar, size:"200x200", class:"avatar avatar-xl avatar-border-white"%>
+
+    <%else%>
+        <%=image_tag "icons/man_avatar.png", size:"200x200", alt:"", class:"avatar avatar-xl avatar-border-white"%>
+    <% end %> 
+
+    <% if @user.date_of_birth?%>
+    <h6 class="my-2 text-muted"> <%=@user.age?%> ans </h6>
+    <% end %>
+
+    
+    <div class="my-4">
+    <h6 class=""><i class="fas fa-map-marker-alt mx-2 fa-2x"></i> <%=@user.address%> </h6>
+
+            
+    <div class="mx-auto" id="map-helper-geolocation">
+            
+    </div>
+
+    </div>
+
+    </div>
+</section>
