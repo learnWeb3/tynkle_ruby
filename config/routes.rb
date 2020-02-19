@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   post '/missions/:id', to: 'messages#message_send_from_mission_show', as: 'message_send'
 
+  post '/missions/:id/edit', to: 'missions#mission_solved', as: 'mission_solved'
+
 
   resources :helpers, only: [:index, :show]
   

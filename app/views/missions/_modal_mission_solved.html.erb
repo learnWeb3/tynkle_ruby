@@ -14,7 +14,7 @@
       <div class="modal-body">
 
 
-      <%= form_for @mission, url:mission_path, method: :put do |f| %>
+      <%= form_for @mission, url: mission_solved_path(id:@mission.id), method: :post do |f| %>
        
         <div class="custom-control custom-switch text-center">
            

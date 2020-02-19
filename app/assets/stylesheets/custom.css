@@ -258,14 +258,14 @@
 
 .button-mission-solved-left{
     position:fixed;
-    bottom:1rem;
-    left:2rem
+    bottom:1.5rem;
+    left:1.5rem
 }
 
 .button-mission-solved-right{
 
     position:fixed;
-    bottom:1rem;
-    right:2rem;
+    bottom:1.5rem;
+    right:1.5rem;
 
 }
