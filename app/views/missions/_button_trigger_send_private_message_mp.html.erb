@@ -1,0 +1,73 @@
+<!-- Button trigger modal -->
+<%= link_to "Envoyer un mp", {}, class:"btn btn-outline-success", 'data-toggle':"modal", 'data-target':"#modal-private-message" %>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-private-message" tabindex="-1" role="dialog" aria-labelledby="modal-private-messageLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-private-messageLabel">Envoyer un messages privé</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+      <%= form_for @new_message, url: message_send_path do |f| %>
+       
+            <h5 class="form-label"> Message </h5>
+            <hr class="my-2">
+            <%=  f.label :"Objet :"%>
+            <%=  f.text_field :object, class:"form-control mb-4"  %>
+            <%=  f.label :"Message :"%>
+            <%=  f.text_area :content, class:"form-control mb-4", rows:"2"  %>
+            <%= f.hidden_field :mission_url, value: @mission.id %>
+
+
+            <% if user_signed_in? %>
+            <%= f.hidden_field :sender, value: @user.id %>
+
+            <% else %>
+
+            <hr>
+
+            <h5> Identité : </h5>
+
+            <%=f.fields_for :@user do |ff| %>
+
+
+                    <div class="form-group col mx-auto">
+                        <%=  ff.label :"Adresse email :"%>
+                        <%=  ff.email_field :email, class:"form-control mb-4"%>
+                    </div>
+
+                    <div class="form-group col mx-auto">
+                        <%=  ff.label :"Choisir un mot de passe :"%>
+                        <%=  ff.password_field :password, class:"form-control mb-4"%>
+                    </div>
+
+                    <div class="form-group col mx-auto">
+                        <%=  ff.label :"Confirmer le mot de passe :"%>
+                        <%=  ff.password_field :password_confirmation, class:"form-control mb-5"%>
+                    </div>
+
+            <% end %>
+
+
+            <hr class="my-2">
+
+
+
+            <% end %>
+           
+        
+      
+      </div>
+      <div class="modal-footer">
+        <%= f.submit "Envoyer", class:"btn btn-success"%>
+        <%end %>
+      </div>
+    </div>
+  </div>
+</div>

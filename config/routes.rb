@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  post '/missions/:id', to: 'messages#message_send_from_mission_show', as: 'message_send'
+
 
   resources :helpers, only: [:index, :show]
   

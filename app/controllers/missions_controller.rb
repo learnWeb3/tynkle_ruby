@@ -127,8 +127,16 @@ class MissionsController < ApplicationController
 
     def show 
 
+
       mission_id = params[:id].to_i
       @mission = Mission.find(mission_id)
+      @new_message = Message.new
+      
+      if user_signed_in?
+        @user = current_user
+      else 
+        @user = User.new
+      end
 
       @user = @mission.user
       @reviews = Review.where(assessed:@user)
@@ -141,6 +149,7 @@ class MissionsController < ApplicationController
       if params["display_email"].present?
         @email = @user.email
       end
+
 
       
 

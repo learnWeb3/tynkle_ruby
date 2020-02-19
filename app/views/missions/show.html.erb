@@ -53,7 +53,7 @@
           <p class="text-muted"><%= @mission.price %> €</p>
         </div>
         <div class="col align-self-center">
-          <%= button_to "Envoyer un mp",messages_path, class:"btn btn-outline-success" %>
+          <%= render 'button_trigger_send_private_message_mp'%>
         </div>
       </div>
     </div>
