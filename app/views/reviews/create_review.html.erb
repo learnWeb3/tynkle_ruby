@@ -1,14 +1,16 @@
 <div class="row justify-content-center py-4 bg-light-grey">
 
+
+<h2 class="my-4"> Rediger un avis pour <%=@assessed_user.first_name.capitalize %> </h2>
+
 <div class="col-9">
 
     <%= form_for @review, url: reviews_path, method: :post do |f| %>
 
         <div class="form-group col-12">
             <%=  f.label :"Noter le service reçu :"%>
-            <div class='starrr'></div>
-            <%= f.text_field :rate, id:"mission-rate"%>
-            
+            <div class='starrr col-12 text-center'></div>
+            <%= f.hidden_field :rate, class:"form-control", id:"mission-rate"%>
         </div>
 
 
@@ -20,7 +22,7 @@
 
 
 
-    <div class="row justify-content-between mb-3">
+    <div class="row justify-content-end mb-3">
     <%= f.submit "Suivant", class:"btn btn-primary" %>
     <% end %>
     </div> 
