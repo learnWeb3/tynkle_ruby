@@ -1,0 +1,34 @@
+<!-- Button trigger modal -->
+<%= link_to "Mission Résolue", {}, class:"btn btn-lg btn-outline-success button-mission-solved-right", 'data-toggle':"modal", 'data-target':"#modal-private-message", id:"button-mission-solved" %>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-private-message" tabindex="-1" role="dialog" aria-labelledby="modal-private-messageLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-private-messageLabel">Ma mission est résolue</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+      <%= form_for @mission, url:mission_path, method: :put do |f| %>
+       
+        <div class="custom-control custom-switch text-center">
+           
+            <%=  f.check_box :solved, class:"custom-control-input",id:"toggle-switch-mission-solved" %>
+            <%=  f.label :"Mission résolue", class:"custom-control-label", for:"toggle-switch-mission-solved"  %>
+            </div>
+        
+        </div>
+
+        <div class="modal-footer">
+            <%= f.submit "Envoyer", class:"btn btn-success"%>
+            <%end %>
+        </div>
+    </div>
+  </div>
+</div>
+
