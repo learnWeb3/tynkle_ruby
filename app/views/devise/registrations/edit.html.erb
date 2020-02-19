@@ -50,7 +50,7 @@
   
 
 <div class="py-4 px-5">
-    <h2 class="mb-5 ">Identité</h2>
+    <h2 class="mb-5 ">Identité & Contact</h2>
 
     <%= form_for @user_outside_devise, url: useroutsidedevise_path(id:current_user.id) do |f| %>
 
@@ -77,6 +77,13 @@
             <%= f.select :date_of_birth, options_for_select(1940...2019), {}, { class: 'custom-select'}%>
           </div>
 
+         
+          <div class="form-group">
+            <%= f.label :"Numéro de téléphone", class:"form-label" %>
+            <%= f.text_field :phone_number, class:"form-control", autocomplete: "phone_number" %>
+          </div>
+
+
           <div class="form-group mt-5">
           <div class="custom-control custom-switch text-center">
            
@@ -85,10 +92,13 @@
 
           </div>
           </div>
+
           
           
 
         </div>
+
+    
 
 
       </div>
@@ -99,7 +109,7 @@
       <div class="col">
 
 
-        <%= f.submit "valider", class:"btn btn-outline-primary  my-4", :confirm=>'Are you sure?' %>
+        <%= f.submit "valider", class:"btn btn-outline-primary ", :confirm=>'Are you sure?' %>
 
       </div>
     </div>

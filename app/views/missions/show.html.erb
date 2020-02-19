@@ -53,7 +53,7 @@
           <p class="text-muted"><%= @mission.price %> €</p>
         </div>
         <div class="col align-self-center">
-          <%= button_to "Contacter #{@user.first_name.capitalize}",messages_path, class:"btn btn-outline-success" %>
+          <%= button_to "Envoyer un mp",messages_path, class:"btn btn-outline-success" %>
         </div>
       </div>
     </div>
@@ -64,21 +64,25 @@
       <hr>
 
       <ul class="list-unstyled">
-        <li class="mb-2"> 
+        <li class="mb-2" id ="email-contact"> 
           <div class="media align-items-center mb-3">
             <div class="mr-2"><i class="fas fa-envelope fa-2x text-left"></i></div>
-            <% if @mission.email_contact? %>
-            <div class="media-body"><span class="text-sm"><%=link_to "Voir l'addresse mail", root_path%></span></div>
+            <% if @mission.email_contact? && @email.blank?%>
+            <div class="media-body"><span class="text-sm"><%=link_to "Voir l'addresse mail", mission_path(id:@mission.id, anchor:"email-contact", display_email:true)%></span></div>
+            <% elsif @mission.email_contact? && @email.present? %>
+            <div class="media-body"><span class="text-sm"><%=@user.email%></span></div>
             <% else %>
             <div class="media-body"><span class="text-sm">Adresse mail non publiée</span></div>
             <% end %>
           </div>
         </li>
-        <li class="mb-2"> 
+        <li class="mb-2" id="phone-contact"> 
           <div class="media align-items-center mb-3">
             <div class="mr-2"><i class="fas fa-phone fa-2x text-left"></i></div>
-            <% if @mission.phone_contact? %>
-            <div class="media-body"><span class="text-sm"><%=link_to "Voir le numéro", root_path%></span></div>
+            <% if @mission.phone_contact?  && @phone.blank?%>
+            <div class="media-body"><span class="text-sm"><%=link_to "Voir le numéro", mission_path(id:@mission.id, anchor:"phone-contact", display_phone:true)%></span></div>
+            <% elsif @mission.phone_contact?  && @phone.present?%>
+            <div class="media-body"><span class="text-sm"><%=@user.phone_number%></span></div>
             <% else %>
             <div class="media-body"><span class="text-sm">Téléphone non publié</span></div>
             <% end %>

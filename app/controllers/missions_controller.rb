@@ -76,7 +76,7 @@ class MissionsController < ApplicationController
 
         if  mission_remote_help == 1
           mission_remote_help = true
-        else m mission_remote_help = false
+        else mission_remote_help = false
         end
 
         new_mission = Mission.new(user:mission_user,title:mission_title, description:mission_description,price:mission_price, device_category:mission_device_category,categorytag:mission_category_tag, address:mission_address, image_one:mission_image_one, image_two:mission_image_two, image_three:mission_image_three, phone_contact: mission_contact_phone, email_contact:mission_contact_email, in_person_help:mission_in_person_help, remote_help:mission_remote_help)
@@ -132,6 +132,15 @@ class MissionsController < ApplicationController
 
       @user = @mission.user
       @reviews = Review.where(assessed:@user)
+
+      if params["display_phone"].present?
+        @phone = @user.phone_number
+
+      end
+
+      if params["display_email"].present?
+        @email = @user.email
+      end
 
       
 

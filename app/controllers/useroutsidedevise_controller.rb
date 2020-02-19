@@ -24,6 +24,9 @@ class UseroutsidedeviseController < ApplicationController
             if params["user"]["avatar"].present?
                 set_avatar = params["user"]["avatar"]
             end
+            if params["user"]["phone_number"].present?
+                set_phone_number = params["user"]["phone_number"]
+            end
         end
 
 
@@ -31,7 +34,7 @@ class UseroutsidedeviseController < ApplicationController
         set_helper_params_to_user_model_attribute(set_helper)
 
 
-        check_updated_attributes(user, set_date_of_birth, set_first_name, set_last_name, set_helper, set_address, set_avatar)
+        check_updated_attributes(user, set_date_of_birth, set_first_name, set_last_name, set_helper, set_address, set_avatar, set_phone_number)
 
        
 
@@ -83,7 +86,7 @@ def show
 
 private 
 
-def check_updated_attributes(user,set_date_of_birth,set_first_name,set_last_name,set_helper, set_address, set_avatar)
+def check_updated_attributes(user,set_date_of_birth,set_first_name,set_last_name,set_helper, set_address, set_avatar, set_phone_number)
 
     if set_date_of_birth != nil 
         set_date_of_birth = set_date_of_birth.to_i
@@ -106,6 +109,10 @@ def check_updated_attributes(user,set_date_of_birth,set_first_name,set_last_name
     if set_avatar != nil && set_avatar != user.avatar
         user.avatar = set_avatar
     end
+    if set_phone_number != nil && set_phone_number != user.phone_number
+        user.phone_number = set_phone_number
+    end
+
 
 end
 

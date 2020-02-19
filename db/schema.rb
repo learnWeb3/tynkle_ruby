@@ -108,11 +108,11 @@ ActiveRecord::Schema.define(version: 2020_02_17_065956) do
     t.string "postal_code"
     t.string "country"
     t.string "city"
-    t.boolean "solved"
-    t.boolean "phone_contact"
-    t.boolean "email_contact"
-    t.boolean "in_person_help"
-    t.boolean "remote_help"
+    t.boolean "solved", default: false
+    t.boolean "phone_contact", default: false
+    t.boolean "email_contact", default: false
+    t.boolean "in_person_help", default: false
+    t.boolean "remote_help", default: false
     t.bigint "device_category_id"
     t.bigint "user_id"
     t.bigint "categorytag_id"
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_065956) do
     t.string "country"
     t.string "city"
     t.string "facebook_uid"
+    t.string "phone_number"
     t.text "description"
     t.integer "date_of_birth"
     t.datetime "created_at", null: false
