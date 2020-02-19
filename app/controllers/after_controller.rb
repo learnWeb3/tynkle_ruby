@@ -42,8 +42,16 @@ class AfterController < ApplicationController
 
         when :how_do_we_call_you
 
-          @user.first_name = params[:'user']["first_name"]
-          @user.last_name = params[:'user']["last_name"]
+            user_first_name = params[:'user']["first_name"]
+            user_last_name = params[:'user']["last_name"]
+
+            if @user.first_name !=  user_first_name &&  user_first_name.blank? == false
+                @user.first_name = user_first_name
+            end
+            if @user.last_name !=  user_last_name &&  user_last_name.blank? == false
+                @user.last_name = user_last_name
+            end
+
           @user.save
 
         when :contact_details
@@ -57,7 +65,11 @@ class AfterController < ApplicationController
             end
             @user.save
         when :location_data
-            @user.address = params[:'user']["address"]
+            user_address = params[:'user']["address"]
+            if @user.address !=  user_address &&  user_address.blank? == false
+            @user.address = user_address
+            end
+            @user.save
 
         when :fill_up_skills
 
