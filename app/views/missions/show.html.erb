@@ -1,9 +1,11 @@
+<%= render 'layouts/navbar_white' %>
+
 <div class="container-fluid">               
 <div class="row my-3">
   <div class="col-lg-7 col-xl-5 px-4 pb-4 pl-xl-5 pr-xl-5">
 
     <ol class="list-unstyled d-flex flex-wrap ">
-        <li><%= link_to "#{@mission.device_category.title.capitalize}", root_path, class:"badge badge-primary my-2"%></li>
+        <li><%= link_to "#{@mission.device_category.title.capitalize}", root_path, class:"badge badge-primary mx-2 my-2"%></li>
         <li><%= link_to "#{@mission.categorytag.name.capitalize}", root_path, class:"badge badge-primary mx-2 my-2" %></li>
         <li><%= link_to "#{@mission.categorytag.problem_description.capitalize}", root_path, class:"badge badge-primary my-2" %></li>
     </ol>
@@ -61,7 +63,7 @@
       <h6 class="mb-4">Description de la mission</h6>
       <p> <%= @mission.description %> </p>
 
-      <hr>
+      <hr class="my-5">
 
       <ul class="list-unstyled">
         <li class="mb-2" id ="email-contact"> 
@@ -111,7 +113,9 @@
       </ul>
      
 
-      <hr>
+      <hr class="my-5">
+
+      <h5> Images </h5>
 
       <div id="carouselImageMission" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -122,23 +126,23 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <% if @mission.image_one.attached? %>
-              <%=link_to (image_tag @mission.image_one, class:"d-block w-100"), root_path%>
+              <%=link_to (image_tag @mission.image_one, class:"d-block w-50 mx-auto"), root_path%>
             <% else %>
-              <%=image_tag "icons/missing.png", class:"d-block w-100"%>
+              <%=image_tag "icons/missing.png", class:"d-block w-50 mx-auto"%>
             <% end %>
           </div>
           <div class="carousel-item">
             <% if @mission.image_two.attached? %>
-              <%=link_to (image_tag @mission.image_two, class:"d-block w-100"), root_path%>
+              <%=link_to (image_tag @mission.image_two, class:"d-block w-50 mx-auto"), root_path%>
             <% else %>
-              <%=image_tag "icons/missing.png", class:"d-block w-100"%>
+              <%=image_tag "icons/missing.png", class:"d-block w-50 mx-auto"%>
             <% end %>
           </div>
           <div class="carousel-item">
             <% if @mission.image_three.attached? %>
-              <%=link_to (image_tag @mission.image_three, class:"d-block w-100"), root_path%>
+              <%=link_to (image_tag @mission.image_three, class:"d-block w-50 mx-auto"), root_path%>
             <% else %>
-              <%=image_tag "icons/missing.png", class:"d-block w-100"%>
+              <%=image_tag "icons/missing.png", class:"d-block w-50 mx-auto"%>
             <% end %>
           </div>
         </div>
@@ -152,9 +156,7 @@
         </a>
       </div>
   
-      <hr>
-  
-
+    
     </div>
     
   <div class="col-lg-5 col-xl-7 map-side-lg px-lg-0 p">
@@ -165,9 +167,13 @@
 
 
 
+
+
 <!--<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
 
 <%= javascript_tag ("document.addEventListener('turbolinks:load', function() { userName = '#{@user.first_name}' ; initMap(#{@user.latitude}, #{@user.longitude}, document.getElementById('map-mission-geolocation'), userName)    });")%>
 
 <%= javascript_tag ("reloadPage()") %> --!>
+
+
 

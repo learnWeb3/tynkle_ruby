@@ -251,5 +251,9 @@
 
 #map-helper-geolocation{height: 15rem; width:50rem;}
 
+.z-top{
+    z-index: 100000;
+}
+
 
 
