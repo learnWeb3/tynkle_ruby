@@ -13,11 +13,6 @@ class ReviewsController < ApplicationController
        
         case step
             when :select_helper
-
-                mission_id = session[:reviewed_mission]
-                mission = Mission.find(mission_id)
-        
-                
         
                 @user_attributes = ["Nom", "Prénom", "Addresse", "Ville", "Code Postal", "Adresse email", "Numéro de téléphone"]
         
@@ -48,6 +43,18 @@ class ReviewsController < ApplicationController
                 
                 end
             when :create_review   
+                if session[:reviewed_mission].present? && user_signed_in?
+                    mission_id = session[:reviewed_mission].to_i
+                    mission = Mission.find(mission_id)
+                    assessed_user_id = params["assessed_id"].to_i
+                    assessed_user = User.find(assessed_user_id)
+                    if mission_id.blank? == false
+                        mission = Mission.find(mission_id)
+
+                        @review = Review.new(assessor:current_user, mission:mission, assessed:assessed_user)
+
+                    end
+                end
 
         end
         render_wizard
