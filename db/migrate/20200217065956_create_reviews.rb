@@ -7,6 +7,8 @@ class CreateReviews < ActiveRecord::Migration[5.2]
 
       t.string :content
       t.integer :rate, default:3
+      
+      t.belongs_to :mission
 
       t.timestamps
     end

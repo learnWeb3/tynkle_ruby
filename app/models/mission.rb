@@ -12,6 +12,10 @@ class Mission < ApplicationRecord
     has_one_attached :image_one
     has_one_attached :image_two
     has_one_attached :image_three
+
+    # Active Record association with Reviews
+
+    has_many :reviews
     
 
     # Active Record validations

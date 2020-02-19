@@ -135,10 +135,12 @@ ActiveRecord::Schema.define(version: 2020_02_17_065956) do
     t.bigint "assessed_id"
     t.string "content"
     t.integer "rate", default: 3
+    t.bigint "mission_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["assessed_id"], name: "index_reviews_on_assessed_id"
     t.index ["assessor_id"], name: "index_reviews_on_assessor_id"
+    t.index ["mission_id"], name: "index_reviews_on_mission_id"
   end
 
   create_table "skills", force: :cascade do |t|

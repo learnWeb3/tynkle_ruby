@@ -5,6 +5,7 @@ class Review < ApplicationRecord
 
     belongs_to :assessor, class_name: "User"
     belongs_to :assessed, class_name: "User"
+    belongs_to :mission
 
     # Active Record Validations
 
