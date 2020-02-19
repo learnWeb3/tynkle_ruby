@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   resources :useroutsidedevise, only: [:update, :show]
 
+  resources :reviews, only: [:new, :create, :show, :index]
+
   
 
 

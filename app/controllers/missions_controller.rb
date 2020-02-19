@@ -249,7 +249,7 @@ class MissionsController < ApplicationController
       end
 
       if mission.save
-        redirect_to mission_path(id:mission_id)
+        redirect_to new_review_path(mission_id:mission_id)
       else puts mission.errors.full_messages
       end
 
