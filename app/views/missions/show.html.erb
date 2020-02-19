@@ -121,13 +121,25 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="https://cdn.pixabay.com/photo/2014/08/14/14/21/shish-kebab-417994_960_720.jpg" alt="First slide">
+            <% if @mission.image_one.attached? %>
+              <%=link_to (image_tag @mission.image_one, class:"d-block w-100"), root_path%>
+            <% else %>
+              <%=image_tag "icons/missing.png", class:"d-block w-100"%>
+            <% end %>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100 " src="https://cdn.pixabay.com/photo/2017/08/03/21/48/drinks-2578446_960_720.jpg" alt="Second slide">
+            <% if @mission.image_two.attached? %>
+              <%=link_to (image_tag @mission.image_two, class:"d-block w-100"), root_path%>
+            <% else %>
+              <%=image_tag "icons/missing.png", class:"d-block w-100"%>
+            <% end %>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100 " src="https://cdn.pixabay.com/photo/2015/10/12/15/05/girls-984154_960_720.jpg">
+            <% if @mission.image_three.attached? %>
+              <%=link_to (image_tag @mission.image_three, class:"d-block w-100"), root_path%>
+            <% else %>
+              <%=image_tag "icons/missing.png", class:"d-block w-100"%>
+            <% end %>
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselImageMission" role="button" data-slide="prev">
