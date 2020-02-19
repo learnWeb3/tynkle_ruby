@@ -7,6 +7,8 @@
         <div class="form-group col-12">
             <%=  f.label :"Noter le service reçu :"%>
             <div class='starrr'></div>
+            <%= f.text_field :rate, id:"mission-rate"%>
+            
         </div>
 
 
@@ -28,6 +30,10 @@
 </div>
 
 <%= javascript_tag ("$('.starrr').starrr()") %>
+
+<%= javascript_tag ("$('.starrr').on('starrr:change', function(e, value){
+    document.getElementById('mission-rate').value = value
+  })") %>
 
 
 
