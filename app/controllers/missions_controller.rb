@@ -93,6 +93,9 @@ class MissionsController < ApplicationController
 
     def update 
 
+
+      puts "hhahahahahhahah #{params} hahahahahhahah"
+
     end
 
     def index
@@ -154,6 +157,13 @@ class MissionsController < ApplicationController
       
 
     end
+
+    def edit 
+      mission_id = params[:id].to_i
+      @mission = Mission.find(mission_id)
+  
+    end 
+
 
 
 
