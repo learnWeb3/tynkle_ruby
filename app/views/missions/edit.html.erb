@@ -1,6 +1,8 @@
-<section class="container mt-4">
+<%= render 'layouts/navbar_white' %>
 
-        <h2 class="text-center"> Mettre à jour ma demande </h2>
+<section class="container my-4">
+
+        <h2 class="text-center my-4"> Mettre à jour ma demande </h2>
 
 
 <div class="row justify-content-center my-3 py-4 bg-light-grey">
@@ -12,18 +14,18 @@
         <div class="row">
             <div class="col">
 
-
+                
             <div class="form-group col-12">
-                <%=  f.label :"Type d'Appareil :" %>
+                <%=  f.label :"Type d'Appareil :" %></br>
                 <%= collection_select(:device_category, :device_category_id,  DeviceCategory.all, :id, :title) %>
             </div>
 
             </div>
 
             <div class="col">
-
+                
             <div class="form-group col-12">
-                <%=  f.label :"Catégorie :" %>
+                 <%=  f.label :"Catégorie :" %> </br>
                 <%= collection_select(:category_tag, :categorytag_id,  Categorytag.all, :id, :name) %>
             </div>
 
