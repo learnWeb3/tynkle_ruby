@@ -179,15 +179,15 @@ class MissionsController < ApplicationController
 
         case mission_type
           when mission_type_collection_array[0]
-            @missions = Mission.where("title LIKE ?", "%" + user_input + "%", solved:false)
+            @missions = Mission.where("title LIKE ?", "%" + user_input + "%").where(solved:false)
           when mission_type_collection_array[1]
-            @missions = Mission.where("description LIKE ?", "%" + user_input + "%", solved:false)
+            @missions = Mission.where("description LIKE ?", "%" + user_input + "%").where(solved:false)
           when mission_type_collection_array[2]
-            @missions = Mission.where(device_category:DeviceCategory.where("title LIKE ?", "%" + user_input + "%"), solved:false)
+            @missions = Mission.where(device_category:DeviceCategory.where("title LIKE ?", "%" + user_input + "%")).where(solved:false)
           when mission_type_collection_array[3]
-            @missions = Mission.where(categorytag: Categorytag.where("name LIKE ?", "%" + user_input + "%"), solved:false)
+            @missions = Mission.where(categorytag: Categorytag.where("name LIKE ?", "%" + user_input + "%")).where(solved:false)
           when mission_type_collection_array[4]
-            @missions = Mission.where("address LIKE ?", "%" + user_input + "%", solved:false)
+            @missions = Mission.where("address LIKE ?", "%" + user_input + "%").where(solved:false)
         end
 
       else @missions = Mission.where(solved:false)
