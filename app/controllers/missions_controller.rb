@@ -93,8 +93,29 @@ class MissionsController < ApplicationController
 
     def update 
 
+      mission_id = params["id"].to_i
+      updated_mission = Mission.find(mission_id)
 
-      puts "hhahahahahhahah #{params} hahahahahhahah"
+      device_category_id =  params["device_category"]["device_category_id"].to_i
+      device_category = DeviceCategory.find(device_category_id)
+
+      category_tag_id = params["category_tag"]["categorytag_id"].to_i
+      category_tag = Categorytag.find(category_tag_id)
+      
+
+      title = params["mission"]["title"]
+      description = params["mission"]["description"]
+      address = params["mission"]["address"]
+      price = params["mission"]["price"].to_i
+
+    
+      params["mission"]["email_contact"]
+      params["mission"]["phone_contact"]
+      params["mission"]["in_person_help"]
+      params["mission"]["remote_help"]
+      
+      
+ 
 
     end
 
