@@ -4,7 +4,7 @@ class AfterController < ApplicationController
     
 
    
-    steps :service_provider, :how_do_we_call_you, :location_data, :fill_up_skills, :status_choice
+    steps :service_provider, :how_do_we_call_you, :contact_details, :location_data, :fill_up_skills, :status_choice
     
     
     def show
@@ -14,6 +14,7 @@ class AfterController < ApplicationController
         case step
             when :service_provider
             when :how_do_we_call_you
+            when :contact_details
             when :location_data
             when :fill_up_skills
                 if @user.service_provider? == false
@@ -45,6 +46,16 @@ class AfterController < ApplicationController
           @user.last_name = params[:'user']["last_name"]
           @user.save
 
+        when :contact_details
+            user_email = params[:'user']["email"]
+            user_phone = params[:'user']["phone_number"]
+            if @user.email !=  user_email &&  user_email.blank? == false
+                @user.email = user_email
+            end
+            if @user.phone_number !=  user_phone &&  user_phone.blank? == false
+                @user.phone_number = params[:'user']["phone_number"]
+            end
+            @user.save
         when :location_data
             @user.address = params[:'user']["address"]
 
