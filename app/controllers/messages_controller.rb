@@ -41,7 +41,8 @@ class MessagesController < ApplicationController
                 user_password = params["message"]["@user"]["password"]
                     if check_sender.valid_password?(user_password)
                         sender = check_sender
-                    else puts "Invalid password matching a user in database"
+                    else 
+                        puts "Invalid password matching a user in database"
                     end
                 else 
                     new_user_email = params["message"]["@user"]["email"]
@@ -50,7 +51,8 @@ class MessagesController < ApplicationController
                     new_user = User.new(email:new_user_email, password:new_user_password, password_confirmation:new_user_password_confirmation)
                     if new_user.save
                         sender = new_user
-                    else new_user.errors.full_messages
+                    else 
+                        puts new_user.errors.full_messages
                     end
                 end
     
@@ -60,7 +62,8 @@ class MessagesController < ApplicationController
   
             if message.save
                 redirect_to missions_path(id:mission_id)
-            else message.errors.full_messages
+            else 
+                puts message.errors.full_messages
             end
 
 
