@@ -14,10 +14,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.boolean :sender_deleted, default: false
       t.boolean :recipient_deleted, default: false
 
-      t.boolean :phone_contact
-      t.boolean :email_contact
-      t.boolean :in_person_help
-      t.boolean :remote_help
+    
   
       t.timestamps
     end

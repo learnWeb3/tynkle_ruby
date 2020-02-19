@@ -91,6 +91,89 @@
                         </div>
                     </div>
 
+
+                    <div class="col">
+
+                        <p class="form-label"> Mode de contact préféré </p>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+
+
+                        <div class="col">
+
+                            <div class="form-group col-12 my-auto">
+
+                                <div class="form-check text-center form-check-inline">
+                                    <%=  f.check_box :email_contact, class:"form-check-input",id:"radio-status-choice"%>
+                                    <%=  f.label :"Contact par email", class:"form-check-label", for:"radio-status-choice"  %>
+                                </div>
+                                
+                            </div> 
+
+                        </div>
+
+                        <div class="col">
+
+                            <div class="form-group col-12 my-auto">
+
+                                <div class="form-check text-center form-check-inline">
+                                    <%=  f.check_box :phone_contact, class:"form-check-input",id:"radio-status-choice"%>
+                                    <%=  f.label :"Contact par téléphone", class:"form-check-label", for:"radio-status-choice"  %>
+                                </div>
+                                
+                            </div> 
+
+                        </div>
+                    </div>
+
+                    <hr class="mb-4">
+
+                    <div class="col">
+                        <p class="form-label"> Type d'aide souhaitée</p>
+                    </div>
+
+
+                    <hr>
+
+
+                    <div class="row">
+
+
+                        <div class="col">
+
+                            <div class="form-group col-12 my-auto">
+
+                           
+                                <div class="form-check text-center form-check-inline">
+                                    <%=  f.check_box :in_person_help, class:"form-check-input",id:"radio-status-choice"%>
+                                    <%=  f.label :"Aide en personne", class:"form-check-label", for:"radio-status-choice"  %>
+                                </div>
+                                
+                            </div> 
+
+                        </div>
+
+                        <div class="col">
+
+                            <div class="form-group col-12 my-auto">
+
+                                <div class="form-check text-center form-check-inline">
+                                    <%=  f.check_box :remote_help, class:"form-check-input",id:"radio-status-choice"%>
+                                    <%=  f.label :"Aide à distance", class:"form-check-label", for:"radio-status-choice"  %>
+                                </div>
+                                
+                            </div> 
+
+                        </div>
+                    </div>
+
+                    <hr class="mb-4">
+
+
                     <div class="form-group col-12">
                         <%=  f.label :"Description_de_la_demande :"%>
                         <%=  f.text_area :description, class:"form-control mb-4", rows:"10"  %>

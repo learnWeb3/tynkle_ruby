@@ -91,10 +91,6 @@ ActiveRecord::Schema.define(version: 2020_02_17_065956) do
     t.boolean "already_read", default: false
     t.boolean "sender_deleted", default: false
     t.boolean "recipient_deleted", default: false
-    t.boolean "phone_contact"
-    t.boolean "email_contact"
-    t.boolean "in_person_help"
-    t.boolean "remote_help"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipient_id"], name: "index_messages_on_recipient_id"
@@ -112,6 +108,11 @@ ActiveRecord::Schema.define(version: 2020_02_17_065956) do
     t.string "postal_code"
     t.string "country"
     t.string "city"
+    t.boolean "solved"
+    t.boolean "phone_contact"
+    t.boolean "email_contact"
+    t.boolean "in_person_help"
+    t.boolean "remote_help"
     t.bigint "device_category_id"
     t.bigint "user_id"
     t.bigint "categorytag_id"

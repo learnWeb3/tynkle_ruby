@@ -13,6 +13,13 @@ class CreateMissions < ActiveRecord::Migration[5.2]
       t.string :country
       t.string :city
 
+      t.boolean :solved, default: false
+      
+      t.boolean :phone_contact, default: false
+      t.boolean :email_contact, default: false
+      t.boolean :in_person_help, default: false
+      t.boolean :remote_help, default: false
+
       # Active record Associations 
 
       t.belongs_to :device_category
