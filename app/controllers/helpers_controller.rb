@@ -36,7 +36,12 @@ class HelpersController < ApplicationController
 
                 end
               when @user_attributes[8]
-                
+                if params["/helpers"]["device_category_id"].present?
+                  device_category_selected = DeviceCategory.find(params["/helpers"]["device_category_id"].to_i)
+                  users = []
+                  LinkDeviceToUser.where(acquired:true, device_category:device_category_selected ).each{|e| users.push(e.user)}
+                  @users = users.uniq.dup
+                end
 
             end
     

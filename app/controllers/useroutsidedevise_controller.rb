@@ -83,10 +83,11 @@ def show
 
     def update_skills_and_devices
 
-        updated_skills = params["user"].select{|k,v| v.to_i == 1}
+        updated_skills_true = params["user"].select{|k,v| v.to_i == 1}
+        updated_skills_false = params["user"].select{|k,v| v.to_i == 0}
 
 
-        updated_skills.each do |k,v|
+        updated_skills_true.each do |k,v|
             
             if Skill.find_by(name:k)
                 user_skill_link = LinkSkillToUser.find_by(skill:Skill.find_by(name:k), user:current_user)
@@ -98,6 +99,21 @@ def show
                 user_device_link.save
             end
         end
+
+
+        updated_skills_false.each do |k,v|
+            
+            if Skill.find_by(name:k)
+                user_skill_link = LinkSkillToUser.find_by(skill:Skill.find_by(name:k), user:current_user)
+                user_skill_link.acquired = false
+                user_skill_link.save
+            elsif DeviceCategory.find_by(title:k)
+                user_device_link = LinkDeviceToUser.find_by(device_category:DeviceCategory.find_by(title:k), user:current_user)
+                user_device_link.acquired = false
+                user_device_link.save
+            end
+        end
+
 
         redirect_to edit_user_registration_path(anchor:"skills-and-devices-update")
             
