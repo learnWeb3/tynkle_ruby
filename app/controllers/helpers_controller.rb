@@ -2,7 +2,7 @@ class HelpersController < ApplicationController
 
     def index 
 
-        @user_attributes = ["Nom", "Prénom", "Addresse", "Ville", "Code Postal", "Adresse email", "Numéro de téléphone", "Compétences"]
+        @user_attributes = ["Nom", "Prénom", "Addresse", "Ville", "Code Postal", "Adresse email", "Numéro de téléphone", "Compétences", "Type d'appareil"]
         
         if params["/helpers"].present?
 
@@ -35,6 +35,8 @@ class HelpersController < ApplicationController
                     @users = users.uniq.dup
 
                 end
+              when @user_attributes[8]
+                
 
             end
     

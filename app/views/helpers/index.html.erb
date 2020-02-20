@@ -9,7 +9,8 @@
 
     <%= f.text_field :user_input, class:"form-control form-control-lg col-6", placeholder:"Besoin d'aide ? Rechercher un helper...", id:"search-input"%>
     <%=  f.collection_select :categorytag_id, Categorytag.all, :id, :name, {prompt: "Compétence recherchée"}, {class: "custom-select-lg d-none mx-2", id:"categoytag-select"}%>
-    <%= f.select :search_user_attribute, options_for_select(@user_attributes), {prompt: "Filtre recherche"}, { class: 'custom-select-lg mx-2', id:"helper-select"}%>
+    <%=  f.collection_select :device_category_id, DeviceCategory.all, :id, :title, {prompt: "Appareil en panne"}, {class: "custom-select-lg d-none mx-2", id:"device-type-select"}%>
+    <%= f.select :search_user_attribute, options_for_select(@user_attributes), {prompt: "Filtrer la recherche"}, { class: 'custom-select-lg mx-2', id:"helper-select"}%>
     <%= f.submit :rechercher, class:"btn btn-lg btn-outline-success my-2" %>
 
     <% end %>
