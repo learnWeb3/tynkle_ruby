@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
                     if mission_id.blank? == false
                         mission = Mission.find(mission_id)
 
-                        @review = Review.new(assessor:current_user, mission:@mission, assessed:@assessed_user)
+                        @review = Review.new
 
                     end
                 end
@@ -69,6 +69,29 @@ class ReviewsController < ApplicationController
 
         end
         render_wizard
+    end
+
+
+    def create 
+
+        if user_signed_in?
+            review_rate = params["review"]["rate"].to_i
+            review_content = params["review"]["content"]
+            if params["assessed"].present?
+            assessed_user = User.find(params["assessed"].to_i)
+            end
+            if params["mission_id"].present?
+                reviewed_mission = Mission.find(params["mission_id"].to_i)
+            end
+            assessor_user = current_user
+
+            new_review = Review.new(assessor:assessor_user, assessed:assessed_user, mission:reviewed_mission, content:review_content, rate:review_rate)
+
+            if new_review.save
+                redirect_to root_path
+            end
+        end
+
     end
     
 

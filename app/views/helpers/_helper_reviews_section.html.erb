@@ -14,25 +14,44 @@
         <table class="table table-responsive text-gray-700 table-striped table-hover d-flex align-items-center justify-content-center my-4">
 
             <tr class="no-hover no-stripe">
-                
+                <% if @user.service_provider? %>
                 <th style="min-width: 200px"><%= link_to 'Parfait', helper_path(id:@user.id, review_type:"perfect", anchor: "reviews")  %></th>
+                <% else %>
+                <th style="min-width: 200px"><%= link_to 'Parfait', useroutsidedevise_path(id:@user.id, review_type:"perfect", anchor: "reviews")  %></th>
+                <% end %>
                 <td style="min-width: 200px"><%=@user_reviews_perfect.length%></td>
                 
             </tr>
             <tr class="no-hover no-stripe">
+                <% if @user.service_provider? %>
                 <th style="min-width: 200px"><%= link_to 'Très Bon', helper_path(id:@user.id, review_type:"really-good", anchor: "reviews")  %></th>
+                <% else %>
+                <th style="min-width: 200px"><%= link_to 'Très Bon', useroutsidedevise_path(id:@user.id, review_type:"really-good", anchor: "reviews")  %></th>
+                <% end %>
                 <td style="min-width: 200px"><%=@user_reviews_really_good.length%></td>
             </tr>
             <tr class="no-hover no-stripe">
+                <% if @user.service_provider? %>
                 <th style="min-width: 200px"><%= link_to 'Correct', helper_path(id:@user.id, review_type:"good", anchor: "reviews")  %></th>
+                <% else %>
+                <th style="min-width: 200px"><%= link_to 'Correct', useroutsidedevise_path(id:@user.id, review_type:"good", anchor: "reviews")  %></th>
+                <% end %>
                 <td style="min-width: 200px"> <%=@user_reviews_good.length%></td>
             </tr>
             <tr class="no-hover no-stripe">
+                <% if @user.service_provider? %>
                 <th style="min-width: 200px"><%= link_to 'Insuffisant', helper_path(id:@user.id, review_type:"not-enough", anchor: "reviews")  %></th>
+                <% else %>
+                <th style="min-width: 200px"><%= link_to 'Insuffisant', useroutsidedevise_path(id:@user.id, review_type:"not-enough", anchor: "reviews")  %></th>
+                <% end %>
                 <td style="min-width: 200px"><%=@user_reviews_disapointing.length%></td>
             </tr>
             <tr class="no-hover no-stripe">
+                <% if @user.service_provider? %>
                 <th style="min-width: 200px"><%= link_to 'A éviter', helper_path(id:@user.id, review_type:"to-avoid", anchor: "reviews")  %></th>
+                <% else %>
+                <th style="min-width: 200px"><%= link_to 'A éviter', useroutsidedevise_path(id:@user.id, review_type:"to-avoid", anchor: "reviews")  %></th>
+                <% end %>
                 <td style="min-width: 200px"> <%=@user_reviews_to_avoid.length%></td>
             </tr>
 
@@ -42,8 +61,11 @@
 
 <div class="text-left col-9 mx-auto">
 
-
+<% if @user.service_provider? %>
     <%= link_to 'Retour', helper_path(id:@user.id, anchor: "reviews"), class:"btn btn-outline-primary my-2"  %>
+<% else %>
+    <%= link_to 'Retour', useroutsidedevise_path(id:@user.id, anchor: "reviews"), class:"btn btn-outline-primary my-2"  %>
+<% end %>
 
 </div>
 

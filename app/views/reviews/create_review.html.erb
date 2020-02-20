@@ -17,7 +17,7 @@
 <hr>
 
 
-    <%= form_for @review, url: reviews_path, method: :post do |f| %>
+    <%= form_for @review, url: reviews_path(assessed:@assessed_user.id, mission_id:@mission.id), method: :post do |f| %>
 
         <div class="form-group col-12">
             <%=  f.label :"Noter le service reçu :"%>
