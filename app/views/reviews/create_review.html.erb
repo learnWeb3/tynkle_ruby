@@ -10,6 +10,7 @@
         <div class="form-group col-12">
             <%=  f.label :"Noter le service reçu :"%>
             <div class='starrr col-12 text-center'></div>
+            <div class="text-center font-weight-bold text-muted my-2" id="rate-comment"></div>
             <%= f.hidden_field :rate, class:"form-control", id:"mission-rate"%>
         </div>
 
@@ -34,10 +35,16 @@
 <%= javascript_tag ("$('.starrr').starrr()") %>
 
 <%= javascript_tag ("$('.starrr').on('starrr:change', function(e, value){
-    document.getElementById('mission-rate').value = value
+
+    document.getElementById('mission-rate').value = value;
+    changeCommentAccordingStarValue ();
+
   })") %>
 
-  <%= javascript_tag ("reloadPage()") %>
+
+
+
+<%= javascript_tag ("reloadPage()") %>
 
 
 
