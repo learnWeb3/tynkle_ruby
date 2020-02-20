@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :servicesurvey, only: [:show, :update, :create]
 
-  resources :missions, only: [:create, :update, :show, :index, :edit]
+  resources :missions, only: [:create, :update, :show, :index, :edit, :new]
 
   resources :messages, only: [:create, :update, :show, :index]
 
