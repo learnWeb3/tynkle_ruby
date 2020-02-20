@@ -8,10 +8,10 @@
     <div class="form-inline justify-content-center my-4">
 
     <%= f.text_field :user_input, class:"form-control form-control-lg col-6", placeholder:"Besoin d'aide ? Rechercher un helper...", id:"search-input"%>
-    <%=  f.collection_select :device_category_id, DeviceCategory.all, :id, :title, {}, {class: "custom-select-lg d-none mx-2", id:"devicecategory-select"}%>
-    <%=  f.collection_select :categorytag_id, Categorytag.all, :id, :name, {}, {class: "custom-select-lg d-none mx-2", id:"categoytag-select"}%>
-    <%= f.select :search_user_attribute, options_for_select(@user_attributes), {}, { class: 'custom-select-lg mx-2', id:"helper-select"}%>
-    <%= f.submit :rechercher, class:"btn btn-lg btn-outline-success" %>
+    <%=  f.collection_select :device_category_id, DeviceCategory.all, :id, :title, {prompt: "Type d'appareil pris en charge"}, {class: "custom-select-lg d-none mx-2", id:"devicecategory-select"}%>
+    <%=  f.collection_select :categorytag_id, Categorytag.all, :id, :name, {prompt: "Compétence recherchée"}, {class: "custom-select-lg d-none mx-2", id:"categoytag-select"}%>
+    <%= f.select :search_user_attribute, options_for_select(@user_attributes), {prompt: "Filtre recherche"}, { class: 'custom-select-lg mx-2', id:"helper-select"}%>
+    <%= f.submit :rechercher, class:"btn btn-lg btn-outline-success my-2" %>
 
     <% end %>
 
