@@ -19,6 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     @user_outside_devise = current_user
     @user_skills = LinkSkillToUser.where(user:current_user, acquired:true)
+    @link_device_categories_to_users = LinkDeviceToUser.where(user:@user)
     super
    
   end

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   post '/missions/:id/edit', to: 'missions#mission_solved', as: 'mission_solved'
 
 
+  put 'users/edit', to: 'useroutsidedevise#update_skills_and_devices', as: 'update_skills_and_devices'
+
+
   resources :helpers, only: [:index, :show]
   
   resources :inbox, only: [:index, :update, :destroy]

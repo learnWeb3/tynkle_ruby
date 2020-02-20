@@ -216,7 +216,7 @@
 
 
   <div class="py-4 px-5">
-    <h2 class="mb-5  text-center"> Mettre à jour Mes Compétences</h2>
+    <h2 class="mb-5  text-center" id="skills-and-devices-update"> Mettre à jour Mes Compétences</h2>
     <div class="row justify-content-center">
       <div class="col">
 
@@ -227,6 +227,13 @@
           <%= link_to "#pills-skills-selected", class:"nav-link d-flex", id:"pills-skills-selected-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"pills-skills-selected", 'aria-selected':"false" do %> 
           <%= content_tag :div, "Compétences sélectionnées" %>
           <%= content_tag :span, @user_skills.length, class:"badge badge-pill badge-secondary ml-2" %>
+          <% end %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "#pills-device_categories", class:"nav-link d-flex", id:"pills-device_categories-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"pills-device_categories", 'aria-selected':"false" do %> 
+          <%= content_tag :div, "Types d'appareils réparés" %>
+          <%= content_tag :span, @link_device_categories_to_users.where(acquired:true).length, class:"badge badge-pill badge-secondary ml-2" %>
           <% end %>
         </li>
       
@@ -244,7 +251,7 @@
       </ul>
       
       
-      <%= form_for @user_outside_devise, url: useroutsidedevise_path(id:current_user.id), method: :put do |f| %>
+      <%= form_for @user_outside_devise, url: update_skills_and_devices_path(id:current_user.id), method: :put do |f| %>
       
       <div class="tab-content" id="pills-tabContent">
       
@@ -265,6 +272,53 @@
       
       
         </div>
+
+
+      <! -- device categories -->
+
+
+      <div class="tab-pane fade" id="pills-device_categories" role="tabpanel" aria-labelledby="pills-device_categories-tab justify-content-center">
+
+      <hr class="mt-4 mb-2">
+    
+    
+    
+    
+          <%= f.label :"Sélectionne les types d'appareils que tu souhaite dépanner", class:"form-control border-0 font-weight-bolder" %>
+    
+          <div class="form-group">
+    
+    
+          <% @link_device_categories_to_users.each do |link| %>
+    
+            <div class="form-inline">
+    
+              <div class="col">
+                  <%= f.label :"#{link.device_category.title}", class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title: "later on" %>
+              </div>
+    
+              <div class="col-3">
+                <div class="form-check form-check-inline">
+    
+                    <%= f.check_box :"#{link.device_category.title}", class:"form-check-input mx-2", checked:link.acquired%>
+                    <%= f.label :oui, class:"form-check-label mx-2"%>    
+    
+                </div>
+              </div>
+    
+            </div>
+    
+            <% end %>
+    
+            </div>
+    
+    
+    
+      </div>
+    
+
+
+
       
       <!-- skills -->
       

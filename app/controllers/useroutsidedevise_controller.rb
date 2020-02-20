@@ -36,7 +36,6 @@ class UseroutsidedeviseController < ApplicationController
 
         check_updated_attributes(user, set_date_of_birth, set_first_name, set_last_name, set_helper, set_address, set_avatar, set_phone_number)
 
-       
 
         if user.save
 
@@ -81,6 +80,28 @@ def show
         end 
     end
 
+
+    def update_skills_and_devices
+
+        updated_skills = params["user"].select{|k,v| v.to_i == 1}
+
+
+        updated_skills.each do |k,v|
+            
+            if Skill.find_by(name:k)
+                user_skill_link = LinkSkillToUser.find_by(skill:Skill.find_by(name:k), user:current_user)
+                user_skill_link.acquired = true
+                user_skill_link.save
+            elsif DeviceCategory.find_by(title:k)
+                user_device_link = LinkDeviceToUser.find_by(device_category:DeviceCategory.find_by(title:k), user:current_user)
+                user_device_link.acquired = true
+                user_device_link.save
+            end
+        end
+
+        redirect_to edit_user_registration_path(anchor:"skills-and-devices-update")
+            
+    end
 
 
 
