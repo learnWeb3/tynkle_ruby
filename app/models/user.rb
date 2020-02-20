@@ -36,6 +36,11 @@ class User < ApplicationRecord
 
     has_one_attached :avatar, dependent: :destroy
 
+    # Active REcord Association for link_device_to_user
+
+    has_many :link_device_to_users
+    has_many :device_categories, through: :link_device_to_users
+
     # ACtive Record Validations
 
     validates :email, presence: true, uniqueness: true
@@ -58,6 +63,7 @@ class User < ApplicationRecord
     # Creation of intsances of linkskilltouser at creation of a User instances 
     
     after_create :set_link_skil_skills_to_user
+    after_create :set_link_device_to_user
     after_save :update_address_attributes
     
 
@@ -93,6 +99,10 @@ class User < ApplicationRecord
 
         Skill.all.each {|element|LinkSkillToUser.create(skill:element, user:self)}
 
+    end
+
+    def set_link_device_to_user
+      DeviceCategory.all.each {|element|LinkDeviceToUser.create(device_category:element, user:self)}
     end
 
     def age?

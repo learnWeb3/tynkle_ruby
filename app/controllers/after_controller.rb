@@ -19,6 +19,8 @@ class AfterController < ApplicationController
             when :fill_up_skills
                 if @user.service_provider? == false
                     skip_step
+                else 
+                    @link_device_categories_to_users = LinkDeviceToUser.where(user:@user)
                 end
                 
             when :status_choice
@@ -73,18 +75,26 @@ class AfterController < ApplicationController
 
         when :fill_up_skills
 
-            params["/after/fill_up_skills"].each do |k,v|
-                link_skill_to_user = LinkSkillToUser.find_by(user:current_user, skill:Skill.where(name:k))
-                if k == LinkSkillToUser.find_by(user:current_user, skill:Skill.where(name:k)).skill.name &&  v.to_i == 1 && link_skill_to_user.acquired == false
-                    link_skill_to_user.acquired = true
-                    link_skill_to_user.save
-                elsif k == LinkSkillToUser.find_by(user:current_user, skill:Skill.where(name:k)).skill.name &&  v.to_i == 0 && link_skill_to_user.acquired == true
-                    link_skill_to_user.acquired = false
-                    link_skill_to_user.save
+            updated_skills = params["/after/fill_up_skills"].select{|k,v| v.to_i == 1}
+
+
+            updated_skills.each do |k,v|
+                
+                if Skill.find_by(name:k)
+                    user_skill_link = LinkSkillToUser.find_by(skill:Skill.find_by(name:k), user:current_user)
+                    user_skill_link.acquired = true
+                    user_skill_link.save
+                elsif DeviceCategory.find_by(title:k)
+                    user_device_link = LinkDeviceToUser.find_by(device_category:DeviceCategory.find_by(title:k), user:current_user)
+                    user_device_link.acquired = true
+                    user_device_link.save
                 end
+                
+
             end
 
-                    
+
+     
         when :status_choice
 
          if params[:"user"][:"status_activity"].to_i == 0 && @user.status_activity == true

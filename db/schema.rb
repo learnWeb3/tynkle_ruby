@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_065956) do
+ActiveRecord::Schema.define(version: 2020_02_20_140836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,17 @@ ActiveRecord::Schema.define(version: 2020_02_17_065956) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "link_device_to_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "device_category_id"
+    t.integer "level", default: 0
+    t.boolean "acquired", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_category_id"], name: "index_link_device_to_users_on_device_category_id"
+    t.index ["user_id"], name: "index_link_device_to_users_on_user_id"
   end
 
   create_table "link_skill_to_users", force: :cascade do |t|

@@ -4,10 +4,10 @@ class HelpersController < ApplicationController
 
         @user_attributes = ["Nom", "Prénom", "Addresse", "Ville", "Code Postal", "Adresse email", "Numéro de téléphone", "Compétences"]
         
-        if params["/reviews/new"].present?
+        if params["/helpers"].present?
 
-            user_input = params["/reviews/new"]["user_input"]
-            user_attributes = params["/reviews/new"]["search_user_attribute"]
+            user_input = params["/helpers"]["user_input"]
+            user_attributes = params["/helpers"]["search_user_attribute"]
     
             case user_attributes
               when @user_attributes[0]
@@ -24,6 +24,18 @@ class HelpersController < ApplicationController
                 @users = User.where("email LIKE ?", "%" + user_input + "%").where(service_provider:true, status_activity:true)
               when @user_attributes[6]
                 @users = User.where("phone_number LIKE ?", "%" + user_input + "%").where(service_provider:true, status_activity:true)
+              when @user_attributes[7]
+                if  params["/helpers"]["categorytag_id"].present?
+
+                    categorytag_selected = Categorytag.find(params["/helpers"]["categorytag_id"].to_i)
+
+                    users = []
+                    LinkSkillToUser.where(acquired:true, skill:Skill.where(categorytag:categorytag_selected)).each{|e| users.push(e.user)}
+                    users.select_if
+                    @users = users.uniq.dup
+
+                end
+
             end
     
           else @users = User.where(service_provider:true, status_activity:true)
