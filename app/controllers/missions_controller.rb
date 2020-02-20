@@ -170,7 +170,7 @@ class MissionsController < ApplicationController
 
     def index
 
-      mission_type_collection_array = ["Titre", "Contenu", "Type d'appareil", "Type d'intervention", "Localisation"]
+     @mission_type_collection_array = ["Titre", "Contenu", "Type d'appareil", "Compétences", "Localisation"]
 
       if params["/missions"].present?
 
@@ -178,15 +178,15 @@ class MissionsController < ApplicationController
         mission_type = params["/missions"]["search_mission_type"]
 
         case mission_type
-          when mission_type_collection_array[0]
+          when @mission_type_collection_array[0]
             @missions = Mission.where("title LIKE ?", "%" + user_input + "%").where(solved:false)
-          when mission_type_collection_array[1]
+          when @mission_type_collection_array[1]
             @missions = Mission.where("description LIKE ?", "%" + user_input + "%").where(solved:false)
-          when mission_type_collection_array[2]
-            @missions = Mission.where(device_category:DeviceCategory.where("title LIKE ?", "%" + user_input + "%")).where(solved:false)
-          when mission_type_collection_array[3]
-            @missions = Mission.where(categorytag: Categorytag.where("name LIKE ?", "%" + user_input + "%")).where(solved:false)
-          when mission_type_collection_array[4]
+          when @mission_type_collection_array[2]
+            @missions = Mission.where(device_category:DeviceCategory.find(params["/missions"]["device_category_id"].to_i)).where(solved:false)
+          when @mission_type_collection_array[3]
+            @missions = Mission.where(categorytag: Categorytag.find(params["/missions"]["categorytag_id"].to_i)).where(solved:false)
+          when @mission_type_collection_array[4]
             @missions = Mission.where("address LIKE ?", "%" + user_input + "%").where(solved:false)
         end
 

@@ -10,7 +10,7 @@
     <%= f.text_field :user_input, class:"form-control form-control-lg col-6", placeholder:"Rechercher une mission", id:"search-input" %>
     <%=  f.collection_select :categorytag_id, Categorytag.all, :id, :name, {prompt: "Compétence recherchée"}, {class: "custom-select-lg d-none mx-2", id:"categoytag-select"}%>
     <%=  f.collection_select :device_category_id, DeviceCategory.all, :id, :title, {prompt: "Appareil en panne"}, {class: "custom-select-lg d-none mx-2", id:"device-type-select"}%>
-    <%= f.select :search_mission_type, options_for_select(["Titre", "Contenu", "Type d'appareil", "Compétences", "Localisation"]), {}, { class: 'custom-select-lg mx-2', id:"mission-type-select"}%>
+    <%= f.select :search_mission_type, options_for_select(@mission_type_collection_array), {}, { class: 'custom-select-lg mx-2', id:"mission-type-select"}%>
     <%= f.submit :rechercher, class:"btn btn-lg btn-outline-success" %>
 
     <% end %>
