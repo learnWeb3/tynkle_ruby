@@ -1,7 +1,4 @@
-function replaceSearchInputHelperByFormSelectSkills () {
-
-selectFormFilterSearchcriterias = document.getElementById("helper-select")
-
+function replaceSearchInputHelperByFormSelectSkills (selectFormFilterSearchcriterias) {
 
 selectFormFilterSearchcriterias.onchange = function(){
     if (selectFormFilterSearchcriterias.value === "Compétences") {
