@@ -2,7 +2,7 @@ class HelpersController < ApplicationController
 
     def index 
 
-        @user_attributes = ["Nom", "Prénom", "Addresse", "Ville", "Code Postal", "Adresse email", "Numéro de téléphone"]
+        @user_attributes = ["Compétence", "Nom", "Prénom", "Addresse", "Ville", "Code Postal", "Adresse email", "Numéro de téléphone"]
         
         if params["/reviews/new"].present?
 
