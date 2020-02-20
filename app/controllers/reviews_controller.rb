@@ -45,13 +45,13 @@ class ReviewsController < ApplicationController
             when :create_review   
                 if session[:reviewed_mission].present? && user_signed_in?
                     mission_id = session[:reviewed_mission].to_i
-                    mission = Mission.find(mission_id)
+                    @mission = Mission.find(mission_id)
                     assessed_user_id = params["assessed_id"].to_i
                     @assessed_user = User.find(assessed_user_id)
                     if mission_id.blank? == false
                         mission = Mission.find(mission_id)
 
-                        @review = Review.new(assessor:current_user, mission:mission, assessed:@assessed_user)
+                        @review = Review.new(assessor:current_user, mission:@mission, assessed:@assessed_user)
 
                     end
                 end
