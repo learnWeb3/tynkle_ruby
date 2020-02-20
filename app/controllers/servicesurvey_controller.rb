@@ -65,8 +65,8 @@ class ServicesurveyController < ApplicationController
 
             else
 
-                if session[:user_account_id].present?
-                    if session[:user_account_id]["id"].present?
+                if session[:user_account_id]
+                    if session[:user_account_id].class == Hash
 
                         targeted_user = session[:user_account_id]["id"].to_i
 
