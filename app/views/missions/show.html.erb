@@ -26,9 +26,13 @@
         <% end %> 
         
             <div class="d-block align-items-center ml-2">
-            <% if @user.service_provider %>
+            <% if @user.service_provider?  && @user.first_name?%>
                 <%= link_to @user.first_name.capitalize , helper_path(id:@user.id), class:"my-auto"  %> 
-            <% else %>
+            <% elsif  @user.service_provider?  && @user.first_name? == false%>
+                <%= link_to 'Utilisateur' , helper_path(id:@user.id), class:"my-auto"  %> 
+            <% elsif  @user.service_provider? == false  && @user.first_name? == false%>
+                <%= link_to 'Utilisateur' , useroutsidedevise_path(id:@user.id), class:"my-auto"  %> 
+            <% elsif  @user.service_provider? == false  && @user.first_name? %>
                 <%= link_to @user.first_name.capitalize , useroutsidedevise_path(id:@user.id), class:"my-auto"  %> 
             <% end %>
                 <p class="my-auto"><%= @user.global_review_mark %> / <%=@reviews.length%> avis </p>

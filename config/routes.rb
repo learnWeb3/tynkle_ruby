@@ -7,10 +7,11 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  post '/missions/new', to: 'missions#mission_form_creation', as: 'mission_create_outside_survey'
+
   post '/missions/:id', to: 'messages#message_send_from_mission_show', as: 'message_send'
 
   post '/missions/:id/edit', to: 'missions#mission_solved', as: 'mission_solved'
-
 
   put 'users/edit', to: 'useroutsidedevise#update_skills_and_devices', as: 'update_skills_and_devices'
 
