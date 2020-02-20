@@ -1,6 +1,33 @@
 class HelpersController < ApplicationController
 
     def index 
+
+        @user_attributes = ["Nom", "Prénom", "Addresse", "Ville", "Code Postal", "Adresse email", "Numéro de téléphone"]
+        
+        if params["/reviews/new"].present?
+
+            user_input = params["/reviews/new"]["user_input"]
+            user_attributes = params["/reviews/new"]["search_user_attribute"]
+    
+            case user_attributes
+              when @user_attributes[0]
+                @users = User.where("last_name LIKE ?", "%" + user_input + "%").where(service_provider:true, status_activity:true)
+              when @user_attributes[1]
+                @users = User.where("first_name LIKE ?", "%" + user_input + "%").where(service_provider:true, status_activity:true)
+              when @user_attributes[2]
+                @users = User.where("address LIKE ?", "%" + user_input + "%").where(service_provider:true, status_activity:true)
+              when @user_attributes[3]
+                @users = User.where("city LIKE ?", "%" + user_input + "%").where(service_provider:true, status_activity:true)
+              when @user_attributes[4]
+                @users = User.where("postal_code LIKE ?", "%" + user_input + "%").where(service_provider:true, status_activity:true)
+              when @user_attributes[5]
+                @users = User.where("email LIKE ?", "%" + user_input + "%").where(service_provider:true, status_activity:true)
+              when @user_attributes[6]
+                @users = User.where("phone_number LIKE ?", "%" + user_input + "%").where(service_provider:true, status_activity:true)
+            end
+    
+          else @users = User.where(service_provider:true, status_activity:true)
+          end
     end 
 
 
