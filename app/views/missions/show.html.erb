@@ -173,11 +173,11 @@
 
 
 
-<!--<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
 
 <%= javascript_tag ("document.addEventListener('turbolinks:load', function() { userName = '#{@user.first_name}' ; initMap(#{@user.latitude}, #{@user.longitude}, document.getElementById('map-mission-geolocation'), userName)    });")%>
 
-<%= javascript_tag ("reloadPage()") %> --!>
+<%= javascript_tag ("reloadPage()") %> 
 
 
 

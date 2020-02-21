@@ -164,11 +164,11 @@ ActiveRecord::Schema.define(version: 2020_02_20_140836) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "first_name", default: "Utlisateur"
+    t.string "last_name", default: "Utlisateur"
     t.float "latitude"
     t.float "longitude"
-    t.string "address"
+    t.string "address", default: "5 Parvis Alan Turing, Paris, France"
     t.string "postal_code"
     t.string "country"
     t.string "city"
