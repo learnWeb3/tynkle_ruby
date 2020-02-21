@@ -13,10 +13,10 @@ $(window).scroll(function() {
         $("#navbar-link-1").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
         $("#navbar-link-2").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
         $("#navbar-link-3").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
-        $("#navbar-link-3").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
+        $("#navbar-link-4").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
         $("#navbar-link-5").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
         $("#navbar-link-6").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
-        $("#navbar-link-4").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
+        $("#navbar-link-7").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
 
 
 
@@ -35,6 +35,7 @@ $(window).scroll(function() {
         $("#navbar-link-4").removeClass("hover-weigth-underline-dark").addClass("hover-weigth-underline-white")
         $("#navbar-link-5").removeClass("hover-weigth-underline-dark").addClass("hover-weigth-underline-white")
         $("#navbar-link-6").removeClass("hover-weigth-underline-dark").addClass("hover-weigth-underline-white")
+        $("#navbar-link-7").removeClass("hover-weigth-underline-dark").addClass("hover-weigth-underline-white")
         
 
     }

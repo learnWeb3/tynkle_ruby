@@ -17,10 +17,10 @@ function editUserChangeNavandButtonAspect() {
             $("#navbar-link-1").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
             $("#navbar-link-2").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
             $("#navbar-link-3").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
-            $("#navbar-link-3").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
+            $("#navbar-link-4").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
             $("#navbar-link-5").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
             $("#navbar-link-6").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
-            $("#navbar-link-4").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
+            $("#navbar-link-7").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
 
             document.getElementById("logo-brand").src = 'http://localhost:3000/assets/logo/brand.png';
 
@@ -41,10 +41,10 @@ function editUserChangeNavandButtonAspect() {
             $("#navbar-link-1").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
             $("#navbar-link-2").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
             $("#navbar-link-3").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
-            $("#navbar-link-3").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
+            $("#navbar-link-4").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
             $("#navbar-link-5").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
             $("#navbar-link-6").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
-            $("#navbar-link-4").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
+            $("#navbar-link-7").removeClass("hover-weigth-underline-white").addClass("hover-weigth-underline-dark")
 
             document.getElementById("logo-brand").src = 'http://localhost:3000/assets/logo/brand.png';
 

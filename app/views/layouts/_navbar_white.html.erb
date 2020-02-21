@@ -23,21 +23,28 @@
             <% if user_signed_in? %>
 
             <li class="nav-item hover-underline">
-                <%= link_to "Profil", edit_user_registration_path, class:"nav-link font-weight-bold hover-weigth-underline-dark", id:"navbar-link-3"%>
+            <%= link_to inbox_index_path("content":"home"), class:"nav-link font-weight-bold hover-weigth-underline-white d-flex", id:"navbar-link-3" do %>
+                <%= content_tag :div, "Messagerie" %>
+                <%= content_tag :sup, "#{current_user.received_messages.where(already_read:false).length}", class:"badge badge-pill badge-info ml-2" %>
+                <% end %>
             </li>
 
             <li class="nav-item hover-underline">
-                <%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class:"nav-link font-weight-bold hover-weigth-underline-dark", id:"navbar-link-4"%>
+                <%= link_to "Profil", edit_user_registration_path, class:"nav-link font-weight-bold hover-weigth-underline-dark", id:"navbar-link-4"%>
+            </li>
+
+            <li class="nav-item hover-underline">
+                <%= link_to 'Deconnexion', destroy_user_session_path, :method => :delete, class:"nav-link font-weight-bold hover-weigth-underline-dark", id:"navbar-link-5"%>
             </li>
 
             <% else %>
 
             <li class="nav-item hover-underline">
-                <%= link_to "Inscription", new_user_registration_path, class:"nav-link font-weight-bold hover-weigth-underline-dark", id:"navbar-link-5"%>
+                <%= link_to "Inscription", new_user_registration_path, class:"nav-link font-weight-bold hover-weigth-underline-dark", id:"navbar-link-6"%>
             </li>
 
             <li class="nav-item hover-underline">
-                <%= link_to 'Connexion', new_user_session_path, class:"nav-link font-weight-bold hover-weigth-underline-dark", id:"navbar-link-6"%>
+                <%= link_to 'Connexion', new_user_session_path, class:"nav-link font-weight-bold hover-weigth-underline-dark", id:"navbar-link-7"%>
             </li>
 
           
