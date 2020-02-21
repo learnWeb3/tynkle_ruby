@@ -25,7 +25,7 @@ class MissionsController < ApplicationController
 
           if new_user.save
             mission_user = new_user
-            session[:user_account_id] = new_user.id
+            session[:user_account_id] = new_user
           end
 
         else 

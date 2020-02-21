@@ -71,6 +71,7 @@ class ServicesurveyController < ApplicationController
                         targeted_user = session[:user_account_id]["id"].to_i
 
                         message_sender = User.find(targeted_user)
+
                     else 
                         # flash[:error]
                         redirect_to wizard_path
@@ -80,9 +81,10 @@ class ServicesurveyController < ApplicationController
 
             end
 
-                selected_helper_ids = []
-                session[:selected_helper] = selected_helper_ids.dup
-                params["/servicesurvey/select_helper"].each {|k,v| selected_helper_ids.push(k)}
+                
+                selected_helper_ids = params["/servicesurvey/select_helper"].select{|k,v| v == '1'}
+                selected_helper_ids = selected_helper_ids.keys
+                session[:selected_helper] = selected_helper_ids
 
             if session[:mission].present?
                 mission_id = session[:mission].to_i
@@ -93,8 +95,9 @@ class ServicesurveyController < ApplicationController
                 website_url = "localhost:3000"
                 shared_mission_url = website_url+"/missions/#{mission_id}"
 
+
                 selected_helper_ids.each do |helper_id|
-                    Message.create(sender:message_sender, recipient:User.find(helper_id), object:message_object_mission_title, content:message_content_mission_description, mission_url:shared_mission_url)
+                     Message.create(sender:message_sender, recipient:User.find(helper_id), object:message_object_mission_title, content:message_content_mission_description, mission_url:shared_mission_url)
                 end
 
                 redirect_to wizard_path(:finish)
