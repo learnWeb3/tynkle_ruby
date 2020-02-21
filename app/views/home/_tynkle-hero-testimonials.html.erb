@@ -13,9 +13,10 @@
             <div class="card border-0 hover-animate bg-transparent"><a href="#" class="position-relative"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" class="card-img-top team-img"/>
                 <div class="team-circle bg-primary-light"></div></a>
                 <div class="card-body team-body text-center">
-                <h6 class="card-title">Meredith Goodwin</h6>
-                <p class="card-subtitle text-muted text-xs text-uppercase">RATE</p>
-                <p class="card-footer"> babababab </p>
+                <h6 class="card-title">Paul Webbs</h6>
+                <p class="card-subtitle text-muted text-xs text-uppercase">4/5</p>
+                <div class='starrr'></div>
+                <blockquote class="blockquote-footer"><h6 class="card-footer">" Un grand merci à Tynkle, une plateforme de spécialiste qui répond à vos besoin "</h6>
                 </div>
             </div>
             </div>
@@ -26,9 +27,10 @@
             <div class="card border-0 hover-animate bg-transparent"><a href="#" class="position-relative"><img src="https://images.unsplash.com/photo-1568337339905-7165c43848b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" class="card-img-top team-img"/>
                 <div class="team-circle bg-primary-light"></div></a>
                 <div class="card-body team-body text-center">
-                <h6 class="card-title">Weeks Garrett</h6>
-                <p class="card-subtitle text-muted text-xs text-uppercase">RATE</p>
-                <p class="card-footer"> babababab </p>
+                <h6 class="card-title">Natacha Andrei</h6>
+                <p class="card-subtitle text-muted text-xs text-uppercase">5/5</p>
+                <div class='starrr'></div>
+                <blockquote class="blockquote-footer"><h6 class="card-footer">" Plus la peine de se perdre au fin fond de leboncoin ou AlloVoisin, Tynkle c'est la Plateforme de l'entraide Informatique "</h6>
                 </div>
             </div>
             </div>
@@ -39,9 +41,10 @@
             <div class="card border-0 hover-animate bg-transparent"><a href="#" class="position-relative"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" class="card-img-top team-img"/>
                 <div class="team-circle bg-primary-light"></div></a>
                 <div class="card-body team-body text-center">
-                <h6 class="card-title">Fisher Bauer</h6>
-                <p class="card-subtitle text-muted text-xs text-uppercase">RATE</p>
-                <p class="card-footer"> babababab </p>
+                <h6 class="card-title">Mélanie Rasse</h6>
+                <p class="card-subtitle text-muted text-xs text-uppercase">3/5</p>
+                <div class='starrr'></div>
+                <blockquote class="blockquote-footer"><h6 class="card-footer">"Une recherche simple et efficace, des personnes disponibles et compétentes, bonne expérience, je recommande"</h6></blockquote>
                 </div>
             </div>
             </div>
@@ -52,9 +55,10 @@
             <div class="card border-0 hover-animate bg-transparent"><a href="#" class="position-relative"><img src="https://images.unsplash.com/photo-1518644730709-0835105d9daa?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" class="card-img-top team-img"/>
                 <div class="team-circle bg-primary-light"></div></a>
                 <div class="card-body team-body text-center">
-                <h6 class="card-title">Aguilar Webb</h6>
-                <p class="card-subtitle text-muted text-xs text-uppercase">RATE</p>
-                <p class="card-footer"> babababab </p>
+                <h6 class="card-title">Pierre Martin</h6>
+                <p class="card-subtitle text-muted text-xs text-uppercase">5/5</p>
+                <div class='starrr'></div>
+                <blockquote class="blockquote-footer"><h6 class="card-footer">" Une solution innovante et spécialisée qui complète l'offre de catalogues plus généralistes "</h6></blockquote>
                 </div>
             </div>
             </div>
@@ -63,7 +67,14 @@
     </div>
 
     <div class="text-center">
-    <a href="#" class="btn btn-primary text-capitalize mt-4 mb-5">Faire comme Meredith </a>
+        <%= link_to "Faire comme Meredith", new_user_registration_path , class:"btn btn-lg btn-primary text-capitalize mt-4 mb-5" %>
     </div>
 
 </section>
+
+<%= javascript_tag("$('.starrr').starrr({
+    rating: 5
+  })") %>
+  <%= javascript_tag("$('.starrr').starrr({
+    readOnly: true
+  })") %>

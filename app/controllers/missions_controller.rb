@@ -340,7 +340,7 @@ class MissionsController < ApplicationController
 
       if mission.save
         session[:reviewed_mission] = mission_id
-        redirect_to new_review_path
+        redirect_to '/reviews/select_helper'
       else puts mission.errors.full_messages
       end
 
