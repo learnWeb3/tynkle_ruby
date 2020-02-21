@@ -25,7 +25,7 @@
 
 <% @missions.each do |mission| %>
 
-        <div class="list-group col-9 shadow mb-5 p-5 bg-white position-relative">
+        <div class="list-group col-10 shadow mb-5 p-5 bg-white position-relative">
             <div class="row">
                 <div class="col-md-3 my-auto d-flex align-items-center justify-content-start">
                    
@@ -66,13 +66,21 @@
                 </div>
 
                 <div class="col-md-2 text-center my-auto d-block align-items-center">
-                    <% if mission.user.service_provider?%>
-                    <p class="font-weight-bold mb-0">Postée par:</p>
-                    <p class="font-weight-bold mb-0"><%= link_to mission.user.first_name, helper_path(id:mission.user.id) %></p>
-                    <% else %>
-                    <p class="font-weight-bold mb-0">Postée par :</p>
-                    <p class="font-weight-bold mb-0"><%= link_to mission.user.first_name, useroutsidedevise_path(id:mission.user.id) %></p>
+
+                    <% if mission.user.service_provider?  && mission.user.first_name?%>
+                        <p class="font-weight-bold mb-0">Postée par:</p>
+                        <p class="font-weight-bold mb-0"><%= link_to mission.user.first_name.capitalize , helper_path(id:mission.user.id), class:"my-auto"  %></p> 
+                    <% elsif  mission.user.service_provider?  && mission.user.first_name? == false%>
+                        <p class="font-weight-bold mb-0">Postée par:</p>
+                        <p class="font-weight-bold mb-0"><%= link_to 'Utilisateur' , helper_path(id:mission.user.id), class:"my-auto"  %></p>
+                    <% elsif  mission.user.service_provider? == false  && mission.user.first_name? == false%>
+                        <p class="font-weight-bold mb-0">Postée par:</p>
+                        <p class="font-weight-bold mb-0"><%= link_to 'Utilisateur' , useroutsidedevise_path(id:mission.user.id), class:"my-auto"  %></p> 
+                    <% elsif  mission.user.service_provider? == false  && mission.user.first_name? %>
+                        <p class="font-weight-bold mb-0">Postée par:</p>
+                        <p class="font-weight-bold mb-0"><%= link_to mission.user.first_name.capitalize , useroutsidedevise_path(id:mission.user.id), class:"my-auto"  %></p>
                     <% end %>
+
                 </div>
 
                 <div class="col-md-2 text-left my-auto d-block align-items-center justify-content-center text-center">
