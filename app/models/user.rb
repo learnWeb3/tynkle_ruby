@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
     # Active REcord Association for link_device_to_user
 
-    has_many :link_device_to_users
+    has_many :link_device_to_users, dependent: :destroy
     has_many :device_categories, through: :link_device_to_users
 
     # ACtive Record Validations
@@ -64,6 +64,8 @@ class User < ApplicationRecord
     
     after_create :set_link_skil_skills_to_user
     after_create :set_link_device_to_user
+    
+
     after_save :update_address_attributes
     
 
@@ -111,7 +113,15 @@ class User < ApplicationRecord
         return age
       end
     end
-      
+
+    def profile_completed?
+      if self.first_name? && self.last_name?  && self.email? && self.address?
+        return true
+      else return false
+      end
+    end
+
+
 
 
 

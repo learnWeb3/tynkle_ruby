@@ -34,27 +34,34 @@ class AfterController < ApplicationController
         case step
         when :service_provider
 
-            if  params[:"user"]["service_provider"].to_i == 1 && @user.service_provider? == false
+            if  params["user"]["service_provider"].to_i == 1 
                 @user.service_provider = true
                 @user.save
-            elsif params[:"user"]["service_provider"].to_i == 0 && @user.service_provider? == true
+            elsif params["user"]["service_provider"].to_i == 0 
                 @user.service_provider = false
                 @user.save
+            
             end
 
         when :how_do_we_call_you
 
-            user_first_name = params[:'user']["first_name"]
-            user_last_name = params[:'user']["last_name"]
+            user_first_name = params['user']["first_name"]
+            user_last_name = params['user']["last_name"]
 
-            if @user.first_name !=  user_first_name &&  user_first_name.blank? == false
-                @user.first_name = user_first_name
-            end
-            if @user.last_name !=  user_last_name &&  user_last_name.blank? == false
-                @user.last_name = user_last_name
-            end
+            
 
-          @user.save
+                if @user.first_name !=  user_first_name &&  user_first_name != ""
+                    @user.first_name = user_first_name
+                end
+                if @user.last_name !=  user_last_name &&  user_last_name != ""
+                    @user.last_name = user_last_name
+                end
+
+                if user_first_name != "" && user_last_name != ""
+                    @user.save
+                end
+
+            
 
         when :contact_details
             user_email = params[:'user']["email"]
