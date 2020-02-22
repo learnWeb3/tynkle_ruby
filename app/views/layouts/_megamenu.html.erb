@@ -27,14 +27,14 @@
                             <h6 class="text-uppercase">Recherche par critère</h6>
 
 
-                            <%= form_for :mission, url:missions_path, html:{class:"form-inline"}, method: :get do |f| %>
+                            <%= form_for :mission, url: missions_path, html:{class:"form-inline my-4"}, method: :get do |f| %>
 
                             
                                 <%= f.text_field :user_input, class:"form-control col-6", placeholder:"Rechercher une mission", id:"search-input" %>
-                                <%=  f.collection_select :categorytag_id, Categorytag.all, :id, :name, {prompt: "Compétence recherchée"}, {class: "custom-select d-none mx-2", id:"categoytag-select"}%>
-                                <%=  f.collection_select :device_category_id, DeviceCategory.all, :id, :title, {prompt: "Appareil en panne"}, {class: "custom-select d-none mx-2", id:"device-type-select"}%>
-                                <%= f.select :title, options_for_select(@mission_type_collection_array), {}, { class: 'custom-select mx-2', id:"mission-type-select"}%>
-                                <%= f.submit :rechercher, class:"btn btn-outline-success" %>
+                                <%=  f.collection_select :categorytag_id, Categorytag.all, :id, :name, {prompt: "Compétence recherchée"}, {class: "custom-select d-none", id:"categoytag-select"}%>
+                                <%=  f.collection_select :device_category_id, DeviceCategory.all, :id, :title, {prompt: "Appareil en panne"}, {class: "custom-select d-none", id:"device-type-select"}%>
+                                <%= f.select :search_mission_type, options_for_select(@mission_type_collection_array), {}, { class: 'custom-select mx-2', id:"mission-type-select"}%>
+                                <%= f.submit :rechercher, class:"btn-no-radius btn-outline-success" %>
                             
                                 <% end %>
                             
