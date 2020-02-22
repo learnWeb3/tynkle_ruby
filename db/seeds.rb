@@ -16,6 +16,8 @@ Skill.destroy_all
 DeviceCategory.destroy_all
 Message.destroy_all
 Mission.destroy_all
+LinkDeviceToUser.destroy_all
+LinkSkillToUser.destroy_all
 
 
 # reset autoincrement for tables to start by id=1
@@ -27,8 +29,8 @@ DeviceCategory.connection.execute('ALTER SEQUENCE device_categories_id_seq RESTA
 Message.connection.execute('ALTER SEQUENCE messages_id_seq RESTART WITH 1')
 Mission.connection.execute('ALTER SEQUENCE missions_id_seq RESTART WITH 1')
 User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
-
-
+LinkDeviceToUser.connection.execute('ALTER SEQUENCE link_device_to_users_id_seq RESTART WITH 1')
+LinkSkillToUser.connection.execute('ALTER SEQUENCE link_skill_to_users_id_seq RESTART WITH 1')
 
 
 # Generating SkillGroup known in database as Categorytag Class
@@ -100,7 +102,7 @@ end
 
  # Missions Seed, NEED USER
 
-
+=begin
 100.times do 
 
     User.create(email:Faker::Internet.free_email, password:'foobar', password_confirmation:'foobar')
@@ -117,5 +119,6 @@ end
 200.times do 
     Mission.create(title:Faker::Books::CultureSeries.book, description:Faker::Marketing.buzzwords , price:rand(1...1500), address:User.all.collect{|user|user.address} ,device_category:DeviceCategory.all.sample, categorytag:Categorytag.all.sample, user:User.all.sample)
 end
+=end
 
 

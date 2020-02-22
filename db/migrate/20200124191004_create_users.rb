@@ -4,11 +4,11 @@ class CreateUsers < ActiveRecord::Migration[5.2]
 
       # User Data
 
-      t.string :first_name, default: "Utlisateur"
-      t.string :last_name, default: "Utlisateur"
+      t.string :first_name
+      t.string :last_name
       t.float :latitude
       t.float :longitude
-      t.string :address, default: "5 Parvis Alan Turing, Paris, France"
+      t.string :address
       t.string :postal_code
       t.string :country
       t.string :city

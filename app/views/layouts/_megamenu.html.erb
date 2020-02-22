@@ -1,0 +1,47 @@
+<!-- Megamenu-->
+<li class="nav-item dropdown position-static"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle font-weight-bold">Template</a>
+  <div class="dropdown-menu megamenu">
+        <div class="row p-4 h-100">
+            <div class="col">
+                    <div class="row">
+                        <div class="col">
+                                <!-- Megamenu list-->
+                                <h6 class="text-uppercase">Rechercher par catégorie de panne</h6>
+                                <ul class="megamenu-list list-unstyled">
+
+                                    <% Categorytag.all.each do |category| %>
+                    
+                                        <li class="megamenu-list-item">
+                                            <%= link_to category.name.capitalize, root_path, class:"megamenu-list-link"%>
+                                        </li>
+                                        
+                                    <% end %>
+                        
+                                </ul>
+                        </div>
+
+
+                        <div class="col">
+                            <!-- Megamenu list-->
+                            <h6 class="text-uppercase">Rechercher par type d'appareil</h6>
+                            <ul class="megamenu-list list-unstyled">
+
+                                <% DeviceCategory.all.each do |device| %>
+                            
+                                    <li class="megamenu-list-item">
+                                        <%= link_to device.title.capitalize, root_path, class:"megamenu-list-link"%>
+                                    </li>
+                    
+                                <% end %>
+                    
+                            </ul>
+                        </div>
+
+                    </div>
+            <div class="col-lg-3 d-none d-lg-block"><img src="img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt="" class="bg-image"></div>
+        </div>
+  </div>
+</li>
+<!-- /Megamenu end-->
+
+

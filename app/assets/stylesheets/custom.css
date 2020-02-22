@@ -295,3 +295,10 @@
     bottom: 1rem;
     z-index: 1;
 }
+
+
+
+#nav-home a{
+   
+    color: #000;
+}

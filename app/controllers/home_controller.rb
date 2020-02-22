@@ -8,6 +8,8 @@ class HomeController < ApplicationController
                 redirect_to after_path(:service_provider)
             end
         end
+
+
     end
 
 
