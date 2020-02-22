@@ -31,7 +31,6 @@ class HelpersController < ApplicationController
 
                     users = []
                     LinkSkillToUser.where(acquired:true, skill:Skill.where(categorytag:categorytag_selected)).each{|e| users.push(e.user)}
-                    users.select_if
                     @users = users.uniq.dup
 
                 end

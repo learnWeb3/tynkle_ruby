@@ -38,7 +38,7 @@
                                 <% Skill.all.where(categorytag:categorytag).each do |skill| %>
                     
                                         <li class="megamenu-list-item">
-                                            <%= link_to skill.name.capitalize, root_path, class:"megamenu-list-link"%>
+                                            <%= link_to skill.name.capitalize, helpers_path("/helpers":{"user_input"=>"", "categorytag_id"=>categorytag.id, "device_category_id"=>"", "search_user_attribute"=>"Compétences"}), class:"megamenu-list-link"%>
                                         </li>
                                         
                                     <% end %>
