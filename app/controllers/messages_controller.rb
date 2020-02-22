@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
             related_mission_url = "/missions/#{mission_id}"
 
             if user_signed_in?
-                sender = User.find(params["message"]["sender"].to_i)
+                sender = current_user
             else 
                 check_sender = User.find_by(email:params["message"]["@user"]["email"])
                 if check_sender.present?
