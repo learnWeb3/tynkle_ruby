@@ -14,4 +14,17 @@ class Message < ApplicationRecord
     validates :object, presence: true, length: {maximum: 100}
     validates :content,presence: true, length: {maximum:500}
 
+
+    def remove_message_from_view(params)
+        message_type = params["content"]
+        if message_type == "sent"
+            self.sender_deleted = true 
+            self.save
+        elsif message_type == "received"
+            self.recipient_deleted = true
+            self.save
+        end
+       return message_type
+    end
+
 end

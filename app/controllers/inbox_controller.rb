@@ -30,14 +30,7 @@ class InboxController < ApplicationController
     
     def destroy
         targeted_message = Message.find(params["id"].to_i)
-        message_type = params["content"]
-        if message_type == "sent"
-            targeted_message.sender_deleted = true 
-            targeted_message.save
-        elsif message_type == "received"
-            targeted_message.recipient_deleted = true
-            targeted_message.save
-        end
+        message_type = targeted_message.remove_message_from_view(params)
         params["id"] = nil
         redirect_to inbox_index_path(content:message_type)
     end
