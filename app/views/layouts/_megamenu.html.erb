@@ -4,22 +4,6 @@
         <div class="row p-4 h-100">
             <div class="col">
                     <div class="row">
-                        <div class="col">
-                                <!-- Megamenu list-->
-                                <h6 class="text-uppercase">Rechercher par catégorie de panne</h6>
-                                <ul class="megamenu-list list-unstyled">
-
-                                    <% Categorytag.all.each do |category| %>
-                    
-                                        <li class="megamenu-list-item">
-                                            <%= link_to category.name.capitalize, root_path, class:"megamenu-list-link"%>
-                                        </li>
-                                        
-                                    <% end %>
-                        
-                                </ul>
-                        </div>
-
 
                         <div class="col">
                             <!-- Megamenu list-->
@@ -38,7 +22,35 @@
                         </div>
 
                     </div>
-            <div class="col-lg-3 d-none d-lg-block"><img src="img/photo/photo-1521170665346-3f21e2291d8b.jpg" alt="" class="bg-image"></div>
+
+                    <hr>
+
+                    <div class="row">
+
+                    <% Categorytag.all.each do |categorytag| %>
+
+                    
+                        <div class="col">
+                                <!-- Megamenu list-->
+                                <h6 class="text-uppercase"><%=categorytag.name.capitalize%></h6>
+                                <ul class="megamenu-list list-unstyled">
+
+                                <% Skill.all.where(categorytag:categorytag).each do |skill| %>
+                    
+                                        <li class="megamenu-list-item">
+                                            <%= link_to skill.name.capitalize, root_path, class:"megamenu-list-link"%>
+                                        </li>
+                                        
+                                    <% end %>
+
+                        
+                                </ul>
+                        </div>
+
+                    <% end %>
+
+                </div>
+                </div>
         </div>
   </div>
 </li>
