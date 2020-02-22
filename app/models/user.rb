@@ -121,9 +121,113 @@ class User < ApplicationRecord
       end
     end
 
+    def after_sign_up_user_update_service_provider(params)
+
+      if  params["user"]["service_provider"].to_i == 1 
+          self.service_provider = true
+          self.save
+      elsif params["user"]["service_provider"].to_i == 0 
+          self.service_provider = false
+          self.save
+      
+      end
+    end
+  
+    def after_sign_up_user_update_identity_attributes(params)
+
+      user_first_name = params['user']["first_name"]
+      user_last_name = params['user']["last_name"]
+
+      if self.first_name !=  user_first_name &&  user_first_name != ""
+        self.first_name = user_first_name
+      end
+      if self.last_name !=  user_last_name &&  user_last_name != ""
+        self.last_name = user_last_name
+      end
+
+      if user_first_name != "" && user_last_name != ""
+        self.save
+      end
+
+    end
 
 
+    def after_sign_up_user_update_email_and_phone(params)
+      user_email = params[:'user']["email"]
+      user_phone = params[:'user']["phone_number"]
+      if self.email !=  user_email &&  user_email.blank? == false
+          self.email = user_email
+      end
+      if self.phone_number !=  user_phone &&  user_phone.blank? == false
+          self.phone_number = params[:'user']["phone_number"]
+      end
+      self.save
+    end
 
+
+    def after_sign_up_user_update_address(params)
+      user_address = params[:'user']["address"]
+      if self.address !=  user_address &&  user_address.blank? == false
+      self.address = user_address
+      end
+      self.save
+    end
+
+    def after_sign_up_user_update_skills(params)
+
+      updated_skills_true = params["/after/fill_up_skills"].select{|k,v| v.to_i == 1}
+      updated_skills_false = params["/after/fill_up_skills"].select{|k,v| v.to_i == 0}
+
+      updated_skills_true.each do |k,v|
+          
+          if Skill.find_by(name:k)
+              user_skill_link = LinkSkillToUser.find_by(skill:Skill.find_by(name:k), user:self)
+              if user_skill_link.acquired == false
+                  user_skill_link.acquired = true
+                  user_skill_link.save
+              end
+          elsif DeviceCategory.find_by(title:k)
+              user_device_link = LinkDeviceToUser.find_by(device_category:DeviceCategory.find_by(title:k), user:self)
+              if user_device_link.acquired == false
+                  user_device_link.acquired = true
+                  user_device_link.save
+              end
+          end
+          
+
+      end
+
+      updated_skills_false.each do |k,v|
+          
+          if Skill.find_by(name:k)
+              user_skill_link = LinkSkillToUser.find_by(skill:Skill.find_by(name:k), user:self)
+              if user_skill_link.acquired == true
+                  user_skill_link.acquired = false
+                  user_skill_link.save
+              end
+          elsif DeviceCategory.find_by(title:k)
+              user_device_link = LinkDeviceToUser.find_by(device_category:DeviceCategory.find_by(title:k), user:self)
+              if user_device_link.acquired == true
+                  user_device_link.acquired = false
+                  user_device_link.save
+              end
+          end
+      end
+  end
+
+
+  def after_sign_up_user_update_status_activity(params)
+
+    if params[:"user"][:"status_activity"].to_i == 0 && self.status_activity == true
+      self.status_activity = false 
+      self.save
+   elsif 
+      params[:"user"][:"status_activity"].to_i == 1 && self.status_activity == false
+      self.status_activity = true
+      self.save
+   end
+
+  end
 
 
     private
@@ -199,11 +303,6 @@ class User < ApplicationRecord
 
 
 
-
-
-
-  
-  
 
  
 end

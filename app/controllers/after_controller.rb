@@ -34,102 +34,30 @@ class AfterController < ApplicationController
         case step
         when :service_provider
 
-            if  params["user"]["service_provider"].to_i == 1 
-                @user.service_provider = true
-                @user.save
-            elsif params["user"]["service_provider"].to_i == 0 
-                @user.service_provider = false
-                @user.save
-            
-            end
+            @user.after_sign_up_user_update_service_provider(params)
 
         when :how_do_we_call_you
 
-            user_first_name = params['user']["first_name"]
-            user_last_name = params['user']["last_name"]
-
-            
-
-                if @user.first_name !=  user_first_name &&  user_first_name != ""
-                    @user.first_name = user_first_name
-                end
-                if @user.last_name !=  user_last_name &&  user_last_name != ""
-                    @user.last_name = user_last_name
-                end
-
-                if user_first_name != "" && user_last_name != ""
-                    @user.save
-                end
-
-            
+            @user.after_sign_up_user_update_identity_attributes(params)
 
         when :contact_details
-            user_email = params[:'user']["email"]
-            user_phone = params[:'user']["phone_number"]
-            if @user.email !=  user_email &&  user_email.blank? == false
-                @user.email = user_email
-            end
-            if @user.phone_number !=  user_phone &&  user_phone.blank? == false
-                @user.phone_number = params[:'user']["phone_number"]
-            end
-            @user.save
+
+            @user.after_sign_up_user_update_email_and_phone(params)
+
         when :location_data
-            user_address = params[:'user']["address"]
-            if @user.address !=  user_address &&  user_address.blank? == false
-            @user.address = user_address
-            end
-            @user.save
+
+            @user.after_sign_up_user_update_address(params)
+
 
         when :fill_up_skills
 
-            updated_skills_true = params["/after/fill_up_skills"].select{|k,v| v.to_i == 1}
-            updated_skills_false = params["/after/fill_up_skills"].select{|k,v| v.to_i == 0}
+            @user.after_sign_up_user_update_skills(params)
 
-
-            updated_skills_true.each do |k,v|
-                
-                if Skill.find_by(name:k)
-                    user_skill_link = LinkSkillToUser.find_by(skill:Skill.find_by(name:k), user:current_user)
-                    user_skill_link.acquired = true
-                    user_skill_link.save
-                elsif DeviceCategory.find_by(title:k)
-                    user_device_link = LinkDeviceToUser.find_by(device_category:DeviceCategory.find_by(title:k), user:current_user)
-                    user_device_link.acquired = true
-                    user_device_link.save
-                end
-                
-
-            end
-
-
-            updated_skills_false.each do |k,v|
-                
-                if Skill.find_by(name:k)
-                    user_skill_link = LinkSkillToUser.find_by(skill:Skill.find_by(name:k), user:current_user)
-                    user_skill_link.acquired = false
-                    user_skill_link.save
-                elsif DeviceCategory.find_by(title:k)
-                    user_device_link = LinkDeviceToUser.find_by(device_category:DeviceCategory.find_by(title:k), user:current_user)
-                    user_device_link.acquired = false
-                    user_device_link.save
-                end
-                
-
-            end
-
-
-     
+         
         when :status_choice
 
-         if params[:"user"][:"status_activity"].to_i == 0 && @user.status_activity == true
-            @user.status_activity = false 
-            @user.save
-         elsif 
-            params[:"user"][:"status_activity"].to_i == 1 && @user.status_activity == false
-            @user.status_activity = true
-            @user.save
-         end
-
+            @user.after_sign_up_user_update_status_activity(params)
+            
         end
         sign_in(@user, bypass: true) # needed for devise
         render_wizard @user
