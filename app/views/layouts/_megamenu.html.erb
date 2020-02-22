@@ -1,5 +1,5 @@
 <!-- Megamenu-->
-<li class="nav-item dropdown position-static"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle font-weight-bold">Template</a>
+<li class="nav-item dropdown position-static"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle font-weight-bold">Je suis Helper</a>
   <div class="dropdown-menu megamenu">
         <div class="row p-4 h-100">
             <div class="col">
@@ -19,6 +19,27 @@
                                 <% end %>
                     
                             </ul>
+                        </div>
+
+
+                        <div class="col">
+                            <!-- Megamenu list-->
+                            <h6 class="text-uppercase">Recherche par critère</h6>
+
+
+                            <%= form_for :mission, url:missions_path, html:{class:"form-inline"}, method: :get do |f| %>
+
+                            
+                                <%= f.text_field :user_input, class:"form-control col-6", placeholder:"Rechercher une mission", id:"search-input" %>
+                                <%=  f.collection_select :categorytag_id, Categorytag.all, :id, :name, {prompt: "Compétence recherchée"}, {class: "custom-select d-none mx-2", id:"categoytag-select"}%>
+                                <%=  f.collection_select :device_category_id, DeviceCategory.all, :id, :title, {prompt: "Appareil en panne"}, {class: "custom-select d-none mx-2", id:"device-type-select"}%>
+                                <%= f.select :title, options_for_select(@mission_type_collection_array), {}, { class: 'custom-select mx-2', id:"mission-type-select"}%>
+                                <%= f.submit :rechercher, class:"btn btn-outline-success" %>
+                            
+                                <% end %>
+                            
+                               
+                            
                         </div>
 
                     </div>
@@ -55,5 +76,10 @@
   </div>
 </li>
 <!-- /Megamenu end-->
+
+
+<%= javascript_tag ("selectFormFilterSearchcriterias = document.getElementById('mission-type-select');replaceSearchInputHelperByFormSelectSkills (selectFormFilterSearchcriterias)") %>
+
+<%= javascript_tag ('reloadPage()') %>
 
 
