@@ -3,17 +3,20 @@
   <div class="dropdown-menu megamenu">
         <div class="row p-4 h-100">
             <div class="col">
-                    <div class="row">
 
+            <h6 class="font-weight-bold">Rechercher une annonce</h6>
+
+            <hr>
+                    <div class="row">
                         <div class="col">
                             <!-- Megamenu list-->
-                            <h6 class="text-uppercase">Rechercher par type d'appareil</h6>
-                            <ul class="megamenu-list list-unstyled">
+                            <p class="font-weight-bold">Rechercher par type d'appareil</p>
+                            <ul class="megamenu-list list-unstyled d-flex">
 
                                 <% DeviceCategory.all.each do |device| %>
                             
-                                    <li class="megamenu-list-item">
-                                        <%= link_to device.title.capitalize, root_path, class:"megamenu-list-link"%>
+                                    <li class="megamenu-list-item mx-2">
+                                        <%= link_to device.title.capitalize, missions_path("/missions"=>{"user_input"=>"", "categorytag_id"=>"", "device_category_id"=>"#{device.id}", "search_mission_type"=>"Type d'appareil"}), class:"megamenu-list-link"%>
                                     </li>
                     
                                 <% end %>
@@ -24,7 +27,7 @@
 
                         <div class="col">
                             <!-- Megamenu list-->
-                            <h6 class="text-uppercase">Recherche par critère</h6>
+                            <p class="font-weight-bold">Recherche par critère</p>
 
 
                             <%= form_for :mission, url: missions_path, html:{class:"form-inline my-4"}, method: :get do |f| %>
@@ -46,14 +49,19 @@
 
                     <hr>
 
+                    <h6 class="font-weight-bold"> Rechercher un helper</h6>
+
+                    <hr>
+
                     <div class="row">
+
 
                     <% Categorytag.all.each do |categorytag| %>
 
                     
                         <div class="col">
                                 <!-- Megamenu list-->
-                                <h6 class="text-uppercase"><%=categorytag.name.capitalize%></h6>
+                                <p class="font-weight-bold"><%=categorytag.name.capitalize%></p>
                                 <ul class="megamenu-list list-unstyled">
 
                                 <% Skill.all.where(categorytag:categorytag).each do |skill| %>
