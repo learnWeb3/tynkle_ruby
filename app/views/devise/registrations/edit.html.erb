@@ -122,7 +122,9 @@
 
 
 <div id="relative">
+
   <div id="map-user-geolocation">
+
   </div>
 
   <div id="contactform">
@@ -426,7 +428,13 @@
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
 
-<%= javascript_tag ("initMap(#{current_user.latitude}, #{current_user.longitude}, document.getElementById('map-user-geolocation')), userName, 14")%>
+<script>
+document.addEventListener('turbolinks:load', function() { 
+  <% if @user.first_name? %> 
+  userName = '<%=@user.first_name%>'; 
+  <% end %> 
+initMap(<%=@user_outside_devise.latitude%>, <%=@user_outside_devise.longitude%>, document.getElementById('map-user-geolocation'), userName, 14)    });
+</script>
 
 <%= javascript_tag (" google.maps.event.addDomListener(window, 'load', function() {
     initializeAutocomplete('autocomplete_address');
