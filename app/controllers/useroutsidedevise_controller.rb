@@ -6,13 +6,49 @@ class UseroutsidedeviseController < ApplicationController
         user = User.find(params["id"].to_i)
 
 
-        user_model_identity_attributes = helpers.transform_params_to_user_model_identity_attributes(params)
+        if params["user"].present?
+            
+
+            if params["user"]["first_name"].present?
+                set_first_name = params["user"]["first_name"]
+            end
+            if params["user"]["last_name"].present?
+                set_last_name = params["user"]["last_name"]
+            end
+            if params["user"]["date_of_birth"].present?
+                set_date_of_birth = params["user"]["date_of_birth"].to_i
+            end
+            if params["user"]["service_provider"].present?
+                set_helper = params["user"]["service_provider"]
+            end
+            if params["user"]["address"].present?
+                set_address = params["user"]["address"]
+            end
+            if params["user"]["avatar"].present?
+                set_avatar = params["user"]["avatar"]
+            end
+            if params["user"]["phone_number"].present?
+                set_phone_number = params["user"]["phone_number"]
+            end
+
+        end
 
 
-        helpers.set_helper_params_to_user_model_attribute(user_model_identity_attributes[3])
 
+        if set_helper != nil 
+    
+            if set_helper.to_i == 0
+                set_helper = false
+    
+            elsif set_helper.to_i == 1
+                set_helper = true
+    
+            end
+    
+        end
 
-        helpers.check_updated_attributes(user, user_model_identity_attributes[2], user_model_identity_attributes[0], user_model_identity_attributes[1], user_model_identity_attributes[3], user_model_identity_attributes[4], user_model_identity_attributes[5], user_model_identity_attributes[6])
+      
+        check_updated_attributes(user,set_date_of_birth,set_first_name,set_last_name,set_helper, set_address, set_avatar, set_phone_number)
 
 
         if user.save
@@ -73,5 +109,35 @@ def show
 
 
 
+
+    def check_updated_attributes(user,set_date_of_birth,set_first_name,set_last_name,set_helper, set_address, set_avatar, set_phone_number)
+
+        if set_date_of_birth != nil 
+            set_date_of_birth = set_date_of_birth.to_i
+        end
+        if set_first_name != user.first_name && set_first_name != nil
+            user.first_name = set_first_name
+        end
+        if set_last_name != user.last_name && set_last_name != nil
+            user.last_name= set_last_name
+        end
+        if set_date_of_birth != user.date_of_birth && set_date_of_birth != nil
+            user.date_of_birth = set_date_of_birth.to_i
+        end
+        if set_helper != nil && set_helper != user.service_provider
+            user.service_provider= set_helper
+        end
+        if set_address != nil && set_address != user.address
+            user.address = set_address
+        end
+        if set_avatar != nil && set_avatar != user.avatar
+            user.avatar = set_avatar
+        end
+        if set_phone_number != nil && set_phone_number != user.phone_number
+            user.phone_number = set_phone_number
+        end
+    
+    
+    end
 
 end

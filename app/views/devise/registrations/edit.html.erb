@@ -74,7 +74,7 @@
 
           <div class="form-group">
             <%= f.label :"Date de Naissance", class:"form-label" %>
-            <%= f.select :date_of_birth, options_for_select(1940...2019), {}, { class: 'custom-select'}%>
+            <%= f.select :date_of_birth, options_for_select(1940...2019, selected: @user_outside_devise.date_of_birth || nil), {}, { class: 'custom-select'}%>
           </div>
 
          
