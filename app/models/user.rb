@@ -125,7 +125,9 @@ class User < ApplicationRecord
 
       if  params["user"]["service_provider"].to_i == 1 
           self.service_provider = true
-          self.save
+          if self.save
+          else puts self.errors.full_messages
+          end
       elsif params["user"]["service_provider"].to_i == 0 
           self.service_provider = false
           self.save

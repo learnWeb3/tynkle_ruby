@@ -180,7 +180,7 @@ document.addEventListener('turbolinks:load', function() {
   <% if @user.first_name? %> 
   userName = '<%=@user.first_name%>'; 
   <% end %> 
-initMap(<%=@user.latitude%>, <%=@user.longitude%>, document.getElementById('map-mission-geolocation'), userName, 14)    });
+initMap(<%=@mission.latitude%>, <%=@mission.longitude%>, document.getElementById('map-mission-geolocation'), userName, 14)    });
 </script>
 
 <%= javascript_tag ("reloadPage()") %> 

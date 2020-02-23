@@ -32,6 +32,7 @@ class AfterController < ApplicationController
 
     def update
         @user = current_user
+
         case step
         when :service_provider
 

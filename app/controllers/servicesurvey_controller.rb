@@ -48,7 +48,8 @@ class ServicesurveyController < ApplicationController
                 if targeted_link_skills_method.nil? == false
                     
                         @helper_inside_perimeter = targeted_link_skills_method[0]
-                        @helper_outside_perimeter = targeted_link_skills_method[1]
+                        @helper_nearby_no_skill_wished = targeted_link_skills_method[1]
+                        @helper_outside_perimeter = targeted_link_skills_method[2] - (@helper_nearby_no_skill_wished + @helper_inside_perimeter)
                 end
 
             when :finish
@@ -145,11 +146,14 @@ class ServicesurveyController < ApplicationController
 
             result = result.uniq
 
+            result_matching_skills_needed = result
+
             result_helper_inside_perimeter = result.select{|user| filter_user.include?(user)}
 
-            result_outside_perimeter = result
+            helper_nearby_no_skill_wished = result - result_helper_inside_perimeter
 
-            return [result_helper_inside_perimeter, result_outside_perimeter]
+
+            return [result_helper_inside_perimeter, helper_nearby_no_skill_wished, result_matching_skills_needed]
 
         end
     end
