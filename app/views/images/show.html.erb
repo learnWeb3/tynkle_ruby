@@ -1,0 +1,14 @@
+<div class="container-fluid p-4">
+            <% if @mission.image_one.attached? && @image_number == 1%>
+              <%=image_tag @mission.image_one, class:"d-block w-100 mx-auto"%>
+            <%end%>
+
+            <% if @mission.image_two.attached? && @image_number == 2%>
+             <%=image_tag @mission.image_two, class:"d-block w-100 mx-auto"%>
+            <%end%>
+         
+            <% if @mission.image_three.attached?  && @image_number == 3%>
+              <%=image_tag @mission.image_three, class:"d-block w-100 mx-auto"%>
+            <%end%>
+</div>
+  

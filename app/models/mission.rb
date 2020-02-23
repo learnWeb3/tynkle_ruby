@@ -25,6 +25,8 @@ class Mission < ApplicationRecord
     validates :price, presence: true, numericality: {greater_than: 0}
     # validates :address
 
+    validates :address, presence:true 
+
     # custom validation to check wether address exists
     validate :address_is_real
     

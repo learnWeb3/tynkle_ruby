@@ -173,7 +173,7 @@ class MissionsController < ApplicationController
 
         new_mission = Mission.new(user:mission_user,title:mission_title, description:mission_description,price:mission_price, device_category:mission_device_category,categorytag:mission_category_tag, address:mission_address, image_one:mission_image_one, image_two:mission_image_two, image_three:mission_image_three, phone_contact: mission_contact_phone, email_contact:mission_contact_email, in_person_help:mission_in_person_help, remote_help:mission_remote_help)
 
-        #puts "hahahhahahahah #{Mission.create(user:current_user,title:mission_title, description:mission_description,price:mission_price, device_category:mission_device_category,categorytag:mission_category_tag, address:mission_address, image_one:mission_image_one, image_two:mission_image_two, image_three:mission_image_three).errors.messages} hahhaahha "
+        puts "hahahhahahahah #{Mission.create(user:current_user,title:mission_title, description:mission_description,price:mission_price, device_category:mission_device_category,categorytag:mission_category_tag, address:mission_address, image_one:mission_image_one, image_two:mission_image_two, image_three:mission_image_three).errors.messages} hahhaahha "
         if new_mission.save
           redirect_to mission_path(id:new_mission.id)
         end
@@ -294,13 +294,6 @@ class MissionsController < ApplicationController
       mission_id = params[:id].to_i
       @mission = Mission.find(mission_id)
       @new_message = Message.new
-      
-      if user_signed_in?
-        @user = current_user
-      else 
-        @user = User.new
-      end
-
       @user = @mission.user
       @reviews = Review.where(assessed:@user)
 

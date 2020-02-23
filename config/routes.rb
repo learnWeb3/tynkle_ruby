@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:new, :create, :show, :index]
 
+  resources :images, only: [:show]
+
   
 
 
