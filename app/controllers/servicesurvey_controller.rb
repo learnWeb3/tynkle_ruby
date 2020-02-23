@@ -44,10 +44,13 @@ class ServicesurveyController < ApplicationController
                     @user = User.first # need to change to fetch coordinates according ip of user or display form where user can fill his postal code 
 
                 end
-
-                        @helper_inside_perimeter = @user.nearbys(60).where(service_provider:true, status_activity:true).select{|user| LinkDeviceToUser.where(user:user, acquired:true, device_category:session[:device_category] ) }
+                        user_in_perimeter =  @user.nearbys(60).where(service_provider:true, status_activity:true)
+                        users_matching_skills_requested = []
+                        linkskills_acquired = LinkSkillToUser.where(skill:Skill.where(categorytag:Categorytag.find(session[:problem_type])), acquired:true)
+                        linkskills_acquired.each{|e| users_matching_skills_requested.push(e.user)}
+                        @helper_inside_perimeter = user_in_perimeter.select{|user| users_matching_skills_requested.include?(user)}
                         @helper_nearby_no_skill_wished = @user.nearbys(60).where(service_provider:true, status_activity:true) - @helper_inside_perimeter
-                        @helper_outside_perimeter = User.where(service_provider:true, status_activity:true) - @helper_inside_perimeter - [@user]
+                        @helper_outside_perimeter = (users_matching_skills_requested - @helper_inside_perimeter).uniq
               
             when :finish
                 
