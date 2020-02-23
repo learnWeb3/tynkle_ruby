@@ -5,36 +5,14 @@ class UseroutsidedeviseController < ApplicationController
 
         user = User.find(params["id"].to_i)
 
-        if params["user"].present?
-            if params["user"]["first_name"].present?
-                set_first_name = params["user"]["first_name"]
-            end
-            if params["user"]["last_name"].present?
-                set_last_name = params["user"]["last_name"]
-            end
-            if params["user"]["date_of_birth"].present?
-                set_date_of_birth = params["user"]["date_of_birth"]
-            end
-            if params["user"]["service_provider"].present?
-                set_helper = params["user"]["service_provider"]
-            end
-            if params["user"]["address"].present?
-                set_address = params["user"]["address"]
-            end
-            if params["user"]["avatar"].present?
-                set_avatar = params["user"]["avatar"]
-            end
-            if params["user"]["phone_number"].present?
-                set_phone_number = params["user"]["phone_number"]
-            end
-        end
+
+        user_model_identity_attributes = helpers.transform_params_to_user_model_identity_attributes(params)
 
 
+        helpers.set_helper_params_to_user_model_attribute(user_model_identity_attributes[3])
 
-        helpers.set_helper_params_to_user_model_attribute(set_helper)
 
-
-        helpers.check_updated_attributes(user, set_date_of_birth, set_first_name, set_last_name, set_helper, set_address, set_avatar, set_phone_number)
+        helpers.check_updated_attributes(user, user_model_identity_attributes[2], user_model_identity_attributes[0], user_model_identity_attributes[1], user_model_identity_attributes[3], user_model_identity_attributes[4], user_model_identity_attributes[5], user_model_identity_attributes[6])
 
 
         if user.save

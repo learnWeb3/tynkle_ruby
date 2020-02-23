@@ -46,4 +46,47 @@ module UseroutsidedeviseHelper
     
         end
     end
+
+
+    def transform_params_to_user_model_identity_attributes(params)
+
+        if params["user"].present?
+            user_model_identity_attributes = []
+
+            if params["user"]["first_name"].present?
+                set_first_name = params["user"]["first_name"]
+                user_model_identity_attributes.push(set_first_name)
+            end
+            if params["user"]["last_name"].present?
+                set_last_name = params["user"]["last_name"]
+                user_model_identity_attributes.push(set_last_name)
+            end
+            if params["user"]["date_of_birth"].present?
+                set_date_of_birth = params["user"]["date_of_birth"]
+                user_model_identity_attributes.push(set_date_of_birth)
+            end
+            if params["user"]["service_provider"].present?
+                set_helper = params["user"]["service_provider"]
+                user_model_identity_attributes.push(set_helper)
+            end
+            if params["user"]["address"].present?
+                set_address = params["user"]["address"]
+                user_model_identity_attributes.push(set_address)
+            end
+            if params["user"]["avatar"].present?
+                set_avatar = params["user"]["avatar"]
+                user_model_identity_attributes.push(set_avatar)
+            end
+            if params["user"]["phone_number"].present?
+                set_phone_number = params["user"]["phone_number"]
+                user_model_identity_attributes.push(set_phone_number)
+            end
+
+
+            return user_model_identity_attributes
+        end
+
+        
+    end
+
 end
