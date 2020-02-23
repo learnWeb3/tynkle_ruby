@@ -4,9 +4,9 @@ class InboxController < ApplicationController
 
     
 
-        @inbox = current_user.received_messages.where(recipient_deleted:false)
+        @inbox = current_user.messages_readable
 
-        @sent = current_user.sent_messages.where(sender_deleted:false)
+        @sent = current_user.messages_sent_readable
 
         @number_messages_received =  @inbox.length
         @number_messages_sent = @sent.length

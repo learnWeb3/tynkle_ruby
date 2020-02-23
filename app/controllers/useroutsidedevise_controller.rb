@@ -73,8 +73,5 @@ def show
 
 
 
-private 
-
-
 
 end

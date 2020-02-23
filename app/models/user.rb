@@ -283,6 +283,18 @@ class User < ApplicationRecord
 
   end
 
+
+  def messages_received_readable
+
+    return self.received_messages.where(recipient_deleted:false)
+
+  end
+
+  def messages_sent_readable
+
+    return self.sent_messages.where(sender_deleted:false)
+    
+  end
     private
 
 
