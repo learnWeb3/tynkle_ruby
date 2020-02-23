@@ -60,6 +60,10 @@
 
 
     <% else %>
+
+
+
+    <div id="map-select-helper"></div>
       
     <%= form_for wizard_path, method: :put do |f| %>
 
@@ -149,3 +153,15 @@
 
 
 <%= javascript_tag ("multiStarrDisplay()") %>
+
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
+
+<script>
+document.addEventListener('turbolinks:load', function() { userName = '<%=@user.first_name%>' ; var map = initMap(<%=@user.latitude%>, <%=@user.longitude%>, document.getElementById('map-select-helper'), userName); 
+<% @helper.each do |helper| %> 
+addMarker(<%=helper.latitude%>, <%=helper.longitude%>, map, '<%=helper.first_name%>')  
+<% end %> 
+}); 
+</script>
+
+<%= javascript_tag ("reloadPage()") %> 

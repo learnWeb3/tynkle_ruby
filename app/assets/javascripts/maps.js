@@ -18,4 +18,15 @@ var marker = new google.maps.Marker({
 });
 
 
+return map
+
+};
+
+
+function addMarker(latitude, longitude, map, userName) {
+  var marker = new google.maps.Marker({
+  position: {lat:latitude,lng:longitude},
+  title: userName,
+  map: map
+  });
 };

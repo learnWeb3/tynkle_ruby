@@ -35,6 +35,16 @@ class ServicesurveyController < ApplicationController
 
             when :select_helper
 
+                if user_signed_in?
+
+                    @user = current_user
+
+                else
+
+                    @user = User.first
+
+                end
+
                 if targeted_link_skills_method.nil? == false
                     if targeted_link_skills_method.empty?
                         @helper = User.where(status_activity:true,service_provider:true) 
