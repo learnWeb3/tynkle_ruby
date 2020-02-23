@@ -1,6 +1,6 @@
 <% if session[:device_category].to_i > 0  && session[:problem_type].to_i > 0 %>
 
-<section class="container mt-4">
+<section class="container mt-4 justify-content-center">
 
 <%=link_to image_tag("logo/brand.png", size:"80x50", alt:"Tynkle logo", id:"logo-brand", title:"Accueil"), root_path,class:"navbar-brand mx-auto"%>
 
@@ -55,23 +55,19 @@
    
     </div> 
 
-
-  
-
-
     <% else %>
 
 
 
     <div id="map-select-helper"></div>
-      
+
+
     <%= form_for wizard_path, method: :put do |f| %>
 
-        <div class="row justify-content-center my-4">
 
         <% @helper_inside_perimeter.each_with_index do |helper,index| %>
         
-            <div class="list-group col-10 shadow mb-5 p-4">
+            <div class="list-group col-10 shadow mb-5 p-4 mx-auto">
 
                 <div class="row">
 
@@ -142,12 +138,13 @@
                         <%= f.label :"contacter", class:"form-check-label"%>
                         <%= f.check_box :"#{helper.id}", class:"form-check-input mx-2"%>
                     </div>
-
+                    
                 </div>
+            </div>
             </div>
         <% end %>
 
-        </div>
+     
 
         
         <h5 class="font-italic font-weigth-bold underline text-muted my-4"> Proche de chez toi mais ne proposant pas les services séléctionnés </h5>
@@ -156,7 +153,7 @@
 
         <% @helper_nearby_no_skill_wished.each_with_index do |helper,index| %>
         
-            <div class="list-group col-10 shadow mb-5 p-4">
+            <div class="list-group col-10 shadow mb-5 p-4 mx-auto">
 
                 <div class="row">
 
@@ -241,7 +238,7 @@
 
         <% @helper_outside_perimeter.each_with_index do |helper,index| %>
         
-            <div class="list-group col-10 shadow mb-5 p-4">
+            <div class="list-group col-10 shadow mb-5 p-4 mx-auto">
 
                 <div class="row">
 
@@ -321,10 +318,6 @@
 
         
         
-        
-    
-
-
 
     <div class="row col-12 justify-content-end my-4 mx-auto">
 
@@ -356,8 +349,13 @@ addMarkerInside(<%=helper.latitude%>, <%=helper.longitude%>, map, '<%=helper.fir
 <% end %> 
 <% end %> 
 <% if @helper_nearby_no_skill_wished.nil? == false %>
-<% @helper_nearby_no_skill_wished.each do |helperout| %> 
-addMarkerOutside(<%=helperout.latitude%>, <%=helperout.longitude%>, map, '<%=helperout.first_name%>')  
+<% @helper_nearby_no_skill_wished.each do |helper| %> 
+addMarkerNoSkill(<%=helper.latitude%>, <%=helper.longitude%>, map, '<%=helper.first_name%>')  
+<% end %> 
+<% end %> 
+<% if @helper_outside_perimeter.nil? == false %>
+<% @helper_outside_perimeter.each do |helper| %>
+addMarkerOutside(<%=helper.latitude%>, <%=helper.longitude%>, map, '<%=helper.first_name%>')  
 <% end %> 
 <% end %> 
 }); 

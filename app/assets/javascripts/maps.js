@@ -36,11 +36,24 @@ function addMarkerInside(latitude, longitude, map, userName) {
 addMarkerOutside
 
 function addMarkerOutside(latitude, longitude, map, userName) {
-  var blueDot = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+  var yellowDot = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
   var marker = new google.maps.Marker({
   position: {lat:latitude,lng:longitude},
   title: userName,
   map: map,
-  icon:blueDot
+  icon:yellowDot
   });
 };
+
+
+function addMarkerNoSkill(latitude, longitude, map, userName) {
+  var greenDot = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+  var marker = new google.maps.Marker({
+  position: {lat:latitude,lng:longitude},
+  title: userName,
+  map: map,
+  icon:greenDot
+  });
+};
+
+
