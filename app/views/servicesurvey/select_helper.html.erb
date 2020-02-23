@@ -44,7 +44,7 @@
             <% end %>
         </div>
 
-    <% if @helper.empty? %>
+    <% if @helper.nil? %>
 
 
     <div class="row col-12 justify-content-end my-4 mx-auto">
@@ -158,8 +158,10 @@
 
 <script>
 document.addEventListener('turbolinks:load', function() { userName = '<%=@user.first_name%>' ; var map = initMap(<%=@user.latitude%>, <%=@user.longitude%>, document.getElementById('map-select-helper'), userName); 
+<% if @helper.nil? == false %>
 <% @helper.each do |helper| %> 
 addMarker(<%=helper.latitude%>, <%=helper.longitude%>, map, '<%=helper.first_name%>')  
+<% end %> 
 <% end %> 
 }); 
 </script>

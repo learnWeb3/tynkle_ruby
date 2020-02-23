@@ -24,9 +24,11 @@ return map
 
 
 function addMarker(latitude, longitude, map, userName) {
+  var blueDot = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
   var marker = new google.maps.Marker({
   position: {lat:latitude,lng:longitude},
   title: userName,
-  map: map
+  map: map,
+  icon:blueDot
   });
 };

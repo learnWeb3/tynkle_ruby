@@ -41,16 +41,13 @@ class ServicesurveyController < ApplicationController
 
                 else
 
-                    @user = User.first
+                    @user = User.first # need to change to fetch coordinates according ip of user or display form where user can fill his postal code 
 
                 end
 
                 if targeted_link_skills_method.nil? == false
-                    if targeted_link_skills_method.empty?
-                        @helper = User.where(status_activity:true,service_provider:true) 
-                    else
+                    
                         @helper = targeted_link_skills_method.uniq!
-                    end
                 end
 
             when :finish
@@ -127,12 +124,25 @@ class ServicesurveyController < ApplicationController
 
     def targeted_link_skills_method
         if session[:device_category] != nil && session[:problem_type] != nil?
+
+            if user_signed_in?
+
+            filter_user = current_user.nearbys(60)
+
+            else 
+                filter_user = User.first.nearbys(60) # need to change to fetch coordinates according ip of user or display form where user can fill his postal code 
+
+            end
+
+
             targeted_linked_skills = LinkSkillToUser.where(acquired:true, skill:Skill.where(categorytag:Categorytag.find(session[:problem_type])), user:User.where(status_activity:true,service_provider:true))
             result = []
                     
             targeted_linked_skills.each do |e|
                 result.push(e.user)
             end
+
+            result = result.select{|user| filter_user.include?(user)}
 
             return result
         end
