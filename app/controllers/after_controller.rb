@@ -9,7 +9,6 @@ class AfterController < ApplicationController
     
     def show
         @user = current_user
-        @user_skills = LinkSkillToUser.where(user:current_user, acquired:true)
         @checkbox_status_label = checkbox_status_label(@user)
         case step
             when :service_provider
@@ -21,6 +20,8 @@ class AfterController < ApplicationController
                     skip_step
                 else 
                     @link_device_categories_to_users = LinkDeviceToUser.where(user:@user)
+                    @user_skills = current_user.acquired_skills
+                    @user_devices_skills = current_user.acquired_device_skills
                 end
                 
             when :status_choice
@@ -51,7 +52,11 @@ class AfterController < ApplicationController
 
         when :fill_up_skills
 
-            @user.after_sign_up_user_update_skills(params)
+
+            updated_skills_true = params["/after/fill_up_skills"].select{|k,v| v.to_i == 1}
+            updated_skills_false = params["/after/fill_up_skills"].select{|k,v| v.to_i == 0}
+
+            @user.after_sign_up_user_update_skills(updated_skills_true,updated_skills_false)
 
          
         when :status_choice

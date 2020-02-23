@@ -226,7 +226,7 @@
         <li class="nav-item">
           <%= link_to "#pills-skills-selected", class:"nav-link d-flex", id:"pills-skills-selected-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"pills-skills-selected", 'aria-selected':"false" do %> 
           <%= content_tag :div, "Compétences sélectionnées" %>
-          <%= content_tag :span, @user_skills.length, class:"badge badge-pill badge-secondary ml-2" %>
+          <%= content_tag :span, (@user_devices_skills + @user_skills).length, class:"badge badge-pill badge-secondary ml-2" %>
           <% end %>
         </li>
 
@@ -269,9 +269,17 @@
                     
       
                 <% end %>
+
+                <% @user_devices_skills.each do |link| %>
+                
+                  <span class="badge badge-success"><%=link.device_category.title%></span>
+                    
+      
+                <% end %>
       
       
-        </div>
+      
+              </div>
 
 
       <! -- device categories -->

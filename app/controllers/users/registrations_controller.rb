@@ -18,7 +18,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def edit
 
     @user_outside_devise = current_user
-    @user_skills = LinkSkillToUser.where(user:current_user, acquired:true)
+    @user_skills = current_user.acquired_skills
+    @user_devices_skills = current_user.acquired_device_skills
     @link_device_categories_to_users = LinkDeviceToUser.where(user:@user)
     @mission_type_collection_array = ["Titre", "Contenu", "Type d'appareil", "Compétences", "Localisation"]
     super

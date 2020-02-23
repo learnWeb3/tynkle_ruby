@@ -173,10 +173,9 @@ class User < ApplicationRecord
       self.save
     end
 
-    def after_sign_up_user_update_skills(params)
 
-      updated_skills_true = params["/after/fill_up_skills"].select{|k,v| v.to_i == 1}
-      updated_skills_false = params["/after/fill_up_skills"].select{|k,v| v.to_i == 0}
+
+      def after_sign_up_user_update_skills(updated_skills_true,updated_skills_false)
 
       updated_skills_true.each do |k,v|
           
@@ -227,6 +226,18 @@ class User < ApplicationRecord
       self.save
    end
 
+  end
+
+  def acquired_skills
+
+    return LinkSkillToUser.where(user:self, acquired:true) 
+
+  end
+
+  def acquired_device_skills
+
+    return  LinkDeviceToUser.where(user:self, acquired:true)
+    
   end
 
 
