@@ -9,7 +9,6 @@ class AfterController < ApplicationController
     
     def show
         @user = current_user
-        @checkbox_status_label = checkbox_status_label(@user)
         case step
             when :service_provider
             when :how_do_we_call_you
@@ -19,12 +18,13 @@ class AfterController < ApplicationController
                 if @user.service_provider? == false
                     skip_step
                 else 
-                    @link_device_categories_to_users = LinkDeviceToUser.where(user:@user)
+                    @link_device_categories_to_users = current_user.device_links
                     @user_skills = current_user.acquired_skills
                     @user_devices_skills = current_user.acquired_device_skills
                 end
                 
             when :status_choice
+                @checkbox_status_label = checkbox_status_label(@user)
 
         end
         render_wizard
@@ -56,7 +56,7 @@ class AfterController < ApplicationController
             updated_skills_true = params["/after/fill_up_skills"].select{|k,v| v.to_i == 1}
             updated_skills_false = params["/after/fill_up_skills"].select{|k,v| v.to_i == 0}
 
-            @user.after_sign_up_user_update_skills(updated_skills_true,updated_skills_false)
+            @user.update_skills(updated_skills_true,updated_skills_false)
 
          
         when :status_choice

@@ -175,7 +175,7 @@ class User < ApplicationRecord
 
 
 
-      def after_sign_up_user_update_skills(updated_skills_true,updated_skills_false)
+      def update_skills(updated_skills_true,updated_skills_false)
 
       updated_skills_true.each do |k,v|
           
@@ -237,7 +237,13 @@ class User < ApplicationRecord
   def acquired_device_skills
 
     return  LinkDeviceToUser.where(user:self, acquired:true)
-    
+
+  end
+
+  def device_links
+
+    LinkDeviceToUser.where(user:self)
+
   end
 
 
