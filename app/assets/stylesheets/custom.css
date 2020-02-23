@@ -14,10 +14,10 @@
     }
     
     .hero-value-prop {
-        background-image: url(photos/landing-page/hero-welcome-5.png);
+        background-image: url(photos/landing-page/background-devices.png);
         background-position: bottom right;
         background-repeat: no-repeat;
-        background-size: 65%;
+        background-size: 55%;
     }
     
     ol.steps-problem-description-home li {
