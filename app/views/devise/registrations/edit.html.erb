@@ -426,7 +426,7 @@
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
 
-<%= javascript_tag ("initMap(#{current_user.latitude}, #{current_user.longitude}, document.getElementById('map-user-geolocation')), userName")%>
+<%= javascript_tag ("initMap(#{current_user.latitude}, #{current_user.longitude}, document.getElementById('map-user-geolocation')), userName, 14")%>
 
 <%= javascript_tag (" google.maps.event.addDomListener(window, 'load', function() {
     initializeAutocomplete('autocomplete_address');

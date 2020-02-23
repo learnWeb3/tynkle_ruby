@@ -44,7 +44,7 @@
             <% end %>
         </div>
 
-    <% if @helper.nil? %>
+    <% if @helper_outside_perimeter.nil? %>
 
 
     <div class="row col-12 justify-content-end my-4 mx-auto">
@@ -67,72 +67,143 @@
       
     <%= form_for wizard_path, method: :put do |f| %>
 
+        <div class="row justify-content-center my-4">
+
+        <% @helper_inside_perimeter.each_with_index do |helper,index| %>
+        
+            <div class="list-group col-10 shadow mb-5 p-4">
+                <div class="row">
+                    <div class="col">
+                        <div class="d-flex align-items-center mb-3">
+                        <% if helper.avatar.attached? %>
+                            <%=link_to (image_tag helper.avatar, alt:"", class:"avatar avatar-md avatar-border-white ml-3"), helper_path(id:helper.id)%><h2 class="h5 mb-0 ml-2"><%=helper.first_name%></h2>
+                        <%else%>
+                            <%=link_to (image_tag "icons/man_avatar.png", alt:"", class:"avatar avatar-md avatar-border-white ml-3"), helper_path(id:helper.id)%><h2 class="h5 mb-0 ml-2"><%=helper.first_name%></h2>
+                        <%end%>
+                        </div>
+                        
+                        <span class="badge badge-pill p-2 badge-primary-light"><%=helper.created_at.strftime("Inscrit en %B %Y")%></span>
+                    </div>
+                    <% if helper.solved_mission_number < 1 %>
+                        <div class="col text-center my-auto">
+                            <i class="fas fa-user-clock mx-2"></i>
+                            <p class="text-sm font-weight-bold">C'est ma première mission !</p>
+                        </div>
+                    <% elsif  helper.solved_mission_number == 1 %>
+                        <div class="col text-center my-auto">
+                            <h6 class="label-heading">Evaluation</h6>
+                            <p class="text-sm font-weight-bold"><i class="far fa-star mx-2"></i><%=helper.global_review_mark%></p>
+                        </div>
+                        <div class="col text-center my-auto">
+                            <h6 class="label-heading">Missions</h6>
+                            <p class="text-sm font-weight-bold"><%=helper.solved_mission_number%></p>
+                        </div>
+                    <% else %>
+                        <div class="col text-center my-auto">
+                            <h6 class="label-heading">Evaluation</h6>
+                            <p class="text-sm font-weight-bold"><i class="far fa-star mx-2"></i><%=helper.global_review_mark%></p>
+                        </div>
+                        <div class="col text-center my-auto">
+                            <h6 class="label-heading">Missions</h6>
+                            <p class="text-sm font-weight-bold"><%=helper.solved_mission_number%></p>
+                        </div>
+                    <%end%>
+                    <% if helper.address? %>
+                    <div class="col text-center my-auto">
+                        <i class="fas fa-map-signs"></i> 
+                        <p class="text-sm font-weight-bold"><%=helper.postal_code%> <%=helper.city%></p>  
+                    </div>
+                    <% end %>
+                    <div class="col text-center my-auto">
+        
+                        <div class="starrr-<%=helper.global_review_mark.to_i%>"></div>
+                        <h6 class="my-2"> <%=helper.global_review_mark%> - <%=Review.where(assessed:helper).length%> avis </h6>
+        
+                    </div>
+                    <div class="col text-center my-auto">
+        
+                        <div class="form-check form-check-inline">
+                        <%= f.label :"contacter", class:"form-check-label"%>
+                        <%= f.check_box :"#{helper.id}", class:"form-check-input mx-2"%>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        </div>
+        
+        
+    
+
+    <hr> 
+    En dehors de ta zone géographique 
+    <hr> 
+
+
     <div class="row justify-content-center my-4">
 
-    <% @helper.each_with_index do |helper,index| %>
+<% @helper_outside_perimeter.each_with_index do |helper,index| %>
 
-        <div class="list-group col-10 shadow mb-5 p-4">
-            <div class="row">
-                <div class="col">
-                    <div class="d-flex align-items-center mb-3">
-                    <% if helper.avatar.attached? %>
-                        <%=link_to (image_tag helper.avatar, alt:"", class:"avatar avatar-md avatar-border-white ml-3"), helper_path(id:helper.id)%><h2 class="h5 mb-0 ml-2"><%=helper.first_name%></h2>
-                    <%else%>
-                        <%=link_to (image_tag "icons/man_avatar.png", alt:"", class:"avatar avatar-md avatar-border-white ml-3"), helper_path(id:helper.id)%><h2 class="h5 mb-0 ml-2"><%=helper.first_name%></h2>
-                    <%end%>
-                    </div>
-                    
-                    <span class="badge badge-pill p-2 badge-primary-light"><%=helper.created_at.strftime("Inscrit en %B %Y")%></span>
-                </div>
-                <% if helper.solved_mission_number < 1 %>
-                    <div class="col text-center my-auto">
-                        <i class="fas fa-user-clock mx-2"></i>
-                        <p class="text-sm font-weight-bold">C'est ma première mission !</p>
-                    </div>
-                <% elsif  helper.solved_mission_number == 1 %>
-                    <div class="col text-center my-auto">
-                        <h6 class="label-heading">Evaluation</h6>
-                        <p class="text-sm font-weight-bold"><i class="far fa-star mx-2"></i><%=helper.global_review_mark%></p>
-                    </div>
-                    <div class="col text-center my-auto">
-                        <h6 class="label-heading">Missions</h6>
-                        <p class="text-sm font-weight-bold"><%=helper.solved_mission_number%></p>
-                    </div>
-                <% else %>
-                    <div class="col text-center my-auto">
-                        <h6 class="label-heading">Evaluation</h6>
-                        <p class="text-sm font-weight-bold"><i class="far fa-star mx-2"></i><%=helper.global_review_mark%></p>
-                    </div>
-                    <div class="col text-center my-auto">
-                        <h6 class="label-heading">Missions</h6>
-                        <p class="text-sm font-weight-bold"><%=helper.solved_mission_number%></p>
-                    </div>
+    <div class="list-group col-10 shadow mb-5 p-4">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex align-items-center mb-3">
+                <% if helper.avatar.attached? %>
+                    <%=link_to (image_tag helper.avatar, alt:"", class:"avatar avatar-md avatar-border-white ml-3"), helper_path(id:helper.id)%><h2 class="h5 mb-0 ml-2"><%=helper.first_name%></h2>
+                <%else%>
+                    <%=link_to (image_tag "icons/man_avatar.png", alt:"", class:"avatar avatar-md avatar-border-white ml-3"), helper_path(id:helper.id)%><h2 class="h5 mb-0 ml-2"><%=helper.first_name%></h2>
                 <%end%>
-                <% if helper.address? %>
-                <div class="col text-center my-auto">
-                    <i class="fas fa-map-signs"></i> 
-                    <p class="text-sm font-weight-bold"><%=helper.postal_code%> <%=helper.city%></p>  
                 </div>
-                <% end %>
-                <div class="col text-center my-auto">
-
-                    <div class="starrr-<%=helper.global_review_mark.to_i%>"></div>
-                    <h6 class="my-2"> <%=helper.global_review_mark%> - <%=Review.where(assessed:helper).length%> avis </h6>
-    
-                </div>
-                <div class="col text-center my-auto">
-
-                    <div class="form-check form-check-inline">
-                    <%= f.label :"contacter", class:"form-check-label"%>
-                    <%= f.check_box :"#{helper.id}", class:"form-check-input mx-2"%>
-                </div>
+                
+                <span class="badge badge-pill p-2 badge-primary-light"><%=helper.created_at.strftime("Inscrit en %B %Y")%></span>
             </div>
+            <% if helper.solved_mission_number < 1 %>
+                <div class="col text-center my-auto">
+                    <i class="fas fa-user-clock mx-2"></i>
+                    <p class="text-sm font-weight-bold">C'est ma première mission !</p>
+                </div>
+            <% elsif  helper.solved_mission_number == 1 %>
+                <div class="col text-center my-auto">
+                    <h6 class="label-heading">Evaluation</h6>
+                    <p class="text-sm font-weight-bold"><i class="far fa-star mx-2"></i><%=helper.global_review_mark%></p>
+                </div>
+                <div class="col text-center my-auto">
+                    <h6 class="label-heading">Missions</h6>
+                    <p class="text-sm font-weight-bold"><%=helper.solved_mission_number%></p>
+                </div>
+            <% else %>
+                <div class="col text-center my-auto">
+                    <h6 class="label-heading">Evaluation</h6>
+                    <p class="text-sm font-weight-bold"><i class="far fa-star mx-2"></i><%=helper.global_review_mark%></p>
+                </div>
+                <div class="col text-center my-auto">
+                    <h6 class="label-heading">Missions</h6>
+                    <p class="text-sm font-weight-bold"><%=helper.solved_mission_number%></p>
+                </div>
+            <%end%>
+            <% if helper.address? %>
+            <div class="col text-center my-auto">
+                <i class="fas fa-map-signs"></i> 
+                <p class="text-sm font-weight-bold"><%=helper.postal_code%> <%=helper.city%></p>  
+            </div>
+            <% end %>
+            <div class="col text-center my-auto">
+
+                <div class="starrr-<%=helper.global_review_mark.to_i%>"></div>
+                <h6 class="my-2"> <%=helper.global_review_mark%> - <%=Review.where(assessed:helper).length%> avis </h6>
+
+            </div>
+            <div class="col text-center my-auto">
+
+                <div class="form-check form-check-inline">
+                <%= f.label :"contacter", class:"form-check-label"%>
+                <%= f.check_box :"#{helper.id}", class:"form-check-input mx-2"%>
             </div>
         </div>
+    </div>
+<% end %>
+</div>
 
-    <% end %>
-    
-    
+
 
     <div class="row col-12 justify-content-end my-4 mx-auto">
 
@@ -157,10 +228,15 @@
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
 
 <script>
-document.addEventListener('turbolinks:load', function() { userName = '<%=@user.first_name%>' ; var map = initMap(<%=@user.latitude%>, <%=@user.longitude%>, document.getElementById('map-select-helper'), userName); 
-<% if @helper.nil? == false %>
-<% @helper.each do |helper| %> 
-addMarker(<%=helper.latitude%>, <%=helper.longitude%>, map, '<%=helper.first_name%>')  
+document.addEventListener('turbolinks:load', function() { userName = 'Ma position' ; var map = initMap(<%=@user.latitude%>, <%=@user.longitude%>, document.getElementById('map-select-helper'), userName, 4); 
+<% if @helper_inside_perimeter.nil? == false %>
+<% @helper_inside_perimeter.each do |helper| %> 
+addMarkerInside(<%=helper.latitude%>, <%=helper.longitude%>, map, '<%=helper.first_name%>')  
+<% end %> 
+<% end %> 
+<% if @helper_outside_perimeter.nil? == false %>
+<% @helper_outside_perimeter.each do |helperout| %> 
+addMarkerOutside(<%=helperout.latitude%>, <%=helperout.longitude%>, map, '<%=helperout.first_name%>')  
 <% end %> 
 <% end %> 
 }); 

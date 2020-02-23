@@ -47,7 +47,8 @@ class ServicesurveyController < ApplicationController
 
                 if targeted_link_skills_method.nil? == false
                     
-                        @helper = targeted_link_skills_method.uniq!
+                        @helper_inside_perimeter = targeted_link_skills_method[0]
+                        @helper_outside_perimeter = targeted_link_skills_method[1]
                 end
 
             when :finish
@@ -142,9 +143,14 @@ class ServicesurveyController < ApplicationController
                 result.push(e.user)
             end
 
-            result = result.select{|user| filter_user.include?(user)}
+            result = result.uniq
 
-            return result
+            result_helper_inside_perimeter = result.select{|user| filter_user.include?(user)}
+
+            result_outside_perimeter = result
+
+            return [result_helper_inside_perimeter, result_outside_perimeter]
+
         end
     end
 
