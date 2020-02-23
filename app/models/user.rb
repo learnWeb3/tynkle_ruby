@@ -242,10 +242,46 @@ class User < ApplicationRecord
 
   def device_links
 
-    LinkDeviceToUser.where(user:self)
+    return LinkDeviceToUser.where(user:self)
 
   end
 
+  def reviews
+
+    return Review.where(assessed:self)
+
+  end
+
+  def reviews_perfect
+
+    return Review.where(assessed:self, rate:5)
+
+  end
+
+  def reviews_really_good
+
+    return Review.where(assessed:self, rate:4)
+
+  end
+
+
+  def reviews_good
+
+    return Review.where(assessed:self, rate:3)
+
+  end
+
+  def reviews_not_enough
+
+    return Review.where(assessed:self, rate:2)
+
+  end
+
+  def reviews_to_avoid
+
+    return Review.where(assessed:self, rate:1) + Review.where(assessed:self, rate: 0)
+
+  end
 
     private
 
