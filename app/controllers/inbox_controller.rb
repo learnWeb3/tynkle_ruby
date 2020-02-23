@@ -4,7 +4,7 @@ class InboxController < ApplicationController
 
     
 
-        @inbox = current_user.messages_readable
+        @inbox = current_user.messages_received_readable
 
         @sent = current_user.messages_sent_readable
 

@@ -293,8 +293,10 @@ class User < ApplicationRecord
   def messages_sent_readable
 
     return self.sent_messages.where(sender_deleted:false)
-    
+
   end
+
+  
     private
 
 

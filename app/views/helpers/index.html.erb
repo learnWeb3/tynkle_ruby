@@ -69,8 +69,9 @@
 
                     <div class="col text-center my-auto d-block align-items-center">
 
-                        <%=image_tag 'icons/star.png', size:'30x30', class:'img-fluid' %>
+                        <div class="starrr-<%=user.global_review_mark.to_i%>"></div>
                         <h6 class="my-2"> <%=user.global_review_mark%> - <%=Review.where(assessed:user).length%> avis </h6>
+                        
 
                     </div>
 
@@ -96,3 +97,9 @@
 <%= javascript_tag ("selectFormFilterSearchcriterias = document.getElementById('helper-select'); replaceSearchInputHelperByFormSelectSkills (selectFormFilterSearchcriterias)") %>
 
 <%= javascript_tag ("reloadPage()") %>
+
+<%= javascript_tag ("multiStarrDisplay()") %>
+
+
+
+
