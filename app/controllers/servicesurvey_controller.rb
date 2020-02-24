@@ -44,7 +44,7 @@ class ServicesurveyController < ApplicationController
                     @user = User.first # need to change to fetch coordinates according ip of user or display form where user can fill his postal code 
 
                 end
-                        user_in_perimeter =  @user.nearbys(60).where(service_provider:true, status_activity:true)
+                        user_in_perimeter =  User.near([@user.latitude, @user.longitude], 60).where(service_provider:true, status_activity:true)
 
                         users_matching_devices_requested = []
                         linkdevices_acquired = LinkDeviceToUser.where(acquired:true, device_category:DeviceCategory.find(session[:device_category]))
@@ -55,8 +55,8 @@ class ServicesurveyController < ApplicationController
                         link_skills_acquired.each{|e| users_matching_skills_requested.push(e.user)}
 
                         @helper_inside_perimeter = user_in_perimeter.select{|user| users_matching_devices_requested.include?(user)} & user_in_perimeter.select{|user| users_matching_skills_requested.include?(user)}  # union meaning elements wich are the same in array1 and array2  Maybe to hard filter ?
-                        @helper_nearby_no_skill_wished = @user.nearbys(60).where(service_provider:true, status_activity:true) - @helper_inside_perimeter
-                        @helper_outside_perimeter = (users_matching_devices_requested + users_matching_skills_requested - @helper_inside_perimeter).uniq
+                        @helper_nearby_no_skill_wished = user_in_perimeter - @helper_inside_perimeter
+                        @helper_outside_perimeter = (users_matching_devices_requested + users_matching_skills_requested - @helper_nearby_no_skill_wished - @helper_inside_perimeter).uniq
               
             when :finish
                 
