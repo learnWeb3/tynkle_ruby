@@ -54,7 +54,7 @@ class ServicesurveyController < ApplicationController
                         link_skills_acquired = LinkSkillToUser.where(acquired:true,skill:Skill.find( session[:needed_skill]))
                         link_skills_acquired.each{|e| users_matching_skills_requested.push(e.user)}
 
-                        @helper_inside_perimeter = user_in_perimeter.select{|user| users_matching_devices_requested.include?(user)} + user_in_perimeter.select{|user| users_matching_skills_requested.include?(user)}
+                        @helper_inside_perimeter = user_in_perimeter.select{|user| users_matching_devices_requested.include?(user)} & user_in_perimeter.select{|user| users_matching_skills_requested.include?(user)}  # union meaning elements wich are the same in array1 and array2  Maybe to hard filter ?
                         @helper_nearby_no_skill_wished = @user.nearbys(60).where(service_provider:true, status_activity:true) - @helper_inside_perimeter
                         @helper_outside_perimeter = (users_matching_devices_requested + users_matching_skills_requested - @helper_inside_perimeter).uniq
               
