@@ -64,7 +64,7 @@
 
     <%= form_for wizard_path, method: :put do |f| %>
 
-        <h5 class="font-italic font-weigth-bold underline text-muted my-4"> Les helpers les plus suceptibles de t'aider </h5>
+        <h5 class="font-italic underline my-4"> <strong class="font-weigth-bold"><%=@helper_inside_perimeter.length%></strong> - Helpers susceptibles de t'aider </h5>
 
 
         <% @helper_inside_perimeter.each_with_index do |helper,index| %>
@@ -149,7 +149,7 @@
      
 
         
-        <h5 class="font-italic font-weigth-bold underline text-muted my-4"> Proche de chez toi mais ne proposant pas les services séléctionnés </h5>
+        <h5 class="font-italic underline my-4"> <strong class="font-weigth-bold"><%= @helper_nearby_no_skill_wished.length %></strong> - Helpers, proche de chez toi mais ne proposant pas les compétences souhaités </h5>
 
         
 
@@ -234,7 +234,7 @@
 
 
 
-        <h5 class="font-italic font-weigth-bold underline text-muted my-4"> En dehors de ta zone de recherche </h5>
+        <h5 class="font-italic underline my-4"> <strong class="font-weigth-bold"><%= @helper_outside_perimeter.length %></strong> - Helpers, se trouvant en dehors de ta zone de recherche </h5>
 
         
 
