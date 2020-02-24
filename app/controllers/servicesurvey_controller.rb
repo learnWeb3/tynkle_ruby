@@ -45,12 +45,18 @@ class ServicesurveyController < ApplicationController
 
                 end
                         user_in_perimeter =  @user.nearbys(60).where(service_provider:true, status_activity:true)
+
+                        users_matching_devices_requested = []
+                        linkdevices_acquired = LinkDeviceToUser.where(acquired:true, device_category:DeviceCategory.find(session[:device_category]))
+                        linkdevices_acquired.each{|e| users_matching_devices_requested.push(e.user)}
+
                         users_matching_skills_requested = []
-                        linkskills_acquired = LinkDeviceToUser.where(acquired:true, device_category:DeviceCategory.find(session[:device_category]))
-                        linkskills_acquired.each{|e| users_matching_skills_requested.push(e.user)}
-                        @helper_inside_perimeter = user_in_perimeter.select{|user| users_matching_skills_requested.include?(user)}
+                        link_skills_acquired = LinkSkillToUser.where(acquired:true,skill:Skill.find( session[:needed_skill]))
+                        link_skills_acquired.each{|e| users_matching_skills_requested.push(e.user)}
+
+                        @helper_inside_perimeter = user_in_perimeter.select{|user| users_matching_devices_requested.include?(user)} + user_in_perimeter.select{|user| users_matching_skills_requested.include?(user)}
                         @helper_nearby_no_skill_wished = @user.nearbys(60).where(service_provider:true, status_activity:true) - @helper_inside_perimeter
-                        @helper_outside_perimeter = (users_matching_skills_requested - @helper_inside_perimeter).uniq
+                        @helper_outside_perimeter = (users_matching_devices_requested + users_matching_skills_requested - @helper_inside_perimeter).uniq
               
             when :finish
                 
