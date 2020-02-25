@@ -79,7 +79,7 @@
                         <div class="col">
                             <div class="form-group col">
                                 <%=  f.label :"Titre_de_la_demande :" %>
-                                <%=  f.text_field :title, class:"form-control mb-4"  %>
+                                <%=  f.text_field :title, class:"form-control mb-4", required: true  %>
                             </div>
 
                         </div>
@@ -88,7 +88,7 @@
 
                             <div class="form-group col-12">
                             <%=  f.label :"Budget :" %>
-                            <%=  f.number_field :price, class:"form-control"  %>
+                            <%=  f.number_field :price, class:"form-control",required: true  %>
                             </div>
                         </div>
                     </div>
@@ -177,14 +177,14 @@
 
 
                     <div class="form-group col-12">
-                        <%=  f.label :"Description_de_la_demande :"%>
-                        <%=  f.text_area :description, class:"form-control mb-4", rows:"10"  %>
+                        <%=  f.label :"Description_de_la_demande :" %>
+                        <%=  f.text_area :description, class:"form-control mb-4", rows:"10", required: true  %>
                     </div>
 
 
                     <div class="form-group col-12">
                         <%=  f.label :"Localisation :" %>
-                        <%=  f.text_field :address, class:"form-control", id:"autocomplete_address"   %>
+                        <%=  f.text_field :address, class:"form-control", id:"autocomplete_address", required: true   %>
                         <small class="form-text text-muted">Nous t'aidons en utlisant Google Maps pour une géolocalisation plus précise.</small>
                     </div>
 
@@ -220,17 +220,17 @@
 
                         <div class="form-group col-6 mx-auto">
                             <%=  ff.label :"Adresse email :"%>
-                            <%=  ff.email_field :email, class:"form-control mb-4"%>
+                            <%=  ff.email_field :email, class:"form-control mb-4", required: true%>
                         </div>
 
                         <div class="form-group col-6 mx-auto">
                             <%=  ff.label :"Choisir un mot de passe :"%>
-                            <%=  ff.password_field :password, class:"form-control mb-4"%>
+                            <%=  ff.password_field :password, class:"form-control mb-4", required: true%>
                         </div>
 
                         <div class="form-group col-6 mx-auto">
                             <%=  ff.label :"Confirmer le mot de passe :"%>
-                            <%=  ff.password_field :password_confirmation, class:"form-control mb-5"%>
+                            <%=  ff.password_field :password_confirmation, class:"form-control mb-5", required: true%>
                         </div>
 
                 <% end %>
