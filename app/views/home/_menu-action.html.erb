@@ -1,13 +1,62 @@
-<ul class="nav justify-content-around" id="myTab" role="tablist">
+<ul class="nav justify-content-center" id="hero-welcome-left" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active font-weight-bold btn btn-lg btn-success" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Je cherche de l'aide</a>
+    <a class="nav-link active font-weight-bold btn btn-lg btn-success m-2" id="seeking-help-tab" data-toggle="tab" href="#seeking-help" role="tab" aria-controls="seeking-help" aria-selected="true">Je cherche de l'aide</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link font-weight-bold btn btn-lg btn-success" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Je suis helper</a>
+    <a class="nav-link font-weight-bold btn btn-lg btn-success m-2" id="offering-help-tab" data-toggle="tab" href="#offering-help" role="tab" aria-controls="offering-help" aria-selected="false">Je suis helper</a>
   </li>
 </ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+<div class="tab-content d-flex justify-content-center" id="hero-welcome-leftContent">
+
+  <div class="tab-pane fade show active" id="seeking-help" role="tabpanel" aria-labelledby="seeking-help-tab">
+
+  <ul class="nav flex-column" role="tablist">
+    <li class="nav-item">
+        <%= link_to "Contacter des helpers", '/servicesurvey/device_type', class:"btn btn-lg btn-light font-weight-bold  m-2"%></li>
+    </li>
+    <li class="nav-item">
+        <%= link_to "Déposer une annonce", new_mission_path, class:"btn btn-lg btn-light font-weight-bold  m-2"%>
+    </li>
+    <li class="nav-item">
+        <%= link_to "S'inscrire", new_user_registration_path, class:"btn btn-lg btn-light font-weight-bold  m-2"%>
+    </li>
+    <li class="nav-item">
+        <%= link_to "Se connecter", new_user_session_path, class:"btn btn-lg btn-light font-weight-bold  m-2"%>
+    </li>
+ </ul>
+
+  
+  </div>
+
+  <div class="tab-pane fade" id="offering-help" role="tabpanel" aria-labelledby="offering-help-tab">
+
+
+
+
+  <ul class="nav flex-column" role="tablist">
+  <li class="nav-item">
+      <%= link_to "Proposer mon aide", '/servicesurvey/device_type', class:"btn btn-lg btn-light font-weight-bold  m-2"%></li>
+  </li>
+  <li class="nav-item">
+      <%= link_to "Rechercher une mission", new_mission_path, class:"btn btn-lg btn-light font-weight-bold  m-2"%>
+  </li>
+  <% if user_signed_in? && current_user.service_provider? %>
+
+  <li class="nav-item">
+    <%= link_to "Mettre à jour mes compétences", edit_user_registration_path(anchor:"skills-and-devices-update"), class:"btn btn-lg btn-light font-weight-bold  m-2"%>
+  </li>
+  
+  <% else %>
+  <li class="nav-item">
+      <%= link_to "S'inscire", new_user_registration_path, class:"btn btn-lg btn-light font-weight-bold  m-2"%>
+  </li>
+  <li class="nav-item">
+      <%= link_to "Se connecter", new_user_session_path, class:"btn btn-lg btn-light font-weight-bold  m-2"%>
+  </li>
+  <% end %>
+</ul>
+
+
+  
+  </div>
 </div>
