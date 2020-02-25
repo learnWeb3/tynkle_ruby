@@ -132,21 +132,21 @@
             <% if @mission.image_one.attached? %>
               <%=link_to (image_tag @mission.image_one, class:"d-block w-50 mx-auto"), image_path(id:@mission.id, image_number:1)%>
             <% else %>
-              <%=image_tag "icons/missing.png", class:"d-block w-50 mx-auto"%>
+              <%=image_tag "icons/no-file.png", class:"d-block w-50 mx-auto"%>
             <% end %>
           </div>
           <div class="carousel-item">
             <% if @mission.image_two.attached? %>
               <%=link_to (image_tag @mission.image_two, class:"d-block w-50 mx-auto"), image_path(id:@mission.id, image_number:2)%>
             <% else %>
-              <%=image_tag "icons/missing.png", class:"d-block w-50 mx-auto"%>
+              <%=image_tag "icons/no-file.png", class:"d-block w-50 mx-auto"%>
             <% end %>
           </div>
           <div class="carousel-item">
             <% if @mission.image_three.attached? %>
               <%=link_to (image_tag @mission.image_three, class:"d-block w-50 mx-auto"), image_path(id:@mission.id, image_number:3)%>
             <% else %>
-              <%=image_tag "icons/missing.png", class:"d-block w-50 mx-auto"%>
+              <%=image_tag "icons/no-file.png", class:"d-block w-50 mx-auto"%>
             <% end %>
           </div>
         </div>
