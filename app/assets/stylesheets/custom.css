@@ -390,3 +390,10 @@
     border-radius: 0.5rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+.bg-wood{
+    background-image: url(background/background-wood);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
