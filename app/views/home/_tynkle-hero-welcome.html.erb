@@ -31,7 +31,7 @@
     <li class="nav-item">
 
     <%=link_to "#community", id:"community-tab", class:"nav-link text-dark", 'data-toggle':"tab", 'role':"tab", 'aria-controls':"community", 'aria-selected':"false" do %>
-    <div class="justify-content-centers text-center"> 
+    <div class="justify-content-center text-center"> 
     <i class="fas fa-users"></i>
      <p> La Communauté </p>
     </div>  
@@ -89,13 +89,17 @@
 
 
 </div>
-<div class="col-md-6 col-sm-auto">
+
+<div class="col-md-5 col-sm-auto justify-content-center"> 
+
+<%= render 'menu-action' %>
+
 </div>
 </div>
 
 <div class="row justify-content-center">
 
-  <%=link_to 'Chercher un helper', helpers_path, class:"btn btn-lg btn-success text-capitalize"%>
+  <%=link_to 'Chercher un helper !', helpers_path, class:"btn btn-lg btn-warning font-weight-bold text-capitalize"%>
 
 </div>
 
