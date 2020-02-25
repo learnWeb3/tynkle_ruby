@@ -135,3 +135,7 @@ gem "simple_calendar", "~> 2.0"
 # faker gem to fake database entries for test-purpose in developpement environnement
 
 gem 'faker'
+
+# Clent side validation display supported by jquery 
+
+gem 'client_side_validations'

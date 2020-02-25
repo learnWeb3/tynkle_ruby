@@ -9,7 +9,7 @@
 
             <div class="col-9">
 
-                <%= form_for @mission, url: mission_create_outside_survey_path, method: :post do |f| %>
+                <%= form_for @mission, validate: true, url: mission_create_outside_survey_path, method: :post do |f| %>
 
                     <div class="row">
                         <div class="col">
