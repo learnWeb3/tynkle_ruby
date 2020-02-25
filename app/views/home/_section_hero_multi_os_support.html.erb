@@ -1,44 +1,55 @@
-<section class="px-4 py-2 bg-light-grey">
+<section class="px-4 p-2 bg-light-grey text-center">
 
-<h3 class="py-4 text-center shadow-title">Avec Tynkle, on dépanne l'ensemble des systèmes existants</h3>
 
-<div class="card-group">
-    <div class="card border-0 hover-animate bg-transparent hover-underline">
+    <h3 class="py-4 text-center"> Avec Tynkle on dépanne l'ensemble des sytème existants </h3>
+
+    <div class="row p-4 justify-content-center">
+
+
+
+    <div class="card-group">
+    <div class="card border-0 hover-animate bg-transparent ">
         <div class="card-body text-center">
-            <h4 class="card-title hover-weigth-underline-dark">Android</h4>
-                <p class="card-text"><%=image_tag("icons/android.png", class:"img-fluid w-75")%></p>
+            <h6 class="card-title ">Android</h6>
+                <p class="card-text"><%=image_tag("icons/android.png", class:"img-fluid w-50")%></p>
             <%= link_to "voir +", missions_path("/missions":{"user_input"=>"", "categorytag_id"=>"", "device_category_id"=>"3", "search_mission_type"=>"Type d'appareil"}),  class:"btn btn-dark" %>
         </div>
     </div>
-    <div class="card border-0 hover-animate bg-transparent hover-underline">
+    <div class="card border-0 hover-animate bg-transparent ">
         <div class="card-body text-center">
-            <h4 class="card-title hover-weigth-underline-dark">Apple</h4>
-                <p class="card-text"><%=image_tag("icons/apple.png", class:"img-fluid w-75")%></p>
+            <h6 class="card-title ">Apple</h6>
+                <p class="card-text"><%=image_tag("icons/apple.png", class:"img-fluid w-50")%></p>
                 <%= link_to "voir +", missions_path("/missions":{"user_input"=>"", "categorytag_id"=>"", "device_category_id"=>"3", "search_mission_type"=>"Type d'appareil"}),  class:"btn btn-dark" %>
         </div>
     </div>
-    <div class="card border-0 hover-animate bg-transparent hover-underline">
+    <div class="card border-0 hover-animate bg-transparent ">
         <div class="card-body text-center">
-            <h4 class="card-title hover-weigth-underline-dark">Consoles</h4>
-                <p class="card-text"><%=image_tag("icons/game-controller.png", class:"img-fluid w-75")%></p>
+            <h6 class="card-title ">Consoles</h6>
+                <p class="card-text"><%=image_tag("icons/game-controller.png", class:"img-fluid w-50")%></p>
                 <%= link_to "voir +", missions_path("/missions":{"user_input"=>"", "categorytag_id"=>"", "device_category_id"=>"5", "search_mission_type"=>"Type d'appareil"}),  class:"btn btn-dark" %>
         </div>
     </div>
 
-    <div class="card border-0 hover-animate bg-transparent hover-underline">
+    <div class="card border-0 hover-animate bg-transparent ">
         <div class="card-body text-center">
-            <h4 class="card-title hover-weigth-underline-dark">Linux</h4>
-                <p class="card-text"><%=image_tag("icons/linux.png", class:"img-fluid w-75")%></p>
+            <h6 class="card-title ">Linux</h6>
+                <p class="card-text"><%=image_tag("icons/linux.png", class:"img-fluid w-50")%></p>
                 <%= link_to "voir +", missions_path("/missions":{"user_input"=>"", "categorytag_id"=>"1", "device_category_id"=>"", "search_mission_type"=>"Compétences"}),  class:"btn btn-dark" %>
         </div>
     </div>
 
-    <div class="card border-0 hover-animate bg-transparent hover-underline">
+    <div class="card border-0 hover-animate bg-transparent ">
         <div class="card-body text-center">
-            <h4 class="card-title hover-weigth-underline-dark">Windows</h4>
-                <p class="card-text"><%=image_tag("icons/windows.png", class:"img-fluid w-75")%></p>
+            <h6 class="card-title ">Windows</h6>
+                <p class="card-text"><%=image_tag("icons/windows.png", class:"img-fluid w-50")%></p>
                 <%= link_to "voir +", missions_path("/missions":{"user_input"=>"", "categorytag_id"=>"1", "device_category_id"=>"", "search_mission_type"=>"Compétences"}),  class:"btn btn-dark" %>
         </div>
     </div>
 </div>
+
+   
 </section>
+
+
+           
+   

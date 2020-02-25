@@ -1,40 +1,41 @@
-<section class="container col-12 py-2 my-4" id="tynkle-hero-responsive">
-
-    <div class="row px-5 d-flex align-items-center">
+<section class="px-4 p-2 bg-light-grey text-center">
 
 
-        <div class="col">
+<h3 class="py-4 text-center text-primary"> Tu veux aider la communauté ? </br>
+Deviens Helper !</h3>
 
-            <h2 class="shadow-title">Tynkle toujours avec moi !
-            </h2>
+    <div class="row p-4 justify-content-center text-primary">
 
-            <h4 class="my-4"> Une plateforme accessible sur tous tes
-            appareils
-            </h4>
-            <h4 class="my-4"> Un design Responsive et Intuitif
-            </h4>
 
-            <%= link_to "Essayer Tynkle", new_user_registration_path, class:"btn btn-lg btn-primary text-capitalize" %>
+        <div class="col hover-animate">
+
+            <%= image_tag "icons/find-missions-around-you", class:"img-fluid"%>
+
+            <h6 class="my-4"> Trouves des missions autour de chez toi </h6>
+
+        </div>
+
+        <div class="col hover-animate">
+
+            <%= image_tag "icons/boost-your-income", class:"img-fluid"%>
+            <h6 class="my-4"> Augmente tes revenus grâce à Tynkle </h6>
+
+        </div>
+        <div class="col hover-animate">
+
+            <%= image_tag "icons/work-when-and-wherever-you-want", class:"img-fluid"%>
+            <h6 class="my-4"> Travaille où tu veux et quand tu veux </h6>
+
+        </div>
+        <div class="col hover-animate">
+
+            <%= image_tag "icons/be-part-of-a-friendly-community", class:"img-fluid"%>
+            <h6 class="my-4"> Fais partie d'une communauté de passionnés</h6>
             
         </div>
 
 
-
-        <div class="col" data-aos="fade-up"
-        data-aos-easing="linear"
-        data-aos-duration="1500">
-
-            <%= image_tag("cartoon/smartphone.png", class:"img-fluid w-50 float-right") %>
-
-        </div>
-
-
-
-
-
     </div>
-
-
    
 
 </section>
