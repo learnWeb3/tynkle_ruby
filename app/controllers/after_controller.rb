@@ -40,6 +40,9 @@ class AfterController < ApplicationController
 
         when :how_do_we_call_you
 
+            @user.first_name_needs_validation = true
+            @user.last_name_needs_validation = true
+
             @user.after_sign_up_user_update_identity_attributes(params)
 
         when :contact_details

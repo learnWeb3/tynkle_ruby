@@ -43,7 +43,7 @@ class User < ApplicationRecord
 
     # ACtive Record Validations
 
-    validates :email, presence: true, uniqueness: true
+    validates :email, presence: true, uniqueness: true, on: :create
     validates :first_name, allow_nil: true, format: { with: /\A[-'a -zA-ZÀ-ÖØ-öø-ÿ]+\z/, message: "%{value} n'est pas un Prénom valide" }
     validates :last_name, allow_nil: true, format: { with: /\A[-'a -zA-ZÀ-ÖØ-öø-ÿ]+\z/, message: "%{value} n'est pas un Nom de famille valide" }
     #validates :date_of_birth, allow_nil: true, numericality: { greater_than_or_equal_to: 1920, message: "%{value} n'est pas une date de naissance valide" }
@@ -52,6 +52,20 @@ class User < ApplicationRecord
     # Custom validations
 
     validate :not_too_young?
+
+
+    attr_accessor :first_name_needs_validation
+    validates :first_name, presence: true,format: { with: /\A[-'a -zA-ZÀ-ÖØ-öø-ÿ]+\z/, message: "%{value} n'est pas un Prénom valide" },  if: -> {first_name_needs_validation} 
+
+    attr_accessor :last_name_needs_validation
+    validates :last_name, presence: true,format: { with: /\A[-'a -zA-ZÀ-ÖØ-öø-ÿ]+\z/, message: "%{value} n'est pas un Nom de famille valide" }, if: -> {last_name_needs_validation} 
+
+    attr_accessor :email_needs_validation
+    validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: "%{value} n'est pas un email valide" }, if: -> {email_needs_validation} 
+
+    attr_accessor :address_needs_validation
+    validates :address, presence: true, if: -> {address_needs_validation} 
+
 
    
     # Geocoding or reverse geocoding user location
