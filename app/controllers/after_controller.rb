@@ -12,8 +12,18 @@ class AfterController < ApplicationController
         case step
             when :service_provider
             when :how_do_we_call_you
+
+                @user.first_name_needs_validation = true
+                @user.last_name_needs_validation = true
+
             when :contact_details
+
+                @user.email_needs_validation = true
+
             when :location_data
+
+                @user.address_needs_validation = true
+                
             when :fill_up_skills
                 if @user.service_provider? == false
                     skip_step
@@ -47,10 +57,13 @@ class AfterController < ApplicationController
 
         when :contact_details
 
+            @user.email_needs_validation = true
+
             @user.after_sign_up_user_update_email_and_phone(params)
 
         when :location_data
 
+            @user.address_needs_validation = true
             @user.after_sign_up_user_update_address(params)
 
 
