@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
         answer = Message.new(object:object, content:content, recipient:receiver, sender: current_user)
 
         if answer.save
-            redirect_to inbox_index_path
+            redirect_to inbox_index_path(content:"sent")
         end
         
     end
