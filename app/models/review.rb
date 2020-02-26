@@ -16,6 +16,24 @@ class Review < ApplicationRecord
     after_create :check_and_update_user_review_mark
 
 
+
+
+    def self.new_review(params, current_user)
+        review_rate = params["review"]["rate"].to_i
+        review_content = params["review"]["content"]
+        if params["assessed"].present?
+        assessed_user = User.find(params["assessed"].to_i)
+        end
+        if params["mission_id"].present?
+            reviewed_mission = Mission.find(params["mission_id"].to_i)
+        end
+        assessor_user = current_user
+        new_review = Review.new(assessor:assessor_user, assessed:assessed_user, mission:reviewed_mission, content:review_content, rate:review_rate)
+
+        return new_review
+      end
+
+
     def check_and_update_user_review_mark
 
         user = self.assessed
