@@ -40,6 +40,92 @@ class Mission < ApplicationRecord
      after_create :update_address_attributes
 
 
+
+     def self.params_to_new_mission_button_create(mission_user, params)
+        if params["mission"]["device_category"].present?
+        mission_device_category = DeviceCategory.find(params["mission"]["device_category"])
+        end
+        if params["mission"]["categorytag"].present?
+        mission_category_tag = Categorytag.find(params["mission"]["categorytag"])
+        end
+        mission_address = params["mission"]["address"]
+        mission_title = params["mission"]["title"].downcase
+        mission_description = params["mission"]["description"].downcase
+        mission_price = params["mission"]["price"].to_i
+
+        mission_contact_phone = params["mission"]["phone_contact"].to_i
+        mission_contact_email = params["mission"]["email_contact"].to_i
+        mission_in_person_help =  params["mission"]["in_person_help"].to_i
+        mission_remote_help =  params["mission"]["remote_help"].to_i
+
+        mission_image_one = params["mission"]["image_one"]
+        mission_image_two = params["mission"]["image_two"]
+        mission_image_three = params["mission"]["image_three"]
+
+        if mission_contact_phone == 1
+          mission_contact_phone = true
+        else mission_contact_phone = false
+        end
+
+        if mission_contact_email == 1
+          mission_contact_email = true
+        else mission_contact_email = false
+        end
+
+        if mission_in_person_help == 1
+          mission_in_person_help = true
+        else mission_in_person_help = false
+        end
+
+        if  mission_remote_help == 1
+          mission_remote_help = true
+        else mission_remote_help = false
+        end
+
+        new_mission = Mission.new(user:mission_user,title:mission_title, description:mission_description,price:mission_price, device_category:mission_device_category,categorytag:mission_category_tag, address:mission_address, image_one:mission_image_one, image_two:mission_image_two, image_three:mission_image_three, phone_contact: mission_contact_phone, email_contact:mission_contact_email, in_person_help:mission_in_person_help, remote_help:mission_remote_help)
+
+      end
+
+     def self.params_to_new_mission_multi_step_form(mission_user, session, params)
+        mission_device_category = DeviceCategory.find(session[:device_category])
+        mission_category_tag = Categorytag.find(session[:problem_type])
+        mission_address = params["mission"]["address"]
+        mission_title = params["mission"]["title"].downcase
+        mission_description = params["mission"]["description"].downcase
+        mission_price = params["mission"]["price"].to_i
+
+        mission_contact_phone = params["mission"]["phone_contact"].to_i
+        mission_contact_email = params["mission"]["email_contact"].to_i
+        mission_in_person_help =  params["mission"]["in_person_help"].to_i
+        mission_remote_help =  params["mission"]["remote_help"].to_i
+
+        mission_image_one = params["mission"]["image_one"]
+        mission_image_two = params["mission"]["image_two"]
+        mission_image_three = params["mission"]["image_three"]
+
+        if mission_contact_phone == 1
+          mission_contact_phone = true
+        else mission_contact_phone = false
+        end
+
+        if mission_contact_email == 1
+          mission_contact_email = true
+        else mission_contact_email = false
+        end
+
+        if mission_in_person_help == 1
+          mission_in_person_help = true
+        else mission_in_person_help = false
+        end
+
+        if  mission_remote_help == 1
+          mission_remote_help = true
+        else mission_remote_help = false
+        end
+
+        new_mission = Mission.new(user:mission_user,title:mission_title, description:mission_description,price:mission_price, device_category:mission_device_category,categorytag:mission_category_tag, address:mission_address, image_one:mission_image_one, image_two:mission_image_two, image_three:mission_image_three, phone_contact: mission_contact_phone, email_contact:mission_contact_email, in_person_help:mission_in_person_help, remote_help:mission_remote_help)
+        return new_mission
+    end
      
     private
 

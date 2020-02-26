@@ -88,6 +88,55 @@ class User < ApplicationRecord
 
     accepts_nested_attributes_for :link_skill_to_users
 
+    
+
+    def self.find_or_create_user(session,current_user,params)
+
+
+      if current_user.class == User 
+
+        mission_user = current_user
+
+      else
+        
+        user_email = params["mission"]["@user"]["email"]
+
+        user_password = params["mission"]["@user"]["password"]
+
+        user_password_confirmation = params["mission"]["@user"]["password_confirmation"]
+
+        user = User.where(email:user_email).first
+
+        if user.nil?
+
+          new_user = User.new(email:user_email, password:user_password, password_confirmation:user_password_confirmation)
+
+
+          if new_user.save
+            mission_user = new_user
+            session[:user_account_id] = new_user.id
+            return mission_user
+          end
+
+        else 
+          
+          if user.valid_password?(user_password)
+
+            mission_user = user
+
+            session[:user_account_id] = user
+
+            return mission_user
+
+          end
+
+        end
+
+
+      end
+
+    end
+
 
     def update_global_review_mark
 
