@@ -47,13 +47,17 @@ class AfterController < ApplicationController
         when :service_provider
 
             @user.after_sign_up_user_update_service_provider(params)
+            
+            redirect_to next_wizard_path 
 
         when :how_do_we_call_you
 
             @user.first_name_needs_validation = true
             @user.last_name_needs_validation = true
-
+        
             @user.after_sign_up_user_update_identity_attributes(params)
+
+            redirect_to next_wizard_path 
 
         when :contact_details
 
@@ -61,10 +65,14 @@ class AfterController < ApplicationController
 
             @user.after_sign_up_user_update_email_and_phone(params)
 
+            redirect_to next_wizard_path 
+
         when :location_data
 
             @user.address_needs_validation = true
             @user.after_sign_up_user_update_address(params)
+
+            redirect_to next_wizard_path 
 
 
         when :fill_up_skills
@@ -75,14 +83,16 @@ class AfterController < ApplicationController
 
             @user.update_skills(updated_skills_true,updated_skills_false)
 
+            redirect_to next_wizard_path 
+
          
         when :status_choice
 
             @user.after_sign_up_user_update_status_activity(params)
+            redirect_to next_wizard_path 
             
         end
-        sign_in(@user, bypass: true) # needed for devise
-        render_wizard @user
+
     end
 
     def checkbox_status_label(user)

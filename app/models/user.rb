@@ -188,12 +188,27 @@ class User < ApplicationRecord
 
       if  params["user"]["service_provider"].to_i == 1 
           self.service_provider = true
-          if self.save
-          else puts self.errors.full_messages
+          if self.facebook_uid?
+            if self.save(validate:false)
+            else puts self.errors.full_messages
+            end
+          else
+            if self.save
+            else puts self.errors.full_messages
+            end
           end
       elsif params["user"]["service_provider"].to_i == 0 
           self.service_provider = false
-          self.save
+          if self.facebook_uid?
+            if self.save(validate:false)
+             
+            else puts self.errors.full_messages
+            end
+          else
+            if self.save
+            else puts self.errors.full_messages
+            end
+          end
       
       end
     end
@@ -211,7 +226,17 @@ class User < ApplicationRecord
       end
 
       if user_first_name != "" && user_last_name != ""
-        self.save
+        if self.facebook_uid?
+          if self.save(validate:false)
+           
+          else puts self.errors.full_messages
+          end
+        else
+          if self.save
+           
+          else puts self.errors.full_messages
+          end
+        end
       end
 
     end
@@ -226,7 +251,17 @@ class User < ApplicationRecord
       if self.phone_number !=  user_phone &&  user_phone.blank? == false
           self.phone_number = params[:'user']["phone_number"]
       end
-      self.save
+     
+      if self.facebook_uid?
+        if self.save(validate:false)
+        else puts self.errors.full_messages
+        end
+      else
+        if self.save
+        else puts self.errors.full_messages
+        end
+      end
+     
     end
 
 
@@ -235,7 +270,9 @@ class User < ApplicationRecord
       if self.address !=  user_address &&  user_address.blank? == false
       self.address = user_address
       end
-      self.save
+      if self.save
+       
+      end
     end
 
 
@@ -284,11 +321,13 @@ class User < ApplicationRecord
 
     if params[:"user"][:"status_activity"].to_i == 0 && self.status_activity == true
       self.status_activity = false 
-      self.save
+      if self.save
+      end
    elsif 
       params[:"user"][:"status_activity"].to_i == 1 && self.status_activity == false
       self.status_activity = true
-      self.save
+      if self.save
+      end
    end
 
   end
