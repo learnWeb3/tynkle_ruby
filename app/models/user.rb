@@ -201,7 +201,6 @@ class User < ApplicationRecord
           self.service_provider = false
           if self.facebook_uid?
             if self.save(validate:false)
-             
             else puts self.errors.full_messages
             end
           else
@@ -228,13 +227,15 @@ class User < ApplicationRecord
       if user_first_name != "" && user_last_name != ""
         if self.facebook_uid?
           if self.save(validate:false)
-           
+           return true
           else puts self.errors.full_messages
+            return false
           end
         else
           if self.save
-           
+           return true
           else puts self.errors.full_messages
+            return false
           end
         end
       end
@@ -245,19 +246,22 @@ class User < ApplicationRecord
     def after_sign_up_user_update_email_and_phone(params)
       user_email = params[:'user']["email"]
       user_phone = params[:'user']["phone_number"]
-      if self.email !=  user_email &&  user_email.blank? == false
+      if self.email !=  user_email &&  user_email.blank? == false 
           self.email = user_email
       end
       if self.phone_number !=  user_phone &&  user_phone.blank? == false
           self.phone_number = params[:'user']["phone_number"]
       end
      
-      if self.facebook_uid?
+      if self.facebook_uid? && user_email.blank? == false && user_email.nil? == false && user_email == user_email.match(/\A[^@\s]+@[^@\s]+\z/).to_s && User.where(email:user_email).nil?
         if self.save(validate:false)
+          return true
         else puts self.errors.full_messages
+          return false
         end
       else
         if self.save
+          return true
         else puts self.errors.full_messages
         end
       end

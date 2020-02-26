@@ -63,9 +63,12 @@ class AfterController < ApplicationController
 
             @user.email_needs_validation = true
 
-            @user.after_sign_up_user_update_email_and_phone(params)
+            if @user.after_sign_up_user_update_email_and_phone(params)
 
             redirect_to next_wizard_path 
+
+            else redirect_to wizard_path
+            end
 
         when :location_data
 
