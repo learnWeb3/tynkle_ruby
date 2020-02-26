@@ -37,69 +37,8 @@ class MissionsController < ApplicationController
       mission_id = params["id"].to_i
       updated_mission = Mission.find(mission_id)
 
-      device_category_id =  params["device_category"]["device_category_id"].to_i
-      device_category = DeviceCategory.find(device_category_id)
-
-      if device_category != updated_mission.device_category
-        updated_mission.device_category = device_category 
-      end
-
-      
-      category_tag_id = params["category_tag"]["categorytag_id"].to_i
-      category_tag = Categorytag.find(category_tag_id)
-
-      if category_tag != updated_mission.categorytag
-        updated_mission.categorytag = category_tag
-      end
-      
-      
-      title = params["mission"]["title"]
-      if title != updated_mission.title 
-        updated_mission.title = title
-      end
-      description = params["mission"]["description"]
-      if description != updated_mission.description
-        updated_mission.description = description
-      end
-      address = params["mission"]["address"]
-      if address != updated_mission.address
-        updated_mission.address = address
-      end
-      price = params["mission"]["price"].to_i
-      if price != updated_mission.price 
-        updated_mission.price = price
-      end
-
-
-      email_contact = params["mission"]["email_contact"].to_i
-
-      if email_contact == 1 && updated_mission.email_contact == false
-        updated_mission.email_contact = true
-      elsif email_contact == 0 && updated_mission.email_contact == true
-        updated_mission.email_contact = false
-      end
-
-      phone_contact = params["mission"]["phone_contact"].to_i
-      if phone_contact == 1 && updated_mission.phone_contact == false
-        updated_mission.phone_contact = true
-      elsif phone_contact == 0 && updated_mission.phone_contact == true
-        updated_mission.phone_contact = false
-      end
-
-      in_person_help = params["mission"]["in_person_help"].to_i
-      if in_person_help == 1 && updated_mission.in_person_help == false
-        updated_mission.in_person_help = true
-      elsif in_person_help == 0 && updated_mission.in_person_help == true
-        updated_mission.in_person_help = false
-      end
-      
-      remote_help = params["mission"]["remote_help"].to_i
-      if remote_help == 1 && updated_mission.remote_help == false
-        updated_mission.remote_help = true
-      elsif remote_help == 0 && updated_mission.remote_help == true
-        updated_mission.remote_help = false
-      end
-      
+      updated_mission.update_mission_attributes(params)
+    
       
       if updated_mission.save 
         redirect_to mission_path(id:mission_id)
@@ -174,13 +113,7 @@ class MissionsController < ApplicationController
       mission_id =  params[ "id"].to_i
       mission = Mission.find(mission_id)
 
-      is_mission_solved = params["mission"]["solved"].to_i
-
-      if is_mission_solved == 1 && mission.solved? == false
-        mission.solved = true
-      elsif is_mission_solved == 0 && mission.solved?
-        mission.solved = false
-      end
+      mission.mark_as_solved(params)
 
       if mission.save
         session[:reviewed_mission] = mission_id
@@ -188,7 +121,7 @@ class MissionsController < ApplicationController
       else puts mission.errors.full_messages
       end
 
-
+    
     end 
 
     def new 

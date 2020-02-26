@@ -126,8 +126,97 @@ class Mission < ApplicationRecord
         new_mission = Mission.new(user:mission_user,title:mission_title, description:mission_description,price:mission_price, device_category:mission_device_category,categorytag:mission_category_tag, address:mission_address, image_one:mission_image_one, image_two:mission_image_two, image_three:mission_image_three, phone_contact: mission_contact_phone, email_contact:mission_contact_email, in_person_help:mission_in_person_help, remote_help:mission_remote_help)
         return new_mission
     end
+
+
+
+    def update_mission_attributes(params)
+
+
+        device_category_id =  params["device_category"]["device_category_id"].to_i
+        device_category = DeviceCategory.find(device_category_id)
+  
+        if device_category != self.device_category
+          self.device_category = device_category 
+        end
+  
+        
+        category_tag_id = params["category_tag"]["categorytag_id"].to_i
+        category_tag = Categorytag.find(category_tag_id)
+  
+        if category_tag != self.categorytag
+          self.categorytag = category_tag
+        end
+        
+        
+        title = params["mission"]["title"]
+        if title != self.title 
+          self.title = title
+        end
+        description = params["mission"]["description"]
+        if description != self.description
+          self.description = description
+        end
+        address = params["mission"]["address"]
+        if address != self.address
+          self.address = address
+        end
+        price = params["mission"]["price"].to_i
+        if price != self.price 
+          self.price = price
+        end
+  
+  
+        email_contact = params["mission"]["email_contact"].to_i
+  
+        if email_contact == 1 && self.email_contact == false
+          self.email_contact = true
+        elsif email_contact == 0 && self.email_contact == true
+          self.email_contact = false
+        end
+  
+        phone_contact = params["mission"]["phone_contact"].to_i
+        if phone_contact == 1 && self.phone_contact == false
+          self.phone_contact = true
+        elsif phone_contact == 0 && self.phone_contact == true
+          self.phone_contact = false
+        end
+  
+        in_person_help = params["mission"]["in_person_help"].to_i
+        if in_person_help == 1 && self.in_person_help == false
+          self.in_person_help = true
+        elsif in_person_help == 0 && self.in_person_help == true
+          self.in_person_help = false
+        end
+        
+        remote_help = params["mission"]["remote_help"].to_i
+        if remote_help == 1 && self.remote_help == false
+          self.remote_help = true
+        elsif remote_help == 0 && self.remote_help == true
+          self.remote_help = false
+        end
+
+
+        return self
+
+    end
+
+
+    def mark_as_solved(params)
+
+        is_mission_solved = params["mission"]["solved"].to_i
+  
+        if is_mission_solved == 1 && self.solved? == false
+          self.solved = true
+        elsif is_mission_solved == 0 && self.solved?
+          self.solved = false
+        end
+  
+       return self
+  
+    end
      
     private
+
 
     def address_is_real
 
