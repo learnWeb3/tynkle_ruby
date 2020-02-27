@@ -14,4 +14,8 @@
 //= require activestorage
 //= require turbolinks
 //= require rails.validations
+//= require pickadate/picker 
+//= require pickadate/picker.date
+//= require pickadate/picker.time 
+//= require pickadate/translations/fr_FR
 //= require_tree .

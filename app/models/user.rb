@@ -31,6 +31,10 @@ class User < ApplicationRecord
     # A user could create multiple missions reflecting problems to be solved 
     
     has_many :missions, dependent: :destroy
+    
+    # A user could make many offers related to a mission 
+
+    has_many :offers, dependent: :destroy
 
     ## Active Record Associations for Active storage usage
 

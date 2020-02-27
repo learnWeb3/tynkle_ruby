@@ -1,12 +1,12 @@
 <!-- Button trigger modal -->
-<%= link_to "Envoyer un mp", {}, class:"btn btn-outline-success my-2", 'data-toggle':"modal", 'data-target':"#modal-private-message" %>
+<%= link_to "Faire une offre", {}, class:"btn btn-outline-primary my-2", 'data-toggle':"modal", 'data-target':"#modal-make_an_offer" %>
 
 <!-- Modal -->
-<div class="modal fade" id="modal-private-message" tabindex="-1" role="dialog" aria-labelledby="modal-private-messageLabel" aria-hidden="true">
+<div class="modal fade" id="modal-make_an_offer" tabindex="-1" role="dialog" aria-labelledby="modal-make_an_offerLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modal-private-messageLabel">Envoyer un messages privé</h5>
+        <h5 class="modal-title" id="modal-make_an_offerLabel">Faire une offre </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -14,26 +14,35 @@
       <div class="modal-body">
 
 
-      <%= form_for @new_message, url: message_send_path do |f| %>
+      <%= form_for :offer, url:offers_path  do |f| %>
        
-            <h5 class="form-label"> Message </h5>
+            <h5 class="form-label"> Ton Offre </h5>
             <hr class="my-2">
+            <%=  f.label :"Propose un prix :"%>
+            <%=  f.number_field :price, class:"form-control", required:true %>
+            <div class="form-group my-4">
+            <%=  f.label :"Propose une date de rendez vous :"%>
+            <%=  f.text_field :date, class:"form-control datepicker", required:true %>
+            <%=  f.label :"Propose une heure de rendez vous :"%>
+            <%=  f.text_field :time, class:"form-control timepicker", required:true %>
+            </div>
             <%=  f.label :"Objet :"%>
-            <%=  f.text_field :object, class:"form-control mb-4"  %>
+            <%=  f.text_field :object, class:"form-control mb-4", required:true  %>
             <%=  f.label :"Message :"%>
-            <%=  f.text_area :content, class:"form-control mb-4", rows:"2"  %>
+            <%=  f.text_area :content, class:"form-control mb-4", rows:"2", required:true  %>
             <%= f.hidden_field :mission_url, value: @mission.id %>
 
 
-            <% if user_signed_in? %>
+        <% if user_signed_in? %>
             <%= f.hidden_field :sender, value: @user.id %>
 
-            <% else %>
+        <% else %>
 
             <hr>
 
             <h5> Connectes toi ou inscris toi... </h5>
 
+            
             <%=f.fields_for :@user do |ff| %>
 
 
@@ -54,12 +63,8 @@
 
             <% end %>
 
-
-            <hr class="my-2">
-
-
-
-            <% end %>
+            
+        <% end %>
            
         
       
@@ -71,3 +76,6 @@
     </div>
   </div>
 </div>
+
+<%= javascript_tag ("$('.datepicker').pickadate( {formatSubmit: 'yyyy/mm/dd',
+hiddenName: true}); $('.timepicker').pickatime()") %>

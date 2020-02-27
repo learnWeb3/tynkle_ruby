@@ -13,4 +13,7 @@
  *= require_tree .
  *= require_self
  *= require simple_calendar
+ *= require pickadate/classic
+ *= require pickadate/classic.date
+ *= require pickadate/classic.time
  */

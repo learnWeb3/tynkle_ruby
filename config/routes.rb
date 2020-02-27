@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   resources :images, only: [:show]
 
+  resources :offers, only: [:show, :create, :update]
+
   
-
-
 end

@@ -139,3 +139,7 @@ gem 'faker'
 # Clent side validation display supported by jquery 
 
 gem 'client_side_validations'
+
+# Displaying proper jquery datetime picker formatted through bootstrap
+
+gem 'pickadate-rails'

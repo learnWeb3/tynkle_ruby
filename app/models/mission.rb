@@ -15,7 +15,11 @@ class Mission < ApplicationRecord
 
     # Active Record association with Reviews
 
-    has_many :reviews
+    has_many :reviews, dependent: :destroy
+
+    # Active Record association with Offers
+
+    has_many :offers, dependent: :destroy
     
 
     # Active Record validations
