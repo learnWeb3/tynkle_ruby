@@ -344,7 +344,7 @@
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}&libraries=places&callback=initMap" %>
 
 <script>
-document.addEventListener('turbolinks:load', function() { userName = 'Ma position' ; var map = initMap(<%=@user.latitude%>, <%=@user.longitude%>, document.getElementById('map-select-helper'), userName, 4); 
+document.addEventListener('turbolinks:load', function() { userName = 'Ma position' ; var map = initMap(<%=@user_coordinates[0]%>, <%=@user_coordinates[1]%>, document.getElementById('map-select-helper'), userName, 4); 
 <% if @helper_inside_perimeter.nil? == false %>
 <% @helper_inside_perimeter.each do |helper| %> 
 addMarkerInside(<%=helper.latitude%>, <%=helper.longitude%>, map, '<%=helper.first_name%>')  

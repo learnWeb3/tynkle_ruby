@@ -1,6 +1,6 @@
 class ServicesurveyController < ApplicationController
     include Wicked::Wizard
-    steps :device_type, :problem_type, :problem_details ,:fill_up_mission_details, :select_helper, :finish
+    steps :location, :device_type, :problem_type, :problem_details ,:fill_up_mission_details, :select_helper, :finish
 
     def show
         
@@ -13,7 +13,29 @@ class ServicesurveyController < ApplicationController
         @mission = Mission.new
        
         case step
+            when :location
+                if user_signed_in?
+                    skip_step
+                else
+                    
+                end
+            when :device_type
+
+                unless user_signed_in?
+
+                    if params["user"].present?
+
+                        address = params["user"]["address"]
+
+                        coordinates = Geocoder.search(address).first.coordinates
+
+                        session[:user_coordinates] = coordinates
+                    end
+
+                end
+
             when :problem_type
+
                 if params[:"device_cat"].present?
                     session[:device_category] = params[:"device_cat"].to_i
                 end
@@ -38,13 +60,14 @@ class ServicesurveyController < ApplicationController
                 if user_signed_in?
 
                     @user = current_user
+                    @user_coordinates = [@user.latitude, @user.longitude]
 
                 else
 
-                    @user = User.first # need to change to fetch coordinates according ip of user or display form where user can fill his postal code 
+                    @user_coordinates = session[:user_coordinates]
 
                 end
-                        user_in_perimeter =  User.near([@user.latitude, @user.longitude], 60).where(service_provider:true, status_activity:true)
+                        user_in_perimeter =  User.near([@user_coordinates], 60).where(service_provider:true, status_activity:true)
 
                         users_matching_devices_requested = []
                         linkdevices_acquired = LinkDeviceToUser.where(acquired:true, device_category:DeviceCategory.find(session[:device_category]))
