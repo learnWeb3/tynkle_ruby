@@ -9,26 +9,29 @@ class Offer < ApplicationRecord
 
     validates :title, presence:true, length:{maximum:50}
     validates :content, presence:true, length:{maximum:500}
-    validates :meeting_proposal, presence:true
+    validates :date, presence:true
+    validates :time, presence:true
     validates :price, numericality:{greater_than_or_equal_to:0}
 
     validate :date_is_future
 
     def date_is_future
-        if meeting_proposal < Time.now
-            errors.add(:meeting_proposal,"meeting is in past")
+        if date < Time.now
+            errors.add(:date,"meeting is in past")
         end
     end
 
     def self.params_to_new_offer(params, current_user)
+
         price = params["offer"]["price"].to_i
-        object = params["offer"]["object"]
+        title= params["offer"]["object"]
         content = params["offer"]["content"]
         mission_id = params["offer"]["mission_url"]
-
+        mission_date = Date.parse(params["offer"]["date"])
+        mission_time = Time.parse("0000-01-01"+" "+params["offer"]["time"]) # creating a full time object with year month etc ..
         related_mission = Mission.find(mission_id.to_i)
        
-        if user_signed_in?
+        if current_user
             sender = current_user
         else 
             check_sender = User.find_by(email:params["offer"]["@user"]["email"])
@@ -53,7 +56,7 @@ class Offer < ApplicationRecord
 
         end
 
-        offer = Offer.new(price:price, object:object, content:content, mission: related_mission, user:sender)
+        offer = Offer.new(price:price, title:title, content:content, mission: related_mission, user:sender, date:mission_date, time:mission_time)
         return offer
         end
 

@@ -22,9 +22,9 @@
             <%=  f.number_field :price, class:"form-control", required:true %>
             <div class="form-group my-4">
             <%=  f.label :"Propose une date de rendez vous :"%>
-            <%=  f.text_field :date, class:"form-control datepicker", required:true %>
+            <%=  f.date_field :date, class:"form-control datepicker", required:true %>
             <%=  f.label :"Propose une heure de rendez vous :"%>
-            <%=  f.text_field :time, class:"form-control timepicker", required:true %>
+            <%=  f.time_field :time, class:"form-control timepicker", required:true %>
             </div>
             <%=  f.label :"Objet :"%>
             <%=  f.text_field :object, class:"form-control mb-4", required:true  %>
@@ -77,5 +77,6 @@
   </div>
 </div>
 
-<%= javascript_tag ("$('.datepicker').pickadate( {formatSubmit: 'yyyy/mm/dd',
-hiddenName: true}); $('.timepicker').pickatime()") %>
+<%= javascript_tag ("$('.datepicker').pickadate( {formatSubmit: 'yyyy-mm-dd',
+hiddenName: true}); $('.timepicker').pickatime({formatSubmit: 'HH:i',
+hiddenName: true})") %>

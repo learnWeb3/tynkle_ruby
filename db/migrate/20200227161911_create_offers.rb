@@ -5,8 +5,8 @@ class CreateOffers < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :content
       t.integer :price
-      t.string :date
-      t.string :time
+      t.date :date
+      t.time :time
       t.boolean :accepted
 
       # Active Record Association
