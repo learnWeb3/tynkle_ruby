@@ -21,10 +21,16 @@
             <%=  f.label :"Propose un prix :"%>
             <%=  f.number_field :price, class:"form-control", required:true %>
             <div class="form-group my-4">
-            <%=  f.label :"Propose une date de rendez vous :"%>
-            <%=  f.date_field :date, class:"form-control datepicker", required:true %>
-            <%=  f.label :"Propose une heure de rendez vous :"%>
-            <%=  f.time_field :time, class:"form-control timepicker", required:true %>
+            <div class="row">
+            <div class="col">
+            <%=  f.label :"Propose une date:"%>
+            <%=  f.date_field :date, class:"form-control datepicker", required:true, placeholder:Time.now.strftime('%d %b %Y') %>
+            </div>
+            <div class="col">
+            <%=  f.label :"Propose une heure:"%>
+            <%=  f.time_field :time, class:"form-control timepicker", required:true, placeholder:Time.now.strftime('%H:%M')%>
+            </div>
+            </div>
             </div>
             <%=  f.label :"Objet :"%>
             <%=  f.text_field :object, class:"form-control mb-4", required:true  %>
