@@ -24,5 +24,9 @@ class OffersController < ApplicationController
 
     end
 
+    def update 
+
+    end
+
 
 end

@@ -51,14 +51,20 @@
             <hr class="mb-4">
 
             <div class="row">
-            <div class="col">
-           
-                <h6 class="label ">Contenu de l'offre </h6>
-                <div class:""> <%=@offer.content%> </div>
-            </div>
+                <div class="col">
+            
+                    <h6 class="label ">Contenu de l'offre </h6>
+                    <div class:""> <%=@offer.content%> </div>
+                </div>
             </div>
 
             </div>
+        </div>
+
+        <div class="col-9 mx-auto">
+            <%=button_to offer_path(id:@offer.id), method: :put, class:"border-0 bg-transparent" do %>
+            <%= image_tag "icons/validate-offer", class:"img-fluid" %>
+            <% end %>
         </div>
 
 
