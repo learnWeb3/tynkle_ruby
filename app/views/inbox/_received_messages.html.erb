@@ -2,7 +2,8 @@
 
         <div class="col-5" id="talkHistory">
 
-            <% @inbox.each do |message| %>
+            <% @inbox.each_with_index do |message, index| %>
+                
 
 
                 <div class="card my-3 shadow-lg">

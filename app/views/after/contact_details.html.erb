@@ -15,7 +15,7 @@
 
     <%= form_for @user, url: wizard_path, method: :put do |f| %>
         <div class="form-group">
-            <%=  f.label :"Renseigne une addresse email"  %>
+            <%=  f.label :"Renseigne une addresse email *"  %>
             <%=  f.text_field :email, class:"form-control", required:true%>
         </div>
         <div class="form-group">

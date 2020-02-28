@@ -15,9 +15,9 @@
 
     <%= form_for @user, url: wizard_path, method: :put do |f| %>
         <div class="form-group">
-            <%=  f.label :Renseigne_ton_Nom_et_Prénom  %>
-            <%=  f.text_field :first_name, class:"form-control mb-4", required:true  %>
-            <%=  f.text_field :last_name, class:"form-control", required:true   %>
+            <%=  f.label :"Renseigne_ton_Nom_et_Prénom *"  %>
+            <%=  f.text_field :first_name, class:"form-control mb-4", required:true, placeholder:"Pierre *"  %>
+            <%=  f.text_field :last_name, class:"form-control", required:true, placeholder:"Martin *"   %>
         </div>
     
     </div>

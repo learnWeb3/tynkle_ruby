@@ -15,7 +15,7 @@
 
     <%= form_for @user, url: wizard_path, method: :put do |f| %>
         <div class="form-group">
-            <%=  f.label :Renseigne_ton_address %>
+            <%=  f.label :"Renseigne_ton_addresse *"%>
             <%=  f.text_field :address, class:"form-control", id:"autocomplete_address", required:true   %>
             <small class="form-text text-muted">Nous t'aidons en utlisant Google Maps pour une géolocalisation plus précise.</small>
         </div>
