@@ -58,6 +58,14 @@ class Offer < ApplicationRecord
 
         offer = Offer.new(price:price, title:title, content:content, mission: related_mission, user:sender, date:mission_date, time:mission_time)
         return offer
+    end
+
+
+    def update_expired_status
+        if self.created_at + 86400 < TIme.now
+            self.expired = true
+            self.update
         end
+    end
 
 end
