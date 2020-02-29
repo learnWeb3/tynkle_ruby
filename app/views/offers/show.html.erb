@@ -29,44 +29,54 @@
 
                     <hr class="mb-4">
 
-            <div class="row">
+                    <div class="row">
 
-                    <div class="col">
+                            <div class="col">
 
-                        <h6 class="label ">Montant de l'Offre</h6>
-                        <div class:""> <%=@offer.price%> Euros</div>
-                        
+                                <h6 class="label ">Montant de l'Offre</h6>
+                                <div class:""> <%=@offer.price%> Euros</div>
+                                
+                            </div>
+
+                            <div class="col">
+                            
+                                    <h6 class="label ">Rendez vous proposé :</h6>
+                                    <div class:""> le <%=@offer.date.strftime("%e %b %Y")%> à <%=@offer.time.strftime("%H:%M")%></div>
+                    
+                            </div>
                     </div>
 
-                    <div class="col">
-                       
-                            <h6 class="label ">Rendez vous proposé :</h6>
-                            <div class:""> le <%=@offer.date.strftime("%e %b %Y")%> à <%=@offer.time.strftime("%H:%M")%></div>
-            
+
+
+                    <hr class="mb-4">
+
+                    <div class="row">
+                        <div class="col">
+                    
+                            <h6 class="label ">Contenu de l'offre </h6>
+                            <div class:""> <%=@offer.content%> </div>
+                        </div>
                     </div>
-            </div>
-
-
-
-            <hr class="mb-4">
-
-            <div class="row">
-                <div class="col">
-            
-                    <h6 class="label ">Contenu de l'offre </h6>
-                    <div class:""> <%=@offer.content%> </div>
-                </div>
-            </div>
 
             </div>
-        </div>
 
-        <div class="col-9 mx-auto">
+            <div class="col-3 d-flex flex-column justify-content-around">
+
+            <div>
             <%=button_to offer_path(id:@offer.id), method: :put, class:"border-0 bg-transparent" do %>
-            <%= image_tag "icons/validate-offer", class:"img-fluid" %>
+                <%= image_tag "icons/discard-offer", class:"img-fluid w-50", title:"Rejeter l'offre" %>
             <% end %>
+            </div>
+
+            <div>
+            <%=button_to offer_path(id:@offer.id), method: :put, class:"border-0 bg-transparent" do %>
+            <%= image_tag "icons/validate-offer", class:"img-fluid w-50", title:"Accepter l'offre" %>
+            <% end %>
+            </div>
+        
+            </div>
         </div>
 
-
+    
 
 </section>
