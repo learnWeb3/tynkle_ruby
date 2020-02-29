@@ -20,11 +20,20 @@
 
                     <div class="row">
                         <div class="col">
-                            <h5 class="label ">Objet de l'offre :</h5>
-                            <p class="font-weight-bold font-italic"> <%=@offer.title.upcase%> </p>
+                            <div class="card" style="width: 12rem;">
+                                <div class="card-header bg-danger text-white font-weight-bold text-center"> <%=@offer.full_month_name%></div>
+                                <div class="card-body text-center p-0">
+                                    <p class="mt-1"> Rendez vous le : </p>
+                                    <h6><%=@offer.abbreviated_day_name%> <%=@offer.zero_padded_day%></h6>
+                                    <p><%=@offer.full_time_schedule%></p>
+                                </div>
+                            </div>
                         </div>
                         <div class="col d-flex align-items-center">
-                            <div class:""> <%=link_to 'Accéder à ma mission', mission_path(id:@offer.mission.id), class:"btn-no-radius btn-outline-primary"%> </div> 
+                            <div>
+                            <h5 class="label ">Objet de l'offre :</h5>
+                            <p class="font-weight-bold font-italic"> <%=@offer.title.upcase%> </p>
+                            </div>
                         </div>
                     </div>
 
@@ -35,16 +44,6 @@
                             <div class="col">
                                 <h6 class="label ">Montant de l'Offre</h6>
                                 <div class:""> <%=@offer.price%> Euros</div> 
-                            </div>
-                            <div class="col">
-                                    <h6 class="label ">Rendez vous proposé :</h6>
-                                    <div class="card" style="width: 8rem;">
-                                        <div class="card-header bg-danger text-white font-weight-bold text-center"> <%=@offer.full_month_name%></div>
-                                        <div class="card-body text-center">
-                                        <h5> <%=@offer.abbreviated_day_name%> <%=@offer.zero_padded_day%></h5>
-                                        <p><%=@offer.full_time_schedule%></p>
-                                        </div>
-                                    </div>
                             </div>
                     </div>
 
