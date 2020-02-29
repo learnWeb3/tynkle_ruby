@@ -140,7 +140,9 @@ ActiveRecord::Schema.define(version: 2020_02_27_161911) do
     t.integer "price"
     t.date "date"
     t.time "time"
-    t.boolean "accepted"
+    t.boolean "accepted", default: false
+    t.boolean "rejected", default: false
+    t.boolean "expired", default: false
     t.bigint "mission_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
