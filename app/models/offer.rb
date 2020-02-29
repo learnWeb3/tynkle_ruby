@@ -21,6 +21,45 @@ class Offer < ApplicationRecord
         end
     end
 
+    def full_time_schedule
+
+        self.time.strftime("%H:%M")
+    end
+
+    def hour_minute_schedule
+
+        self.time.strftime("%H")
+    end
+
+    def time_minute_schedule
+
+        self.time.strftime("%M")
+    end
+
+
+    def abbreviated_month_name
+        return self.date.strftime("%b.")
+    end
+
+    def full_month_name
+        return self.date.strftime("%B")
+    end
+
+    def full_year
+        return self.date.strftime("%Y")
+    end
+
+    def full_day_name
+        self.date.strftime("%A")
+    end
+
+    def abbreviated_day_name
+        self.date.strftime("%a.")
+    end
+    def zero_padded_day
+        return self.date.strftime("%e")
+    end
+
     def self.params_to_new_offer(params, current_user)
 
         price = params["offer"]["price"].to_i
