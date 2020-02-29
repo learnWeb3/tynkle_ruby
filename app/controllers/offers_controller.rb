@@ -1,7 +1,6 @@
 class OffersController < ApplicationController
 
     def create
-
         mission_id = params["offer"]["mission_url"].to_i
         offer = Offer.params_to_new_offer(params, current_user)
 
@@ -10,18 +9,17 @@ class OffersController < ApplicationController
         else 
             puts offer.errors.full_messages
         end
-
-
     end 
 
     def show
-
         @offer = Offer.find(params["id"])
-        
+        @offer.update_expired_status   
     end
 
     def index 
-
+        current_user_offers = Offer.where(user:current_user, expired:false)
+        current_user_offers.each{|e| e.update_expired_status}
+        @offers = current_user_offers
     end
 
     def update 
@@ -37,6 +35,8 @@ class OffersController < ApplicationController
             puts offer.full_messages
         end
     end
+
+
 
 
 end
