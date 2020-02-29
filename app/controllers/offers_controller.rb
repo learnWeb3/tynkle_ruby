@@ -26,6 +26,16 @@ class OffersController < ApplicationController
 
     def update 
 
+        offer_id = params["id"].to_i
+
+        offer = Offer.find(offer_id)
+
+        offer = offer.check_and_update_offer_state(params)
+        if offer.save 
+            redirect_to mission_path(id:offer.id)
+        else
+            puts offer.full_messages
+        end
     end
 
 

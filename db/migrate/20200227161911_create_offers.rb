@@ -7,7 +7,8 @@ class CreateOffers < ActiveRecord::Migration[5.2]
       t.integer :price
       t.date :date
       t.time :time
-      t.boolean :accepted
+      t.boolean :accepted, default:false
+      t.boolean :rejected, default:false
       t.boolean :expired, default: false
 
       # Active Record Association

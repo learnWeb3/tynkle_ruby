@@ -107,4 +107,23 @@ class Offer < ApplicationRecord
         end
     end
 
+    def check_and_update_offer_state(params)
+
+        if params["validated"].present?
+
+            validation = params["validated"].to_i
+
+            if validation = 1
+                self.accepted = true 
+                return self
+            elsif validation = 0
+                self.rejected = true 
+                return self
+            end
+
+        end
+
+    end
+
+
 end
