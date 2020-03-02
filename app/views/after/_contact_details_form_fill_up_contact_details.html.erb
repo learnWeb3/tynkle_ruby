@@ -1,0 +1,18 @@
+<div class="row justify-content-center my-4">
+
+    <%= form_for @user, url: wizard_path, method: :put do |f| %>
+        <div class="form-group">
+            <%=  f.label :"Renseigne une addresse email *"  %>
+            <%=  f.text_field :email, class:"form-control", required:true%>
+        </div>
+        <div class="form-group">
+            <%=  f.label :"Renseigne un numéro de téléphone"  %>
+            <%=  f.text_field :phone_number, class:"form-control", required:true %>
+        </div>
+    
+</div>
+
+<div class="row col-8 justify-content-end my-4 mx-auto">
+    <%= f.submit "Suivant", class:"btn btn-primary" %>
+    <% end %>
+</div> 
