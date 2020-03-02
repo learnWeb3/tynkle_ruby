@@ -1,0 +1,92 @@
+<%= form_for wizard_path, method: :put do |f| %>
+
+<div class="tab-content" id="pills-tabContent">
+    
+<%= render 'tab_content_skills-selected'%>
+    
+      
+<!-- devices tab content start-->  
+
+<div class="tab-pane fade" id="pills-device_categories" role="tabpanel" aria-labelledby="pills-device_categories-tab justify-content-center">
+    
+    <hr class="mt-4 mb-2">
+    
+    <%= f.label :"Sélectionne les types d'appareils que tu souhaite dépanner", class:"form-control border-0 font-weight-bolder" %>
+    
+    <div class="form-group">
+    
+        <% @link_device_categories_to_users.each do |link| %>
+        
+        <div class="form-inline">
+        
+            <div class="col">
+                <%= f.label :"#{link.device_category.title}", class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title: "later on" %>
+            </div>
+        
+            <div class="col-3">
+                <div class="form-check form-check-inline">
+        
+                    <%= f.check_box :"#{link.device_category.title}", class:"form-check-input mx-2", checked:link.acquired%>
+                    <%= f.label :oui, class:"form-check-label mx-2"%>    
+        
+                </div>
+            </div>
+        
+        </div>
+        
+        <% end %>
+    
+    </div>
+</div>
+
+<!-- devices tab content finish-->
+    
+<!-- skills tab content start -->
+    
+<% Categorytag.all.each do |category| %>
+    
+<div class="tab-pane fade" id="pills-<%=category.name%>" role="tabpanel" aria-labelledby="pills-<%=category.name%>-tab justify-content-center">
+    
+    <hr class="mt-4 mb-2">
+        
+    <div class="row justify-content-center">
+        
+        <div class="col-9">
+            <%= f.label :selectionne_les_services_que_tu_souhaite_proposer, class:"form-control border-0 font-weight-bolder" %>
+            <div class="form-group">
+                <% category.skills.each do |skill|%>
+                <div class="form-inline">
+                    <div class="col">
+                        <%= f.label :"#{skill.name}", class:"form-control border-0", 'data-toggle': 'tooltip', 'data-placement':'top', title: skill.description %>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-check form-check-inline">
+                            <%= f.check_box :"#{skill.name}", class:"form-check-input mx-2", checked:LinkSkillToUser.find_by(user:current_user, skill:Skill.where(name:skill.name)).acquired%>
+                            <%= f.label :oui, class:"form-check-label mx-2"%>    
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+        
+        <div class="col-3 justify-content-center text-center">
+            <%= image_tag("icons/#{category.name}.png", class:"w-50 img-fluid") %>
+        </div>
+        
+    </div>
+
+</div>
+<% end %>
+<!-- skills tab content finish -->
+    
+<hr class="my-4">
+
+<!-- button submit skills checked form start -->
+    <div class="row col-12 justify-content-end my-4 mx-auto">
+        <%= f.submit "Suivant", class:"btn btn-primary" %>
+        <% end %>
+    </div> 
+<!-- button submit skills checked form finish-->
+
+    

@@ -1,0 +1,10 @@
+<% Categorytag.all.each do |tag| %>
+
+    <li class="nav-item">
+      <%= link_to "#pills-#{tag.name}", class:"nav-link d-flex", id:"pills-#{tag.name}-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"pills-#{tag.name}", 'aria-selected':"false"  do %> 
+      <%= content_tag :div, tag.name %>
+      <%=content_tag :span, @user_skills.where(skill_id:[Skill.where(categorytag:Categorytag.where(name:tag.name)).first.id..Skill.where(categorytag:Categorytag.where(name:tag.name)).last.id]).length, class:"badge badge-pill badge-primary ml-2" %>
+      <%end%>
+    </li>
+  
+<% end %>

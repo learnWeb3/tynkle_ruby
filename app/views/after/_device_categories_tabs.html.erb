@@ -1,0 +1,6 @@
+<li class="nav-item">
+    <%= link_to "#pills-device_categories", class:"nav-link d-flex", id:"pills-device_categories-tab", 'data-toggle':"pill", 'role':"tab", 'aria-controls':"pills-device_categories", 'aria-selected':"false" do %> 
+    <%= content_tag :div, "Types d'appareils réparés" %>
+    <%= content_tag :span, @link_device_categories_to_users.where(acquired:true).length, class:"badge badge-pill badge-secondary ml-2" %>
+    <% end %>
+</li>

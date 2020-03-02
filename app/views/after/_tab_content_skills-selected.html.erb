@@ -1,0 +1,22 @@
+<div class="tab-pane fade" id="pills-skills-selected" role="tabpanel" aria-labelledby="pills-skills-selected-tab justify-content-center">
+    
+    <hr class="mt-4 mb-2">
+    
+    <div class="form-control border-0 font-weight-bolder">Retrouve ici les services sélectionnés:</div>
+    
+    
+    <% @user_skills.each do |link| %>
+              
+    <span class="badge badge-success"><%=link.skill.name%></span>
+                
+    <% end %>
+    
+    
+    <% @user_devices_skills.each do |link| %>
+                    
+    <span class="badge badge-success"><%=link.device_category.title%></span>
+                
+    <% end %>
+    
+    
+</div>

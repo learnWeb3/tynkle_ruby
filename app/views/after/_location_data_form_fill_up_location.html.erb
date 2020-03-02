@@ -1,0 +1,30 @@
+<div class="row justify-content-center my-4">
+
+<%= form_for @user, url: wizard_path, method: :put do |f| %>
+    <div class="form-group">
+        <%=  f.label :"Renseigne_ton_addresse *"%>
+        <%=  f.text_field :address, class:"form-control", id:"autocomplete_address", required:true   %>
+        <small class="form-text text-muted">Nous t'aidons en utlisant Google Maps pour une géolocalisation plus précise.</small>
+    </div>
+
+</div>
+
+<div class="row my-4 mx-auto text-center">
+
+<div class="col">
+    <%= link_to "Précédent", wizard_path(:how_do_we_call_you), class:"btn btn-primary" %>
+</div>
+
+<div class="col">
+    <%= f.submit "Suivant", class:"btn btn-primary" %>
+    <% end %>
+</div>
+
+
+</div> 
+
+
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
+<%= javascript_tag (" google.maps.event.addDomListener(window, 'load', function() {
+    initializeAutocomplete('autocomplete_address');
+});") %>
