@@ -4,7 +4,12 @@
 <div class="row justify-content-center py-4 bg-light-grey">
 
 <div class="d-block justify-content-center text-center">
+
+    <% if @assessed_user.first_name? %>
     <h3 class="my-4"> Rediger un avis pour <%=@assessed_user.first_name.capitalize %> </h3>
+    <% else %>
+    <h3 class="my-4"> Rediger un avis </h3>
+    <% end %>
 
     <h6> La mission résolue : <%= @mission.title.capitalize%>, <%=@mission.created_at.strftime("Crée le %e %b %Y à %H:%M") %></h6>
 </div>

@@ -136,7 +136,7 @@ class Mission < ApplicationRecord
     def update_mission_attributes(params)
 
 
-        device_category_id =  params["device_category"]["device_category_id"].to_i
+        device_category_id =  params["mission"]["device_category"].to_i
         device_category = DeviceCategory.find(device_category_id)
   
         if device_category != self.device_category
@@ -144,7 +144,7 @@ class Mission < ApplicationRecord
         end
   
         
-        category_tag_id = params["category_tag"]["categorytag_id"].to_i
+        category_tag_id = params["mission"]["categorytag"].to_i
         category_tag = Categorytag.find(category_tag_id)
   
         if category_tag != self.categorytag
