@@ -11,220 +11,36 @@
 
                 <%= form_for @mission, url: mission_create_outside_survey_path, method: :post do |f| %>
 
-                    <div class="row">
-                        <div class="col">
+                <%= render partial:"new_mission_row_categorytag_and_devices", locals:{f:f} %>
+                <%= render partial:"new_mission_row_title_and_budget", locals:{f:f} %>
+                <%= render partial:"new_mission_row_contact_types", locals:{f:f} %>
+                <hr class="mb-4">
+                <%= render partial:"new_mission_row_help_types", locals:{f:f} %>
 
+                <hr class="mb-4">
 
-                        <div class="form-group col-12">
-                            <%=  f.label :"Type d'Appareil :" %>
-                            <%=  f.collection_select :device_category, DeviceCategory.all, :id, :title, {prompt: "Appareil en panne"}, {class: "custom-select"}%>
-                        </div>
-
-                        </div>
-
-                        <div class="col">
-
-                        <div class="form-group col-12">
-                            <%=  f.label :"Catégorie :" %>
-                            <%=  f.collection_select :categorytag, Categorytag.all, :id, :name, {prompt: "Compétence recherchée"}, {class: "custom-select"}%>      
-                        </div>
-
-                        </div>
-
-            
-                    </div>
-
-                    <div class="row">
-
-                        <div class="col">
-                            <div class="form-group col">
-                                <%=  f.label :"Titre_de_la_demande :" %>
-                                <%=  f.text_field :title, class:"form-control mb-4", required:true  %>
-                            </div>
-
-                        </div>
-
-                        <div class="col">
-
-                            <div class="form-group col-12">
-                            <%=  f.label :"Budget :" %>
-                            <%=  f.number_field :price, class:"form-control", required:true  %>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col">
-
-                        <p class="form-label"> Mode de contact préféré </p>
-
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-
-
-                        <div class="col">
-
-                            <div class="form-group col-12 my-auto">
-
-                                <div class="form-check text-center form-check-inline">
-                                    <%=  f.check_box :email_contact, class:"form-check-input",id:"radio-status-choice"%>
-                                    <%=  f.label :"Contact par email", class:"form-check-label", for:"radio-status-choice"  %>
-                                </div>
-                                
-                            </div> 
-
-                        </div>
-
-                        <div class="col">
-
-                            <div class="form-group col-12 my-auto">
-
-                                <div class="form-check text-center form-check-inline">
-                                    <%=  f.check_box :phone_contact, class:"form-check-input",id:"radio-status-choice"%>
-                                    <%=  f.label :"Contact par téléphone", class:"form-check-label", for:"radio-status-choice"  %>
-                                </div>
-                                
-                            </div> 
-
-                        </div>
-                    </div>
-
-                    <hr class="mb-4">
-
-                    <div class="col">
-                        <p class="form-label"> Type d'aide souhaitée</p>
-                    </div>
-
-
-                    <hr>
-
-
-                    <div class="row">
-
-
-                        <div class="col">
-
-                            <div class="form-group col-12 my-auto">
-
-                           
-                                <div class="form-check text-center form-check-inline">
-                                    <%=  f.check_box :in_person_help, class:"form-check-input",id:"radio-status-choice"%>
-                                    <%=  f.label :"Aide en personne", class:"form-check-label", for:"radio-status-choice"  %>
-                                </div>
-                                
-                            </div> 
-
-                        </div>
-
-                        <div class="col">
-
-                            <div class="form-group col-12 my-auto">
-
-                                <div class="form-check text-center form-check-inline">
-                                    <%=  f.check_box :remote_help, class:"form-check-input",id:"radio-status-choice"%>
-                                    <%=  f.label :"Aide à distance", class:"form-check-label", for:"radio-status-choice"  %>
-                                </div>
-                                
-                            </div> 
-
-                        </div>
-                    </div>
-
-                    <hr class="mb-4">
-
-
-                    <div class="form-group col-12">
-                        <%=  f.label :"Description_de_la_demande :"%>
-                        <%=  f.text_area :description, class:"form-control mb-4", rows:"10", required: true  %>
-                    </div>
-
-
-                    <div class="form-group col-12">
-                        <%=  f.label :"Localisation :" %>
-                        <%=  f.text_field :address, class:"form-control", id:"autocomplete_address", required: true   %>
-                        <small class="form-text text-muted">Nous t'aidons en utlisant Google Maps pour une géolocalisation plus précise.</small>
-                    </div>
-
-
-                   
-                <div class="form-group col-12">
-                    <%=  f.label :"Ajouter des fichiers :" %>
-                    
-                    <div class="row">
-                        <div class="col">
-                        <%=  f.file_field :image_one, class:"form-control-file mb-4"  %>
-                        </div>
-                        <div class="col">
-                        <%=  f.file_field :image_two, class:"form-control-file mb-4"  %>
-                        </div>
-                        <div class="col">
-                        <%=  f.file_field :image_three, class:"form-control-file mb-4"  %>
-                        </div>
-                    </div>
-
-                </div>
-
+                <%= render partial:"new_mission_form_group_description", locals: {f:f} %>
+                <%= render partial:"new_mission_form_group_location", locals: {f:f} %>
+                <%= render partial:"new_mission_attached_images", locals:{f:f} %>
 
                 <% unless user_signed_in? %>
 
-
                 <hr class="my-4">
 
-                <h5> Identité : </h5>
-
-                <%=f.fields_for :@user, validate: true do |ff| %>
-
-
-                        <div class="form-group col-6 mx-auto">
-                            <%=  ff.label :"Adresse email :"%>
-                            <%=  ff.email_field :email, class:"form-control mb-4", required:true%>
-                        </div>
-
-                        <div class="form-group col-6 mx-auto">
-                            <%=  ff.label :"Choisir un mot de passe :"%>
-                            <%=  ff.password_field :password, class:"form-control mb-4", required:true%>
-                        </div>
-
-                        <div class="form-group col-6 mx-auto">
-                            <%=  ff.label :"Confirmer le mot de passe :"%>
-                            <%=  ff.password_field :password_confirmation, class:"form-control mb-5", required:true%>
-                        </div>
-
-                <% end %>
-
+                <%=render partial:"new_mission_register_or_suscribe", locals:{f:f}%>
 
                 <hr class="my-2">
 
-
-
                 <% end %>
 
             </div>
+        </div>
 
-
-            </div>
-
-            
-
-            
             <div class="row justify-content-end mb-3">
                 <%= f.submit "Suivant", class:"btn btn-primary" %>
                 <% end %>
             </div> 
 
-        </div>
-
-
-
-
-
-
-
-            
-    
 </section>
 
 

@@ -1,0 +1,17 @@
+<div class="tab-content" id="pills-tabContent">
+
+    <%if params["content"].present?%>
+
+    <%if params["content"] == "home"%>
+        <%= render 'inbox_welcome' %>
+    <%elsif params["content"] == "received"%>
+        <%= render 'search_messages_input' %>
+        <%= render 'received_messages' %>
+    <%elsif params["content"] == "sent"%>
+        <%= render 'search_messages_input' %>
+        <%= render 'sent_messages' %>
+    <%end%>
+
+    <%end%>
+
+</div>

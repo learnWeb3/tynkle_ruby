@@ -1,0 +1,24 @@
+<div class="col">
+    <p class="form-label"> Type d'aide souhaitée</p>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col">
+        <div class="form-group col-12 my-auto">
+            <div class="form-check text-center form-check-inline">
+                <%=  f.check_box :in_person_help, class:"form-check-input",id:"radio-status-choice"%>
+                <%=  f.label :"Aide en personne", class:"form-check-label", for:"radio-status-choice"  %>
+            </div>
+        </div> 
+    </div>
+    <div class="col">
+        <div class="form-group col-12 my-auto">
+            <div class="form-check text-center form-check-inline">
+                <%=  f.check_box :remote_help, class:"form-check-input",id:"radio-status-choice"%>
+                <%=  f.label :"Aide à distance", class:"form-check-label", for:"radio-status-choice"  %>
+            </div>
+        </div> 
+    </div>
+</div>

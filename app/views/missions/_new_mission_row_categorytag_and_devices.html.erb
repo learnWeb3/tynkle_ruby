@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col">
+        <div class="form-group col-12">
+            <%=  f.label :"Type d'Appareil :" %>
+            <%=  f.collection_select :device_category, DeviceCategory.all, :id, :title, {prompt: "Appareil en panne"}, {class: "custom-select"}%>
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-group col-12">
+            <%=  f.label :"Catégorie :" %>
+            <%=  f.collection_select :categorytag, Categorytag.all, :id, :name, {prompt: "Compétence recherchée"}, {class: "custom-select"}%>      
+        </div>
+    </div>
+</div>
