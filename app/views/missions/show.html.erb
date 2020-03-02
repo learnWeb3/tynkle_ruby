@@ -1,117 +1,23 @@
 <%= render 'layouts/navbar_white' %>
 
 <div class="container-fluid">               
-<div class="row my-3">
-  <div class="col-lg-7 col-xl-5 px-4 pb-4 pl-xl-5 pr-xl-5">
-    <%= render "badges_categorytag_and_device_category" %>
-    <%=render "mission_user_informations_and_title" %>
-  </div>
-  <%= render 'mission_location_informations' %>
-  <%= render 'mission_budget_and_contact_buttons_mp_and_offer_send' %>
-    <div class="text-block">
-      <h6 class="mb-4">Description de la mission</h6>
-      <p> <%= @mission.description %> </p>
-
-      <hr class="my-5">
-
-      <ul class="list-unstyled">
-        <li class="mb-2" id ="email-contact"> 
-          <div class="media align-items-center mb-3">
-            <div class="mr-2"><i class="fas fa-envelope fa-2x text-left"></i></div>
-            <% if @mission.email_contact? && @email.blank?%>
-            <div class="media-body"><span class="text-sm"><%=link_to "Voir l'addresse mail", mission_path(id:@mission.id, anchor:"email-contact", display_email:true)%></span></div>
-            <% elsif @mission.email_contact? && @email.present? %>
-            <div class="media-body"><span class="text-sm"><%=@user.email%></span></div>
-            <% else %>
-            <div class="media-body"><span class="text-sm">Adresse mail non publiée</span></div>
-            <% end %>
-          </div>
-        </li>
-        <li class="mb-2" id="phone-contact"> 
-          <div class="media align-items-center mb-3">
-            <div class="mr-2"><i class="fas fa-phone fa-2x text-left"></i></div>
-            <% if @mission.phone_contact?  && @phone.blank?%>
-            <div class="media-body"><span class="text-sm"><%=link_to "Voir le numéro", mission_path(id:@mission.id, anchor:"phone-contact", display_phone:true)%></span></div>
-            <% elsif @mission.phone_contact?  && @phone.present?%>
-            <div class="media-body"><span class="text-sm"><%=@user.phone_number%></span></div>
-            <% else %>
-            <div class="media-body"><span class="text-sm">Téléphone non publié</span></div>
-            <% end %>
-          </div>
-        </li>
-        <li class="mb-2"> 
-          <div class="media align-items-center mb-3">
-            <div class="mr-2"><i class="fas fa-laptop fa-2x text-left"></i></div>
-            <% if @mission.remote_help? %>
-            <div class="media-body"><span class="text-sm">Asssistance à distance possible</div>
-            <% else %>
-            <div class="media-body"><span class="text-sm">Assistance à distance non souhaitée</div>
-            <% end %>
-          </div>
-        </li>
-        <li class="mb-2"> 
-          <div class="media align-items-center mb-3">
-            <div class="mr-2"><i class="far fa-handshake fa-2x text-left"></i></div>
-            <% if @mission.in_person_help? %>
-            <div class="media-body"><span class="text-sm">Asssistance en personne possible</div>
-            <% else %>
-            <div class="media-body"><span class="text-sm">Assistance en personne non souhaitée</div>
-            <% end %>
-          </div>
-        </li>
-      </ul>
-     
-
-      <hr class="my-5">
-
-      <h5> Images </h5>
-
-      <div id="carouselImageMission" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselImageMission" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselImageMission" data-slide-to="1"></li>
-          <li data-target="#carouselImageMission" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <% if @mission.image_one.attached? %>
-              <%=link_to (image_tag @mission.image_one, class:"d-block w-50 mx-auto"), image_path(id:@mission.id, image_number:1)%>
-            <% else %>
-              <%=image_tag "icons/no-file.png", class:"d-block w-50 mx-auto"%>
-            <% end %>
-          </div>
-          <div class="carousel-item">
-            <% if @mission.image_two.attached? %>
-              <%=link_to (image_tag @mission.image_two, class:"d-block w-50 mx-auto"), image_path(id:@mission.id, image_number:2)%>
-            <% else %>
-              <%=image_tag "icons/no-file.png", class:"d-block w-50 mx-auto"%>
-            <% end %>
-          </div>
-          <div class="carousel-item">
-            <% if @mission.image_three.attached? %>
-              <%=link_to (image_tag @mission.image_three, class:"d-block w-50 mx-auto"), image_path(id:@mission.id, image_number:3)%>
-            <% else %>
-              <%=image_tag "icons/no-file.png", class:"d-block w-50 mx-auto"%>
-            <% end %>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselImageMission" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselImageMission" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
+  <div class="row my-3">
   
-    
+    <div class="col-lg-7 col-xl-5 px-4 pb-4 pl-xl-5 pr-xl-5">
+      <%= render "badges_categorytag_and_device_category" %>
+      <%=render "mission_user_informations_and_title" %>
     </div>
-    
-  <div class="col-lg-5 col-xl-7 map-side-lg px-lg-0 p">
-    <div id="map-mission-geolocation" class="map-full shadow-left"></div>
+
+    <%= render 'mission_location_informations' %>
+    <%= render 'mission_budget_and_contact_buttons_mp_and_offer_send' %>
+    <%= render 'mission_description_main caracteristics_and_images_carroussel' %>
+
+    <!-- Map left start-->
+    <div class="col-lg-5 col-xl-7 map-side-lg px-lg-0 p">
+      <div id="map-mission-geolocation" class="map-full shadow-left"></div>
+    </div>
+    <!-- Map left finish-->
   </div>
-</div>
 </div>
 
 
