@@ -1,0 +1,33 @@
+<div class="text-block">
+<p class="subtitle">Posté <%=@mission.created_at.strftime("le %d %b %Y à %H:%M")%></p>
+<div class="row">
+  <div class="col d-flex align-items-center py-4">
+      <h1 class="hero-heading my-3"><%=@mission.title.capitalize%></h1>
+  </div>
+  <div class="col d-flex align-items-center p-4">
+
+  <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, size:"50x50", class:"avatar avatar-md avatar-border-white"%>
+  <%else%>
+      
+      <%=image_tag "icons/man_avatar.png", size:"50x50", alt:"", class:"avatar avatar-md avatar-border-white"%>
+  <% end %> 
+  
+      <div class="d-block align-items-center ml-2">
+      <% if @user.service_provider?  && @user.first_name?%>
+          <%= link_to @user.first_name.capitalize , helper_path(id:@user.id), class:"my-auto"  %> 
+      <% elsif  @user.service_provider?  && @user.first_name? == false%>
+          <%= link_to 'Utilisateur' , helper_path(id:@user.id), class:"my-auto"  %> 
+      <% elsif  @user.service_provider? == false  && @user.first_name? == false%>
+          <%= link_to 'Utilisateur' , useroutsidedevise_path(id:@user.id), class:"my-auto"  %> 
+      <% elsif  @user.service_provider? == false  && @user.first_name? %>
+          <%= link_to @user.first_name.capitalize , useroutsidedevise_path(id:@user.id), class:"my-auto"  %> 
+      <% end %>
+          <p class="my-auto"><%= @user.global_review_mark %> / <%=@reviews.length%> avis </p>
+      </div>
+  
+
+ 
+
+  </div>
+</div>

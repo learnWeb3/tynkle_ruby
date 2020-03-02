@@ -3,67 +3,11 @@
 <div class="container-fluid">               
 <div class="row my-3">
   <div class="col-lg-7 col-xl-5 px-4 pb-4 pl-xl-5 pr-xl-5">
-
-    <ol class="list-unstyled d-flex flex-wrap ">
-        <li><%= link_to "#{@mission.device_category.title.capitalize}", root_path, class:"badge badge-primary mx-2 my-2"%></li>
-        <li><%= link_to "#{@mission.categorytag.name.capitalize}", root_path, class:"badge badge-primary mx-2 my-2" %></li>
-        <li><%= link_to "#{@mission.categorytag.problem_description.capitalize}", root_path, class:"badge badge-primary my-2" %></li>
-    </ol>
-
-    <div class="text-block">
-      <p class="subtitle">Posté <%=@mission.created_at.strftime("le %d %b %Y à %H:%M")%></p>
-     <div class="row">
-        <div class="col d-flex align-items-center py-4">
-            <h1 class="hero-heading my-3"><%=@mission.title.capitalize%></h1>
-        </div>
-        <div class="col d-flex align-items-center p-4">
-
-        <% if @user.avatar.attached? %>
-            <%= image_tag @user.avatar, size:"50x50", class:"avatar avatar-md avatar-border-white"%>
-        <%else%>
-            
-            <%=image_tag "icons/man_avatar.png", size:"50x50", alt:"", class:"avatar avatar-md avatar-border-white"%>
-        <% end %> 
-        
-            <div class="d-block align-items-center ml-2">
-            <% if @user.service_provider?  && @user.first_name?%>
-                <%= link_to @user.first_name.capitalize , helper_path(id:@user.id), class:"my-auto"  %> 
-            <% elsif  @user.service_provider?  && @user.first_name? == false%>
-                <%= link_to 'Utilisateur' , helper_path(id:@user.id), class:"my-auto"  %> 
-            <% elsif  @user.service_provider? == false  && @user.first_name? == false%>
-                <%= link_to 'Utilisateur' , useroutsidedevise_path(id:@user.id), class:"my-auto"  %> 
-            <% elsif  @user.service_provider? == false  && @user.first_name? %>
-                <%= link_to @user.first_name.capitalize , useroutsidedevise_path(id:@user.id), class:"my-auto"  %> 
-            <% end %>
-                <p class="my-auto"><%= @user.global_review_mark %> / <%=@reviews.length%> avis </p>
-            </div>
-        
-
-       
-    
-        </div>
-     </div>
-    </div>
-    <div class="text-block">
-      <div class="row">
-        <div class="col-sm">
-          <h6>Addresse</h6>
-          <p class="text-muted"><%=@mission.address.capitalize%></p>
-        </div>
-      </div>
-    </div>
-    <div class="text-block">
-      <div class="row">
-        <div class="col">
-          <h6>Budget :</h6>
-          <p class="text-muted"><%= @mission.price %> €</p>
-        </div>
-        <div class="col align-self-center">
-          <%= render 'button_trigger_send_private_message_mp'%>
-          <%= render 'button_trigger_make_an_offer'%>
-        </div>
-      </div>
-    </div>
+    <%= render "badges_categorytag_and_device_category" %>
+    <%=render "mission_user_informations_and_title" %>
+  </div>
+  <%= render 'mission_location_informations' %>
+  <%= render 'mission_budget_and_contact_buttons_mp_and_offer_send' %>
     <div class="text-block">
       <h6 class="mb-4">Description de la mission</h6>
       <p> <%= @mission.description %> </p>
