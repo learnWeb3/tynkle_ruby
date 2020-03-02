@@ -24,50 +24,19 @@ class MessagesController < ApplicationController
     end
 
     def message_send_from_mission_show
+        
+        mission_id = params["message"]["mission_url"]
+
+        message = Message.send_message_and_sign_up_user_if_needed(params, current_user)
+
+        if message.save
+            redirect_to missions_path(id:mission_id)
+        else 
+            puts message.errors.full_messages
+        end
 
 
-            object = params["message"]["object"]
-            content = params["message"]["content"]
-            mission_id = params["message"]["mission_url"]
-
-            related_mission = Mission.find(mission_id.to_i)
-            related_mission_url = "/missions/#{mission_id}"
-
-            if user_signed_in?
-                sender = current_user
-            else 
-                check_sender = User.find_by(email:params["message"]["@user"]["email"])
-                if check_sender.present?
-                user_password = params["message"]["@user"]["password"]
-                    if check_sender.valid_password?(user_password)
-                        sender = check_sender
-                    else 
-                        puts "Invalid password matching a user in database"
-                    end
-                else 
-                    new_user_email = params["message"]["@user"]["email"]
-                    new_user_password = params["message"]["@user"]["password"]
-                    new_user_password_confirmation = params["message"]["@user"]["password_confirmation"]
-                    new_user = User.new(email:new_user_email, password:new_user_password, password_confirmation:new_user_password_confirmation)
-                    if new_user.save
-                        sender = new_user
-                    else 
-                        puts new_user.errors.full_messages
-                    end
-                end
-    
-            end
-
-            message = Message.new(object:object, content:content, recipient:related_mission.user, sender: sender, mission_url:related_mission_url)
-  
-            if message.save
-                redirect_to missions_path(id:mission_id)
-            else 
-                puts message.errors.full_messages
-            end
-
-
-     end
+    end
   
 
 

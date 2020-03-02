@@ -408,6 +408,20 @@ class User < ApplicationRecord
 
   end
 
+
+  def self.sign_up_on_message_send(params)
+    new_user_email = params["message"]["@user"]["email"]
+    new_user_password = params["message"]["@user"]["password"]
+    new_user_password_confirmation = params["message"]["@user"]["password_confirmation"]
+    new_user = User.new(email:new_user_email, password:new_user_password, password_confirmation:new_user_password_confirmation)
+    if new_user.save
+        sender = new_user
+        return sender
+    else 
+        puts new_user.errors.full_messages
+    end
+  end
+
   
     private
 
