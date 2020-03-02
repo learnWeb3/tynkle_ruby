@@ -101,9 +101,9 @@ class Offer < ApplicationRecord
 
 
     def update_expired_status
-        if self.created_at + 86400 < TIme.now
+        if self.created_at + 86400 < Time.now
             self.expired = true
-            self.update
+            self.save
         end
     end
 
