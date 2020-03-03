@@ -30,7 +30,7 @@ class OffersController < ApplicationController
 
         offer = offer.check_and_update_offer_state(params)
         if offer.save 
-            redirect_to mission_path(id:offer.id)
+            redirect_to mission_path(id:offer.mission.id)
         else
             puts offer.full_messages
         end

@@ -26,6 +26,14 @@ class Offer < ApplicationRecord
         self.time.strftime("%H:%M")
     end
 
+    def full_time_created_at
+        self.created_at.strftime("%H:%M")
+    end
+
+    def full_date_created_at
+        self.created_at.strftime("%A %e %B %Y")
+    end
+
     def hour_minute_schedule
 
         self.time.strftime("%H")
