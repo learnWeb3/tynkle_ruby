@@ -1,0 +1,41 @@
+<div class="col-6 p-4 text-left shadow">
+
+<div class="row">
+    <div class="col">
+        <div class="card" style="width: 12rem;">
+            <div class="card-header bg-danger text-white font-weight-bold text-center"> <%=@offer.full_month_name%> <%=@offer.full_year%></div>
+            <div class="card-body text-center p-0">
+                <p class="mt-1"> Rendez vous le : </p>
+                <h6><%=@offer.abbreviated_day_name%> <%=@offer.zero_padded_day%></h6>
+                <p><%=@offer.full_time_schedule%></p>
+            </div>
+        </div>
+    </div>
+    <div class="col d-flex align-items-center">
+        <div>
+        <h5 class="label ">Objet de l'offre :</h5>
+        <p class="font-weight-bold font-italic"> <%=@offer.title.upcase%> </p>
+        </div>
+    </div>
+</div>
+
+
+<hr class="mb-4">
+
+<div class="row">
+        <div class="col">
+            <h6 class="label ">Montant de l'Offre</h6>
+            <div class=""> <%=@offer.price%> Euros</div> 
+        </div>
+</div>
+
+<hr class="mb-4">
+
+<div class="row">
+    <div class="col">
+        <h6 class="label ">Contenu de l'offre </h6>
+        <div class=""> <%=@offer.content%> </div>
+    </div>
+</div>
+
+</div>
