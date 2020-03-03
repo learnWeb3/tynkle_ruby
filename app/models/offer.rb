@@ -34,6 +34,19 @@ class Offer < ApplicationRecord
         self.created_at.strftime("%A %e %B %Y")
     end
 
+    def full_time_updated_at
+        self.updated_at.strftime("%H:%M")
+    end
+
+    def full_date_updated_at
+        self.updated_at.strftime("%A %e %B %Y")
+    end
+
+    def abbreviated_date_updated_at
+        self.updated_at.strftime("%a %e %b %Y")
+    end
+
+
     def hour_minute_schedule
 
         self.time.strftime("%H")
@@ -119,16 +132,17 @@ class Offer < ApplicationRecord
 
         if params["validated"].present?
 
-            validation = params["validated"].to_i
+            validation = params["validated"]
 
-            if validation = 1
-                self.accepted = true 
+            if validation.to_i == 1
+                self.accepted = true
                 return self
-            elsif validation = 0
-                self.rejected = true 
+            elsif validation.to_i == 0
+                self.rejected = true
                 return self
+            else 
+                puts "error on params content"
             end
-
         end
 
     end

@@ -2,7 +2,7 @@
 
 <section class="container my-4">
 
-<% if @offer.expired? || @offer.rejected? %>
+<% if @offer.expired? %>
 
 <h4 class="text-center col-9 mx-auto my-3 text-muted">Nouvelle Offre envoyée par <%=@offer.user.first_name.capitalize%></h4>
 <h6 class="text-center col-9 mx-auto my-3 text-muted">Reçue le  <%=@offer.full_date_created_at%> à <%=@offer.full_time_created_at%></h6>
@@ -13,11 +13,23 @@
 
 <% elsif @offer.accepted? %>
 
-<h4 class="text-center col-9 mx-auto my-3 text-success">Nouvelle Offre envoyée par <%=@offer.user.first_name.capitalize%></h4>
-<h6 class="text-center col-9 mx-auto my-3 text-success">Reçue le  <%=@offer.full_date_created_at%> à <%=@offer.full_time_created_at%></h6>
+<h4 class="text-center col-9 mx-auto my-3">Offre envoyée par <%=@offer.user.first_name.capitalize%></h4>
+
+<h6 class="text-center col-9 mx-auto my-3">Reçue le  <%=@offer.full_date_created_at%> à <%=@offer.full_time_created_at%></h6>
 
 <div class="row justify-content-center">
         <%= render 'col_offer_content_accepted' %>
+</div>
+
+
+<% elsif @offer.rejected? %>
+
+<h4 class="text-center col-9 mx-auto my-3">Offre envoyée par <%=@offer.user.first_name.capitalize%></h4>
+
+<h6 class="text-center col-9 mx-auto my-3">Reçue le  <%=@offer.full_date_created_at%> à <%=@offer.full_time_created_at%></h6>
+
+<div class="row justify-content-center">
+        <%= render 'col_offer_content_rejected' %>
 </div>
 
 <% else %>
