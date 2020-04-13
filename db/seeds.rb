@@ -102,7 +102,7 @@ end
 
  # Missions Seed, NEED USER
 
-=begin
+
 100.times do 
 
     User.create(email:Faker::Internet.free_email, password:'foobar', password_confirmation:'foobar')
@@ -119,6 +119,6 @@ end
 200.times do 
     Mission.create(title:Faker::Books::CultureSeries.book, description:Faker::Marketing.buzzwords , price:rand(1...1500), address:User.all.collect{|user|user.address} ,device_category:DeviceCategory.all.sample, categorytag:Categorytag.all.sample, user:User.all.sample)
 end
-=end
+
 
 
