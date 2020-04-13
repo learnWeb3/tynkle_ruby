@@ -142,7 +142,7 @@ class ServicesurveyController < ApplicationController
                      Message.create(sender:message_sender, recipient:User.find(helper_id), object:message_object_mission_title, content:message_content_mission_description, mission_url:shared_mission_url)
                 end
 
-                redirect_to wizard_path(:finish)
+                redirect_to servicesurvey_path(:finish)
             else 
 
                 # flash[:error]
